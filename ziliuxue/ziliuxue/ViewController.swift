@@ -20,9 +20,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         println(password.text)
     }
 
-    @IBAction func signUpClicked(sender: UIButton) {
-        self.performSegueWithIdentifier("toSignUp", sender: self)
-    }
     @IBAction func weiboClicked(sender: UIButton) {
     }
 
