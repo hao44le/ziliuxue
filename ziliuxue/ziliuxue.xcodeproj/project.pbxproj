@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */; };
 		C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */; };
 		C0C8F9021B2ED89E00D698FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F9011B2ED89E00D698FC /* ViewController.swift */; };
 		C0C8F9051B2ED89E00D698FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0C8F9031B2ED89E00D698FC /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C0C8F8FA1B2ED89E00D698FC /* ziliuxue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ziliuxue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C8F8FE1B2ED89E00D698FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */,
 				C0C8F9011B2ED89E00D698FC /* ViewController.swift */,
+				C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */,
 				C0C8F9031B2ED89E00D698FC /* Main.storyboard */,
 				C0C8F9061B2ED89E00D698FC /* Images.xcassets */,
 				C0C8F9081B2ED89E00D698FC /* LaunchScreen.xib */,
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */,
 				C0C8F9021B2ED89E00D698FC /* ViewController.swift in Sources */,
 				C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */,
 			);
@@ -292,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -331,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,7 +347,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ziliuxue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -353,7 +359,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ziliuxue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
