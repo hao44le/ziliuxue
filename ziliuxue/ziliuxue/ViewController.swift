@@ -10,8 +10,24 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
 
+    var email:UITextField = UITextField()
+    var password:UITextField = UITextField()
+    
     let name = ["电子邮件","密码"]
     
+    @IBAction func loginClicked(sender: UIButton) {
+        println(email.text)
+        println(password.text)
+    }
+
+    @IBAction func signUpClicked(sender: UIButton) {
+        
+    }
+    @IBAction func weiboClicked(sender: UIButton) {
+    }
+
+    @IBAction func weChatClicked(sender: UIButton) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
@@ -33,6 +49,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             cell.label.text = self.name[indexPath.row]
             cell.textField.delegate = self
         
+        if indexPath.row == 0 {
+            
+            email = cell.textField
+        } else {
+            cell.textField.secureTextEntry = true
+            password = cell.textField
+        }
             return cell
        
         
@@ -40,13 +63,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
-    
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-    }
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
