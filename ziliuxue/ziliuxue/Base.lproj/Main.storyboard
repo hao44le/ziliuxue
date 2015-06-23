@@ -332,5 +332,134 @@
             </objects>
             <point key="canvasLocation" x="305" y="1061"/>
         </scene>
+        <!--自留学注册-->
+        <scene sceneID="eiP-WB-vAr">
+            <objects>
+                <viewController id="j5D-gi-5LJ" customClass="SignUpViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HPc-hn-5XF"/>
+                        <viewControllerLayoutGuide type="bottom" id="cSq-2D-t6Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sRa-L2-VbR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Fy-BB-upS">
+                                <rect key="frame" x="0.0" y="64" width="600" height="354"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="5tW-2V-d4p">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="400"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="354" id="6du-DF-83n"/>
+                                    <constraint firstAttribute="width" constant="600" id="8o7-iJ-jNb"/>
+                                    <constraint firstAttribute="width" secondItem="2Fy-BB-upS" secondAttribute="height" multiplier="100:59" id="MsC-pW-45A"/>
+                                    <constraint firstAttribute="height" constant="354" id="TGp-nT-JOU"/>
+                                    <constraint firstAttribute="height" constant="214" id="YG9-Iq-poF"/>
+                                    <constraint firstAttribute="height" constant="354" id="jSq-BJ-h2n"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="oWu-jt-ZR2"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="60" id="YVP-yx-kmX" customClass="CustomTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="86" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YVP-yx-kmX" id="2Ld-8i-0sN">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-6o-dk8">
+                                                    <rect key="frame" x="88" y="0.0" width="512" height="58.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4i-0y-Pla">
+                                                    <rect key="frame" x="8" y="19" width="72" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="label" destination="a4i-0y-Pla" id="utl-0W-Q0A"/>
+                                            <outlet property="textField" destination="Yoq-6o-dk8" id="f6b-fP-YYe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5tW-2V-d4p"/>
+                                        <exclude reference="6du-DF-83n"/>
+                                        <exclude reference="8o7-iJ-jNb"/>
+                                        <exclude reference="MsC-pW-45A"/>
+                                        <exclude reference="TGp-nT-JOU"/>
+                                        <exclude reference="YG9-Iq-poF"/>
+                                        <exclude reference="oWu-jt-ZR2"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="MsC-pW-45A"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="j5D-gi-5LJ" id="HKF-qL-jUe"/>
+                                    <outlet property="delegate" destination="j5D-gi-5LJ" id="opn-yg-pKo"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrV-sA-Wa6">
+                                <rect key="frame" x="277" y="442" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="11b-Zq-lyM"/>
+                                    <constraint firstAttribute="width" constant="46" id="W7p-f1-zmU"/>
+                                </constraints>
+                                <state key="normal" title="注册">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="GrV-sA-Wa6" firstAttribute="top" secondItem="2Fy-BB-upS" secondAttribute="bottom" constant="24" id="BX1-WV-wNb"/>
+                            <constraint firstItem="2Fy-BB-upS" firstAttribute="top" secondItem="HPc-hn-5XF" secondAttribute="bottom" id="Mb6-YE-FKq"/>
+                            <constraint firstItem="2Fy-BB-upS" firstAttribute="top" secondItem="HPc-hn-5XF" secondAttribute="bottom" constant="18" id="Px7-WV-h07"/>
+                            <constraint firstItem="2Fy-BB-upS" firstAttribute="leading" secondItem="sRa-L2-VbR" secondAttribute="leadingMargin" constant="-16" id="RSQ-Da-8PN"/>
+                            <constraint firstItem="2Fy-BB-upS" firstAttribute="top" secondItem="HPc-hn-5XF" secondAttribute="bottom" constant="18" id="Shu-7e-Ns8"/>
+                            <constraint firstItem="GrV-sA-Wa6" firstAttribute="centerY" secondItem="2Fy-BB-upS" secondAttribute="centerY" constant="212" id="WQy-qD-aYa"/>
+                            <constraint firstAttribute="centerX" secondItem="2Fy-BB-upS" secondAttribute="centerX" id="fCp-2D-Y7J"/>
+                            <constraint firstItem="2Fy-BB-upS" firstAttribute="leading" secondItem="sRa-L2-VbR" secondAttribute="leadingMargin" constant="-16" id="kUp-bc-GOv"/>
+                            <constraint firstItem="GrV-sA-Wa6" firstAttribute="centerX" secondItem="2Fy-BB-upS" secondAttribute="centerX" id="pTz-sy-y0F"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Px7-WV-h07"/>
+                                <exclude reference="RSQ-Da-8PN"/>
+                                <exclude reference="Shu-7e-Ns8"/>
+                                <exclude reference="WQy-qD-aYa"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="7Dz-TI-amz" appends="YES" id="Mfg-48-w7z"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="自留学注册" id="TZs-Jj-vns"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UaT-aI-1K1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7Dz-TI-amz">
+                    <connections>
+                        <action selector="tapped:" destination="j5D-gi-5LJ" id="KE1-Nm-qRf"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="794" y="1972"/>
+        </scene>
     </scenes>
 </document>
