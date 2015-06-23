@@ -10,12 +10,13 @@ import UIKit
 
 class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var thirdPicture: UIImageView!
     @IBOutlet weak var secondPicture: UIImageView!
     @IBOutlet weak var firstPicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
