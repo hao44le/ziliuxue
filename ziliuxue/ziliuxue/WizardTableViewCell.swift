@@ -10,6 +10,15 @@ import UIKit
 
 class WizardTableViewCell: UITableViewCell {
 
+    @IBAction func likeClicked(sender: UIButton) {
+    }
+    @IBOutlet weak var like: UIButton!
+    @IBOutlet weak var accptionRate: UILabel!
+    @IBOutlet weak var tuition: UILabel!
+    @IBOutlet weak var universityLocation: UILabel!
+    @IBOutlet weak var universityName: UILabel!
+    @IBOutlet weak var ranking: UILabel!
+    @IBOutlet weak var logo: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

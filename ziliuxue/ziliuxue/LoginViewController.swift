@@ -21,8 +21,8 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         password.resignFirstResponder()
     }
     @IBAction func loginClicked(sender: UIButton) {
-        println(email.text)
-        println(password.text)
+        //println(email.text)
+        //println(password.text)
     }
 
     @IBAction func weiboClicked(sender: UIButton) {

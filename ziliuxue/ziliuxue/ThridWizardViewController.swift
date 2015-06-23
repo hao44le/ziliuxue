@@ -10,6 +10,9 @@ import UIKit
 
 class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var thirdPicture: UIImageView!
+    @IBOutlet weak var secondPicture: UIImageView!
+    @IBOutlet weak var firstPicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
