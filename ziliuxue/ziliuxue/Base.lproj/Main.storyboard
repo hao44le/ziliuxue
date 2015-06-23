@@ -10,7 +10,7 @@
         <!--自留学-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="egm-Ud-CmX">
-                                                    <rect key="frame" x="88" y="15" width="504" height="30"/>
+                                                    <rect key="frame" x="88" y="0.0" width="512" height="59.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -76,7 +76,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="19r-lg-p97" kind="presentation" id="Jgj-bs-Vb0"/>
+                                            <segue destination="19r-lg-p97" kind="show" id="Jgj-bs-Vb0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hq-8r-Roq">
@@ -143,6 +143,7 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="qlS-2Y-6lA" secondAttribute="centerX" constant="149" id="4sr-h4-5ho"/>
                             <constraint firstItem="qlS-2Y-6lA" firstAttribute="top" secondItem="zkr-a9-mzk" secondAttribute="bottom" constant="9" id="ASb-pj-R9p"/>
@@ -168,10 +169,18 @@
                                 <exclude reference="fDn-tr-uI7"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ohL-iT-0Xq" appends="YES" id="TIl-ik-Kcw"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="自留学" id="ahC-LT-Sda"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ohL-iT-0Xq">
+                    <connections>
+                        <action selector="tapped:" destination="BYZ-38-t0r" id="Vjq-Xw-jsl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1117" y="400"/>
         </scene>
@@ -188,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-QN-rTG">
-                                <rect key="frame" x="0.0" y="38" width="600" height="354"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="354"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -199,6 +208,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="e7w-eo-M3h"/>
                                     <constraint firstAttribute="height" constant="214" id="eCR-LA-b6M"/>
                                     <constraint firstAttribute="height" constant="354" id="gp7-2t-JhF"/>
+                                    <constraint firstAttribute="height" constant="354" id="lCG-bh-tZB"/>
                                     <constraint firstAttribute="width" secondItem="WvQ-QN-rTG" secondAttribute="height" multiplier="100:59" id="nn8-as-kGn"/>
                                     <constraint firstAttribute="height" constant="354" id="sQx-sP-A79"/>
                                 </constraints>
@@ -211,7 +221,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onI-CC-2n2">
-                                                    <rect key="frame" x="88" y="15" width="504" height="30"/>
+                                                    <rect key="frame" x="88" y="0.0" width="512" height="58.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -241,6 +251,7 @@
                                         <exclude reference="eCR-LA-b6M"/>
                                         <exclude reference="gp7-2t-JhF"/>
                                         <exclude reference="nn8-as-kGn"/>
+                                        <exclude reference="sQx-sP-A79"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -254,7 +265,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-2c-9rB">
-                                <rect key="frame" x="277" y="412" width="46" height="30"/>
+                                <rect key="frame" x="277" y="442" width="46" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="4rC-aw-gqk"/>
@@ -267,23 +278,38 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="top" secondItem="Al7-QK-p43" secondAttribute="bottom" constant="18" id="39X-i3-ubY"/>
+                            <constraint firstItem="y8k-2c-9rB" firstAttribute="top" secondItem="WvQ-QN-rTG" secondAttribute="bottom" constant="24" id="8lO-6j-rbR"/>
+                            <constraint firstItem="WvQ-QN-rTG" firstAttribute="top" secondItem="Al7-QK-p43" secondAttribute="bottom" id="CsR-X1-KxU"/>
                             <constraint firstAttribute="centerX" secondItem="WvQ-QN-rTG" secondAttribute="centerX" id="DnG-N9-aYC"/>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="top" secondItem="Al7-QK-p43" secondAttribute="bottom" constant="18" id="Dve-1J-iIO"/>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="leading" secondItem="owV-tz-MXC" secondAttribute="leadingMargin" constant="-16" id="d7S-2H-SVl"/>
                             <constraint firstItem="y8k-2c-9rB" firstAttribute="centerX" secondItem="WvQ-QN-rTG" secondAttribute="centerX" id="g24-aJ-Lym"/>
+                            <constraint firstItem="WvQ-QN-rTG" firstAttribute="leading" secondItem="owV-tz-MXC" secondAttribute="leadingMargin" constant="-16" id="kFH-AX-mDh"/>
                             <constraint firstItem="y8k-2c-9rB" firstAttribute="centerY" secondItem="WvQ-QN-rTG" secondAttribute="centerY" constant="212" id="neQ-Gv-oUB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="39X-i3-ubY"/>
                                 <exclude reference="Dve-1J-iIO"/>
+                                <exclude reference="d7S-2H-SVl"/>
+                                <exclude reference="neQ-Gv-oUB"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="O3N-Op-nyv" appends="YES" id="j66-FB-kEx"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="自留学注册" id="qZ3-fv-nMH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATd-sS-2df" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="O3N-Op-nyv">
+                    <connections>
+                        <action selector="tapped:" destination="19r-lg-p97" id="VK7-Q8-nbo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1117" y="1148"/>
         </scene>

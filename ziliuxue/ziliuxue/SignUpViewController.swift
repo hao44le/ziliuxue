@@ -15,6 +15,14 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     var name:UITextField = UITextField()
     var repeated_password:UITextField = UITextField()
     let field = ["名字","电子邮件","密码","重输密码"]
+    @IBAction func tapped(sender: UITapGestureRecognizer) {
+        
+        email.resignFirstResponder()
+        password.resignFirstResponder()
+        name.resignFirstResponder()
+        repeated_password.resignFirstResponder()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,13 +43,13 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         cell.label.text = field[indexPath.row]
         switch indexPath.row {
         case 0 :
-            cell.textField = name
+            name = cell.textField
         case 1:
-            cell.textField = email
+             email = cell.textField
         case 2:
-            cell.textField = password
+            password = cell.textField
         case 3:
-            cell.textField = repeated_password
+            repeated_password = cell.textField
         default:
             break
         }
