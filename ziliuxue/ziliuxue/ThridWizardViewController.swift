@@ -32,6 +32,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! WizardTableViewCell
         return cell
     }
+
     /*
     // MARK: - Navigation
 
