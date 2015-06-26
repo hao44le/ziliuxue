@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47CF44BAB11326517D1316EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB668C83B7354CCF44BD8E39 /* libPods.a */; };
 		C026A7391B39072C00E24908 /* FirstWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7381B39072C00E24908 /* FirstWizardViewController.swift */; };
 		C026A7421B3907D800E24908 /* SecondWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7411B3907D800E24908 /* SecondWizardViewController.swift */; };
 		C026A7441B39080000E24908 /* ThridWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7431B39080000E24908 /* ThridWizardViewController.swift */; };
@@ -33,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00167EB716BD028099626F64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		1C321C7FDF9F7B164B7EC6EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C022425D1B3CF3EE00B0F0E7 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		C026A7381B39072C00E24908 /* FirstWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstWizardViewController.swift; sourceTree = "<group>"; };
 		C026A7411B3907D800E24908 /* SecondWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondWizardViewController.swift; sourceTree = "<group>"; };
 		C026A7431B39080000E24908 /* ThridWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThridWizardViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +54,7 @@
 		C0C8F90F1B2ED89E00D698FC /* ziliuxueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ziliuxueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C8F9141B2ED89E00D698FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0C8F9151B2ED89E00D698FC /* ziliuxueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ziliuxueTests.swift; sourceTree = "<group>"; };
+		EB668C83B7354CCF44BD8E39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47CF44BAB11326517D1316EB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +76,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A232EC246CEAF22CEA3B725 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				00167EB716BD028099626F64 /* Pods.debug.xcconfig */,
+				1C321C7FDF9F7B164B7EC6EC /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6B06404AC2686512A5297FAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB668C83B7354CCF44BD8E39 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C026A73A1B39074400E24908 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +129,8 @@
 				C0C8F8FC1B2ED89E00D698FC /* ziliuxue */,
 				C0C8F9121B2ED89E00D698FC /* ziliuxueTests */,
 				C0C8F8FB1B2ED89E00D698FC /* Products */,
+				1A232EC246CEAF22CEA3B725 /* Pods */,
+				6B06404AC2686512A5297FAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +155,7 @@
 		C0C8F8FD1B2ED89E00D698FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C022425D1B3CF3EE00B0F0E7 /* Header.h */,
 				C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */,
 				C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */,
 				C0C8F9031B2ED89E00D698FC /* Main.storyboard */,
@@ -164,9 +190,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0C8F9191B2ED89E00D698FC /* Build configuration list for PBXNativeTarget "ziliuxue" */;
 			buildPhases = (
+				BD9122890D2C3619C2DA31AA /* Check Pods Manifest.lock */,
 				C0C8F8F61B2ED89E00D698FC /* Sources */,
 				C0C8F8F71B2ED89E00D698FC /* Frameworks */,
 				C0C8F8F81B2ED89E00D698FC /* Resources */,
+				42A2AB2215F6E487832677C8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +281,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42A2AB2215F6E487832677C8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD9122890D2C3619C2DA31AA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C0C8F8F61B2ED89E00D698FC /* Sources */ = {
@@ -394,6 +455,7 @@
 		};
 		C0C8F91A1B2ED89E00D698FC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00167EB716BD028099626F64 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -402,11 +464,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ziliuxue/Header.h;
 			};
 			name = Debug;
 		};
 		C0C8F91B1B2ED89E00D698FC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C321C7FDF9F7B164B7EC6EC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -415,6 +479,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ziliuxue/Header.h;
 			};
 			name = Release;
 		};

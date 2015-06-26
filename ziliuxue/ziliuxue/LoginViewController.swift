@@ -32,6 +32,15 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let manager = AFHTTPRequestOperationManager()
+        let userInfo = NSDictionary(objectsAndKeys: "c050c2c1-3ac0-46c7-abf6-e7edfb16aee4","client_id","gelei","username","gelei","password")
+        manager.POST("http://livebo.cloudapp.net:3000/api/auth/signup", parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                print("success")
+            //print(response)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                print("failure")
+                print(error)
+        }
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black

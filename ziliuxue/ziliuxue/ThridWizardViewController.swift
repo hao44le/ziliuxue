@@ -16,7 +16,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var firstPicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(self.tableViewHeightConstraint.constant)
+        print(self.tableViewHeightConstraint.constant)
         if DeviceType.IS_IPHONE_6 {
             self.tableViewHeightConstraint.constant = 500
         } else if DeviceType.IS_IPHONE_5 {
