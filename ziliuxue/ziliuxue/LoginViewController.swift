@@ -33,10 +33,13 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         let manager = AFHTTPRequestOperationManager()
-        let userInfo = NSDictionary(objectsAndKeys: "c050c2c1-3ac0-46c7-abf6-e7edfb16aee4","client_id","gelei","username","gelei","password")
-        manager.POST("http://livebo.cloudapp.net:3000/api/auth/signup", parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+        print("1")
+        manager.securityPolicy.allowInvalidCertificates = true
+        let userInfo = NSDictionary(objectsAndKeys: "c050c2c1-3ac0-46c7-abf6-e7edfb16aee4","client_id","chen","username","gelei","password")
+        manager.POST("https://livebo.cloudapp.net/api/auth/signup", parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 print("success")
-            //print(response)
+            
+            print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 print("failure")
                 print(error)
