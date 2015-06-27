@@ -27,6 +27,23 @@ struct ScreenSize
     static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
 }
 
+struct ServerConstant {
+    static let client_id = "c050c2c1-3ac0-46c7-abf6-e7edfb16aee4"
+    static let signup = "https://livebo.cloudapp.net/api/auth/signup"
+    static let obtain_token = "https://livebo.cloudapp.net/api/auth/token"
+    static let get_user = "https://livebo.cloudapp.net/api/users"
+    static let get_college = "https://livebo.cloudapp.net/api/colleges?ranking="
+    
+    
+    
+    
+    
+    
+   }
+
+
+
+
 struct DeviceType
 {
     static let IS_IPHONE_4_OR_LESS  = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
