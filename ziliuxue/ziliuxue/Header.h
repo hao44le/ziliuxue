@@ -9,5 +9,6 @@
 #ifndef Header_h
 #define Header_h
 #import "AFHTTPRequestOperationManager.h"
+#import "SwipeView.h"
 
 #endif /* Header_h */

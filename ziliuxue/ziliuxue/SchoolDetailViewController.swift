@@ -8,10 +8,16 @@
 
 import UIKit
 
-class SchoolDetailViewController: UIViewController {
+class SchoolDetailViewController: UIViewController,SwipeViewDataSource,SwipeViewDelegate{
 
+    @IBOutlet weak var universityDescription: UITextView!
+    @IBOutlet weak var universityName: UILabel!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var swipeView: SwipeView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        swipeView.pagingEnabled = true
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +27,34 @@ class SchoolDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
+    
+    // MARK: SwipeView
+    
+    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
+        return 3
+    }
+    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
+        if view == nil {
+            view = UIView(frame: swipeView.bounds)
+            let imageView = UIImageView(frame: view.bounds)
+            imageView.image = UIImage(named: "Map Icon")
+            view.addSubview(imageView)
+        } else {
+            
+        }
+        return view
+    }
+    
+    func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
+        return self.swipeView.bounds.size
+    }
+    
+    func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+        self.pageControl.currentPage = swipeView.currentPage
+    }
 
     /*
     // MARK: - Navigation

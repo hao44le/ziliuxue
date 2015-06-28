@@ -22,6 +22,7 @@
 		C0C8F90A1B2ED89E00D698FC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0C8F9081B2ED89E00D698FC /* LaunchScreen.xib */; };
 		C0C8F9161B2ED89E00D698FC /* ziliuxueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F9151B2ED89E00D698FC /* ziliuxueTests.swift */; };
 		C0F5C0E31B3F93C500A2FA14 /* SchoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F5C0E21B3F93C500A2FA14 /* SchoolDetailViewController.swift */; };
+		C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F5C0E51B3FC59300A2FA14 /* SwipeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		C0C8F9141B2ED89E00D698FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0C8F9151B2ED89E00D698FC /* ziliuxueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ziliuxueTests.swift; sourceTree = "<group>"; };
 		C0F5C0E21B3F93C500A2FA14 /* SchoolDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolDetailViewController.swift; sourceTree = "<group>"; };
+		C0F5C0E41B3FC59300A2FA14 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		C0F5C0E51B3FC59300A2FA14 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		EB668C83B7354CCF44BD8E39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -149,6 +152,7 @@
 		C0C8F8FC1B2ED89E00D698FC /* ziliuxue */ = {
 			isa = PBXGroup;
 			children = (
+				C0F5C0E71B3FC59800A2FA14 /* Library */,
 				C026A73A1B39074400E24908 /* ViewController */,
 				C0C8F8FD1B2ED89E00D698FC /* Supporting Files */,
 			);
@@ -184,6 +188,23 @@
 				C0C8F9141B2ED89E00D698FC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				C0F5C0E81B3FC5A200A2FA14 /* SwipeView */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		C0F5C0E81B3FC5A200A2FA14 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				C0F5C0E41B3FC59300A2FA14 /* SwipeView.h */,
+				C0F5C0E51B3FC59300A2FA14 /* SwipeView.m */,
+			);
+			name = SwipeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C026A7461B39149100E24908 /* WizardTableViewCell.swift in Sources */,
+				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,
 				C026A7391B39072C00E24908 /* FirstWizardViewController.swift in Sources */,
 				C039BEAD1B3A7E1C00C8D5CE /* Utility.swift in Sources */,
 				C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */,
