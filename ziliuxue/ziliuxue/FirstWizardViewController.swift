@@ -10,14 +10,20 @@ import UIKit
 
 class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
-    
+    @IBOutlet weak var continueButton: UIButton!
     let name = ["国家","目标学位","目标专业方向"]
-    let detail = ["美国","硕士研究生","计算机"]
+    let detail = ["美国 ","硕士研究生","计算机"]
 
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        continueButton.layer.cornerRadius = 25
+        continueButton.layer.borderWidth = 0.5
+        continueButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
@@ -31,9 +37,9 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = self.name[indexPath.row]
-        cell.detailTextLabel?.text = self.detail[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! FirstWizardTableViewCell
+        cell.firstLabel?.text = self.name[indexPath.row]
+        cell.secondLabel?.text = self.detail[indexPath.row]
     
         return cell
         

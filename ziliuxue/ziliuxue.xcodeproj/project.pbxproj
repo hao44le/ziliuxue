@@ -11,9 +11,10 @@
 		C026A7391B39072C00E24908 /* FirstWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7381B39072C00E24908 /* FirstWizardViewController.swift */; };
 		C026A7421B3907D800E24908 /* SecondWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7411B3907D800E24908 /* SecondWizardViewController.swift */; };
 		C026A7441B39080000E24908 /* ThridWizardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7431B39080000E24908 /* ThridWizardViewController.swift */; };
-		C026A7461B39149100E24908 /* WizardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7451B39149100E24908 /* WizardTableViewCell.swift */; };
+		C026A7461B39149100E24908 /* ThirdWizardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C026A7451B39149100E24908 /* ThirdWizardTableViewCell.swift */; };
 		C039BEAD1B3A7E1C00C8D5CE /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */; };
 		C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C072C5431B369C680055BAFE /* SignUpViewController.swift */; };
+		C09A67431B4034320059764F /* FirstWizardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A67421B4034320059764F /* FirstWizardTableViewCell.swift */; };
 		C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */; };
 		C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */; };
 		C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F9011B2ED89E00D698FC /* LoginViewController.swift */; };
@@ -42,9 +43,10 @@
 		C026A7381B39072C00E24908 /* FirstWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstWizardViewController.swift; sourceTree = "<group>"; };
 		C026A7411B3907D800E24908 /* SecondWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondWizardViewController.swift; sourceTree = "<group>"; };
 		C026A7431B39080000E24908 /* ThridWizardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThridWizardViewController.swift; sourceTree = "<group>"; };
-		C026A7451B39149100E24908 /* WizardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizardTableViewCell.swift; sourceTree = "<group>"; };
+		C026A7451B39149100E24908 /* ThirdWizardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdWizardTableViewCell.swift; sourceTree = "<group>"; };
 		C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		C072C5431B369C680055BAFE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C09A67421B4034320059764F /* FirstWizardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstWizardTableViewCell.swift; sourceTree = "<group>"; };
 		C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C0C8F8FA1B2ED89E00D698FC /* ziliuxue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ziliuxue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C8F8FE1B2ED89E00D698FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,7 +103,6 @@
 		C026A73A1B39074400E24908 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */,
 				C026A73C1B39076800E24908 /* Login & Signup */,
 				C026A73B1B39075300E24908 /* Wizards */,
 			);
@@ -112,10 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				C0F5C0E21B3F93C500A2FA14 /* SchoolDetailViewController.swift */,
-				C026A7381B39072C00E24908 /* FirstWizardViewController.swift */,
-				C026A7411B3907D800E24908 /* SecondWizardViewController.swift */,
-				C026A7431B39080000E24908 /* ThridWizardViewController.swift */,
-				C026A7451B39149100E24908 /* WizardTableViewCell.swift */,
+				C09A67461B4034F40059764F /* 1st */,
+				C09A67451B4034E70059764F /* 2nd */,
+				C09A67441B4034DF0059764F /* 3rd */,
 			);
 			name = Wizards;
 			sourceTree = "<group>";
@@ -123,10 +123,37 @@
 		C026A73C1B39076800E24908 /* Login & Signup */ = {
 			isa = PBXGroup;
 			children = (
+				C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */,
 				C0C8F9011B2ED89E00D698FC /* LoginViewController.swift */,
 				C072C5431B369C680055BAFE /* SignUpViewController.swift */,
 			);
 			name = "Login & Signup";
+			sourceTree = "<group>";
+		};
+		C09A67441B4034DF0059764F /* 3rd */ = {
+			isa = PBXGroup;
+			children = (
+				C026A7431B39080000E24908 /* ThridWizardViewController.swift */,
+				C026A7451B39149100E24908 /* ThirdWizardTableViewCell.swift */,
+			);
+			name = 3rd;
+			sourceTree = "<group>";
+		};
+		C09A67451B4034E70059764F /* 2nd */ = {
+			isa = PBXGroup;
+			children = (
+				C026A7411B3907D800E24908 /* SecondWizardViewController.swift */,
+			);
+			name = 2nd;
+			sourceTree = "<group>";
+		};
+		C09A67461B4034F40059764F /* 1st */ = {
+			isa = PBXGroup;
+			children = (
+				C09A67421B4034320059764F /* FirstWizardTableViewCell.swift */,
+				C026A7381B39072C00E24908 /* FirstWizardViewController.swift */,
+			);
+			name = 1st;
 			sourceTree = "<group>";
 		};
 		C0C8F8F11B2ED89E00D698FC = {
@@ -344,11 +371,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C026A7461B39149100E24908 /* WizardTableViewCell.swift in Sources */,
+				C026A7461B39149100E24908 /* ThirdWizardTableViewCell.swift in Sources */,
 				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,
 				C026A7391B39072C00E24908 /* FirstWizardViewController.swift in Sources */,
 				C039BEAD1B3A7E1C00C8D5CE /* Utility.swift in Sources */,
 				C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */,
+				C09A67431B4034320059764F /* FirstWizardTableViewCell.swift in Sources */,
 				C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */,
 				C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */,
 				C026A7421B3907D800E24908 /* SecondWizardViewController.swift in Sources */,

@@ -32,11 +32,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //signup("hao44le", password: "123")
-        //obtainToken("hao44le", password: "123")
-        //getAllUsers()
-        //obtainNewToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNTU4ZGYyNTkyN2RhZWE4NjA2ZmZkOGQ0IiwidXNlcm5hbWUiOiJoYW80NGxlIiwiY2xpZW50X2lkIjoiYzA1MGMyYzEtM2FjMC00NmM3LWFiZjYtZTdlZGZiMTZhZWU0IiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE0MzUzNjYwODB9.RrGMpa5WBOVgGxyyogNQWFSHSWZIe7fyvqgA8E-xWII")
-        getCollege("1", to: "3")
+
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
@@ -58,11 +54,10 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
     }
     
-    func getAllUsers(){
+    func getAllUsers(token:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        manager.requestSerializer.setValue("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNTU4ZGYyNTkyN2RhZWE4NjA2ZmZkOGQ0IiwidXNlcm5hbWUiOiJoYW80NGxlIiwiY2xpZW50X2lkIjoiYzA1MGMyYzEtM2FjMC00NmM3LWFiZjYtZTdlZGZiMTZhZWU0IiwidHlwZSI6Imp3dCIsImlhdCI6MTQzNTM2NjA4MCwiZXhwIjoxNDM1OTcwODgwfQ.Xa7lLGuHGY-eOo8fD-JqKZnF46a1qHlJxZ8Cr2DzrjU", forHTTPHeaderField: "x-access-token")
-        
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(ServerConstant.get_user, parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
             print("success")
             print(respose)
@@ -76,10 +71,10 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         return ServerConstant.get_college + from + "&num=" + to
     }
     
-    func getCollege(from:String,to:String){
+    func getCollege(from:String,to:String,token:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        manager.requestSerializer.setValue("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNTU4ZGYyNTkyN2RhZWE4NjA2ZmZkOGQ0IiwidXNlcm5hbWUiOiJoYW80NGxlIiwiY2xpZW50X2lkIjoiYzA1MGMyYzEtM2FjMC00NmM3LWFiZjYtZTdlZGZiMTZhZWU0IiwidHlwZSI6Imp3dCIsImlhdCI6MTQzNTM3MDE2MCwiZXhwIjoxNDM1OTc0OTYwfQ.WdBCfOg1WUfbMSliID8gOSjTDiCJEubJcPoocnYKKfg", forHTTPHeaderField: "x-access-token")
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
             print("success")
