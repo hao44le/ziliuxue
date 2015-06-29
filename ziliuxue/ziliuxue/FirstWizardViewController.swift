@@ -12,7 +12,9 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
 
     @IBOutlet weak var continueButton: UIButton!
     let name = ["国家","目标学位","目标专业方向"]
-    let detail = ["美国 ","硕士研究生","计算机"]
+    var detail = ["美国 ","硕士研究生","计算机"]
+    var selectedCountry = "美国"
+    var selectedDegree = "硕士研究生"
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -54,6 +56,27 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+           
+           
+            MMPickerView.showPickerViewInView(self.view, withStrings: ["美国","加拿大"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedCountry], completion: { (selected:String!) -> Void in
+                self.selectedCountry = selected
+                self.detail[0] = selected
+                self.tableView.reloadData()
+            })
+           
+        case 1:
+            MMPickerView.showPickerViewInView(self.view, withStrings: ["本科","硕士研究生","博士研究生","工商管理硕士"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedDegree], completion: { (selected:String!) -> Void in
+                self.selectedDegree = selected
+                self.detail[1] = selected
+                self.tableView.reloadData()
+            })
+        case 2:
+            break
+        default:
+            break
+        }
     }
     
     override func didReceiveMemoryWarning() {

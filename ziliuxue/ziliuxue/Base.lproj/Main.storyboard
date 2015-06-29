@@ -372,7 +372,11 @@
                                     <constraint firstAttribute="width" constant="400" id="IVW-QD-Ffs"/>
                                     <constraint firstAttribute="width" secondItem="2Fy-BB-upS" secondAttribute="height" multiplier="100:59" id="MsC-pW-45A"/>
                                     <constraint firstAttribute="height" constant="354" id="TGp-nT-JOU"/>
+                                    <constraint firstAttribute="height" constant="388" id="WAh-4W-Esw">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="269"/>
+                                    </constraint>
                                     <constraint firstAttribute="height" constant="214" id="YG9-Iq-poF"/>
+                                    <constraint firstAttribute="width" constant="400" id="ZMB-04-Fpp"/>
                                     <constraint firstAttribute="height" constant="388" id="ZvA-HC-Vv9"/>
                                     <constraint firstAttribute="height" constant="323" id="gx7-HR-agQ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="oWu-jt-ZR2"/>
@@ -548,7 +552,9 @@
                                         <exclude reference="IVW-QD-Ffs"/>
                                         <exclude reference="MsC-pW-45A"/>
                                         <exclude reference="TGp-nT-JOU"/>
+                                        <exclude reference="WAh-4W-Esw"/>
                                         <exclude reference="YG9-Iq-poF"/>
+                                        <exclude reference="ZMB-04-Fpp"/>
                                         <exclude reference="ZvA-HC-Vv9"/>
                                         <exclude reference="gx7-HR-agQ"/>
                                         <exclude reference="oWu-jt-ZR2"/>
@@ -557,10 +563,12 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="AWC-7d-lP8"/>
+                                        <exclude reference="AWC-7d-lP8"/>
                                         <exclude reference="Buh-P2-tP5"/>
                                         <exclude reference="IVW-QD-Ffs"/>
                                         <exclude reference="MsC-pW-45A"/>
+                                        <include reference="WAh-4W-Esw"/>
+                                        <exclude reference="ZMB-04-Fpp"/>
                                         <exclude reference="ZvA-HC-Vv9"/>
                                     </mask>
                                 </variation>
@@ -656,7 +664,9 @@
                             <constraint firstItem="GrV-sA-Wa6" firstAttribute="centerX" secondItem="2Fy-BB-upS" secondAttribute="centerX" id="cRk-DD-8pn"/>
                             <constraint firstItem="GrV-sA-Wa6" firstAttribute="centerX" secondItem="Ccd-5E-Cn6" secondAttribute="centerX" id="e9b-Io-Raj"/>
                             <constraint firstItem="GrV-sA-Wa6" firstAttribute="centerX" secondItem="2Fy-BB-upS" secondAttribute="centerX" id="f03-gZ-tT7"/>
-                            <constraint firstItem="GrV-sA-Wa6" firstAttribute="top" secondItem="2Fy-BB-upS" secondAttribute="bottom" constant="32" id="fMg-bz-2nq"/>
+                            <constraint firstItem="GrV-sA-Wa6" firstAttribute="top" secondItem="2Fy-BB-upS" secondAttribute="bottom" constant="32" id="fMg-bz-2nq">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="2Fy-BB-upS" firstAttribute="top" secondItem="HPc-hn-5XF" secondAttribute="bottom" id="fhU-cP-JMm"/>
                             <constraint firstItem="2Fy-BB-upS" firstAttribute="centerX" secondItem="GrV-sA-Wa6" secondAttribute="centerX" id="hCK-40-Jbj"/>
                             <constraint firstItem="cSq-2D-t6Q" firstAttribute="top" secondItem="Ccd-5E-Cn6" secondAttribute="bottom" constant="8" symbolic="YES" id="hCb-a2-5mf"/>
