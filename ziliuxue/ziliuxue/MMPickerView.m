@@ -16,6 +16,8 @@ NSString * const MMfont = @"font";
 NSString * const MMvalueY = @"yValueFromTop";
 NSString * const MMselectedObject = @"selectedObject";
 NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
+CGFloat height = 260;
+
 
 @interface MMPickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -159,7 +161,7 @@ NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
   [self addSubview:_pickerViewContainerView];
   
   //PickerView Container with top bar
-  _pickerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, _pickerViewContainerView.bounds.size.height - 260.0, 320.0, 260.0)];
+  _pickerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, _pickerViewContainerView.bounds.size.height - [options[@"height"] floatValue], [[UIScreen mainScreen] bounds].size.width, [options[@"height"] floatValue])];
     
   //Default Color Values (if colors == nil)
   
@@ -252,7 +254,7 @@ NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
    */
   
   //Add pickerView
-  _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, 44.0, 320.0, 216.0)];
+  _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, 44.0, [[UIScreen mainScreen] bounds].size.width, [options[@"height"] floatValue])];
   [_pickerView setDelegate:self];
   [_pickerView setDataSource:self];
   [_pickerView setShowsSelectionIndicator:YES];

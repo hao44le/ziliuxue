@@ -59,26 +59,41 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         switch indexPath.row {
         case 0:
            
-           
-            MMPickerView.showPickerViewInView(self.view, withStrings: ["美国","加拿大"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedCountry], completion: { (selected:String!) -> Void in
+            MMPickerView.showPickerViewInView(self.view, withStrings: ["美国","加拿大"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedCountry,"height":260], completion: { (selected:String!) -> Void in
                 self.selectedCountry = selected
                 self.detail[0] = selected
                 self.tableView.reloadData()
             })
            
         case 1:
-            MMPickerView.showPickerViewInView(self.view, withStrings: ["本科","硕士研究生","博士研究生","工商管理硕士"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedDegree], completion: { (selected:String!) -> Void in
+            MMPickerView.showPickerViewInView(self.view, withStrings: ["本科","硕士研究生","博士研究生","工商管理硕士"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedDegree,"height":260], completion: { (selected:String!) -> Void in
                 self.selectedDegree = selected
                 self.detail[1] = selected
                 self.tableView.reloadData()
             })
         case 2:
-            break
+            self.performSegueWithIdentifier("toPopup", sender: self)
         default:
             break
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toPopup"{
+
+            let popupSegue = segue as! CCMPopupSegue
+            
+            
+            popupSegue.destinationBounds = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH-60, ScreenSize.SCREEN_HEIGHT - 120)
+            popupSegue.backgroundBlurRadius = 7
+            popupSegue.backgroundViewAlpha = 0.3
+            popupSegue.backgroundViewColor = UIColor.blackColor()
+            popupSegue.dismissableByTouchingBackground = true
+            
+        }
+        
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -11,4 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "SwipeView.h"
 #import "MMPickerView.h"
+#import "CCMPopupSegue.h"
+#import "CCMBorderView.h"
+#import "CCMPopupTransitioning.h"
 #endif /* Header_h */

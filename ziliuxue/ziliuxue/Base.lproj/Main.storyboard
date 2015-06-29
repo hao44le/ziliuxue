@@ -731,9 +731,9 @@
                                 <include reference="f03-gZ-tT7"/>
                                 <include reference="fMg-bz-2nq"/>
                                 <exclude reference="sqY-6A-W2D"/>
-                                <exclude reference="NFG-ib-2Xv"/>
                                 <exclude reference="XaZ-V7-Mgb"/>
                                 <include reference="hCb-a2-5mf"/>
+                                <exclude reference="NFG-ib-2Xv"/>
                             </mask>
                         </variation>
                     </view>
@@ -741,11 +741,86 @@
                     <connections>
                         <outlet property="continueButton" destination="GrV-sA-Wa6" id="8vt-4h-zez"/>
                         <outlet property="tableView" destination="2Fy-BB-upS" id="teS-Cb-YSk"/>
+                        <segue destination="wMx-3e-hxy" kind="custom" identifier="toPopup" customClass="CCMPopupSegue" id="7rX-GW-rnd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UaT-aI-1K1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1605" y="1971"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="k19-g5-ksQ">
+            <objects>
+                <viewController id="wMx-3e-hxy" customClass="PopUpViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GrK-E5-rlW"/>
+                        <viewControllerLayoutGuide type="bottom" id="3at-Ie-rxu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FeJ-V2-qWM">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iuN-jU-SIa">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                <animations/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wMx-3e-hxy" id="1sm-aU-mBg"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kXb-Zj-gDN">
+                                <rect key="frame" x="0.0" y="44" width="300" height="356"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="GEW-7a-7T4">
+                                        <rect key="frame" x="0.0" y="22" width="300" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GEW-7a-7T4" id="Obh-ID-DQx">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wMx-3e-hxy" id="zrS-8B-hHa"/>
+                                    <outlet property="delegate" destination="wMx-3e-hxy" id="NR7-GY-uT4"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kXb-Zj-gDN" firstAttribute="leading" secondItem="FeJ-V2-qWM" secondAttribute="leading" id="6LX-7K-mKv"/>
+                            <constraint firstItem="iuN-jU-SIa" firstAttribute="leading" secondItem="kXb-Zj-gDN" secondAttribute="leading" id="8w9-d3-jr0"/>
+                            <constraint firstItem="kXb-Zj-gDN" firstAttribute="bottom" secondItem="3at-Ie-rxu" secondAttribute="top" id="OeA-cH-3cu"/>
+                            <constraint firstItem="kXb-Zj-gDN" firstAttribute="top" secondItem="iuN-jU-SIa" secondAttribute="bottom" id="Pvw-kb-AUS"/>
+                            <constraint firstItem="kXb-Zj-gDN" firstAttribute="trailing" secondItem="iuN-jU-SIa" secondAttribute="trailing" id="bDs-ys-HXm"/>
+                            <constraint firstItem="iuN-jU-SIa" firstAttribute="top" secondItem="GrK-E5-rlW" secondAttribute="bottom" id="dYV-Dx-MiC"/>
+                            <constraint firstAttribute="trailing" secondItem="kXb-Zj-gDN" secondAttribute="trailing" id="uoR-fW-9no"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="QC1-vt-dTU" id="OCj-NQ-wMu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4D0-oY-Mu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="QC1-vt-dTU">
+                    <connections>
+                        <outlet property="delegate" destination="wMx-3e-hxy" id="pVY-RT-1hI"/>
+                        <outlet property="searchBar" destination="iuN-jU-SIa" id="Rxe-Wb-h3r"/>
+                        <outlet property="searchContentsController" destination="wMx-3e-hxy" id="Tr6-pV-f7z"/>
+                        <outlet property="searchResultsDataSource" destination="wMx-3e-hxy" id="vqP-VN-7RD"/>
+                        <outlet property="searchResultsDelegate" destination="wMx-3e-hxy" id="CjJ-Vk-NWK"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1632" y="2681"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RZH-zQ-t8X">
@@ -1124,7 +1199,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CD1-iY-Egu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CD1-iY-Egu">
                                 <rect key="frame" x="0.0" y="200" width="600" height="354"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1459,7 +1534,7 @@
                                     <outlet property="delegate" destination="g75-Yy-Nv2" id="c6d-Jf-I0X"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mf-cb-19H">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mf-cb-19H">
                                 <rect key="frame" x="277" y="562" width="46" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -1481,7 +1556,7 @@
                                     </mask>
                                 </variation>
                             </button>
-                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" searchBarStyle="minimal" placeholder="搜索学校" translatesAutoresizingMaskIntoConstraints="NO" id="XhR-qc-oaG">
+                            <searchBar contentMode="redraw" ambiguous="YES" searchBarStyle="minimal" placeholder="搜索学校" translatesAutoresizingMaskIntoConstraints="NO" id="XhR-qc-oaG">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <animations/>
                                 <constraints>
