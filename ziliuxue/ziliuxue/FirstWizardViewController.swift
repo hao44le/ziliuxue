@@ -20,6 +20,8 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
         
         continueButton.layer.cornerRadius = 25
         continueButton.layer.borderWidth = 0.5

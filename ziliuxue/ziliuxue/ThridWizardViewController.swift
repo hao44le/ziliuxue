@@ -10,6 +10,7 @@ import UIKit
 
 class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var thirdPicture: UIImageView!
@@ -17,6 +18,11 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var firstPicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        doneButton.layer.cornerRadius = 25
+        doneButton.layer.borderWidth = 0.5
+        doneButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
         
         if DeviceType.IS_IPHONE_6 {
             self.tableViewHeightConstraint.constant = 500

@@ -10,10 +10,14 @@ import UIKit
 
 class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var continueButton: UIButton!
     let name = ["GPA","SAT","TOEFL","GRE","GMAT"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        continueButton.layer.cornerRadius = 25
+        continueButton.layer.borderWidth = 0.5
+        continueButton.layer.borderColor = UIColor.whiteColor().CGColor
         // Do any additional setup after loading the view.
     }
 
@@ -26,7 +30,7 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = name[indexPath.row]
         cell.detailTextLabel?.text =  "选择"
         return cell

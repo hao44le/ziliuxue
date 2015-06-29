@@ -11,6 +11,7 @@ import UIKit
 class ThirdWizardTableViewCell: UITableViewCell {
 
     @IBAction func likeClicked(sender: UIButton) {
+        print("1")
     }
     @IBOutlet weak var like: UIButton!
     @IBOutlet weak var accptionRate: UILabel!
