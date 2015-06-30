@@ -19,6 +19,9 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学校", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
         doneButton.layer.cornerRadius = 25
         doneButton.layer.borderWidth = 0.5
         doneButton.layer.borderColor = UIColor.whiteColor().CGColor
@@ -55,6 +58,10 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         return cell
     }
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier("toUniversityDetail", sender: self)
+    }
     /*
     // MARK: - Navigation
 

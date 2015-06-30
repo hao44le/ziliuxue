@@ -14,7 +14,7 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
     let name = ["GPA","SAT","TOEFL","GRE","GMAT"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "情况", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         continueButton.layer.cornerRadius = 25
         continueButton.layer.borderWidth = 0.5
         continueButton.layer.borderColor = UIColor.whiteColor().CGColor
