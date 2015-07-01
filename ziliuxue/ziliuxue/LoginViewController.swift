@@ -39,81 +39,9 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func signup(username:String,password:String){
-        let manager = AFHTTPRequestOperationManager()
-        manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
-        manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            print("success")
-            
-            print(response)
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
-                print(error)
-        }
-        
-    }
-    
-    func getAllUsers(token:String){
-        let manager = AFHTTPRequestOperationManager()
-        manager.securityPolicy.allowInvalidCertificates = true
-        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-        manager.GET(ServerConstant.get_user, parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
-            print("success")
-            print(respose)
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
-        }
-    }
-    
-    
-    func getCorrectBreakPoint(from:String,to:String)->String{
-        return ServerConstant.get_college + from + "&num=" + to
-    }
-    
-    func getCollege(from:String,to:String,token:String){
-        let manager = AFHTTPRequestOperationManager()
-        manager.securityPolicy.allowInvalidCertificates = true
-        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-        
-        manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
-            print("success")
-            print(respose)
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
-                print(error)
-        }
 
-    }
     
-    func obtainNewToken(refresh_token:String){
-        let manager = AFHTTPRequestOperationManager()
-        manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",refresh_token,"refresh_token")
-        manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            print("success")
-            
-            print(response)
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
-                print(error)
-        }
-    }
-    
-    func obtainToken(username:String,password:String){
-        let manager = AFHTTPRequestOperationManager()
-        manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
-        manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            print("success")
-            
-            print(response)
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
-                print(error)
-        }
-    }
-    
+       
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

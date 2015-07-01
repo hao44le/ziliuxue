@@ -12,6 +12,11 @@ class Utils: NSObject {
     
 }
 
+
+
+
+
+
 enum UIUserInterfaceIdiom : Int
 {
     case Unspecified
@@ -27,6 +32,92 @@ struct ScreenSize
     static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
 }
 
+struct ServerMethods {
+    static func signup(username:String,password:String){
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
+        manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            print("success")
+            
+            print(response)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                print("failure")
+                print(error)
+        }
+        
+    }
+    
+    
+    
+    static func getAllUsers(token:String){
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        manager.GET(ServerConstant.get_user, parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
+            print("success")
+            print(respose)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                print("failure")
+        }
+    }
+    
+    
+    static func getCorrectBreakPoint(from:String,to:String)->String{
+        return ServerConstant.get_college + from + "&num=" + to
+    }
+    
+    static func getCollege(from:String,to:String,token:String){
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        
+        manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
+            print("success")
+            print(respose)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                print("failure")
+                print(error)
+        }
+        
+    }
+    
+    static func obtainNewToken(refresh_token:String){
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",refresh_token,"refresh_token")
+        manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            print("success")
+            
+            print(response)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                print("failure")
+                print(error)
+        }
+    }
+    
+    static func obtainToken(username:String,password:String){
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
+        manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            print("success")
+            
+            print(response)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                print("failure")
+                print(error)
+        }
+    }
+    
+    
+    
+
+}
+
+
+
+
 struct ServerConstant {
     static let client_id = "c050c2c1-3ac0-46c7-abf6-e7edfb16aee4"
     static let signup = "https://livebo.cloudapp.net/api/auth/signup"
@@ -36,10 +127,7 @@ struct ServerConstant {
     
     
     
-    
-    
-    
-   }
+}
 
 
 
