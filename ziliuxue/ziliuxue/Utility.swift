@@ -33,12 +33,16 @@ struct ScreenSize
 }
 
 struct ServerMethods {
+    
+    
+    
     static func signup(username:String,password:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             print("success")
+            print(response)
             
             print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
@@ -96,11 +100,18 @@ struct ServerMethods {
         }
     }
     
-    static func obtainToken(username:String,password:String){
+    static func obtainToken(username:String,password:String)->Bool{
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
+        
+        var result = false
+        
+        
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            
+            result = true
+            
             print("success")
             
             print(response)
@@ -108,6 +119,9 @@ struct ServerMethods {
                 print("failure")
                 print(error)
         }
+        
+        
+        return result
     }
     
     

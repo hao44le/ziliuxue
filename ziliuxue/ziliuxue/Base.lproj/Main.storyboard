@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MdF-hV-7uv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="x1s-zL-ZpD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
@@ -141,6 +141,14 @@
                                     <constraint firstItem="dx4-a4-336" firstAttribute="trailing" secondItem="q4E-Yy-DKF" secondAttribute="trailingMargin" id="foE-nq-6tH"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MfV-Tw-1JQ">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <animations/>
+                                <color key="color" red="0.63529411759999999" green="0.19215686269999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="190" y="390" width="20" height="20"/>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -163,6 +171,9 @@
                             <constraint firstItem="qlS-2Y-6lA" firstAttribute="leading" secondItem="zkr-a9-mzk" secondAttribute="leading" id="tAx-zq-3wJ"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="MfV-Tw-1JQ"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="4sr-h4-5ho"/>
                                 <exclude reference="UZK-D6-gJY"/>
@@ -170,11 +181,19 @@
                                 <exclude reference="fDn-tr-uI7"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="MfV-Tw-1JQ"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ohL-iT-0Xq" appends="YES" id="TIl-ik-Kcw"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="自留学" id="ahC-LT-Sda"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="MfV-Tw-1JQ" id="s6g-7S-h07"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="ohL-iT-0Xq">
@@ -197,7 +216,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-QN-rTG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-QN-rTG">
                                 <rect key="frame" x="0.0" y="64" width="600" height="354"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,11 +224,14 @@
                                     <constraint firstAttribute="width" constant="600" id="1p2-Bj-Fpp">
                                         <variation key="heightClass=regular-widthClass=compact" constant="400"/>
                                     </constraint>
+                                    <constraint firstAttribute="height" constant="265" id="K2W-Yp-IQg"/>
                                     <constraint firstAttribute="width" constant="600" id="ROB-ip-6cg"/>
+                                    <constraint firstAttribute="height" constant="433" id="e5i-ZK-i3E"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="e7w-eo-M3h"/>
                                     <constraint firstAttribute="height" constant="214" id="eCR-LA-b6M"/>
                                     <constraint firstAttribute="height" constant="354" id="gp7-2t-JhF"/>
                                     <constraint firstAttribute="width" secondItem="WvQ-QN-rTG" secondAttribute="height" multiplier="100:59" id="nn8-as-kGn"/>
+                                    <constraint firstAttribute="height" constant="554" id="qTy-mI-jtR"/>
                                     <constraint firstAttribute="height" constant="354" id="sQx-sP-A79"/>
                                 </constraints>
                                 <prototypes>
@@ -258,17 +280,23 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1p2-Bj-Fpp"/>
+                                        <exclude reference="K2W-Yp-IQg"/>
                                         <exclude reference="ROB-ip-6cg"/>
+                                        <exclude reference="e5i-ZK-i3E"/>
                                         <exclude reference="e7w-eo-M3h"/>
                                         <exclude reference="eCR-LA-b6M"/>
                                         <exclude reference="gp7-2t-JhF"/>
                                         <exclude reference="nn8-as-kGn"/>
+                                        <exclude reference="qTy-mI-jtR"/>
                                         <exclude reference="sQx-sP-A79"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
+                                        <include reference="K2W-Yp-IQg"/>
+                                        <exclude reference="e5i-ZK-i3E"/>
                                         <exclude reference="nn8-as-kGn"/>
+                                        <exclude reference="qTy-mI-jtR"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -279,12 +307,31 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-2c-9rB">
                                 <rect key="frame" x="277" y="442" width="46" height="30"/>
                                 <animations/>
+                                <color key="backgroundColor" red="0.63529411759999999" green="0.19215686269999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="JhP-Ab-UDe"/>
+                                    <constraint firstAttribute="height" constant="49" id="h89-ji-Avb"/>
+                                    <constraint firstAttribute="width" constant="46" id="tI3-10-TOk">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="272"/>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" title="注册">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="h89-ji-Avb"/>
+                                        <exclude reference="tI3-10-TOk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="JhP-Ab-UDe"/>
+                                        <include reference="h89-ji-Avb"/>
+                                        <include reference="tI3-10-TOk"/>
+                                    </mask>
+                                </variation>
                             </button>
                         </subviews>
                         <animations/>
@@ -292,22 +339,57 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="top" secondItem="Al7-QK-p43" secondAttribute="bottom" constant="18" id="39X-i3-ubY"/>
-                            <constraint firstItem="y8k-2c-9rB" firstAttribute="top" secondItem="WvQ-QN-rTG" secondAttribute="bottom" constant="24" id="BRj-MI-ZIr"/>
+                            <constraint firstItem="y8k-2c-9rB" firstAttribute="centerX" secondItem="WvQ-QN-rTG" secondAttribute="centerX" id="6JF-cL-xba"/>
+                            <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="y8k-2c-9rB" secondAttribute="bottom" constant="257" id="8JW-Th-Qal"/>
+                            <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="y8k-2c-9rB" secondAttribute="bottom" constant="433" id="9pC-5s-ivG"/>
+                            <constraint firstItem="y8k-2c-9rB" firstAttribute="top" secondItem="WvQ-QN-rTG" secondAttribute="bottom" constant="24" id="BRj-MI-ZIr">
+                                <variation key="heightClass=regular-widthClass=compact" constant="16"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="WvQ-QN-rTG" secondAttribute="trailing" id="DP5-pM-RYk"/>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="top" secondItem="Al7-QK-p43" secondAttribute="bottom" constant="18" id="Dve-1J-iIO"/>
-                            <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="y8k-2c-9rB" secondAttribute="bottom" constant="128" id="T1N-kz-UoB"/>
+                            <constraint firstItem="WvQ-QN-rTG" firstAttribute="leading" secondItem="owV-tz-MXC" secondAttribute="leading" id="JdH-l3-Kw5"/>
+                            <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="y8k-2c-9rB" secondAttribute="bottom" constant="128" id="T1N-kz-UoB">
+                                <variation key="heightClass=regular-widthClass=compact" constant="257"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="WvQ-QN-rTG" secondAttribute="trailing" id="W1H-lR-TBt"/>
+                            <constraint firstItem="y8k-2c-9rB" firstAttribute="top" secondItem="WvQ-QN-rTG" secondAttribute="bottom" constant="8" symbolic="YES" id="WCQ-1D-LPq"/>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="top" secondItem="Al7-QK-p43" secondAttribute="bottom" id="WXR-V1-J88"/>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="leading" secondItem="owV-tz-MXC" secondAttribute="leadingMargin" constant="-16" id="d7S-2H-SVl"/>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="centerX" secondItem="y8k-2c-9rB" secondAttribute="centerX" id="dwt-GC-ZE2"/>
                             <constraint firstItem="y8k-2c-9rB" firstAttribute="centerY" secondItem="WvQ-QN-rTG" secondAttribute="centerY" constant="212" id="neQ-Gv-oUB"/>
+                            <constraint firstItem="WvQ-QN-rTG" firstAttribute="top" secondItem="Al7-QK-p43" secondAttribute="bottom" id="qK7-kt-tVZ"/>
                             <constraint firstItem="WvQ-QN-rTG" firstAttribute="leading" secondItem="owV-tz-MXC" secondAttribute="leading" id="v5I-Ag-Atr"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="39X-i3-ubY"/>
                                 <exclude reference="Dve-1J-iIO"/>
+                                <exclude reference="JdH-l3-Kw5"/>
+                                <exclude reference="W1H-lR-TBt"/>
                                 <exclude reference="d7S-2H-SVl"/>
+                                <exclude reference="qK7-kt-tVZ"/>
+                                <exclude reference="6JF-cL-xba"/>
+                                <exclude reference="WCQ-1D-LPq"/>
                                 <exclude reference="neQ-Gv-oUB"/>
+                                <exclude reference="8JW-Th-Qal"/>
+                                <exclude reference="9pC-5s-ivG"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="DP5-pM-RYk"/>
+                                <include reference="JdH-l3-Kw5"/>
+                                <include reference="W1H-lR-TBt"/>
+                                <exclude reference="WXR-V1-J88"/>
+                                <exclude reference="dwt-GC-ZE2"/>
+                                <include reference="qK7-kt-tVZ"/>
+                                <exclude reference="v5I-Ag-Atr"/>
+                                <include reference="6JF-cL-xba"/>
+                                <exclude reference="BRj-MI-ZIr"/>
+                                <include reference="WCQ-1D-LPq"/>
+                                <exclude reference="8JW-Th-Qal"/>
+                                <exclude reference="9pC-5s-ivG"/>
+                                <exclude reference="T1N-kz-UoB"/>
                             </mask>
                         </variation>
                         <connections>
@@ -315,6 +397,10 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="自留学注册" id="qZ3-fv-nMH"/>
+                    <connections>
+                        <outlet property="signUpButton" destination="y8k-2c-9rB" id="Ax7-07-YkU"/>
+                        <outlet property="tableViewHeight" destination="qTy-mI-jtR" id="eoa-y0-VT5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATd-sS-2df" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="O3N-Op-nyv">
@@ -323,7 +409,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1117" y="1148"/>
+            <point key="canvasLocation" x="1116" y="1147.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gQN-Qh-HkA">

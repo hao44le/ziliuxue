@@ -15,6 +15,12 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     var name:UITextField = UITextField()
     var repeated_password:UITextField = UITextField()
     let field = ["名字","电子邮件","密码","重输密码"]
+    
+    @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    
+    
     @IBAction func tapped(sender: UITapGestureRecognizer) {
         
         email.resignFirstResponder()
@@ -25,7 +31,11 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        signUpButton.layer.cornerRadius = 25
+        signUpButton.layer.borderWidth = 0.5
+        signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
+
         // Do any additional setup after loading the view.
     }
 
