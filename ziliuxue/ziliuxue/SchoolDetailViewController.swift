@@ -15,15 +15,7 @@ class SchoolDetailViewController: UIViewController,SwipeViewDataSource,SwipeView
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         swipeView.pagingEnabled = true

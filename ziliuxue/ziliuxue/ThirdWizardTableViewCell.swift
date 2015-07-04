@@ -10,8 +10,40 @@ import UIKit
 
 class ThirdWizardTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var starImage: UIImageView!
     @IBAction func likeClicked(sender: UIButton) {
-        print("1")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if defaults.boolForKey(self.universityName.text!){
+            //取消收藏
+            
+            
+            
+            defaults.setBool(false, forKey: self.universityName.text!)
+            self.starImage.image = UIImage(named: "star")
+            
+            
+            
+            
+            
+            
+            
+        } else {
+            //收藏
+            
+            
+            
+            self.starImage.image = UIImage(named: "star_filled")
+            defaults.setBool(true, forKey: self.universityName.text!)
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
     }
     @IBOutlet weak var like: UIButton!
     @IBOutlet weak var accptionRate: UILabel!

@@ -16,9 +16,14 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var thirdPicture: UIImageView!
     @IBOutlet weak var secondPicture: UIImageView!
     @IBOutlet weak var firstPicture: UIImageView!
+    
+    
+    var universityName = ["Stanfard University","Harvard University"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTopPicture:", name: "updateTopPicture", object: nil)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学校", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
@@ -50,11 +55,12 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return self.universityName.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
+        cell.universityName.text = self.universityName[indexPath.row]
         return cell
     }
 
@@ -62,6 +68,13 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("toUniversityDetail", sender: self)
     }
+    
+    func updateTopPicture(){
+        
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
