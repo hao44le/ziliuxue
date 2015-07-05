@@ -18,13 +18,15 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var firstPicture: UIImageView!
     
     
-    var universityName = ["Stanfard University","Harvard University"]
+    var universityName = ["7","12","15","Harvard University","Stanford University"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTopPicture:", name: "updateTopPicture", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
         
+
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学校", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         doneButton.layer.cornerRadius = 25
@@ -61,6 +63,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
         cell.universityName.text = self.universityName[indexPath.row]
+        cell.logo.image = UIImage(named: self.universityName[indexPath.row])
         return cell
     }
 
@@ -69,10 +72,64 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         self.performSegueWithIdentifier("toUniversityDetail", sender: self)
     }
     
-    func updateTopPicture(){
-        
+    func addTopPicture(){
+        print("add function")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let name = defaults.objectForKey("currentCelectedSchool") {
+            let number = defaults.integerForKey("numberOfFavoritedSchool")
+            print(name)
+            print(number)
+            switch number {
+            case 1:
+                UIView.animateWithDuration(0.85, animations: { () -> Void in
+                    self.firstPicture.image = UIImage(named: name as! String)
+
+                })
+            case 2:
+                UIView.animateWithDuration(0.85, animations: { () -> Void in
+                    self.secondPicture.image = UIImage(named: name as! String)
+                    
+                })
+                
+            case 3:
+                UIView.animateWithDuration(0.85, animations: { () -> Void in
+                    self.thirdPicture.image = UIImage(named: name as! String)
+                    
+                })
+            default:
+                break
+            }
+        }
     }
     
+    
+    func removeTopPicture(){
+        print("remove function")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let number = defaults.integerForKey("numberOfFavoritedSchool")
+        print(number)
+        switch number {
+        case 1:
+            UIView.animateWithDuration(0.85, animations: { () -> Void in
+                self.firstPicture.image = UIImage(named: "Map Icon")
+                
+            })
+        case 2:
+            UIView.animateWithDuration(0.85, animations: { () -> Void in
+                self.secondPicture.image = UIImage(named: "Map Icon")
+                
+            })
+            
+        case 3:
+            UIView.animateWithDuration(0.85, animations: { () -> Void in
+                self.thirdPicture.image = UIImage(named: "Map Icon")
+                
+            })
+        default:
+            break
+        }
+
+    }
     
     
     /*

@@ -10,30 +10,59 @@ import UIKit
 
 class ThirdWizardTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var starImage: UIImageView!
+   
     @IBAction func likeClicked(sender: UIButton) {
         let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(self.universityName.text!, forKey: "currentCelectedSchool")
+        var number = defaults.integerForKey("numberOfFavoritedSchool")
+        
         if defaults.boolForKey(self.universityName.text!){
             //取消收藏
+            
+            print("remove")
+            
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("removeTopPicture", object: nil)
+            
+            if number > 0 {
+                defaults.setInteger(--number, forKey:"numberOfFavoritedSchool")
+            }
             
             
             
             defaults.setBool(false, forKey: self.universityName.text!)
-            self.starImage.image = UIImage(named: "star")
-            
-            
-            
-            
+            self.like.setImage(UIImage(named: "star"), forState: UIControlState.Normal)
+
             
             
             
         } else {
             //收藏
             
+            print("add")
             
             
-            self.starImage.image = UIImage(named: "star_filled")
+            
+            if number == 0{
+                
+                defaults.setInteger(1, forKey: "numberOfFavoritedSchool")
+               
+            } else {
+                if number < 3 {
+                    defaults.setInteger(++number, forKey: "numberOfFavoritedSchool")
+                } else {
+                    let ac = UIAlertView(title: "最多可以选择3选学校", message: nil, delegate: nil, cancelButtonTitle: "好的")
+                    ac.show()
+                    return
+                }
+            }
+            
+            self.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
             defaults.setBool(true, forKey: self.universityName.text!)
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("addTopPicture", object: nil)
+            
+            
             
             
             
