@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchoolDetailViewController: UIViewController,SwipeViewDelegate{
+class SchoolDetailViewController: UIViewController,SwipeViewDataSource{
 
     @IBOutlet weak var universityDescription: UITextView!
     @IBOutlet weak var universityName: UILabel!
@@ -34,19 +34,19 @@ class SchoolDetailViewController: UIViewController,SwipeViewDelegate{
     
     // MARK: SwipeView
     
+    
+    
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
         return 3
     }
-    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
-        if view == nil {
-            view = UIView(frame: swipeView.bounds)
-            let imageView = UIImageView(frame: view.bounds)
+    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
+        
+        let created = UIView(frame: swipeView.bounds)
+        let imageView = UIImageView(frame: created.bounds)
             imageView.image = UIImage(named: "Map Icon")
-            view.addSubview(imageView)
-        } else {
-            
-        }
-        return view
+            created.addSubview(imageView)
+        
+        return created
     }
     
     func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {

@@ -32,10 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         drawerController = MMDrawerController(centerViewController: navigationController, leftDrawerViewController: leftSideDrawerViewController)
         
-        
         drawerController.setMaximumLeftDrawerWidth(kMaximumLeftDrawerWidth, animated:false, completion: nil)
         
-        drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.All
+        drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.allZeros
         
         drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.All
         
