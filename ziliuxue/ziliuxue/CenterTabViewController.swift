@@ -17,8 +17,11 @@ class CenterTabViewController: UITabBarController {
         super.viewDidLoad()
 
         
-      
         
+
+        if !LocalStore.isIntroVisited(){
+            self.performSegueWithIdentifier("toWizard", sender: self)
+        }
         
         // Do any additional setup after loading the view.
         self.navigationItem.title = "留学计划"
@@ -30,6 +33,8 @@ class CenterTabViewController: UITabBarController {
         
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

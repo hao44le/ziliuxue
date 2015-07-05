@@ -30,7 +30,7 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = name[indexPath.row]
         cell.detailTextLabel?.text =  "选择"
         return cell

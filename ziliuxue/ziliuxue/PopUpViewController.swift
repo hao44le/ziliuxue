@@ -25,7 +25,7 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = self.name[indexPath.row]
         return cell
     }

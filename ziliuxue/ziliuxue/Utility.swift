@@ -13,17 +13,19 @@ class Utils: NSObject {
 }
 
 
-
-
-
-
-enum UIUserInterfaceIdiom : Int
-{
-    case Unspecified
-    case Phone
-    case Pad
+struct LocalStore {
+    
+    private static let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    static func setIntroAsVisited() {
+        userDefaults.setObject(true, forKey: "introKey")
+    }
+    
+    static func isIntroVisited() -> Bool {
+        return userDefaults.boolForKey("introKey")
+    }
+    
 }
-
 struct ScreenSize
 {
     static let SCREEN_WIDTH         = UIScreen.mainScreen().bounds.size.width

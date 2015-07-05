@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: centerViewController)
         
         navigationController.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+        navigationController.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController.navigationBar.barStyle = UIBarStyle.Black
         //navigationController.navigationBar.tintColor = UIColor.whiteColor()
         //navigationController.navigationBar.barStyle = UIBarStyle.Black
         
@@ -40,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = self.drawerController
         
 
+        
         
         
         

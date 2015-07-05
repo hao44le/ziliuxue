@@ -20,9 +20,14 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+       let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "目标", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
-        
+        LocalStore.setIntroAsVisited()
         continueButton.layer.cornerRadius = 25
         continueButton.layer.borderWidth = 0.5
         continueButton.layer.borderColor = UIColor.whiteColor().CGColor
@@ -33,6 +38,15 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.tableView.separatorColor = UIColor.clearColor()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

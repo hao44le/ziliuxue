@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchoolDetailViewController: UIViewController,SwipeViewDataSource,SwipeViewDelegate{
+class SchoolDetailViewController: UIViewController,SwipeViewDelegate{
 
     @IBOutlet weak var universityDescription: UITextView!
     @IBOutlet weak var universityName: UILabel!
