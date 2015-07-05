@@ -17,17 +17,22 @@ class CenterTabViewController: UITabBarController {
         super.viewDidLoad()
 
         
-        
+        if !LocalStore.isLogined(){
+            self.performSegueWithIdentifier("toLogin", sender: self)
+        }
 
         if !LocalStore.isIntroVisited(){
             self.performSegueWithIdentifier("toWizard", sender: self)
         }
         
+        
+        
+        
         // Do any additional setup after loading the view.
         self.navigationItem.title = "留学计划"
         
         self.tabBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
-        
+        self.tabBar.tintColor = UIColor.whiteColor()
         self.setupLeftMenuButton()
         
         

@@ -32,17 +32,21 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
             ac.show()
         } else {
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            //let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             self.activityIndicator.startAnimating()
-            dispatch_async(dispatch_get_global_queue(priority, 0)){ () -> Void in
+            //dispatch_async(dispatch_get_global_queue(priority, 0)){ () -> Void in
         
-                let success = ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    self.activityIndicator.stopAnimating()
-                    print(success)
+                ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
+                //dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    //self.activityIndicator.stopAnimating()
                     
-                }
-            }
+                    
+                    
+                    
+                    
+                    
+               // }
+           // }
             
             
         }
@@ -59,16 +63,29 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginSuccessed", name: "loginSuccessed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginFailed", name: "loginFailed", object: nil)
+        
+        
         //self.activityIndicator.startAnimating()
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-
+    func loginSuccessed(){
+        LocalStore.setLogined()
+        self.activityIndicator.stopAnimating()
+        self.performSegueWithIdentifier("loginToMain", sender: self)
+    }
+    func loginFailed(){
+        let ac = UIAlertView(title: "账号密码不正确", message: nil, delegate: nil, cancelButtonTitle: "好的")
+        ac.show()
+    }
     
-       
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

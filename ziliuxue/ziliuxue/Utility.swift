@@ -25,6 +25,17 @@ struct LocalStore {
         return userDefaults.boolForKey("introKey")
     }
     
+    static func isLogined()->Bool{
+        return userDefaults.boolForKey("loginKey")
+    }
+    
+    static func setLogined(){
+        userDefaults.setObject(true, forKey: "loginKey")
+    }
+    
+    
+    
+    
 }
 struct ScreenSize
 {
@@ -102,28 +113,26 @@ struct ServerMethods {
         }
     }
     
-    static func obtainToken(username:String,password:String)->Bool{
+    static func obtainToken(username:String,password:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
         
-        var result = false
+        
         
         
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            result = true
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("loginSuccessed", object: nil)
             print("success")
             
             print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("loginFailed", object: nil)
                 print("failure")
                 print(error)
         }
         
-        
-        return result
     }
     
     

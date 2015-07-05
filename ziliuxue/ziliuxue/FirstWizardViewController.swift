@@ -33,9 +33,6 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         continueButton.layer.borderColor = UIColor.whiteColor().CGColor
         
         
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.tableView.separatorColor = UIColor.clearColor()
         // Do any additional setup after loading the view, typically from a nib.
     }

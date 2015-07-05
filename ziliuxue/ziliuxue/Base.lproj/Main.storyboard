@@ -196,6 +196,7 @@
                     <navigationItem key="navigationItem" title="自留学" id="ahC-LT-Sda"/>
                     <connections>
                         <outlet property="activityIndicator" destination="MfV-Tw-1JQ" id="s6g-7S-h07"/>
+                        <segue destination="KXr-JW-D3f" kind="show" identifier="loginToMain" id="QqT-pJ-PMC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -205,7 +206,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-592" y="-148"/>
+            <point key="canvasLocation" x="-436.5" y="513"/>
         </scene>
         <!--自留学注册-->
         <scene sceneID="JaU-Ya-O2F">
@@ -403,6 +404,7 @@
                     <connections>
                         <outlet property="signUpButton" destination="y8k-2c-9rB" id="Ax7-07-YkU"/>
                         <outlet property="tableViewHeight" destination="qTy-mI-jtR" id="eoa-y0-VT5"/>
+                        <segue destination="KXr-JW-D3f" kind="show" identifier="signupToMain" id="eQw-Is-T1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATd-sS-2df" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -412,7 +414,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-592" y="691"/>
+            <point key="canvasLocation" x="565.5" y="513"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gQN-Qh-HkA">
@@ -2132,4 +2134,7 @@
         <image name="Map Icon" width="35" height="35"/>
         <image name="star" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="QqT-pJ-PMC"/>
+    </inferredMetricsTieBreakers>
 </document>
