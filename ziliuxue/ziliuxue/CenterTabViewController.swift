@@ -9,10 +9,17 @@
 import UIKit
 
 class CenterTabViewController: UITabBarController {
-
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+      
+        
+        
         // Do any additional setup after loading the view.
         self.navigationItem.title = "留学计划"
         
@@ -32,8 +39,8 @@ class CenterTabViewController: UITabBarController {
     
     func setupLeftMenuButton()
     {
-        let image = UIImage(named: "leftButton.png")
-        let leftDrawerButton = UIButton(frame: CGRectMake(0, 0, 28, 28))
+        let image = UIImage(named: "left button")
+        let leftDrawerButton = UIButton(frame: CGRectMake(0, 0, 25, 25))
         leftDrawerButton.setBackgroundImage(image, forState: UIControlState.Normal)
         
         leftDrawerButton.addTarget(self, action: Selector("leftDrawerButtonPress:"), forControlEvents: UIControlEvents.TouchUpInside)

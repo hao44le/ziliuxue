@@ -19,7 +19,7 @@ class ThirdWizardTableViewCell: UITableViewCell {
         if defaults.boolForKey(self.universityName.text!){
             //取消收藏
             
-            print("remove")
+            //print("remove")
             
             
             NSNotificationCenter.defaultCenter().postNotificationName("removeTopPicture", object: nil)
@@ -39,7 +39,7 @@ class ThirdWizardTableViewCell: UITableViewCell {
         } else {
             //收藏
             
-            print("add")
+            //print("add")
             
             
             

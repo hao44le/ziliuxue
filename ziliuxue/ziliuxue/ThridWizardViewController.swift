@@ -73,12 +73,12 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func addTopPicture(){
-        print("add function")
+        //print("add function")
         let defaults = NSUserDefaults.standardUserDefaults()
         if let name = defaults.objectForKey("currentCelectedSchool") {
             let number = defaults.integerForKey("numberOfFavoritedSchool")
-            print(name)
-            print(number)
+            //print(name)
+            //print(number)
             switch number {
             case 1:
                 UIView.animateWithDuration(0.85, animations: { () -> Void in
@@ -104,10 +104,10 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     func removeTopPicture(){
-        print("remove function")
+        //print("remove function")
         let defaults = NSUserDefaults.standardUserDefaults()
         let number = defaults.integerForKey("numberOfFavoritedSchool")
-        print(number)
+        //print(number)
         switch number {
         case 1:
             UIView.animateWithDuration(0.85, animations: { () -> Void in
