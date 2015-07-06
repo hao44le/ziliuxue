@@ -58,12 +58,15 @@ class LeftDrawerTableViewController: UITableViewController {
         }
  
         let row = indexPath.row
+        
+        
         switch row
         {
         case 0:
             cell!.textLabel?.text = "留学计划"
+            
         case 1:
-            cell!.textLabel?.text = "我的学习"
+            cell!.textLabel?.text = "我的学校"
         case 2:
             cell!.textLabel?.text = "找课程"
         case 3:
@@ -102,10 +105,32 @@ class LeftDrawerTableViewController: UITableViewController {
         switch row {
         case 0:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
+            let navi = UINavigationController(rootViewController: vc)
+            
+            navi.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+            navi.navigationBar.tintColor = UIColor.whiteColor()
+            navi.navigationBar.barStyle = UIBarStyle.Black
+            
+            
+            self.mm_drawerController.setCenterViewController(navi, withCloseAnimation: true, completion: nil)
+            
         case 1:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         case 2:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewControllerWithIdentifier("secondTab") as! SecondTabViewController
+            let navi = UINavigationController(rootViewController: vc)
+            
+            navi.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+            navi.navigationBar.tintColor = UIColor.whiteColor()
+            navi.navigationBar.barStyle = UIBarStyle.Black
+            
+            
+            self.mm_drawerController.setCenterViewController(navi, withCloseAnimation: true, completion: nil)
+            
         case 3:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         case 4:
