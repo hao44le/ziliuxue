@@ -8,8 +8,13 @@
 
 import UIKit
 
-class PersonalInfoViewController: UIViewController {
+class PersonalInfoViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var userLocation: UILabel!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var topImage: UIImageView!
+    
+    let array = ["你的个人信息","你的账号信息和密码","你的考试信息"]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +50,20 @@ class PersonalInfoViewController: UIViewController {
     {
         self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.array.count
+    }
 
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel?.text = self.array[indexPath.row]
+        return cell
+    }
 
     /*
     // MARK: - Navigation
