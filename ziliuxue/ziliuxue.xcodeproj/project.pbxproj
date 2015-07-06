@@ -34,7 +34,11 @@
 		C07B39161B480ABE00C1267A /* LeftDrawerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07B39131B480ABE00C1267A /* LeftDrawerTableViewController.swift */; };
 		C07B39171B480ABE00C1267A /* LeftDrawerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C07B39141B480ABE00C1267A /* LeftDrawerTableViewController.xib */; };
 		C09A67431B4034320059764F /* FirstWizardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A67421B4034320059764F /* FirstWizardTableViewCell.swift */; };
-		C0A5B63D1B4A2E9C0089B84E /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B63C1B4A2E9C0089B84E /* SecondTabViewController.swift */; };
+		C0A5B63D1B4A2E9C0089B84E /* ThirdTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B63C1B4A2E9C0089B84E /* ThirdTabViewController.swift */; };
+		C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */; };
+		C0A5B6471B4A60ED0089B84E /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6461B4A60ED0089B84E /* FourthViewController.swift */; };
+		C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */; };
+		C0A5B64B1B4A62A20089B84E /* FifthTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B64A1B4A62A20089B84E /* FifthTabViewController.swift */; };
 		C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */; };
 		C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */; };
 		C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F9011B2ED89E00D698FC /* LoginViewController.swift */; };
@@ -102,7 +106,11 @@
 		C07B39131B480ABE00C1267A /* LeftDrawerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftDrawerTableViewController.swift; sourceTree = "<group>"; };
 		C07B39141B480ABE00C1267A /* LeftDrawerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftDrawerTableViewController.xib; sourceTree = "<group>"; };
 		C09A67421B4034320059764F /* FirstWizardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstWizardTableViewCell.swift; sourceTree = "<group>"; };
-		C0A5B63C1B4A2E9C0089B84E /* SecondTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
+		C0A5B63C1B4A2E9C0089B84E /* ThirdTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdTabViewController.swift; sourceTree = "<group>"; };
+		C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
+		C0A5B6461B4A60ED0089B84E /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
+		C0A5B64A1B4A62A20089B84E /* FifthTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthTabViewController.swift; sourceTree = "<group>"; };
 		C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C0C8F8FA1B2ED89E00D698FC /* ziliuxue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ziliuxue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C8F8FE1B2ED89E00D698FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,7 +170,7 @@
 			children = (
 				C031F1741B4A0ED3008D96D7 /* TabGroups */,
 				C02D6B6E1B4901A900A7FFF1 /* CenterTab */,
-				C07B391A1B48195A00C1267A /* Drawer */,
+				C07B391A1B48195A00C1267A /* LeftDrawer */,
 				C026A73C1B39076800E24908 /* Login & Signup */,
 				C026A73B1B39075300E24908 /* Wizards */,
 			);
@@ -258,51 +266,47 @@
 		C031F1741B4A0ED3008D96D7 /* TabGroups */ = {
 			isa = PBXGroup;
 			children = (
-				C031F1751B4A0EDC008D96D7 /* FirstTab */,
-				C031F1761B4A0EED008D96D7 /* SecondTab */,
-				C031F1771B4A0EF9008D96D7 /* ThirdTab */,
-				C031F1781B4A0EFE008D96D7 /* FourthTab */,
-				C031F1791B4A0F0A008D96D7 /* FifthTab */,
+				C031F1751B4A0EDC008D96D7 /* StudyPlan */,
+				C031F1761B4A0EED008D96D7 /* MySchool */,
+				C031F1771B4A0EF9008D96D7 /* FindClass */,
+				C031F1781B4A0EFE008D96D7 /* FindRepresentative */,
+				C0A5B64C1B4A62AF0089B84E /* FindClassmate */,
+				C0A5B64D1B4A62B90089B84E /* PersonalInfo */,
 			);
 			name = TabGroups;
 			sourceTree = "<group>";
 		};
-		C031F1751B4A0EDC008D96D7 /* FirstTab */ = {
+		C031F1751B4A0EDC008D96D7 /* StudyPlan */ = {
 			isa = PBXGroup;
 			children = (
 				C0F5DF191B4A15A60088A9EE /* FirstTabTableViewCell.swift */,
 				C031F1721B4A0EC6008D96D7 /* StudyPlanViewController.swift */,
 			);
-			name = FirstTab;
+			name = StudyPlan;
 			sourceTree = "<group>";
 		};
-		C031F1761B4A0EED008D96D7 /* SecondTab */ = {
+		C031F1761B4A0EED008D96D7 /* MySchool */ = {
 			isa = PBXGroup;
 			children = (
-				C0A5B63C1B4A2E9C0089B84E /* SecondTabViewController.swift */,
+				C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */,
 			);
-			name = SecondTab;
+			name = MySchool;
 			sourceTree = "<group>";
 		};
-		C031F1771B4A0EF9008D96D7 /* ThirdTab */ = {
+		C031F1771B4A0EF9008D96D7 /* FindClass */ = {
 			isa = PBXGroup;
 			children = (
+				C0A5B63C1B4A2E9C0089B84E /* ThirdTabViewController.swift */,
 			);
-			name = ThirdTab;
+			name = FindClass;
 			sourceTree = "<group>";
 		};
-		C031F1781B4A0EFE008D96D7 /* FourthTab */ = {
+		C031F1781B4A0EFE008D96D7 /* FindRepresentative */ = {
 			isa = PBXGroup;
 			children = (
+				C0A5B6461B4A60ED0089B84E /* FourthViewController.swift */,
 			);
-			name = FourthTab;
-			sourceTree = "<group>";
-		};
-		C031F1791B4A0F0A008D96D7 /* FifthTab */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = FifthTab;
+			name = FindRepresentative;
 			sourceTree = "<group>";
 		};
 		C07B39041B480A6A00C1267A /* MMDrawerController */ = {
@@ -321,13 +325,13 @@
 			path = MMDrawerController;
 			sourceTree = "<group>";
 		};
-		C07B391A1B48195A00C1267A /* Drawer */ = {
+		C07B391A1B48195A00C1267A /* LeftDrawer */ = {
 			isa = PBXGroup;
 			children = (
 				C07B39131B480ABE00C1267A /* LeftDrawerTableViewController.swift */,
 				C07B39141B480ABE00C1267A /* LeftDrawerTableViewController.xib */,
 			);
-			name = Drawer;
+			name = LeftDrawer;
 			sourceTree = "<group>";
 		};
 		C09A67441B4034DF0059764F /* 3rd */ = {
@@ -356,6 +360,22 @@
 				C030F0CE1B4162D300DDDFDD /* PopUpViewController.swift */,
 			);
 			name = 1st;
+			sourceTree = "<group>";
+		};
+		C0A5B64C1B4A62AF0089B84E /* FindClassmate */ = {
+			isa = PBXGroup;
+			children = (
+				C0A5B64A1B4A62A20089B84E /* FifthTabViewController.swift */,
+			);
+			name = FindClassmate;
+			sourceTree = "<group>";
+		};
+		C0A5B64D1B4A62B90089B84E /* PersonalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */,
+			);
+			name = PersonalInfo;
 			sourceTree = "<group>";
 		};
 		C0C8F8F11B2ED89E00D698FC = {
@@ -587,19 +607,23 @@
 				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,
 				C07B39151B480ABE00C1267A /* CenterTabViewController.swift in Sources */,
 				C026A7391B39072C00E24908 /* FirstWizardViewController.swift in Sources */,
-				C0A5B63D1B4A2E9C0089B84E /* SecondTabViewController.swift in Sources */,
+				C0A5B63D1B4A2E9C0089B84E /* ThirdTabViewController.swift in Sources */,
 				C039BEAD1B3A7E1C00C8D5CE /* Utility.swift in Sources */,
 				C030F0C71B415F5F00DDDFDD /* CCMPopupAnimation.m in Sources */,
 				C030F0AD1B4149A100DDDFDD /* MMPickerView.m in Sources */,
 				C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */,
+				C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */,
 				C030F0C51B415F5F00DDDFDD /* CCMBorderView.m in Sources */,
 				C09A67431B4034320059764F /* FirstWizardTableViewCell.swift in Sources */,
 				C07B39101B480A6A00C1267A /* MMDrawerVisualState.m in Sources */,
 				C07B39111B480A6A00C1267A /* UIViewController+MMDrawerController.m in Sources */,
 				C07B39161B480ABE00C1267A /* LeftDrawerTableViewController.swift in Sources */,
 				C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */,
+				C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */,
 				C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */,
+				C0A5B6471B4A60ED0089B84E /* FourthViewController.swift in Sources */,
 				C07B390F1B480A6A00C1267A /* MMDrawerController.m in Sources */,
+				C0A5B64B1B4A62A20089B84E /* FifthTabViewController.swift in Sources */,
 				C026A7421B3907D800E24908 /* SecondWizardViewController.swift in Sources */,
 				C030F0C91B415F5F00DDDFDD /* CCMPopupTransitioning.m in Sources */,
 				C030F0CC1B415F5F00DDDFDD /* UIImage+screenshot.m in Sources */,

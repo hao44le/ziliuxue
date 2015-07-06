@@ -102,45 +102,37 @@ class LeftDrawerTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let row = indexPath.row
+        var navi:UINavigationController?
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        var vc:UIViewController?
         switch row {
         case 0:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
-            let navi = UINavigationController(rootViewController: vc)
-            
-            navi.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
-            navi.navigationBar.tintColor = UIColor.whiteColor()
-            navi.navigationBar.barStyle = UIBarStyle.Black
-            
-            
-            self.mm_drawerController.setCenterViewController(navi, withCloseAnimation: true, completion: nil)
-            
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
         case 1:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("secondTab") as! SecondTabViewController
+           
         case 2:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewControllerWithIdentifier("secondTab") as! SecondTabViewController
-            let navi = UINavigationController(rootViewController: vc)
             
-            navi.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
-            navi.navigationBar.tintColor = UIColor.whiteColor()
-            navi.navigationBar.barStyle = UIBarStyle.Black
-            
-            
-            self.mm_drawerController.setCenterViewController(navi, withCloseAnimation: true, completion: nil)
+           vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! ThirdTabViewController
             
         case 3:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("fourthTab") as! FourthViewController
         case 4:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("fifthTab") as! FifthTabViewController
         case 7:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalInfoTab") as! PersonalInfoViewController
+            
         case 8:
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         default:
-            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            break
         }
+        
+        navi = UINavigationController(rootViewController: vc!)
+        navi!.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+        navi!.navigationBar.tintColor = UIColor.whiteColor()
+        navi!.navigationBar.barStyle = UIBarStyle.Black
+        
+        self.mm_drawerController.setCenterViewController(navi, withCloseAnimation: true, completion: nil)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SecondTabViewController.swift
+//  FourthViewController.swift
 //  
 //
 //  Created by Gelei Chen on 7/6/15.
@@ -8,23 +8,19 @@
 
 import UIKit
 
-class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class FourthViewController: UIViewController {
 
-    var universityName = ["7","12","15","Harvard University","Stanford University"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         // Do any additional setup after loading the view.
-        self.navigationItem.title = "我的学校"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "add")
+        self.navigationItem.title = "找代理"
+        
         self.setupLeftMenuButton()
     }
     
-    func add(){
-        
-    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -50,22 +46,6 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
     
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.universityName.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
-        cell.universityName.text = self.universityName[indexPath.row]
-        cell.logo.image = UIImage(named: self.universityName[indexPath.row])
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.performSegueWithIdentifier("fromMySchoolToUniversity", sender: self)
-    }
     
 
     /*

@@ -75,7 +75,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     func addTopPicture(){
         //print("add function")
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let name = defaults.objectForKey("currentCelectedSchool") {
+        if let name: AnyObject = defaults.objectForKey("currentCelectedSchool") {
             let number = defaults.integerForKey("numberOfFavoritedSchool")
             //print(name)
             //print(number)
