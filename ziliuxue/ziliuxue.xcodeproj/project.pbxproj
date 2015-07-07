@@ -39,6 +39,10 @@
 		C0A5B6471B4A60ED0089B84E /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6461B4A60ED0089B84E /* FourthViewController.swift */; };
 		C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */; };
 		C0A5B64B1B4A62A20089B84E /* FifthTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B64A1B4A62A20089B84E /* FifthTabViewController.swift */; };
+		C0A5B64F1B4B5C020089B84E /* FindClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B64E1B4B5C020089B84E /* FindClassViewController.swift */; };
+		C0A5B6511B4B5C1E0089B84E /* MyClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6501B4B5C1E0089B84E /* MyClassViewController.swift */; };
+		C0A5B6531B4B64470089B84E /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6521B4B64470089B84E /* CourseViewController.swift */; };
+		C0A5B6551B4B64980089B84E /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6541B4B64980089B84E /* CourseTableViewCell.swift */; };
 		C0C5C14C1B368B3D0035C0BF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */; };
 		C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */; };
 		C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8F9011B2ED89E00D698FC /* LoginViewController.swift */; };
@@ -111,6 +115,10 @@
 		C0A5B6461B4A60ED0089B84E /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 		C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C0A5B64A1B4A62A20089B84E /* FifthTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthTabViewController.swift; sourceTree = "<group>"; };
+		C0A5B64E1B4B5C020089B84E /* FindClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindClassViewController.swift; sourceTree = "<group>"; };
+		C0A5B6501B4B5C1E0089B84E /* MyClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyClassViewController.swift; sourceTree = "<group>"; };
+		C0A5B6521B4B64470089B84E /* CourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
+		C0A5B6541B4B64980089B84E /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		C0C5C14B1B368B3D0035C0BF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C0C8F8FA1B2ED89E00D698FC /* ziliuxue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ziliuxue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C8F8FE1B2ED89E00D698FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -297,6 +305,10 @@
 			isa = PBXGroup;
 			children = (
 				C0A5B63C1B4A2E9C0089B84E /* ThirdTabViewController.swift */,
+				C0A5B64E1B4B5C020089B84E /* FindClassViewController.swift */,
+				C0A5B6501B4B5C1E0089B84E /* MyClassViewController.swift */,
+				C0A5B6521B4B64470089B84E /* CourseViewController.swift */,
+				C0A5B6541B4B64980089B84E /* CourseTableViewCell.swift */,
 			);
 			name = FindClass;
 			sourceTree = "<group>";
@@ -602,6 +614,7 @@
 				C030F0C61B415F5F00DDDFDD /* CCMCustomAnimation.m in Sources */,
 				C026A7461B39149100E24908 /* ThirdWizardTableViewCell.swift in Sources */,
 				C030F0CA1B415F5F00DDDFDD /* FXBlurView.m in Sources */,
+				C0A5B6511B4B5C1E0089B84E /* MyClassViewController.swift in Sources */,
 				C0F5DF1A1B4A15A60088A9EE /* FirstTabTableViewCell.swift in Sources */,
 				C030F0C81B415F5F00DDDFDD /* CCMPopupSegue.m in Sources */,
 				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,
@@ -619,8 +632,11 @@
 				C07B39111B480A6A00C1267A /* UIViewController+MMDrawerController.m in Sources */,
 				C07B39161B480ABE00C1267A /* LeftDrawerTableViewController.swift in Sources */,
 				C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */,
+				C0A5B64F1B4B5C020089B84E /* FindClassViewController.swift in Sources */,
+				C0A5B6551B4B64980089B84E /* CourseTableViewCell.swift in Sources */,
 				C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */,
 				C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */,
+				C0A5B6531B4B64470089B84E /* CourseViewController.swift in Sources */,
 				C0A5B6471B4A60ED0089B84E /* FourthViewController.swift in Sources */,
 				C07B390F1B480A6A00C1267A /* MMDrawerController.m in Sources */,
 				C0A5B64B1B4A62A20089B84E /* FifthTabViewController.swift in Sources */,
