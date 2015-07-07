@@ -64,7 +64,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.performSegueWithIdentifier("fromMySchoolToUniversity", sender: self)
+        self.performSegueWithIdentifier("toUniversity", sender: self)
     }
     
 
