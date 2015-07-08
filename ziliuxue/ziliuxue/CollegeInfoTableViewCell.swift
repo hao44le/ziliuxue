@@ -10,6 +10,7 @@ import UIKit
 
 class CollegeInfoTableViewCell: UITableViewCell {
 
+        @IBOutlet weak var firstLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var rightLabel: UILabel!
    
     @IBOutlet weak var leftLabel: UILabel!
