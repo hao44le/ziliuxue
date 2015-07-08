@@ -1,22 +1,27 @@
 //
-//  MyClassViewController.swift
+//  SchoolRankingViewController.swift
 //  
 //
-//  Created by Gelei Chen on 7/7/15.
+//  Created by Gelei Chen on 7/8/15.
 //
 //
 
 import UIKit
 
-class MyClassViewController: UIViewController {
+class SchoolRankingViewController: UIViewController {
 
     @IBAction func swipeRight(sender: AnyObject) {
         let selectedIndex = self.tabBarController?.selectedIndex
         self.tabBarController?.selectedIndex = selectedIndex! - 1
     }
+ 
+    @IBAction func swipeLeft(sender: AnyObject) {
+        let selectedIndex = self.tabBarController?.selectedIndex
+        self.tabBarController?.selectedIndex = selectedIndex! + 1
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.interactivePopGestureRecognizer.enabled = false
         // Do any additional setup after loading the view.
     }
 

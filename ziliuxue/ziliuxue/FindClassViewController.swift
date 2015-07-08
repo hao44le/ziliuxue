@@ -17,6 +17,12 @@ class FindClassViewController: UIViewController,UITableViewDelegate,UITableViewD
         // Do any additional setup after loading the view.
     }
 
+    
+    @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
+        
+        let selectedIndex = self.tabBarController?.selectedIndex
+        self.tabBarController?.selectedIndex = selectedIndex! + 1
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

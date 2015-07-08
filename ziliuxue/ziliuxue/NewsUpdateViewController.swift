@@ -1,16 +1,16 @@
 //
-//  MyClassViewController.swift
+//  NewsUpdateViewController.swift
 //  
 //
-//  Created by Gelei Chen on 7/7/15.
+//  Created by Gelei Chen on 7/8/15.
 //
 //
 
 import UIKit
 
-class MyClassViewController: UIViewController {
+class NewsUpdateViewController: UIViewController {
 
-    @IBAction func swipeRight(sender: AnyObject) {
+    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
         let selectedIndex = self.tabBarController?.selectedIndex
         self.tabBarController?.selectedIndex = selectedIndex! - 1
     }
