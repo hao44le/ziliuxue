@@ -21,6 +21,11 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+        
+        self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
 
     @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
        

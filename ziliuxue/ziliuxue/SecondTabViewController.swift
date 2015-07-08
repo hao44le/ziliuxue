@@ -19,12 +19,22 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         // Do any additional setup after loading the view.
         self.navigationItem.title = "我的学校"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "add")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学校", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
+
         self.setupLeftMenuButton()
     }
     
     func add(){
         
     }
+    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+        
+        self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
+    
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
