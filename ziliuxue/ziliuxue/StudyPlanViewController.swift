@@ -19,6 +19,7 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
     
     
     var slice = [[100],[40,60],[100],[100]]
+    var percentLabel = ["5/5","2/5","0/2","0/3"]
     var pieChartColor = [[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1)],[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1),UIColor.darkGrayColor()],[UIColor.darkGrayColor()],[UIColor.darkGrayColor()]]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +53,13 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.detailTextView.text = detailTextView[indexPath.row]
         cell.slice = slice[indexPath.row]
         cell.pieChartColor = pieChartColor[indexPath.row]
+        cell.percentLabel.text = percentLabel[indexPath.row]
         cell.pieView.reloadData()
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier("fromStudyPlanToCourseDetial", sender: self)
         
     }
     

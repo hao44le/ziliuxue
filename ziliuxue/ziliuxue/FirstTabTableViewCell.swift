@@ -15,6 +15,7 @@ class FirstTabTableViewCell: UITableViewCell,XYPieChartDataSource{
     @IBOutlet weak var detailTextView: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     
+    @IBOutlet weak var percentLabel: UILabel!
     
     var pieChartColor = [UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1),UIColor.darkGrayColor()]
     var slice:[Int]?
@@ -24,9 +25,10 @@ class FirstTabTableViewCell: UITableViewCell,XYPieChartDataSource{
         super.awakeFromNib()
         pieView.pieRadius = 25
         pieView.startPieAngle = CGFloat(M_PI_2)
-        pieView.animationSpeed = 1.0
+        pieView.animationSpeed = 1.5
         pieView.dataSource = self
         pieView.pieCenter = CGPointMake(40,40)
+        pieView.labelRadius = 0
         // Initialization code
     }
 
@@ -45,6 +47,10 @@ class FirstTabTableViewCell: UITableViewCell,XYPieChartDataSource{
     }
     func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
         return CGFloat(self.slice![Int(index)])
+    }
+    
+    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
+        return ""
     }
 
 

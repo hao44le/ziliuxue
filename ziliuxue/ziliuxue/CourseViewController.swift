@@ -30,6 +30,10 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CourseTableViewCell
         return cell
     }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier("fromCourseViewToCourseDetail", sender: self)
+    }
 
     /*
     // MARK: - Navigation
