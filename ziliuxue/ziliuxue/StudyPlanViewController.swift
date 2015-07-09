@@ -46,21 +46,12 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! FirstTabTableViewCell
         cell.title.text = name[indexPath.row]
         cell.detailTextView.text = detailTextView[indexPath.row]
-        /*
-        switch indexPath.row {
-        case 0:
-            cell.pieView.sliceValues = first
-        case 1:
-            cell.pieView.sliceValues = second
-        case 2:
-            cell.pieView.sliceValues = third
-        case 3:
-            cell.pieView.sliceValues = fourth
-        default:
-            break
-        }
-*/
+  
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        print("1")
     }
     /*
     // MARK: - Navigation

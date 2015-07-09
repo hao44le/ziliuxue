@@ -12,7 +12,7 @@ class FirstTabTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var pieView: UIView!
-    @IBOutlet weak var detailTextView: UITextView!
+    @IBOutlet weak var detailTextView: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
