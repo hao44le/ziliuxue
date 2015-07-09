@@ -8,14 +8,25 @@
 
 import UIKit
 
-class FirstTabTableViewCell: UITableViewCell {
+class FirstTabTableViewCell: UITableViewCell,XYPieChartDataSource{
 
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var pieView: UIView!
+    @IBOutlet weak var pieView: XYPieChart!
     @IBOutlet weak var detailTextView: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
+    
+    
+    var pieChartColor = [UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1),UIColor.darkGrayColor()]
+    var slice:[Int]?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        pieView.pieRadius = 25
+        pieView.startPieAngle = CGFloat(M_PI_2)
+        pieView.animationSpeed = 1.0
+        pieView.dataSource = self
+        pieView.pieCenter = CGPointMake(40,40)
         // Initialization code
     }
 
@@ -24,5 +35,17 @@ class FirstTabTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // MARK: PieChart DataSource
+    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
+        return UInt(self.slice!.count)
+    }
+    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
+        return self.pieChartColor[Int(index)]
+    }
+    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
+        return CGFloat(self.slice![Int(index)])
+    }
+
 
 }

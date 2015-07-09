@@ -16,6 +16,10 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
     let second = [40,60]
     let third = [0]
     let fourth = [0]
+    
+    
+    var slice = [[100],[40,60],[100],[100]]
+    var pieChartColor = [[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1)],[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1),UIColor.darkGrayColor()],[UIColor.darkGrayColor()],[UIColor.darkGrayColor()]]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,14 +50,17 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! FirstTabTableViewCell
         cell.title.text = name[indexPath.row]
         cell.detailTextView.text = detailTextView[indexPath.row]
-  
+        cell.slice = slice[indexPath.row]
+        cell.pieChartColor = pieChartColor[indexPath.row]
+        cell.pieView.reloadData()
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        print("1")
+        
     }
-    /*
+    
+        /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
