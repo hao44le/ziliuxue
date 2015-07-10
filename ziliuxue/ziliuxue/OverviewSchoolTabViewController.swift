@@ -98,7 +98,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer.enabled = true
+        self.navigationController?.interactivePopGestureRecognizer!.enabled = true
     }
     
      // MARK: SwipeView

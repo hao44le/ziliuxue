@@ -24,7 +24,7 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer.enabled = false
+        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
         // Do any additional setup after loading the view.
     }
 

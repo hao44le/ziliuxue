@@ -28,7 +28,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer.enabled = false
+        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
         applicationDescription.text = applicationDescriptionString
         // Do any additional setup after loading the view.
     }
