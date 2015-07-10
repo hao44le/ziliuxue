@@ -21,4 +21,8 @@
 #import "MMDrawerController+Subclass.h"
 
 
+#import "WXApi.h"
+#import "WXApiObject.h"
+
+
 #endif /* Header_h */

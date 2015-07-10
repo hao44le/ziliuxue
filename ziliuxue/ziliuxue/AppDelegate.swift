@@ -9,12 +9,22 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
 
     var window: UIWindow?
     var drawerController:MMDrawerController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        WXApi.registerApp("wx6d67e31185e79352")
+        let req = SendAuthReq()
+        req.scope = "snsapi_userinfo"
+        req.state = "123"
+        WXApi.sendReq(req)
+        
+        
+        
+        
         
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
@@ -79,6 +89,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: self)
+    }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: self)
+    }
 
+    func onReq(req: BaseReq!) {
+        print(req)
+    }
+    func onResp(resp: BaseResp!) {
+        let result = resp as! SendAuthResp
+        let code = result.code
+        
+        let url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx6d67e31185e79352&secret=b7aa72c257097bb57cca1bc880674373&code=\(code)&grant_type=authorization_code"
+        //print(url)
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        //manager.securityPolicy.allowInvalidCertificates = true
+        manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            //print("success")
+            let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil)
+            print(dic!)
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+            print("failure")
+            print(error)
+        }
+        
+    }
+    
 }
 
