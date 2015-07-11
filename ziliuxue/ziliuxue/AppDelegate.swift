@@ -95,10 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return WXApi.handleOpenURL(url, delegate: self)
     }
-
-    func onReq(req: BaseReq!) {
-        print(req)
-    }
     func onResp(resp: BaseResp!) {
         let result = resp as! SendAuthResp
         let code = result.code
@@ -107,18 +103,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         //print(url)
         let manager = AFHTTPRequestOperationManager()
         manager.responseSerializer = AFHTTPResponseSerializer()
+        var token = ""
+        var openid = ""
+        
         //manager.securityPolicy.allowInvalidCertificates = true
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             //print("success")
-            let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil)
-            print(dic!)
-            
+            let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+            print(dic)
+            token = dic.objectForKey("access_token") as! String
+            openid = dic.objectForKey("openid") as! String
+            self.getUserInfo(token, openid: openid)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-            print("failure")
-            print(error)
+                print("failure")
+                print(error)
         }
         
+        
+        
+        
     }
+    func getUserInfo(token:String,openid:String){
+        let user_url = "https://api.weixin.qq.com/sns/userinfo?access_token=\(token)&openid=\(openid)"
+        let manager = AFHTTPRequestOperationManager()
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        manager.GET(user_url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            //print("success")
+            let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+            print(dic)
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                print("failure")
+                print(error)
+        }
+    }
+
     
-}
+   }
 
