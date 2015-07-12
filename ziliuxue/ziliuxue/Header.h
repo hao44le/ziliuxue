@@ -26,6 +26,7 @@
 
 #import "IQKeyboardManager.h"
 #import "ProgressHUD.h"
+#import "UIImageView+WebCache.h"
 
 
 #endif /* Header_h */
