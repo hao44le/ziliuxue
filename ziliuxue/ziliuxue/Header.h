@@ -24,5 +24,7 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 
+#import "IQKeyboardManager.h"
+
 
 #endif /* Header_h */
