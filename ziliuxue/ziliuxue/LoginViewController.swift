@@ -13,7 +13,11 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var email:UITextField = UITextField()
     var password:UITextField = UITextField()
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var wechatLogoToTopLayoutGuideConstriant: NSLayoutConstraint!
+    @IBOutlet weak var weiboButton: UIButton!
+    @IBOutlet weak var wechatButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    
     
     let name = ["电子邮件","密码"]
     
@@ -33,7 +37,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             ac.show()
         } else {
             //let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            self.activityIndicator.startAnimating()
+            //self.activityIndicator.startAnimating()
             //dispatch_async(dispatch_get_global_queue(priority, 0)){ () -> Void in
         
                 ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
@@ -56,16 +60,48 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
     }
 
+
     @IBAction func weiboClicked(sender: UIButton) {
     }
 
     @IBAction func weChatClicked(sender: UIButton) {
+        let req = SendAuthReq()
+        req.scope = "snsapi_userinfo"
+        req.state = "123"
+        WXApi.sendReq(req)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
-        navigationItem.leftBarButtonItem = backButton
         
+        
+        
+        
+        
+        self.navigationController?.navigationBar.hidden = false
+        
+        if DeviceType.IS_IPHONE_4_OR_LESS {
+            self.wechatLogoToTopLayoutGuideConstriant.constant = 5
+        }
+        
+        
+        
+        wechatButton.layer.cornerRadius = 20
+        wechatButton.layer.borderWidth = 1
+        wechatButton.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        
+        
+        weiboButton.layer.cornerRadius = 20
+        weiboButton.layer.borderWidth = 1
+        weiboButton.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        
+        
+        loginButton.layer.cornerRadius = 15
+        loginButton.layer.borderWidth = 0.5
+        loginButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+
+
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginSuccessed", name: "loginSuccessed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginFailed", name: "loginFailed", object: nil)
@@ -77,7 +113,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func loginSuccessed(){
         LocalStore.setLogined()
-        self.activityIndicator.stopAnimating()
+        //self.activityIndicator.stopAnimating()
         self.performSegueWithIdentifier("loginToMain", sender: self)
     }
     func loginFailed(){

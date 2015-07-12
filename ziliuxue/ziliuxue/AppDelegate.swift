@@ -21,11 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         
         WXApi.registerApp("wx6d67e31185e79352")
-        let req = SendAuthReq()
-        req.scope = "snsapi_userinfo"
-        req.state = "123"
-        WXApi.sendReq(req)
-        
+
         
         
         
