@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		47CF44BAB11326517D1316EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB668C83B7354CCF44BD8E39 /* libPods.a */; };
+		7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D507F1B520A2D00B7AA2E /* Tool.swift */; };
+		7B9D50851B520B0400B7AA2E /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */; };
+		7B9D50861B520B0400B7AA2E /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D50841B520B0400B7AA2E /* ProgressHUD.m */; };
 		C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A93D1B4FDBC00014554F /* libWeChatSDK.a */; };
 		C008A9421B4FDBC00014554F /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C008A93E1B4FDBC00014554F /* read_me.txt */; };
 		C008A9441B4FDBD80014554F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A9431B4FDBD80014554F /* SystemConfiguration.framework */; };
@@ -88,6 +91,10 @@
 /* Begin PBXFileReference section */
 		00167EB716BD028099626F64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1C321C7FDF9F7B164B7EC6EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7B9D507F1B520A2D00B7AA2E /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		7B9D50831B520B0400B7AA2E /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		7B9D50841B520B0400B7AA2E /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		C008A93D1B4FDBC00014554F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C008A93E1B4FDBC00014554F /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		C008A93F1B4FDBC00014554F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -231,6 +238,16 @@
 				EB668C83B7354CCF44BD8E39 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B9D50811B520B0400B7AA2E /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */,
+				7B9D50831B520B0400B7AA2E /* ProgressHUD.h */,
+				7B9D50841B520B0400B7AA2E /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
 		C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */ = {
@@ -522,13 +539,14 @@
 		C0C8F8FD1B2ED89E00D698FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */,
 				C022425D1B3CF3EE00B0F0E7 /* Header.h */,
-				C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */,
+				C0C8F8FF1B2ED89E00D698FC /* AppDelegate.swift */,
+				7B9D507F1B520A2D00B7AA2E /* Tool.swift */,
 				C0C8F9031B2ED89E00D698FC /* Main.storyboard */,
 				C0C8F9061B2ED89E00D698FC /* Images.xcassets */,
 				C0C8F9081B2ED89E00D698FC /* LaunchScreen.xib */,
 				C0C8F8FE1B2ED89E00D698FC /* Info.plist */,
+				C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -553,6 +571,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7B9D50811B520B0400B7AA2E /* ProgressHUD */,
 				C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */,
 				C0B3B2001B4E0E47000954A9 /* XYPieChart */,
 				C07B39041B480A6A00C1267A /* MMDrawerController */,
@@ -658,6 +677,7 @@
 			files = (
 				C0C8F9051B2ED89E00D698FC /* Main.storyboard in Resources */,
 				C0C8F90A1B2ED89E00D698FC /* LaunchScreen.xib in Resources */,
+				7B9D50851B520B0400B7AA2E /* ProgressHUD.bundle in Resources */,
 				C0C8F9071B2ED89E00D698FC /* Images.xcassets in Resources */,
 				C07B39171B480ABE00C1267A /* LeftDrawerTableViewController.xib in Resources */,
 				C008A9421B4FDBC00014554F /* read_me.txt in Resources */,
@@ -738,6 +758,7 @@
 				C030F0C51B415F5F00DDDFDD /* CCMBorderView.m in Sources */,
 				C09A67431B4034320059764F /* FirstWizardTableViewCell.swift in Sources */,
 				C07B39101B480A6A00C1267A /* MMDrawerVisualState.m in Sources */,
+				7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */,
 				C07B39111B480A6A00C1267A /* UIViewController+MMDrawerController.m in Sources */,
 				C0C3B7A51B4BBA6E006800DD /* SchoolSepecificTabBarController.swift in Sources */,
 				C0B3B2071B4E59AB000954A9 /* CourseDetailTableViewCell.swift in Sources */,
@@ -746,6 +767,7 @@
 				C0A5B64F1B4B5C020089B84E /* FindClassViewController.swift in Sources */,
 				C0A5B6551B4B64980089B84E /* CourseTableViewCell.swift in Sources */,
 				C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */,
+				7B9D50861B520B0400B7AA2E /* ProgressHUD.m in Sources */,
 				C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */,
 				C0A5B6531B4B64470089B84E /* CourseViewController.swift in Sources */,
 				C0A5B6471B4A60ED0089B84E /* FourthViewController.swift in Sources */,
