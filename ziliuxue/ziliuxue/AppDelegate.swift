@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //textField和键盘自适应高度的开关
+        IQKeyboardManager.sharedManager().enable = true
+        
+        
         WXApi.registerApp("wx6d67e31185e79352")
         let req = SendAuthReq()
         req.scope = "snsapi_userinfo"
