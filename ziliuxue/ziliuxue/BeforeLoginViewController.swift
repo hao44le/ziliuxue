@@ -8,11 +8,12 @@
 
 import UIKit
 
-class BeforeLoginViewController: UIViewController {
+class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
 
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
+
     
     
     @IBAction func signupClicked(sender: AnyObject) {
@@ -32,7 +33,7 @@ class BeforeLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController!.interactivePopGestureRecognizer.delegate = self
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "自留学", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         signUpButton.layer.cornerRadius = 25
@@ -47,19 +48,26 @@ class BeforeLoginViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController!.interactivePopGestureRecognizer.delegate = self
         self.navigationController?.navigationBar.hidden = true
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController!.interactivePopGestureRecognizer.delegate = nil
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
 
     
     // MARK: - Navigation

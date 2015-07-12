@@ -55,13 +55,13 @@ struct ServerMethods {
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
-            print("success")
+            print("signup success")
             print(response)
             
             print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("signupFailed", object: nil)
-                print("failure")
+                print("signup failure")
                 print(error)
         }
         
@@ -74,10 +74,10 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(ServerConstant.get_user, parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
-            print("success")
+            print("getAllUsers success")
             print(respose)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
+                print("getAllUsers failure")
         }
     }
     
@@ -92,10 +92,10 @@ struct ServerMethods {
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
-            print("success")
+            print("getCollege success")
             print(respose)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
+                print("getCollege failure")
                 print(error)
         }
         
@@ -106,11 +106,11 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",refresh_token,"refresh_token")
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            print("success")
+            print("obtainNewToken success")
             
             print(response)
         }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
+                print("obtainNewToken failure")
                 print(error)
         }
     }
@@ -126,7 +126,7 @@ struct ServerMethods {
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
             NSNotificationCenter.defaultCenter().postNotificationName("loginSuccessed", object: nil)
-            print("success")
+            print("login success")
             
             //print(response)
             let dic = response as! NSDictionary
@@ -143,7 +143,7 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("loginFailed", object: nil)
-                print("failure")
+                print("login failure")
                 print(error)
         }
         

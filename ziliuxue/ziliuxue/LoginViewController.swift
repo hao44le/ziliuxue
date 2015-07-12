@@ -76,7 +76,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         
         
-        
+        //self.navigationController!.interactivePopGestureRecognizer.delegate = self
         
         
         self.navigationController?.navigationBar.hidden = false

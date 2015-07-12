@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     var email:UITextField = UITextField()
     var password:UITextField = UITextField()
@@ -70,6 +70,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func signupSuccessed(){
+        ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
         LocalStore.setLogined()
         //self.activityIndicator.stopAnimating()
         Tool.dismissHUD()
@@ -91,14 +92,15 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationController!.interactivePopGestureRecognizer.delegate = self
        self.navigationController?.navigationBar.hidden = false
         signUpButton.layer.cornerRadius = 25
         signUpButton.layer.borderWidth = 0.5
         signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
 
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupSuccessed", name: "loginSuccessed", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupFailed", name: "loginFailed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupSuccessed", name: "signupSuccessed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupFailed", name: "signupFailed", object: nil)
         
         // Do any additional setup after loading the view.
     }
@@ -121,8 +123,11 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         case 1:
              email = cell.textField
         case 2:
+            cell.textField.secureTextEntry = true
             password = cell.textField
+            
         case 3:
+            cell.textField.secureTextEntry = true
             repeated_password = cell.textField
         default:
             break
@@ -133,6 +138,8 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return field.count
     }
+    
+    
     /*
     // MARK: - Navigation
 
