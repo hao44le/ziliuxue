@@ -38,6 +38,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         } else {
             //let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             //self.activityIndicator.startAnimating()
+            Tool.showProgressHUD("正在验证")
             //dispatch_async(dispatch_get_global_queue(priority, 0)){ () -> Void in
         
                 ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
@@ -80,9 +81,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         self.navigationController?.navigationBar.hidden = false
         
-        if DeviceType.IS_IPHONE_4_OR_LESS {
-            self.wechatLogoToTopLayoutGuideConstriant.constant = 5
-        }
+        
         
         
         
@@ -114,11 +113,13 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func loginSuccessed(){
         LocalStore.setLogined()
         //self.activityIndicator.stopAnimating()
+        Tool.dismissHUD()
         self.performSegueWithIdentifier("loginToMain", sender: self)
     }
     func loginFailed(){
         let ac = UIAlertView(title: "账号密码不正确", message: nil, delegate: nil, cancelButtonTitle: "好的")
         ac.show()
+        Tool.dismissHUD()
     }
     
     

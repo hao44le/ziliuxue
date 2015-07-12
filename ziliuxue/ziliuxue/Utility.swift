@@ -54,11 +54,13 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
             print("success")
             print(response)
             
             print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("signupFailed", object: nil)
                 print("failure")
                 print(error)
         }
@@ -107,7 +109,7 @@ struct ServerMethods {
             print("success")
             
             print(response)
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+        }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 print("failure")
                 print(error)
         }
@@ -126,7 +128,19 @@ struct ServerMethods {
             NSNotificationCenter.defaultCenter().postNotificationName("loginSuccessed", object: nil)
             print("success")
             
-            print(response)
+            //print(response)
+            let dic = response as! NSDictionary
+            let refresh_token = dic.objectForKey("refresh_token") as! String
+            let token = dic.objectForKey("token") as! String
+            
+            
+            NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
+            NSUserDefaults.standardUserDefaults().setObject(refresh_token, forKey: "refresh_token")
+            
+
+            
+            
+            
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("loginFailed", object: nil)
                 print("failure")

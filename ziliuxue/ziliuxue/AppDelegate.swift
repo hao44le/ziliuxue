@@ -96,29 +96,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         return WXApi.handleOpenURL(url, delegate: self)
     }
     func onResp(resp: BaseResp!) {
-        let result = resp as! SendAuthResp
-        let code = result.code
-        
-        let url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx6d67e31185e79352&secret=b7aa72c257097bb57cca1bc880674373&code=\(code)&grant_type=authorization_code"
-        //print(url)
-        let manager = AFHTTPRequestOperationManager()
-        manager.responseSerializer = AFHTTPResponseSerializer()
-        var token = ""
-        var openid = ""
-        
-        //manager.securityPolicy.allowInvalidCertificates = true
-        manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            //print("success")
-            let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-            print(dic)
-            token = dic.objectForKey("access_token") as! String
-            openid = dic.objectForKey("openid") as! String
-            self.getUserInfo(token, openid: openid)
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
-                print(error)
+        if let result = resp as? SendAuthResp {
+            let code = result.code
+            
+            let url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx6d67e31185e79352&secret=b7aa72c257097bb57cca1bc880674373&code=\(code)&grant_type=authorization_code"
+            //print(url)
+            let manager = AFHTTPRequestOperationManager()
+            manager.responseSerializer = AFHTTPResponseSerializer()
+            
+            //manager.securityPolicy.allowInvalidCertificates = true
+            manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                //print("success")
+                
+                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                print(dic)
+                if let token = dic.objectForKey("access_token") as? String {
+                    if let openid = dic.objectForKey("openid") as? String {
+                        self.getUserInfo(token, openid: openid)
+                    }
+                } else {
+                    Tool.showErrorHUD("用户取消微信授权")
+                }
+                }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                    print("failure")
+                    print(error)
+                }
+            
+
         }
-        
         
         
         
