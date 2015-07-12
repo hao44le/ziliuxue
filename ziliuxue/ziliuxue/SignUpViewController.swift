@@ -20,6 +20,66 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
+    @IBAction func signupClicked(sender: UIButton) {
+        
+        
+        //error checking
+        if email.text == "" {
+            let ac = UIAlertView(title: "请输入邮箱", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+        
+        if password.text == "" {
+            let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+        
+        if name.text == "" {
+            let ac = UIAlertView(title: "请输入名字", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+        
+        if repeated_password.text == "" {
+            let ac = UIAlertView(title: "请再次输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+        
+        if password.text != repeated_password.text {
+            let ac = UIAlertView(title: "两次密码不相同", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+        
+        if email.text.lowercaseString.rangeOfString("@") == nil {
+            let ac = UIAlertView(title: "邮箱输入不合法", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+        
+        //signup
+        
+        Tool.showProgressHUD("正在注册")
+        ServerMethods.signup(email.text, password: password.text)
+        
+        
+        
+    }
+    
+    func signupSuccessed(){
+        LocalStore.setLogined()
+        //self.activityIndicator.stopAnimating()
+        Tool.dismissHUD()
+        self.performSegueWithIdentifier("signupToMain", sender: self)
+    }
+    func signupFailed(){
+        let ac = UIAlertView(title: "注册失败，请再试一次", message: nil, delegate: nil, cancelButtonTitle: "好的")
+        ac.show()
+        Tool.dismissHUD()
+    }
     
     @IBAction func tapped(sender: UITapGestureRecognizer) {
         
@@ -31,11 +91,15 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       self.navigationController?.navigationBar.hidden = false
         signUpButton.layer.cornerRadius = 25
         signUpButton.layer.borderWidth = 0.5
         signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
 
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupSuccessed", name: "loginSuccessed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupFailed", name: "loginFailed", object: nil)
+        
         // Do any additional setup after loading the view.
     }
 
