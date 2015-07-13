@@ -34,6 +34,7 @@ class LeftDrawerTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        tableView.separatorColor = UIColor.clearColor()
         return 1
     }
 
@@ -48,7 +49,7 @@ class LeftDrawerTableViewController: UITableViewController {
         let cellIdentifier:String = "reuseIdentifier"
         
         var cell = self.tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell?
-        
+        var imageView:UIImageView = UIImageView()
         
         // Configure the cell...
         
@@ -63,25 +64,40 @@ class LeftDrawerTableViewController: UITableViewController {
         switch row
         {
         case 0:
-            cell!.textLabel?.text = "留学计划"
+            cell!.textLabel?.text = "            留学计划"
+            imageView =  UIImageView(image: UIImage(named: "studyPlan"))
             
         case 1:
-            cell!.textLabel?.text = "我的学校"
+            cell!.textLabel?.text = "            我的学校"
+            imageView =  UIImageView(image: UIImage(named: "mySchool"))
+            
         case 2:
-            cell!.textLabel?.text = "找课程"
+            cell!.textLabel?.text = "            找课程"
+            imageView =  UIImageView(image: UIImage(named: "findCourse"))
+            
         case 3:
-            cell!.textLabel?.text = "找代理"
+            cell!.textLabel?.text = "            找代理"
+            imageView =  UIImageView(image: UIImage(named: "findRepresentative"))
+            
         case 4:
-            cell!.textLabel?.text = "找同学校友"
+            cell!.textLabel?.text = "            找同学校友"
+            imageView =  UIImageView(image: UIImage(named: "findClassmate"))
+            
         case 7:
-            cell!.textLabel?.text = "个人信息"
+            cell!.textLabel?.text = "            个人信息"
+            imageView =  UIImageView(image: UIImage(named: "personalInfo"))
+            
         case 8:
-            cell!.textLabel?.text = "登出"
+            cell!.textLabel?.text = "            登出"
+            imageView =  UIImageView(image: UIImage(named: "logout"))
+            
         default:
             cell?.selectionStyle = UITableViewCellSelectionStyle.None
             cell?.userInteractionEnabled = false
         }
-
+        imageView.frame = CGRectMake(30, 10, 30, 30)
+        cell?.addSubview(imageView)
+        //cell?.imageView?.frame = CGRectMake(0, 0, 20, 20)
         return cell!
     }
 

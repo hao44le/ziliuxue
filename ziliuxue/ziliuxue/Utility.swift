@@ -86,15 +86,18 @@ struct ServerMethods {
         return ServerConstant.get_college + from + "&num=" + to
     }
     
-    static func getCollege(from:String,to:String,token:String){
+    static func getCollege(from:String,to:String){
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
+            NSNotificationCenter.defaultCenter().postNotificationName("getCollegeSuccessed", object: nil)
             print("getCollege success")
             print(respose)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("getCollegeFailed", object: nil)
                 print("getCollege failure")
                 print(error)
         }

@@ -16,6 +16,7 @@ class CenterTabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //ServerMethods.getCollege("1", to: "20")
         
         // Do any additional setup after loading the view.
         self.navigationItem.title = "留学计划"
