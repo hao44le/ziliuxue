@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FindClassViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class FindClassViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
 
     let name = ["TOEFL","IELTS","GRE","GMAT","LSAT"]
     override func viewDidLoad() {
@@ -28,6 +28,24 @@ class FindClassViewController: UIViewController,UITableViewDelegate,UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return name.count
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! FindClassCollectionViewCell
+        cell.label.text = self.name[indexPath.row]
+        cell.layer.cornerRadius = 62
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        return cell
+    }
+    /*
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -45,6 +63,9 @@ class FindClassViewController: UIViewController,UITableViewDelegate,UITableViewD
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("toCourse", sender: self)
     }
+
+    */
+    
     /*
     // MARK: - Navigation
 

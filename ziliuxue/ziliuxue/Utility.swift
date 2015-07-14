@@ -68,7 +68,9 @@ struct ServerMethods {
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
                 print("createUserProfile success")
-                print(response)
+                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                print(dic)
+
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
                 print("createUserProfile failure")
@@ -95,7 +97,9 @@ struct ServerMethods {
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileSuccessed", object: nil)
                 print("updateUserProfile success")
-                print(response)
+                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                print(dic)
+
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileFailed", object: nil)
                 print("updateUserProfile failure")
@@ -117,7 +121,9 @@ struct ServerMethods {
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileSuccessed", object: nil)
                 print("getUserProfile success")
-                print(response)
+                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                print(dic)
+                //print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileFailed", object: nil)
                 print("getUserProfile failure")

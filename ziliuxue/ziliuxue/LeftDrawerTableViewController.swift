@@ -76,7 +76,7 @@ class LeftDrawerTableViewController: UITableViewController {
             imageView =  UIImageView(image: UIImage(named: "findCourse"))
             
         case 3:
-            cell!.textLabel?.text = "            找代理"
+            cell!.textLabel?.text = "            找服务"
             imageView =  UIImageView(image: UIImage(named: "findRepresentative"))
             
         case 4:
