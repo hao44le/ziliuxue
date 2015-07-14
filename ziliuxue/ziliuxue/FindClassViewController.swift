@@ -17,6 +17,9 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
+         self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
     
     @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
         
@@ -44,6 +47,12 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         cell.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         return cell
     }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+        self.performSegueWithIdentifier("toCourse", sender: self)
+    }
+    
+    
     /*
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

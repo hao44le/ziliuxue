@@ -15,7 +15,7 @@ class FourthViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
-        self.navigationItem.title = "找代理"
+        self.navigationItem.title = "找服务"
         
         self.setupLeftMenuButton()
     }

@@ -3045,7 +3045,7 @@
                             <outletCollection property="gestureRecognizers" destination="6gF-EA-u8z" appends="YES" id="0Ej-66-cAa"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我的课程" id="qyS-Hy-byI"/>
+                    <tabBarItem key="tabBarItem" title="我的课程" image="myClass" id="qyS-Hy-byI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lx-c1-fMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="6gF-EA-u8z">
@@ -3068,14 +3068,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索课程" translatesAutoresizingMaskIntoConstraints="NO" id="6EP-XK-gbU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <animations/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="src-p3-5fy" id="LAC-zA-f2s"/>
-                                </connections>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gV5-vu-dJg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
@@ -3149,68 +3141,53 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="gV5-vu-dJg" firstAttribute="top" secondItem="6EP-XK-gbU" secondAttribute="bottom" id="3vF-9s-dgk"/>
-                            <constraint firstItem="6EP-XK-gbU" firstAttribute="trailing" secondItem="gV5-vu-dJg" secondAttribute="trailing" id="BMu-6A-P6H"/>
-                            <constraint firstItem="gV5-vu-dJg" firstAttribute="bottom" secondItem="VWx-aG-FIe" secondAttribute="top" id="H0R-6n-4yO"/>
-                            <constraint firstAttribute="trailing" secondItem="6EP-XK-gbU" secondAttribute="trailing" id="WZH-VG-20C"/>
-                            <constraint firstItem="gV5-vu-dJg" firstAttribute="leading" secondItem="6EP-XK-gbU" secondAttribute="leading" id="Wyk-7Y-d3j"/>
-                            <constraint firstItem="6EP-XK-gbU" firstAttribute="leading" secondItem="FBc-NG-kav" secondAttribute="leading" id="j0H-ID-0yR"/>
-                            <constraint firstItem="6EP-XK-gbU" firstAttribute="top" secondItem="gC3-Zn-Yjt" secondAttribute="bottom" id="tlc-go-wn3"/>
+                            <constraint firstItem="gV5-vu-dJg" firstAttribute="trailing" secondItem="FBc-NG-kav" secondAttribute="trailingMargin" id="Ogr-wB-oKx"/>
+                            <constraint firstItem="gV5-vu-dJg" firstAttribute="leading" secondItem="FBc-NG-kav" secondAttribute="leadingMargin" id="dNM-SI-f5b"/>
+                            <constraint firstItem="gV5-vu-dJg" firstAttribute="bottom" secondItem="VWx-aG-FIe" secondAttribute="top" id="yvl-Bp-Vb7"/>
+                            <constraint firstItem="gV5-vu-dJg" firstAttribute="top" secondItem="gC3-Zn-Yjt" secondAttribute="bottom" constant="8" symbolic="YES" id="yzo-mp-JlB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="6EP-XK-gbU"/>
                                 <exclude reference="gV5-vu-dJg"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="BMu-6A-P6H"/>
-                                <exclude reference="WZH-VG-20C"/>
-                                <exclude reference="j0H-ID-0yR"/>
-                                <exclude reference="tlc-go-wn3"/>
-                                <exclude reference="3vF-9s-dgk"/>
-                                <exclude reference="H0R-6n-4yO"/>
-                                <exclude reference="Wyk-7Y-d3j"/>
+                                <exclude reference="Ogr-wB-oKx"/>
+                                <exclude reference="dNM-SI-f5b"/>
+                                <exclude reference="yvl-Bp-Vb7"/>
+                                <exclude reference="yzo-mp-JlB"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="6EP-XK-gbU"/>
                                 <include reference="gV5-vu-dJg"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="BMu-6A-P6H"/>
-                                <include reference="WZH-VG-20C"/>
-                                <include reference="j0H-ID-0yR"/>
-                                <include reference="tlc-go-wn3"/>
-                                <include reference="3vF-9s-dgk"/>
-                                <include reference="H0R-6n-4yO"/>
-                                <include reference="Wyk-7Y-d3j"/>
+                                <include reference="Ogr-wB-oKx"/>
+                                <include reference="dNM-SI-f5b"/>
+                                <include reference="yvl-Bp-Vb7"/>
+                                <include reference="yzo-mp-JlB"/>
                             </mask>
                         </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="eF1-wS-mtr" appends="YES" id="tFe-tc-Afy"/>
+                            <outletCollection property="gestureRecognizers" destination="j0z-Fw-JjY" appends="YES" id="Wko-Li-cWX"/>
                         </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="找课程" image="findCourse_small" id="yVE-lH-J2d"/>
                     <navigationItem key="navigationItem" id="Vqp-0n-sWl"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="2Am-hh-vnk" id="FcM-sE-acw"/>
                         <segue destination="fs6-Yf-IZu" kind="show" identifier="toCourse" id="R3z-At-v6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hlk-SN-Y4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="2Am-hh-vnk">
-                    <connections>
-                        <outlet property="delegate" destination="src-p3-5fy" id="V6f-5z-TPc"/>
-                        <outlet property="searchBar" destination="6EP-XK-gbU" id="9YK-TV-REu"/>
-                        <outlet property="searchContentsController" destination="src-p3-5fy" id="6qH-3d-SzK"/>
-                        <outlet property="searchResultsDataSource" destination="src-p3-5fy" id="FWm-XV-mIO"/>
-                        <outlet property="searchResultsDelegate" destination="src-p3-5fy" id="FHC-sM-yZx"/>
-                    </connections>
-                </searchDisplayController>
                 <swipeGestureRecognizer direction="left" id="eF1-wS-mtr">
                     <connections>
                         <action selector="swipeLeft:" destination="src-p3-5fy" id="sPA-47-YBr"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="j0z-Fw-JjY">
+                    <connections>
+                        <action selector="swipeRight:" destination="src-p3-5fy" id="QuE-aI-JHr"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -3234,7 +3211,7 @@
                             <outletCollection property="gestureRecognizers" destination="D28-Qr-jD7" appends="YES" id="6wQ-LL-u7k"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="费用" id="cQ7-kE-f5I"/>
+                    <tabBarItem key="tabBarItem" title="费用" image="cost" id="cQ7-kE-f5I"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzK-S4-nvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="D28-Qr-jD7">
@@ -3612,7 +3589,7 @@
                             <outletCollection property="gestureRecognizers" destination="hOG-zG-hE7" appends="YES" id="3TF-sF-8yi"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="最新动态" id="Rl9-de-Ot3"/>
+                    <tabBarItem key="tabBarItem" title="最新动态" image="News" id="Rl9-de-Ot3"/>
                     <connections>
                         <outlet property="pieView" destination="G4a-x5-Vq0" id="ieP-Ke-WMr"/>
                     </connections>
@@ -4339,7 +4316,7 @@
                             <outletCollection property="gestureRecognizers" destination="Hp5-RF-QGc" appends="YES" id="cig-h7-5Hm"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="申请" id="HaC-3E-m3W"/>
+                    <tabBarItem key="tabBarItem" title="申请" image="application" id="HaC-3E-m3W"/>
                     <connections>
                         <outlet property="applicationDescription" destination="Vy7-qk-GiE" id="2fe-tl-OeZ"/>
                     </connections>
@@ -4377,7 +4354,7 @@
                             <outletCollection property="gestureRecognizers" destination="LK3-FY-g3f" appends="YES" id="0N9-De-r9i"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="学术" id="AQR-ub-Xt8"/>
+                    <tabBarItem key="tabBarItem" title="学术" image="academic" id="AQR-ub-Xt8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7V-C1-fyO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="0eL-OI-rRY">
@@ -4436,16 +4413,19 @@
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="157" id="1pK-h2-gfR"/>
+                                            <constraint firstAttribute="width" constant="120" id="Je0-mY-dMc"/>
                                             <constraint firstAttribute="height" constant="13" id="gxm-5P-dh7"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="1pK-h2-gfR"/>
+                                                <exclude reference="Je0-mY-dMc"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="1pK-h2-gfR"/>
+                                                <exclude reference="1pK-h2-gfR"/>
+                                                <exclude reference="Je0-mY-dMc"/>
                                                 <exclude reference="gxm-5P-dh7"/>
                                             </mask>
                                         </variation>
@@ -4477,7 +4457,9 @@
                                         <rect key="frame" x="353" y="631" width="825" height="13"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="157" id="fTF-TT-ogg"/>
+                                            <constraint firstAttribute="width" constant="157" id="fTF-TT-ogg">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="120"/>
+                                            </constraint>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -4486,7 +4468,7 @@
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="fTF-TT-ogg"/>
+                                                <exclude reference="fTF-TT-ogg"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -4535,10 +4517,17 @@
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="Cho-Xn-YgX"/>
+                                            <constraint firstAttribute="width" constant="157" id="fME-aC-6bM"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="fME-aC-6bM"/>
+                                            </mask>
+                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <exclude reference="Cho-Xn-YgX"/>
+                                                <exclude reference="fME-aC-6bM"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -4695,13 +4684,18 @@
                                     <constraint firstAttribute="bottom" secondItem="KmP-tZ-34k" secondAttribute="bottom" id="1Fl-Za-1dm"/>
                                     <constraint firstItem="KmP-tZ-34k" firstAttribute="leading" secondItem="XM8-Tc-Dqa" secondAttribute="leading" id="27h-vo-7mb"/>
                                     <constraint firstItem="KmP-tZ-34k" firstAttribute="trailing" secondItem="9xe-e5-bE5" secondAttribute="trailing" id="40H-3o-QAO"/>
+                                    <constraint firstItem="NZZ-nE-AUW" firstAttribute="leading" secondItem="f7K-yf-cqW" secondAttribute="trailing" constant="8" id="CeR-26-SgR">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                                    </constraint>
                                     <constraint firstItem="YAG-g5-7nO" firstAttribute="centerX" secondItem="fSA-Gc-S6E" secondAttribute="centerX" id="E6Y-4d-kqE"/>
                                     <constraint firstItem="R86-MN-t4e" firstAttribute="top" secondItem="f7K-yf-cqW" secondAttribute="bottom" constant="29" id="Ewt-IO-zRI"/>
                                     <constraint firstItem="D1P-00-gCc" firstAttribute="trailing" secondItem="YAG-g5-7nO" secondAttribute="trailing" id="Frn-9Y-7Wy"/>
                                     <constraint firstItem="ZRh-J2-5JV" firstAttribute="leading" secondItem="fSA-Gc-S6E" secondAttribute="leading" id="HaK-Ot-aTd"/>
                                     <constraint firstItem="f7K-yf-cqW" firstAttribute="trailing" secondItem="R86-MN-t4e" secondAttribute="trailing" id="JRC-k0-1Xo"/>
                                     <constraint firstItem="YAG-g5-7nO" firstAttribute="leading" secondItem="D1P-00-gCc" secondAttribute="leading" id="NOp-v4-G6M"/>
-                                    <constraint firstItem="NZZ-nE-AUW" firstAttribute="leading" secondItem="9xe-e5-bE5" secondAttribute="leading" id="Pyt-1n-Ix5"/>
+                                    <constraint firstItem="NZZ-nE-AUW" firstAttribute="leading" secondItem="9xe-e5-bE5" secondAttribute="leading" id="Pyt-1n-Ix5">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="D1P-00-gCc" firstAttribute="trailing" secondItem="R86-MN-t4e" secondAttribute="trailing" id="Xja-WE-pSC"/>
                                     <constraint firstItem="XM8-Tc-Dqa" firstAttribute="top" secondItem="9xe-e5-bE5" secondAttribute="top" id="YGV-nE-1J0"/>
                                     <constraint firstItem="D1P-00-gCc" firstAttribute="top" secondItem="R86-MN-t4e" secondAttribute="bottom" constant="24" id="bo9-qv-84S"/>
@@ -4712,12 +4706,17 @@
                                     <constraint firstItem="f7K-yf-cqW" firstAttribute="centerX" secondItem="PsU-m6-UPn" secondAttribute="centerX" id="jFo-0a-3mG"/>
                                     <constraint firstItem="XM8-Tc-Dqa" firstAttribute="leading" secondItem="ZRh-J2-5JV" secondAttribute="leading" id="kQ1-gZ-FKY"/>
                                     <constraint firstItem="9xe-e5-bE5" firstAttribute="trailing" secondItem="NZZ-nE-AUW" secondAttribute="trailing" id="l15-Za-K2s"/>
-                                    <constraint firstItem="XM8-Tc-Dqa" firstAttribute="trailing" secondItem="ZRh-J2-5JV" secondAttribute="trailing" id="lmA-RX-huF"/>
+                                    <constraint firstItem="XM8-Tc-Dqa" firstAttribute="trailing" secondItem="ZRh-J2-5JV" secondAttribute="trailing" id="lmA-RX-huF">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="6"/>
+                                    </constraint>
                                     <constraint firstItem="KmP-tZ-34k" firstAttribute="top" secondItem="YAG-g5-7nO" secondAttribute="bottom" constant="8" symbolic="YES" id="n9J-I8-iH1"/>
                                     <constraint firstAttribute="trailing" secondItem="KmP-tZ-34k" secondAttribute="trailing" id="pXl-pC-5MR"/>
                                     <constraint firstItem="ZRh-J2-5JV" firstAttribute="top" secondItem="fSA-Gc-S6E" secondAttribute="top" constant="54" id="rwi-VW-JgC"/>
                                     <constraint firstItem="KmP-tZ-34k" firstAttribute="top" secondItem="XM8-Tc-Dqa" secondAttribute="bottom" constant="17" id="u8z-Bu-iGK"/>
                                     <constraint firstItem="f7K-yf-cqW" firstAttribute="leading" secondItem="R86-MN-t4e" secondAttribute="leading" id="vkB-YF-1ky"/>
+                                    <constraint firstItem="f7K-yf-cqW" firstAttribute="leading" secondItem="ZRh-J2-5JV" secondAttribute="trailing" constant="40" id="wdw-Lb-lUV">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                                    </constraint>
                                     <constraint firstItem="PsU-m6-UPn" firstAttribute="top" secondItem="fSA-Gc-S6E" secondAttribute="topMargin" id="xgh-SO-JqE"/>
                                     <constraint firstItem="YAG-g5-7nO" firstAttribute="centerX" secondItem="KmP-tZ-34k" secondAttribute="centerX" id="xpV-cT-4K6"/>
                                 </constraints>
@@ -4735,34 +4734,36 @@
                                         <exclude reference="KmP-tZ-34k"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="Frn-9Y-7Wy"/>
-                                        <exclude reference="Xja-WE-pSC"/>
-                                        <exclude reference="bo9-qv-84S"/>
+                                        <exclude reference="HaK-Ot-aTd"/>
+                                        <exclude reference="hfa-IL-mCo"/>
+                                        <exclude reference="rwi-VW-JgC"/>
+                                        <exclude reference="JRC-k0-1Xo"/>
+                                        <exclude reference="i5O-O5-BPs"/>
+                                        <exclude reference="jFo-0a-3mG"/>
+                                        <exclude reference="vkB-YF-1ky"/>
+                                        <exclude reference="wdw-Lb-lUV"/>
                                         <exclude reference="xgh-SO-JqE"/>
                                         <exclude reference="Ewt-IO-zRI"/>
                                         <exclude reference="fVE-dj-tFx"/>
+                                        <exclude reference="Frn-9Y-7Wy"/>
+                                        <exclude reference="Xja-WE-pSC"/>
+                                        <exclude reference="bo9-qv-84S"/>
+                                        <exclude reference="YGV-nE-1J0"/>
+                                        <exclude reference="kQ1-gZ-FKY"/>
+                                        <exclude reference="lmA-RX-huF"/>
                                         <exclude reference="1Fl-Za-1dm"/>
                                         <exclude reference="27h-vo-7mb"/>
                                         <exclude reference="40H-3o-QAO"/>
                                         <exclude reference="n9J-I8-iH1"/>
                                         <exclude reference="pXl-pC-5MR"/>
                                         <exclude reference="u8z-Bu-iGK"/>
-                                        <exclude reference="YGV-nE-1J0"/>
-                                        <exclude reference="kQ1-gZ-FKY"/>
-                                        <exclude reference="lmA-RX-huF"/>
-                                        <exclude reference="HaK-Ot-aTd"/>
-                                        <exclude reference="hfa-IL-mCo"/>
-                                        <exclude reference="rwi-VW-JgC"/>
+                                        <exclude reference="CeR-26-SgR"/>
+                                        <exclude reference="Pyt-1n-Ix5"/>
                                         <exclude reference="E6Y-4d-kqE"/>
                                         <exclude reference="NOp-v4-G6M"/>
                                         <exclude reference="fP2-ai-aRT"/>
                                         <exclude reference="xpV-cT-4K6"/>
-                                        <exclude reference="JRC-k0-1Xo"/>
-                                        <exclude reference="i5O-O5-BPs"/>
-                                        <exclude reference="jFo-0a-3mG"/>
-                                        <exclude reference="vkB-YF-1ky"/>
                                         <exclude reference="l15-Za-K2s"/>
-                                        <exclude reference="Pyt-1n-Ix5"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -4779,34 +4780,36 @@
                                         <include reference="KmP-tZ-34k"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="Frn-9Y-7Wy"/>
-                                        <include reference="Xja-WE-pSC"/>
-                                        <include reference="bo9-qv-84S"/>
+                                        <include reference="HaK-Ot-aTd"/>
+                                        <include reference="hfa-IL-mCo"/>
+                                        <include reference="rwi-VW-JgC"/>
+                                        <include reference="JRC-k0-1Xo"/>
+                                        <include reference="i5O-O5-BPs"/>
+                                        <include reference="jFo-0a-3mG"/>
+                                        <include reference="vkB-YF-1ky"/>
+                                        <include reference="wdw-Lb-lUV"/>
                                         <include reference="xgh-SO-JqE"/>
                                         <include reference="Ewt-IO-zRI"/>
                                         <include reference="fVE-dj-tFx"/>
+                                        <include reference="Frn-9Y-7Wy"/>
+                                        <include reference="Xja-WE-pSC"/>
+                                        <include reference="bo9-qv-84S"/>
+                                        <include reference="YGV-nE-1J0"/>
+                                        <include reference="kQ1-gZ-FKY"/>
+                                        <include reference="lmA-RX-huF"/>
                                         <include reference="1Fl-Za-1dm"/>
                                         <include reference="27h-vo-7mb"/>
                                         <include reference="40H-3o-QAO"/>
                                         <include reference="n9J-I8-iH1"/>
                                         <include reference="pXl-pC-5MR"/>
                                         <include reference="u8z-Bu-iGK"/>
-                                        <include reference="YGV-nE-1J0"/>
-                                        <include reference="kQ1-gZ-FKY"/>
-                                        <include reference="lmA-RX-huF"/>
-                                        <include reference="HaK-Ot-aTd"/>
-                                        <include reference="hfa-IL-mCo"/>
-                                        <include reference="rwi-VW-JgC"/>
+                                        <include reference="CeR-26-SgR"/>
+                                        <include reference="Pyt-1n-Ix5"/>
                                         <include reference="E6Y-4d-kqE"/>
                                         <include reference="NOp-v4-G6M"/>
                                         <include reference="fP2-ai-aRT"/>
                                         <include reference="xpV-cT-4K6"/>
-                                        <include reference="JRC-k0-1Xo"/>
-                                        <include reference="i5O-O5-BPs"/>
-                                        <include reference="jFo-0a-3mG"/>
-                                        <include reference="vkB-YF-1ky"/>
                                         <include reference="l15-Za-K2s"/>
-                                        <include reference="Pyt-1n-Ix5"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -4847,7 +4850,7 @@
                             <outletCollection property="gestureRecognizers" destination="Dvt-CE-yOQ" appends="YES" id="cyj-qw-HeJ"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="排名" id="Rxc-zQ-DeA"/>
+                    <tabBarItem key="tabBarItem" title="排名" image="raking" id="Rxc-zQ-DeA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejU-oH-QHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="n8E-dz-bKu">
@@ -6469,7 +6472,7 @@
                             <outletCollection property="gestureRecognizers" destination="uqh-HA-dEe" appends="YES" id="uYg-lD-d92"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="简介" id="9FT-zS-4BR"/>
+                    <tabBarItem key="tabBarItem" title="简介" image="overview" id="9FT-zS-4BR"/>
                     <navigationItem key="navigationItem" id="Ikj-Pb-5e0"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="2850"/>
@@ -7799,16 +7802,23 @@
         <image name="Harvard University" width="250" height="250"/>
         <image name="LoginBackground" width="1280" height="2272"/>
         <image name="Map Icon" width="35" height="35"/>
+        <image name="News" width="33" height="33"/>
         <image name="SeparatorLeft" width="300" height="2"/>
         <image name="SeparatorRight" width="300" height="2"/>
+        <image name="academic" width="33" height="33"/>
         <image name="add" width="82" height="80"/>
+        <image name="application" width="33" height="33"/>
         <image name="classroom" width="1280" height="720"/>
+        <image name="cost" width="33" height="33"/>
         <image name="defaultImage" width="393" height="393"/>
-        <image name="findCourse_small" width="32" height="32"/>
+        <image name="findCourse_small" width="33" height="33"/>
+        <image name="myClass" width="33" height="33"/>
+        <image name="overview" width="33" height="33"/>
         <image name="personalInfoBack" width="1280" height="720"/>
         <image name="pricetonUniversity" width="178" height="177"/>
+        <image name="raking" width="33" height="33"/>
         <image name="star" width="100" height="100"/>
-        <image name="studyPlan_small" width="32" height="32"/>
+        <image name="studyPlan_small" width="33" height="33"/>
         <image name="wechatLogo" width="32" height="32"/>
         <image name="weiboLogo" width="32" height="32"/>
     </resources>

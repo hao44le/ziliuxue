@@ -67,13 +67,13 @@ struct ServerMethods {
         manager.POST(ServerConstant.user_profile, parameters: parameter
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
-                print("createUserProfile success")
+                print("createUserProfile success\n")
                 let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
                 print(dic)
 
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
-                print("createUserProfile failure")
+                print("createUserProfile failure\n")
                 print(error)
         }
     }
@@ -96,13 +96,13 @@ struct ServerMethods {
         manager.PUT(ServerConstant.user_profile, parameters: parameter
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileSuccessed", object: nil)
-                print("updateUserProfile success")
+                print("updateUserProfile success\n")
                 let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
                 print(dic)
 
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileFailed", object: nil)
-                print("updateUserProfile failure")
+                print("updateUserProfile failure\n")
                 print(error)
         }
 
@@ -120,13 +120,13 @@ struct ServerMethods {
         manager.GET(ServerConstant.user_profile, parameters: nil
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileSuccessed", object: nil)
-                print("getUserProfile success")
+                print("getUserProfile success\n")
                 let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
                 print(dic)
                 //print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileFailed", object: nil)
-                print("getUserProfile failure")
+                print("getUserProfile failure\n")
                 print(error)
         }
     }
@@ -140,12 +140,12 @@ struct ServerMethods {
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(getCorrectBreakPointForCollegeDetail(collegeID), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil)
-                print("getCollegeDetail success")
+                print("getCollegeDetail success\n")
                 print(response)
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailFailed", object: nil)
-                print("getCollegeDetail failure")
+                print("getCollegeDetail failure\n")
                 print(error)
         }
         
@@ -159,13 +159,13 @@ struct ServerMethods {
         print(userInfo)
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
-            print("signup success")
+            print("signup success\n")
             print(response)
             
             print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("signupFailed", object: nil)
-                print("signup failure")
+                print("signup failure\n")
                 print(error)
         }
         
@@ -178,10 +178,10 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(ServerConstant.get_user, parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
-            print("getAllUsers success")
+            print("getAllUsers success\n")
             print(respose)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("getAllUsers failure")
+                print("getAllUsers failure\n")
         }
     }
     
@@ -202,11 +202,11 @@ struct ServerMethods {
         
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("getCollegeSuccessed", object: nil)
-            print("getCollege success")
+            print("getCollege success\n")
             print(respose)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getCollegeFailed", object: nil)
-                print("getCollege failure")
+                print("getCollege failure\n")
                 print(error)
         }
         
@@ -217,11 +217,14 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",refresh_token,"refresh_token")
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            print("obtainNewToken success")
+            NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenSuccessed", object: nil)
+            
+            print("obtainNewToken success\n")
             
             print(response)
         }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("obtainNewToken failure")
+                NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenFailed", object: nil)
+                print("obtainNewToken failure\n")
                 print(error)
         }
     }
@@ -237,7 +240,7 @@ struct ServerMethods {
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
             NSNotificationCenter.defaultCenter().postNotificationName("loginSuccessed", object: nil)
-            print("login success")
+            print("login success\n")
             
             //print(response)
             let dic = response as! NSDictionary
@@ -254,7 +257,7 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("loginFailed", object: nil)
-                print("login failure")
+                print("login failure\n")
                 print(error)
         }
         
