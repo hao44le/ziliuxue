@@ -49,10 +49,108 @@ struct ServerMethods {
     
     
     
+    static func createUserProfile(country:String,degree:String,major:String,gpa:Float,toefl:Float,sat:Float,my_schools:[String]){
+        
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
+        let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
+        let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
+        let parameter = NSDictionary(objectsAndKeys: profile,"profile")
+        print(parameter)
+        
+        manager.POST(ServerConstant.user_profile, parameters: parameter
+            , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
+                print("createUserProfile success")
+                print(response)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
+                print("createUserProfile failure")
+                print(error)
+        }
+    }
+    
+    static func updateUserProfile(country:String,degree:String,major:String,gpa:Float,toefl:Float,sat:Float,my_schools:[String]){
+        
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
+        let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
+        let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
+        let parameter = NSDictionary(objectsAndKeys: profile,"profile")
+        print(parameter)
+        
+        manager.PUT(ServerConstant.user_profile, parameters: parameter
+            , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileSuccessed", object: nil)
+                print("updateUserProfile success")
+                print(response)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileFailed", object: nil)
+                print("updateUserProfile failure")
+                print(error)
+        }
+
+    }
+    
+    static func getUserProfile(){
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.responseSerializer = AFHTTPResponseSerializer()
+        
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        
+        manager.GET(ServerConstant.user_profile, parameters: nil
+            , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileSuccessed", object: nil)
+                print("getUserProfile success")
+                print(response)
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileFailed", object: nil)
+                print("getUserProfile failure")
+                print(error)
+        }
+    }
+    
+    
+    static func getCollegeDetail(collegeID:String){
+        let manager = AFHTTPRequestOperationManager()
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        manager.GET(getCorrectBreakPointForCollegeDetail(collegeID), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil)
+                print("getCollegeDetail success")
+                print(response)
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailFailed", object: nil)
+                print("getCollegeDetail failure")
+                print(error)
+        }
+        
+        
+    }
+    
     static func signup(username:String,password:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
+        print(userInfo)
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
             print("signup success")
@@ -84,6 +182,10 @@ struct ServerMethods {
     
     static func getCorrectBreakPoint(from:String,to:String)->String{
         return ServerConstant.get_college + from + "&num=" + to
+    }
+    
+    static func getCorrectBreakPointForCollegeDetail(schoolId:String)->String {
+        return ServerConstant.get_college_detail + schoolId
     }
     
     static func getCollege(from:String,to:String){
@@ -161,13 +263,15 @@ struct ServerMethods {
 
 
 struct ServerConstant {
+    
+    
     static let client_id = "c050c2c1-3ac0-46c7-abf6-e7edfb16aee4"
     static let signup = "https://livebo.cloudapp.net/api/auth/signup"
     static let obtain_token = "https://livebo.cloudapp.net/api/auth/token"
     static let get_user = "https://livebo.cloudapp.net/api/users"
     static let get_college = "https://livebo.cloudapp.net/api/colleges?ranking="
-    
-    
+    static let get_college_detail = "https://livebo.cloudapp.net/api/colleges/"
+    static let user_profile = "https://livebo.cloudapp.net/api/profile"
     
 }
 

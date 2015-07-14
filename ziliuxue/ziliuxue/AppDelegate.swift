@@ -21,11 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         
         WXApi.registerApp("wx6d67e31185e79352")
-
-        
-        
-        
-        
+       //ServerMethods.updateUserProfile("USA", degree: "master's", major: "Computer Science", gpa: 3.9, toefl: 100, sat: 2000, my_schools: ["559f599582e515e069064b4c"])
+        ServerMethods.getCollegeDetail("559f599582e515e069064b4c")
+                
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
         
