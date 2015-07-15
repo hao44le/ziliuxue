@@ -194,21 +194,50 @@ struct ServerMethods {
         return ServerConstant.get_college_detail + schoolId
     }
     
-    static func getCollege(from:String,to:String){
+    static func getCollege(from:String,to:String)->[College]{
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-        
-        manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
+        var result : [College] = []
+        manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("getCollegeSuccessed", object: nil)
             print("getCollege success\n")
-            print(respose)
+            
+            for school in response as! NSArray {
+                let id = school.objectForKey("_id") as! String
+                let name = school.objectForKey("name") as! String
+                let general = school.objectForKey("general") as! NSDictionary
+                
+                
+                let website = general.objectForKey("website") as! String
+                let logo = general.objectForKey("logo") as! String
+                let address = general.objectForKey("address") as! NSDictionary
+                let photos = general.objectForKey("photos") as! [String]
+                
+                let city = address.objectForKey("city") as! String
+                let country = address.objectForKey("country") as! String
+                let state = address.objectForKey("state") as! String
+                let zipcode = address.objectForKey("zipcode") as! String
+                
+                let college = College(id: id, name: name, city: city, state: state, country: country, zipcode: zipcode, website: website, logo: logo, photos: photos)
+                result.append(college)
+                //print(college)
+                
+            }
+            
+            
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getCollegeFailed", object: nil)
                 print("getCollege failure\n")
                 print(error)
+                
         }
+        
+        
+        
+        
+        return result
         
     }
     
@@ -220,8 +249,18 @@ struct ServerMethods {
             NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenSuccessed", object: nil)
             
             print("obtainNewToken success\n")
+            let dic = response as! NSDictionary
+            let refresh_token = dic.objectForKey("refresh_token") as! String
+            let token = dic.objectForKey("token") as! String
             
-            print(response)
+            
+            NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
+            NSUserDefaults.standardUserDefaults().setObject(refresh_token, forKey: "refresh_token")
+            
+            
+            
+            
+            
         }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenFailed", object: nil)
                 print("obtainNewToken failure\n")
