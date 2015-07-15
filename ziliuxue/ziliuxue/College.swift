@@ -35,7 +35,7 @@ class College: NSObject {
 }
 
 class CollegeOverview : NSObject {
-    var nationalUniversity : String
+    var rankins : NSDictionary
     var school_type : String
     var year_founded : String
     var religious_affiliation : String
@@ -48,11 +48,11 @@ class CollegeOverview : NSObject {
     var SAT_ACT_scores_must_be_received_by : String
     var student_faculty_ration : String
     var four_year_graduation_rate : String
-    var five_most_popular_majors : [NSDictionary]
+    var five_most_popular_majors : NSDictionary
     var tuition_and_fees : String
     var room_and_board : String
-    init(nationalUniversity:String,school_type:String,year_founded:String,religious_affiliation:String,academic_calendar:String,setting:String,endowment:String,selectivity:String,acceptance_rate:String,application_deadline:String,SAT_ACT_scores_must_be_received_by:String,student_faculty_ration:String,four_year_graduation_rate:String,five_most_popular_majors:[NSDictionary],tuition_and_fees:String,room_and_board:String){
-            self.nationalUniversity = nationalUniversity
+    init(rankins:NSDictionary,school_type:String,year_founded:String,religious_affiliation:String,academic_calendar:String,setting:String,endowment:String,selectivity:String,acceptance_rate:String,application_deadline:String,SAT_ACT_scores_must_be_received_by:String,student_faculty_ration:String,four_year_graduation_rate:String,five_most_popular_majors:NSDictionary,tuition_and_fees:String,room_and_board:String){
+            self.rankins = rankins
         self.school_type = school_type
         self.year_founded = year_founded
         self.religious_affiliation = religious_affiliation
@@ -72,7 +72,7 @@ class CollegeOverview : NSObject {
 }
 
 class CollegeRanking : NSObject {
-    var rankings : [NSDictionary]
+    var rankings : NSDictionary
     var score : String
     var high_school_counselor_score : String
     var average_freshman_retention_rate : String
@@ -95,7 +95,7 @@ class CollegeRanking : NSObject {
     var alumni_giving_rank : String
     var average_alumni_giving_rate : String
     
-    init(rankings:[NSDictionary],score:String,high_school_counselor_score:String,average_freshman_retention_rate : String,classes_with_fewer_than_20_students : String,classes_with_50_or_more_students : String,student_falculty_ratio : String,acceptance_rate : String,six_year_graduation_rate : String,predicated_graduation_rate : String,overperformance_over_underperformance : String,graduation_and_retention_rank : String,peer_assessment_score : String,faculty_resources_rank : String,percent_of_faculty_who_are_fulltime : String,student_selectivity_rank : String,SAT_ACT_25th_75th_percentile : String,freshmen_in_top10percent_of_high_school_class : String,freshmen_in_top25percent_of_high_school_class : String,financial_resource_rank : String,alumni_giving_rank : String,average_alumni_giving_rate : String){
+    init(rankings:NSDictionary,score:String,high_school_counselor_score:String,average_freshman_retention_rate : String,classes_with_fewer_than_20_students : String,classes_with_50_or_more_students : String,student_falculty_ratio : String,acceptance_rate : String,six_year_graduation_rate : String,predicated_graduation_rate : String,overperformance_over_underperformance : String,graduation_and_retention_rank : String,peer_assessment_score : String,faculty_resources_rank : String,percent_of_faculty_who_are_fulltime : String,student_selectivity_rank : String,SAT_ACT_25th_75th_percentile : String,freshmen_in_top10percent_of_high_school_class : String,freshmen_in_top25percent_of_high_school_class : String,financial_resource_rank : String,alumni_giving_rank : String,average_alumni_giving_rate : String){
             self.rankings = rankings
         self.score = score
         self.high_school_counselor_score  = high_school_counselor_score
@@ -315,7 +315,7 @@ class CollegeAcademic: NSObject {
     
     //majors
         //five_most_popular_majors
-    var five_most_popular_majors : [NSDictionary]
+    var five_most_popular_majors : NSDictionary
         //all_majors
     var all_majors : [String]
     //academic_programs
@@ -336,7 +336,7 @@ class CollegeAcademic: NSObject {
     var pursued_further_study_in_medicine : String
     
     
-    init(student_faculty_ratio : String,total_faculty : String,minority : String,international : String,full_time_faculty_with_phd_or_terminal_degree : String,classes_taught_by_graduate_assistants : String,five_most_popular_majors : [NSDictionary],all_majors : [String],degrees_offered : String,qualified_undergraduate_may_take_graduate_classes : String,preprofessional_programs : String,teacher_certification_offered_in : String,subject_areas_offering_education_certification : String,student_exchange_programs_offered_with : String,average_freshman_retention_rate : String,six_year_graduation_rate : String,bachelors_degrees_awarded : String,masters_degrees_awarded : String,doctoral_degrees_research : String,pursued_further_study_immediately_after_graduation : String,pursued_further_study_in_law : String,pursued_further_study_in_medicine : String){
+    init(student_faculty_ratio : String,total_faculty : String,minority : String,international : String,full_time_faculty_with_phd_or_terminal_degree : String,classes_taught_by_graduate_assistants : String,five_most_popular_majors : NSDictionary,all_majors : [String],degrees_offered : String,qualified_undergraduate_may_take_graduate_classes : String,preprofessional_programs : String,teacher_certification_offered_in : String,subject_areas_offering_education_certification : String,student_exchange_programs_offered_with : String,average_freshman_retention_rate : String,six_year_graduation_rate : String,bachelors_degrees_awarded : String,masters_degrees_awarded : String,doctoral_degrees_research : String,pursued_further_study_immediately_after_graduation : String,pursued_further_study_in_law : String,pursued_further_study_in_medicine : String){
         self.student_faculty_ratio = student_faculty_ratio
         self.total_faculty = total_faculty
         self.minority =  minority
