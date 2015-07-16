@@ -11,9 +11,19 @@ import UIKit
 class FindClassViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
 
     let name = ["TOEFL","IELTS","GRE","GMAT","LSAT"]
+    let imageName = ["1","2","3","4","5"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let layout = MPSkewedParallaxLayout()
+        layout.lineSpacing = 3
+        layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 350)
+        let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        //collectionView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.registerClass(MPSkewedCell.classForCoder(), forCellWithReuseIdentifier: "cell")
+        self.view.addSubview(collectionView)
         // Do any additional setup after loading the view.
     }
 
@@ -40,11 +50,20 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         return name.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        /*
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! FindClassCollectionViewCell
+        
         cell.label.text = self.name[indexPath.row]
         cell.layer.cornerRadius = 62
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        return cell
+        */
+        
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! MPSkewedCell
+        cell.image = UIImage(named: imageName[indexPath.row])
+        cell.text = name[indexPath.row]
         return cell
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
