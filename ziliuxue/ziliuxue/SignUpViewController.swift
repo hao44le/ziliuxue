@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         //signup
         
         Tool.showProgressHUD("正在注册")
-        ServerMethods.signup(email.text, password: password.text)
+        ServerMethods.signup(email.text, password: password.text,email:"")
         
         
         

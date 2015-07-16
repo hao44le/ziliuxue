@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KXr-JW-D3f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KXr-JW-D3f">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -3066,16 +3066,13 @@
             <point key="canvasLocation" x="2791.5" y="2440.5"/>
         </scene>
         <!--找课程-->
-        <scene sceneID="zP4-1v-z9V">
+        <scene sceneID="QHT-4U-EDC">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="src-p3-5fy" customClass="FindClassViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gC3-Zn-Yjt"/>
-                        <viewControllerLayoutGuide type="bottom" id="VWx-aG-FIe"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FBc-NG-kav">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="i8P-pt-O41" customClass="FindClassViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="fya-zi-Fmq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<<<<<<< HEAD
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gV5-vu-dJg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -3146,59 +3143,27 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+=======
+>>>>>>> 7e60ebd9fb9b56b2863852807bd211d47da5b706
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="gV5-vu-dJg" firstAttribute="trailing" secondItem="FBc-NG-kav" secondAttribute="trailingMargin" id="Ogr-wB-oKx"/>
-                            <constraint firstItem="gV5-vu-dJg" firstAttribute="leading" secondItem="FBc-NG-kav" secondAttribute="leadingMargin" id="dNM-SI-f5b"/>
-                            <constraint firstItem="gV5-vu-dJg" firstAttribute="bottom" secondItem="VWx-aG-FIe" secondAttribute="top" id="yvl-Bp-Vb7"/>
-                            <constraint firstItem="gV5-vu-dJg" firstAttribute="top" secondItem="gC3-Zn-Yjt" secondAttribute="bottom" constant="8" symbolic="YES" id="yzo-mp-JlB"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="gV5-vu-dJg"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="Ogr-wB-oKx"/>
-                                <exclude reference="dNM-SI-f5b"/>
-                                <exclude reference="yvl-Bp-Vb7"/>
-                                <exclude reference="yzo-mp-JlB"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="gV5-vu-dJg"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="Ogr-wB-oKx"/>
-                                <include reference="dNM-SI-f5b"/>
-                                <include reference="yvl-Bp-Vb7"/>
-                                <include reference="yzo-mp-JlB"/>
-                            </mask>
-                        </variation>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3pr-9a-qdb">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="eF1-wS-mtr" appends="YES" id="tFe-tc-Afy"/>
-                            <outletCollection property="gestureRecognizers" destination="j0z-Fw-JjY" appends="YES" id="Wko-Li-cWX"/>
+                            <outlet property="dataSource" destination="i8P-pt-O41" id="pbT-BZ-JYr"/>
+                            <outlet property="delegate" destination="i8P-pt-O41" id="rgW-2D-DF8"/>
                         </connections>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="找课程" image="findCourse_small" id="yVE-lH-J2d"/>
-                    <navigationItem key="navigationItem" id="Vqp-0n-sWl"/>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="找课程" image="findCourse_small" id="ShK-83-luj"/>
                     <connections>
-                        <segue destination="fs6-Yf-IZu" kind="show" identifier="toCourse" id="R3z-At-v6G"/>
+                        <segue destination="fs6-Yf-IZu" kind="show" identifier="toCourse" id="yKU-YV-Yen"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hlk-SN-Y4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="eF1-wS-mtr">
-                    <connections>
-                        <action selector="swipeLeft:" destination="src-p3-5fy" id="sPA-47-YBr"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="j0z-Fw-JjY">
-                    <connections>
-                        <action selector="swipeRight:" destination="src-p3-5fy" id="QuE-aI-JHr"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AUR-aU-GNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2791.5" y="1765.5"/>
         </scene>
@@ -3546,21 +3511,26 @@
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gc3-vT-JAO">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="235"/>
+                                        <animations/>
                                     </scrollView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-fV-4Kt">
                                         <rect key="frame" x="265" y="211" width="70" height="70"/>
+                                        <animations/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="北京李相TOEFL写作班" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTU-mY-0qg">
                                         <rect key="frame" x="124" y="289" width="352" height="62"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNh-LP-8WJ">
                                         <rect key="frame" x="255" y="338" width="30" height="30"/>
+                                        <animations/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXS-Xw-fNv">
                                         <rect key="frame" x="18" y="454" width="565" height="167"/>
+                                        <animations/>
                                         <string key="text">江宇：本科学历，小学语文高级教师。从事教育工作21年，一直担任语文教学兼班主任工作。曾获省、市教研教改先进个人，益阳市“优秀班主任”等光荣称号，多次被学校评为“优秀教师”、“先进德育工作者”。撰写的经验论文多次获国家、省、市级一、二等奖。学生作文《砸蛋一族》荣获世界华人小学生作文大赛二等奖。2001年参与编写的《九年义务教育六年制小学多媒体教学软件》已由省教育音像出版社出版发行。她坚信：爱是打开学生心灵的钥匙。没有爱就没有教育！</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3568,24 +3538,28 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="写作课程一对一咨询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRY-0u-xR5">
                                         <rect key="frame" x="124" y="398" width="352" height="62"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="李相" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZ9-c3-lk2">
                                         <rect key="frame" x="241" y="371" width="118" height="37"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3569" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46B-3C-IcJ">
                                         <rect key="frame" x="293" y="342" width="42" height="21"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdo-mX-mX9">
                                         <rect key="frame" x="210" y="629" width="180" height="37"/>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.77647066119999997" green="0.25490197539999998" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
                                         <state key="normal" title="加入书签">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3593,18 +3567,22 @@
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B4z-ev-SsB">
                                         <rect key="frame" x="0.0" y="690" width="600" height="169"/>
+                                        <animations/>
                                     </scrollView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2015春季班-课程信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI9-HU-4Lv">
                                         <rect key="frame" x="204" y="878" width="173" height="42"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o1t-PW-wyE">
                                         <rect key="frame" x="0.0" y="928" width="600" height="209"/>
+                                        <animations/>
                                     </scrollView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="报名后课程信息和详细地点会发送到你的邮箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etO-el-rxu">
                                         <rect key="frame" x="61" y="1145" width="350" height="32"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3616,6 +3594,7 @@
                                         </variation>
                                     </mapView>
                                 </subviews>
+<<<<<<< HEAD
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="7wW-Ox-6aW"/>
@@ -3627,8 +3606,12 @@
                                         <include reference="7wW-Ox-6aW"/>
                                     </mask>
                                 </variation>
+=======
+                                <animations/>
+>>>>>>> 7e60ebd9fb9b56b2863852807bd211d47da5b706
                             </scrollView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -3651,8 +3634,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="src-p3-5fy" kind="relationship" relationship="viewControllers" id="uPR-Gc-YHj"/>
-                        <segue destination="eDa-Ij-30V" kind="relationship" relationship="viewControllers" id="mj6-Kn-sYE"/>
+                        <segue destination="i8P-pt-O41" kind="relationship" relationship="viewControllers" id="WP2-jT-kLf"/>
+                        <segue destination="eDa-Ij-30V" kind="relationship" relationship="viewControllers" id="mZN-aT-nVI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDL-zs-6o1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4168,7 +4151,7 @@
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="OlZ-42-gvf"/>
+                                                <exclude reference="OlZ-42-gvf"/>
                                                 <exclude reference="WGO-K0-8tA"/>
                                             </mask>
                                         </variation>
@@ -4176,9 +4159,22 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老师和课程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOR-Dd-Fbt">
                                         <rect key="frame" x="249" y="627" width="73" height="21"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="lzD-lB-3iS"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="lzD-lB-3iS"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="lzD-lB-3iS"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="LNy-NR-3BF">
                                         <rect key="frame" x="353" y="631" width="825" height="13"/>
@@ -4193,7 +4189,7 @@
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="ZaQ-of-Qgo"/>
+                                                <exclude reference="ZaQ-of-Qgo"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -4324,10 +4320,12 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstItem="LNy-NR-3BF" firstAttribute="centerX" secondItem="ls3-mN-snT" secondAttribute="centerX" constant="243" id="2hf-nM-ADA"/>
                                     <constraint firstItem="ls3-mN-snT" firstAttribute="top" secondItem="Vy7-qk-GiE" secondAttribute="bottom" constant="18" id="7ph-yw-02R"/>
                                     <constraint firstItem="Vy7-qk-GiE" firstAttribute="trailing" secondItem="LNy-NR-3BF" secondAttribute="trailing" id="84K-wy-tDr"/>
                                     <constraint firstItem="Vy7-qk-GiE" firstAttribute="top" secondItem="vtP-sw-wWH" secondAttribute="bottom" constant="8" symbolic="YES" id="9Zw-LY-xwk"/>
                                     <constraint firstItem="ls3-mN-snT" firstAttribute="top" secondItem="LNy-NR-3BF" secondAttribute="top" id="CV2-ba-TBV"/>
+                                    <constraint firstItem="LNy-NR-3BF" firstAttribute="leading" secondItem="jOR-Dd-Fbt" secondAttribute="trailing" constant="3" id="CeI-KA-qIv"/>
                                     <constraint firstItem="vtP-sw-wWH" firstAttribute="leading" secondItem="Vy7-qk-GiE" secondAttribute="leading" id="Ff4-7P-ah6"/>
                                     <constraint firstItem="2la-13-EDY" firstAttribute="top" secondItem="ls3-mN-snT" secondAttribute="bottom" constant="17" id="IkT-FZ-eag"/>
                                     <constraint firstItem="vtP-sw-wWH" firstAttribute="top" secondItem="5EE-4k-eVO" secondAttribute="topMargin" id="JqJ-QE-HVm"/>
@@ -4336,6 +4334,7 @@
                                     <constraint firstItem="2la-13-EDY" firstAttribute="centerX" secondItem="5EE-4k-eVO" secondAttribute="centerX" id="RNK-sb-ZEr"/>
                                     <constraint firstAttribute="trailing" secondItem="2la-13-EDY" secondAttribute="trailing" id="X2i-fR-qLL"/>
                                     <constraint firstAttribute="bottom" secondItem="2la-13-EDY" secondAttribute="bottom" id="egf-q7-qcr"/>
+                                    <constraint firstItem="jOR-Dd-Fbt" firstAttribute="leading" secondItem="ls3-mN-snT" secondAttribute="trailing" constant="3" id="fuN-sW-YSd"/>
                                     <constraint firstItem="2la-13-EDY" firstAttribute="trailing" secondItem="LNy-NR-3BF" secondAttribute="trailing" id="kbb-YE-3ex"/>
                                     <constraint firstItem="Vy7-qk-GiE" firstAttribute="leading" secondItem="ls3-mN-snT" secondAttribute="leading" id="rDg-7a-qfg"/>
                                     <constraint firstItem="ls3-mN-snT" firstAttribute="leading" secondItem="2la-13-EDY" secondAttribute="leading" id="uMW-uK-yRu"/>
@@ -4371,6 +4370,9 @@
                                         <exclude reference="uMW-uK-yRu"/>
                                         <exclude reference="K3H-ua-Db5"/>
                                         <exclude reference="NfY-JX-KOG"/>
+                                        <exclude reference="fuN-sW-YSd"/>
+                                        <exclude reference="2hf-nM-ADA"/>
+                                        <exclude reference="CeI-KA-qIv"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -4401,6 +4403,9 @@
                                         <include reference="uMW-uK-yRu"/>
                                         <include reference="K3H-ua-Db5"/>
                                         <include reference="NfY-JX-KOG"/>
+                                        <include reference="fuN-sW-YSd"/>
+                                        <exclude reference="2hf-nM-ADA"/>
+                                        <include reference="CeI-KA-qIv"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -4710,7 +4715,8 @@
                                                                     <exclude reference="MAp-kd-ZHl"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="168" y="8" width="152" height="21"/>
                                                                 <mask key="constraints">
                                                                     <exclude reference="MAp-kd-ZHl"/>
                                                                 </mask>

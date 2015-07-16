@@ -37,6 +37,9 @@
 		C031C22A1B4F726B00277833 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C031C2291B4F726B00277833 /* MapKit.framework */; };
 		C031F1731B4A0EC6008D96D7 /* StudyPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031F1721B4A0EC6008D96D7 /* StudyPlanViewController.swift */; };
 		C039BEAD1B3A7E1C00C8D5CE /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */; };
+		C055E46A1B57C0D00031FB87 /* RPSlidingMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C055E4651B57C0D00031FB87 /* RPSlidingMenuCell.m */; };
+		C055E46B1B57C0D00031FB87 /* RPSlidingMenuLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C055E4671B57C0D00031FB87 /* RPSlidingMenuLayout.m */; };
+		C055E46C1B57C0D00031FB87 /* RPSlidingMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C055E4691B57C0D00031FB87 /* RPSlidingMenuViewController.m */; };
 		C063F56B1B520A9400B5053B /* BeforeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063F56A1B520A9400B5053B /* BeforeLoginViewController.swift */; };
 		C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C072C5431B369C680055BAFE /* SignUpViewController.swift */; };
 		C07B390E1B480A6A00C1267A /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C07B39061B480A6A00C1267A /* MMDrawerBarButtonItem.m */; };
@@ -138,6 +141,13 @@
 		C031C2291B4F726B00277833 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C031F1721B4A0EC6008D96D7 /* StudyPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyPlanViewController.swift; sourceTree = "<group>"; };
 		C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		C055E4631B57C0D00031FB87 /* RPSlidingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenu.h; sourceTree = "<group>"; };
+		C055E4641B57C0D00031FB87 /* RPSlidingMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenuCell.h; sourceTree = "<group>"; };
+		C055E4651B57C0D00031FB87 /* RPSlidingMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSlidingMenuCell.m; sourceTree = "<group>"; };
+		C055E4661B57C0D00031FB87 /* RPSlidingMenuLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenuLayout.h; sourceTree = "<group>"; };
+		C055E4671B57C0D00031FB87 /* RPSlidingMenuLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSlidingMenuLayout.m; sourceTree = "<group>"; };
+		C055E4681B57C0D00031FB87 /* RPSlidingMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSlidingMenuViewController.h; sourceTree = "<group>"; };
+		C055E4691B57C0D00031FB87 /* RPSlidingMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSlidingMenuViewController.m; sourceTree = "<group>"; };
 		C063F56A1B520A9400B5053B /* BeforeLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeLoginViewController.swift; sourceTree = "<group>"; };
 		C072C5431B369C680055BAFE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C07B39051B480A6A00C1267A /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
@@ -420,6 +430,20 @@
 			name = FindService;
 			sourceTree = "<group>";
 		};
+		C055E4621B57C0D00031FB87 /* RPSlidingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C055E4631B57C0D00031FB87 /* RPSlidingMenu.h */,
+				C055E4641B57C0D00031FB87 /* RPSlidingMenuCell.h */,
+				C055E4651B57C0D00031FB87 /* RPSlidingMenuCell.m */,
+				C055E4661B57C0D00031FB87 /* RPSlidingMenuLayout.h */,
+				C055E4671B57C0D00031FB87 /* RPSlidingMenuLayout.m */,
+				C055E4681B57C0D00031FB87 /* RPSlidingMenuViewController.h */,
+				C055E4691B57C0D00031FB87 /* RPSlidingMenuViewController.m */,
+			);
+			path = RPSlidingMenu;
+			sourceTree = "<group>";
+		};
 		C07B39041B480A6A00C1267A /* MMDrawerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +601,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C055E4621B57C0D00031FB87 /* RPSlidingMenu */,
 				7B9D50811B520B0400B7AA2E /* ProgressHUD */,
 				C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */,
 				C0B3B2001B4E0E47000954A9 /* XYPieChart */,
@@ -766,11 +791,13 @@
 				C07B39101B480A6A00C1267A /* MMDrawerVisualState.m in Sources */,
 				7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */,
 				C07B39111B480A6A00C1267A /* UIViewController+MMDrawerController.m in Sources */,
+				C055E46B1B57C0D00031FB87 /* RPSlidingMenuLayout.m in Sources */,
 				C0C3B7A51B4BBA6E006800DD /* SchoolSepecificTabBarController.swift in Sources */,
 				C0EB7FE21B54C47200DF88CB /* FindClassCollectionViewCell.swift in Sources */,
 				C07B39161B480ABE00C1267A /* LeftDrawerTableViewController.swift in Sources */,
 				C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */,
 				C0A5B64F1B4B5C020089B84E /* FindClassViewController.swift in Sources */,
+				C055E46A1B57C0D00031FB87 /* RPSlidingMenuCell.m in Sources */,
 				C0A5B6551B4B64980089B84E /* CourseTableViewCell.swift in Sources */,
 				C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */,
 				7B9D50861B520B0400B7AA2E /* ProgressHUD.m in Sources */,
@@ -782,6 +809,7 @@
 				C08905031B4D0541002CC00C /* CollegeInfoTableViewCell.swift in Sources */,
 				C07B390F1B480A6A00C1267A /* MMDrawerController.m in Sources */,
 				C063F56B1B520A9400B5053B /* BeforeLoginViewController.swift in Sources */,
+				C055E46C1B57C0D00031FB87 /* RPSlidingMenuViewController.m in Sources */,
 				C0A5B64B1B4A62A20089B84E /* FifthTabViewController.swift in Sources */,
 				C026A7421B3907D800E24908 /* SecondWizardViewController.swift in Sources */,
 				C030F0C91B415F5F00DDDFDD /* CCMPopupTransitioning.m in Sources */,
