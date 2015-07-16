@@ -21,18 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         
         WXApi.registerApp("wx6d67e31185e79352")
-        
-        
-        //ServerMethods.signup("gelei", password: "gelei", email: "geleichen@gmail.com")
-        //ServerMethods.obtainToken("geleichen@gmail.com", password: "gelei")
        // ServerMethods.obtainToken("chen", password: "gelei")
         //ServerMethods.obtainNewToken(NSUserDefaults.standardUserDefaults().objectForKey("refresh_token") as! String)
-        //ServerMethods.getCollege("1", to: "10")
+        //ServerMethods.getCollege("1", to: "3")
         
        //ServerMethods.updateUserProfile("USA", degree: "master's", major: "Computer Science", gpa: 3.2, toefl: 100, sat: 2000, my_schools: ["559f599582e515e069064b4c"])
-        
-        
-        //ServerMethods.getCollegeDetail("559f59ae82e515e069064b4f")
+        ServerMethods.getCollegeDetail("559f599582e515e069064b4c")
         //ServerMethods.getUserProfile()
                 
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
@@ -71,7 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         return true
     }
 
-    
+    func changeCenterViewControllerOnDrawer(mainVC:UIViewController){
+        self.drawerController.centerViewController = mainVC
+    }
     
     
     func applicationWillResignActive(application: UIApplication) {

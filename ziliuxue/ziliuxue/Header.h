@@ -28,6 +28,5 @@
 #import "ProgressHUD.h"
 #import "UIImageView+WebCache.h"
 
-#import "RPSlidingMenu.h"
 
 #endif /* Header_h */

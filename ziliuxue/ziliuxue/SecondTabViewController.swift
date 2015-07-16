@@ -14,8 +14,8 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "success:", name: "getCollegeDetailSuccessed", object: nil)
-        ServerMethods.getCollegeDetail("559f59ae82e515e069064b4f")
+        
+        
         // Do any additional setup after loading the view.
         self.navigationItem.title = "我的学校"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "add")
@@ -34,12 +34,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
 
-    func success(notification:NSNotification){
-        print("2")
-        let userInfo : NSDictionary = notification.userInfo!
-        print(userInfo.objectForKey("collegeDetail"))
-        
-    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
