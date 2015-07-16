@@ -8,14 +8,23 @@
 
 import UIKit
 
-class FindClassViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
+class FindClassViewController: RPSlidingMenuViewController{
 
     let name = ["TOEFL","IELTS","GRE","GMAT","LSAT"]
     let imageName = ["1","2","3","4","5"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.featureHeight = 290.0
+        self.collapsedHeight = 100.0
+        //self.view.frame = CGRectMake(0, 60, ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        //self.collectionView?.contentInset = UIEdgeInsetsMake(0, 20, 0, 0)
+        //self.collectionView?.contentOffset = CGPointMake(0, 64)
+        
+        /*
         let layout = MPSkewedParallaxLayout()
-        layout.lineSpacing = 3
+        layout.lineSpacing = 10
         layout.itemSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 350)
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         //collectionView.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
@@ -24,9 +33,25 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         collectionView.backgroundColor = UIColor.whiteColor()
         collectionView.registerClass(MPSkewedCell.classForCoder(), forCellWithReuseIdentifier: "cell")
         self.view.addSubview(collectionView)
+        */
+
         // Do any additional setup after loading the view.
     }
-
+    override func viewDidLayoutSubviews() {
+        self.collectionView?.scrollIndicatorInsets.top = 20
+    }
+    override func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+        return true
+    }
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        //scrollView.scrollIndicatorInsets.top = 0
+        //print(scrollView.scrollIndicatorInsets.top)
+    }
+    
+    override func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+        print("1")
+    }
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
          self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
@@ -42,32 +67,17 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
     }
     
     
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func numberOfItemsInSlidingMenu() -> Int {
         return name.count
     }
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        /*
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! FindClassCollectionViewCell
+    override func customizeCell(slidingMenuCell: RPSlidingMenuCell!, forRow row: Int) {
+        slidingMenuCell.textLabel.text = name[row]
+        slidingMenuCell.backgroundImageView.image = UIImage(named: "image1_320x210")
+        slidingMenuCell.detailTextLabel.text = "For you loved ones"
         
-        cell.label.text = self.name[indexPath.row]
-        cell.layer.cornerRadius = 62
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
-        return cell
-        */
-        
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! MPSkewedCell
-        cell.image = UIImage(named: imageName[indexPath.row])
-        cell.text = name[indexPath.row]
-        return cell
     }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+    override func slidingMenu(slidingMenu: RPSlidingMenuViewController!, didSelectItemAtRow row: Int) {
+        super.slidingMenu(slidingMenu, didSelectItemAtRow: row)
         self.performSegueWithIdentifier("toCourse", sender: self)
     }
     

@@ -139,14 +139,14 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(getCorrectBreakPointForCollegeDetail(collegeID), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil)
+            
                 print("getCollegeDetail success\n")
             if let message = response.objectForKey("message") as? String {
                 //not found
                 print(message)
             } else {
                 //found result
-                print(response)
+                //print(response)
                 
                 
                 
@@ -518,7 +518,9 @@ struct ServerMethods {
                 
                 
                 
-                
+            let collegeDetail = CollegeDetail(college: college, collegeOverview: collegeOverview, collegeRanking: collegeRanking, collegeApplying: collegeApplying, collegeAcademic: collegeAcademic, collegeFinancial: collegeFinancial)
+            print("1")
+            NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil, userInfo: ["collegeDetail":collegeDetail])
                 
             }
             
@@ -531,10 +533,10 @@ struct ServerMethods {
         
     }
     
-    static func signup(username:String,password:String){
+    static func signup(username:String,password:String,email:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password",email,"email")
         print(userInfo)
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
@@ -650,7 +652,7 @@ struct ServerMethods {
     static func obtainToken(username:String,password:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password")
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"email",password,"password")
         
         
         

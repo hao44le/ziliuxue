@@ -28,9 +28,6 @@
 #import "ProgressHUD.h"
 #import "UIImageView+WebCache.h"
 
-
-#import "MPSkewedCell.h"
-#import "MPSkewedParallaxLayout.h"
-
+#import "RPSlidingMenu.h"
 
 #endif /* Header_h */
