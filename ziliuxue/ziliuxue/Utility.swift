@@ -442,6 +442,81 @@ struct ServerMethods {
                 
                     let collegeApplying = CollegeApplying(application_deadline: _application_deadline, priority_application_deadline: priority_application_deadline, notification_date: notification_date, deadline_for_accepting_admission_offers: deadline_for_accepting_admission_offers, students_accepted_for_terms_other_than_the_fall: students_accepted_for_terms_other_than_the_fall, early_decision_plan_offered: early_decision_plan_offered, early_decision_deadline: early_decision_deadline, early_decision_sent_by: early_decision_sent_by, early_action_plan_offered: early_action_plan_offered, students_restricted_from_applying_to_other_early_action_plans: students_restricted_from_applying_to_other_early_action_plans, early_action_deadline: early_action_deadline, early_action_decision_sent_by: early_action_decision_sent_by, application_fee: _application_fee, application_fee_refundable: application_fee_refundable, application_fee_waived_for_stdents_with_financial_need: application_fee_waived_for_stdents_with_financial_need, application_fee_for_students_who_apply_online: application_fee_for_students_who_apply_online, deferred_admission_allowed: deferred_admission_allowed, maximum_length_of_determent: maximum_length_of_determent, application_url: application_url, common_application_accepted: common_application_accepted, tuition_deposit: tuition_deposit, tuition_deposit_refundable: tuition_deposit_refundable, room_deposit: room_deposit, room_deposit_refundable: room_deposit_refundable, admission_phone: admission_phone, admission_email: admission_email, admission_address: admission_address, admission_interview: admission_interview, campus_visit: campus_visit, offcampus_interviews: offcampus_interviews, open_admission_policy: open_admission_policy, college_use_SAT_or_ACT_in_admission_decisions: college_use_SAT_or_ACT_in_admission_decisions, required_standardized_tests: required_standardized_tests, ACT_with_writing_test: ACT_with_writing_test, SAT_ACT_scores_must_be_received_by: _SAT_ACT_scores_must_be_received_by, SAT_subject_test_scores_must_be_received_by: SAT_subject_test_scores_must_be_received_by, rigor_of_secondary_school_record: rigor_of_secondary_school_record, class_rank: class_rank, GPA: GPA, standardized_test_scores: standardized_test_scores, application_essay: application_essay, recommendations: recommendations, SAT_subject_tests: SAT_subject_tests, interview: interview, extracurricular_activities: extracurricular_activities, talent_ability: talent_ability, character_personal_qualities: character_personal_qualities, first_generation_college_student: first_generation_college_student, alumni_relations: alumni_relations, geographical_residence: geographical_residence, state_residency: state_residency, religious_affiliation: _religious_affiliation, race_ethnicity: race_ethnicity, volunteer_work: volunteer_work, work_experience: work_experience, applicants_interest_level: applicants_interest_level, selectivity: selectivity_selectivity, acceptance_rate: acceptance_rate, early_decision_acceptance_rate: early_decision_acceptance_rate, early_action_acceptance_rate: early_action_acceptance_rate, acceptance_rate_wo_early_decision: acceptance_rate_wo_early_decision, applicants: applicants, female_applicants: female_applicants, male_applicants: male_applicants, applicants_accepted: applicants_accepted, female_applicants_accepted: female_applicants_accepted, male_applicants_accepted: male_applicants_accepted, freshman_enrollment: freshman_enrollment, school_has_a_wait_list: school_has_a_wait_list, applicants_placed_on_wait_list: applicants_placed_on_wait_list, students_accepting_place_on_wait_list: students_accepting_place_on_wait_list, students_accepted_from_wait_list: students_accepted_from_wait_list)
                 
+                //-------------------------------------------------------------------------------------------------------------
+                //academic
+                    //faculty_and_classes
+                    let faculty_and_classes = academic.objectForKey("faculty_and_classes") as! NSDictionary
+                
+                
+                        let student_faculty_ratio = faculty_and_classes.objectForKey("student_faculty_ratio") as! String
+                        let total_faculty = faculty_and_classes.objectForKey("total_faculty") as! String
+                        let minority = faculty_and_classes.objectForKey("minority") as! String
+                        let international = faculty_and_classes.objectForKey("international") as! String
+                        let full_time_faculty_with_phd_or_terminal_degree = faculty_and_classes.objectForKey("full_time_faculty_with_phd_or_terminal_degree") as! String
+                        let classes_taught_by_graduate_assistants = faculty_and_classes.objectForKey("classes_taught_by_graduate_assistants") as! String
+                
+                
+                
+                
+                
+                
+                
+                    //majors
+                    let majors = academic.objectForKey("majors") as! NSDictionary
+                        //five_most_popular_majors
+                        let five_most_popular_majors_ofMajors = majors.objectForKey("five_most_popular_majors") as! NSDictionary
+                        //all_majors
+                        let all_majors = majors.objectForKey("all_majors") as! NSArray
+                
+                    //academic_programs
+                    let academic_programs = academic.objectForKey("academic_programs") as! NSDictionary
+                
+                        let degrees_offered = academic_programs.objectForKey("degrees_offered") as! String
+                        let qualified_undergraduate_may_take_graduate_classes = academic_programs.objectForKey("qualified_undergraduate_may_take_graduate_classes") as! String
+                        let preprofessional_programs = academic_programs.objectForKey("preprofessional_programs") as! String
+                        let teacher_certification_offered_in = academic_programs.objectForKey("teacher_certification_offered_in") as! String
+                        let subject_areas_offering_education_certification = academic_programs.objectForKey("subject_areas_offering_education_certification") as! String
+                        let student_exchange_programs_offered_with = academic_programs.objectForKey("student_exchange_programs_offered_with") as! String
+                
+                
+                
+                
+                    //graduation_and_retention
+                    let graduation_and_retention = academic.objectForKey("graduation_and_retention") as! NSDictionary
+                
+                        let average_freshman_retention_rate_OfGraduationAndRetention = graduation_and_retention.objectForKey("average_freshman_retention_rate") as! String
+                        let six_year_graduation_rate_OfGraduationAndRetention = graduation_and_retention.objectForKey("six_year_graduation_rate") as! String
+                        let bachelors_degrees_awarded = graduation_and_retention.objectForKey("bachelors_degrees_awarded") as! String
+                        let masters_degrees_awarded_OfGraduationAndRetention = graduation_and_retention.objectForKey("masters_degrees_awarded") as! String
+                        let doctoral_degrees_research = graduation_and_retention.objectForKey("doctoral_degrees_research") as! String
+                        let pursued_further_study_immediately_after_graduation = graduation_and_retention.objectForKey("pursued_further_study_immediately_after_graduation") as! String
+                        let pursued_further_study_in_law = graduation_and_retention.objectForKey("pursued_further_study_in_law") as! String
+                        let pursued_further_study_in_medicine = graduation_and_retention.objectForKey("pursued_further_study_in_medicine") as! String
+                
+                
+                
+                
+                let collegeAcademic = CollegeAcademic(student_faculty_ratio: student_faculty_ratio, total_faculty: total_faculty, minority: minority, international: international, full_time_faculty_with_phd_or_terminal_degree: full_time_faculty_with_phd_or_terminal_degree, classes_taught_by_graduate_assistants: classes_taught_by_graduate_assistants, five_most_popular_majors: five_most_popular_majors_ofMajors, all_majors: all_majors, degrees_offered: degrees_offered, qualified_undergraduate_may_take_graduate_classes: qualified_undergraduate_may_take_graduate_classes, preprofessional_programs: preprofessional_programs, teacher_certification_offered_in: teacher_certification_offered_in, subject_areas_offering_education_certification: subject_areas_offering_education_certification, student_exchange_programs_offered_with: student_exchange_programs_offered_with, average_freshman_retention_rate: average_freshman_retention_rate, six_year_graduation_rate: six_year_graduation_rate, bachelors_degrees_awarded: bachelors_degrees_awarded, masters_degrees_awarded: masters_degrees_awarded_OfGraduationAndRetention, doctoral_degrees_research: doctoral_degrees_research, pursued_further_study_immediately_after_graduation: pursued_further_study_immediately_after_graduation, pursued_further_study_in_law: pursued_further_study_in_law, pursued_further_study_in_medicine: pursued_further_study_in_medicine)
+
+                
+                
+                //-------------------------------------------------------------------------------------------------------------
+                //financial
+                
+                
+                let tuition_and_fees_OfFinancial = financial.objectForKey("tuition_and_fees") as! String
+                let room_and_board_OfFinancial = financial.objectForKey("room_and_board") as! String
+                let estimated_cost_of_books_and_supplies = financial.objectForKey("estimated_cost_of_books_and_supplies") as! String
+                let estimated_personal_expenses = financial.objectForKey("estimated_personal_expenses") as! String
+                let average_need_based_scholarship = financial.objectForKey("average_need_based_scholarship") as! String
+                let students_who_received_need_based_scholarship = financial.objectForKey("students_who_received_need_based_scholarship") as! String
+                
+                
+                
+                let collegeFinancial = CollegeFinancial(tuition_and_fees: tuition_and_fees_OfFinancial, room_and_board: room_and_board_OfFinancial, estimated_cost_of_books_and_supplies: estimated_cost_of_books_and_supplies, estimated_personal_expenses: estimated_personal_expenses, average_need_based_scholarship: average_need_based_scholarship, students_who_received_need_based_scholarship: students_who_received_need_based_scholarship)
+                
+                
+                
                 
                 
                 
@@ -507,7 +582,7 @@ struct ServerMethods {
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("getCollegeSuccessed", object: nil)
             print("getCollege success\n")
-            
+            print(response)
             for school in response as! NSArray {
                 let id = school.objectForKey("_id") as! String
                 let name = school.objectForKey("name") as! String
@@ -526,7 +601,7 @@ struct ServerMethods {
                 
                 let college = College(id: id, name: name, city: city, state: state, country: country, zipcode: zipcode, website: website, logo: logo, photos: photos)
                 result.append(college)
-                //print(college)
+                //print(id)
                 
             }
             

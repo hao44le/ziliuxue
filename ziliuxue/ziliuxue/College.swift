@@ -317,7 +317,7 @@ class CollegeAcademic: NSObject {
         //five_most_popular_majors
     var five_most_popular_majors : NSDictionary
         //all_majors
-    var all_majors : [String]
+    var all_majors : NSArray
     //academic_programs
     var degrees_offered : String
     var qualified_undergraduate_may_take_graduate_classes : String
@@ -336,7 +336,7 @@ class CollegeAcademic: NSObject {
     var pursued_further_study_in_medicine : String
     
     
-    init(student_faculty_ratio : String,total_faculty : String,minority : String,international : String,full_time_faculty_with_phd_or_terminal_degree : String,classes_taught_by_graduate_assistants : String,five_most_popular_majors : NSDictionary,all_majors : [String],degrees_offered : String,qualified_undergraduate_may_take_graduate_classes : String,preprofessional_programs : String,teacher_certification_offered_in : String,subject_areas_offering_education_certification : String,student_exchange_programs_offered_with : String,average_freshman_retention_rate : String,six_year_graduation_rate : String,bachelors_degrees_awarded : String,masters_degrees_awarded : String,doctoral_degrees_research : String,pursued_further_study_immediately_after_graduation : String,pursued_further_study_in_law : String,pursued_further_study_in_medicine : String){
+    init(student_faculty_ratio : String,total_faculty : String,minority : String,international : String,full_time_faculty_with_phd_or_terminal_degree : String,classes_taught_by_graduate_assistants : String,five_most_popular_majors : NSDictionary,all_majors : NSArray,degrees_offered : String,qualified_undergraduate_may_take_graduate_classes : String,preprofessional_programs : String,teacher_certification_offered_in : String,subject_areas_offering_education_certification : String,student_exchange_programs_offered_with : String,average_freshman_retention_rate : String,six_year_graduation_rate : String,bachelors_degrees_awarded : String,masters_degrees_awarded : String,doctoral_degrees_research : String,pursued_further_study_immediately_after_graduation : String,pursued_further_study_in_law : String,pursued_further_study_in_medicine : String){
         self.student_faculty_ratio = student_faculty_ratio
         self.total_faculty = total_faculty
         self.minority =  minority
