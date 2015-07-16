@@ -29,4 +29,8 @@
 #import "UIImageView+WebCache.h"
 
 
+#import "MPSkewedCell.h"
+#import "MPSkewedParallaxLayout.h"
+
+
 #endif /* Header_h */
