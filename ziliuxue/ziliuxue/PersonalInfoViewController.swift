@@ -17,16 +17,55 @@ class PersonalInfoViewController: UIViewController,UITableViewDataSource,UITable
     let array = ["你的个人信息","你的账号信息和密码","你的考试信息"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.topImage.layer.cornerRadius = 40
+        
+        self.topImage.clipsToBounds = true
+        self.topImage.layer.borderWidth = 3
+        self.topImage.layer.borderColor = UIColor.whiteColor().CGColor
         
         
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "postweChatInfo:", name: "postweChatInfo", object: nil)
         // Do any additional setup after loading the view.
         self.navigationItem.title = "个人信息"
         
         self.setupLeftMenuButton()
     }
     
-    
-    
+    func postweChatInfo(notification:NSNotification){
+        let userInfo : NSDictionary = notification.userInfo!
+        let nickname = userInfo.objectForKey("nickname") as! String
+        let imgUrl = userInfo.objectForKey("imgURL") as! String
+        userName.text = nickname
+        topImage.sd_setImageWithURL(NSURL(string: imgUrl), placeholderImage: UIImage(named: "defaultImage"))
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let loginWay = NSUserDefaults.standardUserDefaults().objectForKey("loginWay") as? String {
+            if loginWay == "weChat" {
+                if let imgURL = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userImageUrl") as? String {
+                    topImage.sd_setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "defaultImage"))
+                }
+                
+                if let nickname = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userNickname") as? String {
+                    userName.text = nickname
+                }
+            } else if loginWay == "ziliuxue" {
+                if let nickName = NSUserDefaults.standardUserDefaults().objectForKey("nickName") as? String {
+                    userName.text = nickName
+                    topImage.image = UIImage(named: "defaultImage")
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
