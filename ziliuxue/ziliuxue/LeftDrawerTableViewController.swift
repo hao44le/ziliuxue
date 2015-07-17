@@ -139,7 +139,8 @@ class LeftDrawerTableViewController: UITableViewController {
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalInfoTab") as! PersonalInfoViewController
             
         case 8:
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            LocalStore.setLogout()
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
         default:
             break
         }

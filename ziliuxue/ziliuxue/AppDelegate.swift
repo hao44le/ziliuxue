@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         //ServerMethods.getCollege("1", to: "3")
         
        //ServerMethods.updateUserProfile("USA", degree: "master's", major: "Computer Science", gpa: 3.2, toefl: 100, sat: 2000, my_schools: ["559f599582e515e069064b4c"])
-        ServerMethods.getCollegeDetail("559f599582e515e069064b4c")
+        //ServerMethods.getCollegeDetail("559f599582e515e069064b4c")
         //ServerMethods.getUserProfile()
                 
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
@@ -108,9 +108,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
                 //print("success")
                 
                 let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-                print(dic)
+                //print(dic)
                 if let token = dic.objectForKey("access_token") as? String {
                     if let openid = dic.objectForKey("openid") as? String {
+                        NSUserDefaults.standardUserDefaults().setObject(token, forKey: "weChat_token")
+                        if let refresh_token = dic.objectForKey("refresh_token") as? String {
+                            NSUserDefaults.standardUserDefaults().setObject("", forKey: "weChat_refresh_token")
+                        }
                         self.getUserInfo(token, openid: openid)
                     }
                 } else {
@@ -119,6 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
                 }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                     print("failure")
                     print(error)
+                    NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Failed", object: nil)
                 }
             
 
@@ -134,7 +139,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         manager.GET(user_url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             //print("success")
             let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-            print(dic)
+            if let openid = dic.objectForKey("openid") as? String{
+                if let nickname = dic.objectForKey("nickname") as? String {
+                    if let headimgurl = dic.objectForKey("headimgurl") as? String {
+                        
+                        let city = dic.objectForKey("city") as! String
+                        let country = dic.objectForKey("country") as! String
+                        let language = dic.objectForKey("language") as! String
+                        let province = dic.objectForKey("province") as! String
+                        let sex = dic.objectForKey("sex") as! Int
+                        let unionid = dic.objectForKey("unionid") as! String
+                        let privilege = dic.objectForKey("privilege") as! NSArray
+                        
+                        manager.securityPolicy.allowInvalidCertificates = true
+                        let others = NSDictionary(objectsAndKeys: city,"city",country,"country",language,"language",province,"province",sex,"sex",unionid,"unionid",privilege,"privilege")
+                        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",openid,"open_id",nickname,"nickname",headimgurl,"img_url",others,"others")
+                        manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                                let server_callback = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                                let token = server_callback.objectForKey("token") as! String
+                                let refresh_token = server_callback.objectForKey("refresh_token") as! String
+                                NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
+                                NSUserDefaults.standardUserDefaults().setObject(refresh_token, forKey: "refresh_token")
+                                
+                                NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Successed", object: nil)
+                            }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                                print(error)
+                                NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Failed", object: nil)
+                        })
+                    }
+                }
+            }
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 print("failure")

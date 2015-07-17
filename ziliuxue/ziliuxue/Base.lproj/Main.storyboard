@@ -4184,7 +4184,7 @@
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="OlZ-42-gvf"/>
+                                                <exclude reference="OlZ-42-gvf"/>
                                                 <exclude reference="WGO-K0-8tA"/>
                                             </mask>
                                         </variation>
@@ -4192,9 +4192,22 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老师和课程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOR-Dd-Fbt">
                                         <rect key="frame" x="249" y="627" width="73" height="21"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="KiX-2o-iux"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="KiX-2o-iux"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="KiX-2o-iux"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="LNy-NR-3BF">
                                         <rect key="frame" x="353" y="631" width="825" height="13"/>
@@ -4209,7 +4222,7 @@
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="ZaQ-of-Qgo"/>
+                                                <exclude reference="ZaQ-of-Qgo"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -4243,8 +4256,7 @@
                                                                     <exclude reference="mMx-eD-GrT"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="168" y="8" width="152" height="21"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <exclude reference="mMx-eD-GrT"/>
                                                                 </mask>
@@ -4340,6 +4352,7 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstItem="jOR-Dd-Fbt" firstAttribute="leading" secondItem="ls3-mN-snT" secondAttribute="trailing" constant="3" id="1v5-NU-y3H"/>
                                     <constraint firstItem="ls3-mN-snT" firstAttribute="top" secondItem="Vy7-qk-GiE" secondAttribute="bottom" constant="18" id="7ph-yw-02R"/>
                                     <constraint firstItem="Vy7-qk-GiE" firstAttribute="trailing" secondItem="LNy-NR-3BF" secondAttribute="trailing" id="84K-wy-tDr"/>
                                     <constraint firstItem="Vy7-qk-GiE" firstAttribute="top" secondItem="vtP-sw-wWH" secondAttribute="bottom" constant="8" symbolic="YES" id="9Zw-LY-xwk"/>
@@ -4352,6 +4365,7 @@
                                     <constraint firstItem="2la-13-EDY" firstAttribute="centerX" secondItem="5EE-4k-eVO" secondAttribute="centerX" id="RNK-sb-ZEr"/>
                                     <constraint firstAttribute="trailing" secondItem="2la-13-EDY" secondAttribute="trailing" id="X2i-fR-qLL"/>
                                     <constraint firstAttribute="bottom" secondItem="2la-13-EDY" secondAttribute="bottom" id="egf-q7-qcr"/>
+                                    <constraint firstItem="LNy-NR-3BF" firstAttribute="leading" secondItem="jOR-Dd-Fbt" secondAttribute="trailing" constant="3" id="ftc-H5-bew"/>
                                     <constraint firstItem="2la-13-EDY" firstAttribute="trailing" secondItem="LNy-NR-3BF" secondAttribute="trailing" id="kbb-YE-3ex"/>
                                     <constraint firstItem="Vy7-qk-GiE" firstAttribute="leading" secondItem="ls3-mN-snT" secondAttribute="leading" id="rDg-7a-qfg"/>
                                     <constraint firstItem="ls3-mN-snT" firstAttribute="leading" secondItem="2la-13-EDY" secondAttribute="leading" id="uMW-uK-yRu"/>
@@ -4385,8 +4399,10 @@
                                         <exclude reference="7ph-yw-02R"/>
                                         <exclude reference="CV2-ba-TBV"/>
                                         <exclude reference="uMW-uK-yRu"/>
+                                        <exclude reference="1v5-NU-y3H"/>
                                         <exclude reference="K3H-ua-Db5"/>
                                         <exclude reference="NfY-JX-KOG"/>
+                                        <exclude reference="ftc-H5-bew"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -4415,8 +4431,10 @@
                                         <include reference="7ph-yw-02R"/>
                                         <include reference="CV2-ba-TBV"/>
                                         <include reference="uMW-uK-yRu"/>
+                                        <include reference="1v5-NU-y3H"/>
                                         <include reference="K3H-ua-Db5"/>
                                         <include reference="NfY-JX-KOG"/>
+                                        <include reference="ftc-H5-bew"/>
                                     </mask>
                                 </variation>
                             </scrollView>

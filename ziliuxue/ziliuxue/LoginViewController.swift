@@ -66,6 +66,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func weChatClicked(sender: UIButton) {
+        Tool.showProgressHUD("正在验证")
         let req = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"
@@ -81,7 +82,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         self.navigationController?.navigationBar.hidden = false
         
-        
+               NSNotificationCenter.defaultCenter().addObserver(self, selector: "weChat_login_Successed", name: "weChat_login_Successed", object: nil)
         
         
         
@@ -110,6 +111,13 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    func weChat_login_Successed(){
+        Tool.dismissHUD()
+        LocalStore.setLogined()
+        self.performSegueWithIdentifier("loginToMain", sender: self)
+    }
+    
+    
     func loginSuccessed(){
         LocalStore.setLogined()
         //self.activityIndicator.stopAnimating()
@@ -117,9 +125,9 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.performSegueWithIdentifier("loginToMain", sender: self)
     }
     func loginFailed(){
+        Tool.dismissHUD()
         let ac = UIAlertView(title: "账号密码不正确", message: nil, delegate: nil, cancelButtonTitle: "好的")
         ac.show()
-        Tool.dismissHUD()
     }
     
     

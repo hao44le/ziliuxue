@@ -33,7 +33,11 @@ struct LocalStore {
         userDefaults.setObject(true, forKey: "loginKey")
     }
     
-    
+    static func setLogout(){
+        userDefaults.setObject("", forKey: "token")
+        userDefaults.setObject("", forKey: "refresh_token")
+        userDefaults.setObject(false, forKey: "loginKey")
+    }
     
     
 }
@@ -534,7 +538,7 @@ struct ServerMethods {
     static func signup(username:String,password:String,email:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"username",password,"password",email,"email")
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"name",password,"password",email,"email")
         print(userInfo)
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
@@ -647,10 +651,10 @@ struct ServerMethods {
         }
     }
     
-    static func obtainToken(username:String,password:String){
+    static func obtainToken(email:String,password:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"email",password,"password")
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",email,"email",password,"password")
         
         
         

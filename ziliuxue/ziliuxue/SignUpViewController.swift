@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         //signup
         
         Tool.showProgressHUD("正在注册")
-        ServerMethods.signup(email.text, password: password.text)
+        ServerMethods.signup(name.text, password: password.text,email:email.text)
         
         
         
@@ -82,6 +82,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         Tool.dismissHUD()
     }
     
+    
     @IBAction func tapped(sender: UITapGestureRecognizer) {
         
         email.resignFirstResponder()
@@ -98,7 +99,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         signUpButton.layer.borderWidth = 0.5
         signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
 
-        
+ 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupSuccessed", name: "signupSuccessed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupFailed", name: "signupFailed", object: nil)
         
