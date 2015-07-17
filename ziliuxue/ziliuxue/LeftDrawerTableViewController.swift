@@ -10,11 +10,21 @@ import UIKit
 
 class LeftDrawerTableViewController: UITableViewController {
     
+    @IBOutlet weak var userImage: UIImageView!
     
+    @IBOutlet weak var userName: UILabel!
     @IBOutlet var headView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "postweChatInfo:", name: "postweChatInfo", object: nil)
+        self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
+        self.userImage.clipsToBounds = true
+        self.userImage.layer.borderWidth = 3
+        self.userImage.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,6 +35,39 @@ class LeftDrawerTableViewController: UITableViewController {
         self.tableView.tableHeaderView = headView
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let loginWay = NSUserDefaults.standardUserDefaults().objectForKey("loginWay") as? String {
+            if loginWay == "weChat" {
+                if let imgURL = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userImageUrl") as? String {
+                    userImage.sd_setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "defaultImage"))
+                }
+                
+                if let nickname = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userNickname") as? String {
+                    userName.text = nickname
+                }
+            } else if loginWay == "ziliuxue" {
+                if let nickName = NSUserDefaults.standardUserDefaults().objectForKey("nickName") as? String {
+                    userName.text = nickName
+                    userImage.image = UIImage(named: "defaultImage")
+                }
+            }
+        }
+        
+        
+        
+        
+       
+       
+    }
+    func postweChatInfo(notification:NSNotification){
+        let userInfo : NSDictionary = notification.userInfo!
+        let nickname = userInfo.objectForKey("nickname") as! String
+        let imgUrl = userInfo.objectForKey("imgURL") as! String
+        userName.text = nickname
+        userImage.sd_setImageWithURL(NSURL(string: imgUrl), placeholderImage: UIImage(named: "defaultImage"))
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

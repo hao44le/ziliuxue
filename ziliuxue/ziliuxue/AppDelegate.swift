@@ -119,11 +119,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
                     }
                 } else {
                     Tool.showErrorHUD("用户取消微信授权")
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 }
                 }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                     print("failure")
                     print(error)
                     NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Failed", object: nil)
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 }
             
 
@@ -160,11 +162,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
                                 let refresh_token = server_callback.objectForKey("refresh_token") as! String
                                 NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
                                 NSUserDefaults.standardUserDefaults().setObject(refresh_token, forKey: "refresh_token")
-                                
+                            
                                 NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Successed", object: nil)
+                                NSNotificationCenter.defaultCenter().postNotificationName("postweChatInfo", object: nil, userInfo:["nickname":nickname,"imgURL":headimgurl])
+                                NSUserDefaults.standardUserDefaults().setObject(headimgurl, forKey: "weChat_userImageUrl")
+                                NSUserDefaults.standardUserDefaults().setObject(nickname, forKey: "weChat_userNickname")
                             }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                                 print(error)
                                 NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Failed", object: nil)
+                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                         })
                     }
                 }

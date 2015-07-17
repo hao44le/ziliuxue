@@ -39,6 +39,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             //let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             //self.activityIndicator.startAnimating()
             Tool.showProgressHUD("正在验证")
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
             //dispatch_async(dispatch_get_global_queue(priority, 0)){ () -> Void in
         
                 ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
@@ -66,7 +67,9 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func weChatClicked(sender: UIButton) {
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         Tool.showProgressHUD("正在验证")
+        
         let req = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"
@@ -112,6 +115,8 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func weChat_login_Successed(){
+        NSUserDefaults.standardUserDefaults().setObject("weChat", forKey: "loginWay")
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
         Tool.dismissHUD()
         LocalStore.setLogined()
         self.performSegueWithIdentifier("loginToMain", sender: self)
@@ -119,12 +124,16 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     
     func loginSuccessed(){
+        NSUserDefaults.standardUserDefaults().setObject("ziliuxue", forKey: "loginWay")
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        NSUserDefaults.standardUserDefaults().setObject(email.text, forKey: "nickName")
         LocalStore.setLogined()
         //self.activityIndicator.stopAnimating()
         Tool.dismissHUD()
         self.performSegueWithIdentifier("loginToMain", sender: self)
     }
     func loginFailed(){
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
         Tool.dismissHUD()
         let ac = UIAlertView(title: "账号密码不正确", message: nil, delegate: nil, cancelButtonTitle: "好的")
         ac.show()

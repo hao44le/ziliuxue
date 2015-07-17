@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     var repeated_password:UITextField = UITextField()
     let field = ["名字","电子邮件","密码","重输密码"]
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var signUpButton: UIButton!
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
@@ -63,6 +64,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         //signup
         
         Tool.showProgressHUD("正在注册")
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         ServerMethods.signup(name.text, password: password.text,email:email.text)
         
         
@@ -70,6 +72,9 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func signupSuccessed(){
+        NSUserDefaults.standardUserDefaults().setObject("ziliuxue", forKey: "loginWay")
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        NSUserDefaults.standardUserDefaults().setObject(name.text, forKey: "nickName")
         ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
         LocalStore.setLogined()
         //self.activityIndicator.stopAnimating()
@@ -77,6 +82,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.performSegueWithIdentifier("signupToMain", sender: self)
     }
     func signupFailed(){
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
         let ac = UIAlertView(title: "注册失败，请再试一次", message: nil, delegate: nil, cancelButtonTitle: "好的")
         ac.show()
         Tool.dismissHUD()
@@ -106,6 +112,9 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         // Do any additional setup after loading the view.
     }
 
+    
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -118,6 +127,9 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
         cell.label.text = field[indexPath.row]
+
+        
+        
         switch indexPath.row {
         case 0 :
             name = cell.textField

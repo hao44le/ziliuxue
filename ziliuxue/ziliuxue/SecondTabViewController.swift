@@ -15,7 +15,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "success:", name: "getCollegeDetailSuccessed", object: nil)
         // Do any additional setup after loading the view.
         self.navigationItem.title = "我的学校"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "add")
@@ -24,8 +24,10 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
 
         self.setupLeftMenuButton()
     }
-    
-    func add(){
+    func success(notification:NSNotification){
+        let userInfo : NSDictionary = notification.userInfo!
+        print(userInfo.objectForKey("collegeDetail"))
+        
         
     }
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {

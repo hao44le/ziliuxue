@@ -7,6 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftDrawerTableViewController" customModule="ziliuxue" customModuleProvider="target">
             <connections>
                 <outlet property="headView" destination="Ocf-Eo-sqj" id="pjY-1N-0US"/>
+                <outlet property="userImage" destination="k7N-Lp-sny" id="fO3-RZ-Zz2"/>
+                <outlet property="userName" destination="8jy-AB-2Oa" id="c5O-y4-HQI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,10 +34,10 @@
                         <constraint firstAttribute="width" constant="80" id="jKW-vL-CNM"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jy-AB-2Oa">
-                    <rect key="frame" x="121" y="50" width="99" height="43"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jy-AB-2Oa">
+                    <rect key="frame" x="121" y="32" width="131" height="80"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -46,10 +48,10 @@
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="top" secondItem="Ocf-Eo-sqj" secondAttribute="top" constant="32" id="2wl-dJ-UUW"/>
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="leading" secondItem="Ocf-Eo-sqj" secondAttribute="leading" constant="33" id="M5k-KN-sqv"/>
                 <constraint firstItem="8jy-AB-2Oa" firstAttribute="leading" secondItem="k7N-Lp-sny" secondAttribute="trailing" constant="8" symbolic="YES" id="OpU-dF-IFZ"/>
-                <constraint firstAttribute="bottom" secondItem="8jy-AB-2Oa" secondAttribute="bottom" constant="51" id="gQV-rx-40t"/>
-                <constraint firstItem="8jy-AB-2Oa" firstAttribute="top" secondItem="Ocf-Eo-sqj" secondAttribute="top" constant="50" id="nYY-CV-UoR"/>
+                <constraint firstAttribute="bottom" secondItem="8jy-AB-2Oa" secondAttribute="bottom" constant="32" id="gQV-rx-40t"/>
+                <constraint firstItem="8jy-AB-2Oa" firstAttribute="top" secondItem="Ocf-Eo-sqj" secondAttribute="top" constant="32" id="nYY-CV-UoR"/>
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="centerY" secondItem="Ocf-Eo-sqj" secondAttribute="centerY" id="qSa-f3-2pI"/>
-                <constraint firstAttribute="trailing" secondItem="8jy-AB-2Oa" secondAttribute="trailing" constant="40" id="xob-6b-LMz"/>
+                <constraint firstAttribute="trailing" secondItem="8jy-AB-2Oa" secondAttribute="trailing" constant="8" id="xob-6b-LMz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="1126" y="277"/>

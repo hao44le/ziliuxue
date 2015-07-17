@@ -36,7 +36,11 @@ struct LocalStore {
     static func setLogout(){
         userDefaults.setObject("", forKey: "token")
         userDefaults.setObject("", forKey: "refresh_token")
+        userDefaults.setObject(nil, forKey: "weChat_userImageUrl")
+        userDefaults.setObject(nil, forKey: "weChat_userNickname")
+        userDefaults.setObject(nil, forKey: "nickName")
         userDefaults.setObject(false, forKey: "loginKey")
+        userDefaults.setObject(nil, forKey: "loginWay")
     }
     
     
@@ -520,7 +524,6 @@ struct ServerMethods {
                 let collegeFinancial = CollegeFinancial(tuition_and_fees: tuition_and_fees_OfFinancial, room_and_board: room_and_board_OfFinancial, estimated_cost_of_books_and_supplies: estimated_cost_of_books_and_supplies, estimated_personal_expenses: estimated_personal_expenses, average_need_based_scholarship: average_need_based_scholarship, students_who_received_need_based_scholarship: students_who_received_need_based_scholarship)
                 
                 let collegeDetail = CollegeDetail(college: college, collegeOverview: collegeOverview, collegeRanking: collegeRanking, collegeApplying: collegeApplying, collegeAcademic: collegeAcademic, collegeFinancial: collegeFinancial)
-                print("1")
                 NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil, userInfo: ["collegeDetail":collegeDetail])
                 
                 

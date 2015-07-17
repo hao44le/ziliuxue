@@ -722,6 +722,7 @@
                     <navigationItem key="navigationItem" title="注册" id="qZ3-fv-nMH"/>
                     <connections>
                         <outlet property="signUpButton" destination="y8k-2c-9rB" id="Ax7-07-YkU"/>
+                        <outlet property="tableView" destination="WvQ-QN-rTG" id="yDW-Mx-FPq"/>
                         <outlet property="tableViewHeight" destination="qTy-mI-jtR" id="eoa-y0-VT5"/>
                         <segue destination="KXr-JW-D3f" kind="show" identifier="signupToMain" id="eQw-Is-T1U"/>
                     </connections>
@@ -3966,7 +3967,7 @@
                                                         <constraint firstAttribute="width" constant="98" id="XWe-Co-boj"/>
                                                         <constraint firstAttribute="height" constant="85" id="t8r-xT-o8Z"/>
                                                     </constraints>
-                                                    <state key="normal" image="star">
+                                                    <state key="normal" image="star_filled">
                                                         <color key="titleColor" red="0.63529411759999999" green="0.19215686269999999" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -4256,7 +4257,8 @@
                                                                     <exclude reference="mMx-eD-GrT"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="168" y="8" width="152" height="21"/>
                                                                 <mask key="constraints">
                                                                     <exclude reference="mMx-eD-GrT"/>
                                                                 </mask>
@@ -6686,12 +6688,13 @@
         <image name="pricetonUniversity" width="178" height="177"/>
         <image name="raking" width="33" height="33"/>
         <image name="star" width="100" height="100"/>
+        <image name="star_filled" width="100" height="100"/>
         <image name="studyPlan_small" width="33" height="33"/>
         <image name="wechatLogo" width="32" height="32"/>
         <image name="weiboLogo" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QqT-pJ-PMC"/>
+        <segue reference="eQw-Is-T1U"/>
         <segue reference="Cfj-6M-bhg"/>
     </inferredMetricsTieBreakers>
 </document>
