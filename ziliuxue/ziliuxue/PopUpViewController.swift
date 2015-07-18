@@ -10,7 +10,8 @@ import UIKit
 
 class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    let name = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17",]
+    let name = ["商业与经济","工程学","视觉艺术与设计","新闻与传媒","科学与数学"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
