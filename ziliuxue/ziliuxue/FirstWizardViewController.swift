@@ -21,7 +21,7 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userSelectedMajorChanged:", name: "userSelectedMajorChanged", object: nil)
         
        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
@@ -37,6 +37,11 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    func userSelectedMajorChanged(notification:NSNotification){
+         let userInfo : NSDictionary = notification.userInfo!
+        self.detail[2] = userInfo.objectForKey("major") as! String
+        self.tableView.reloadData()
+    }
     
     
     override func viewDidAppear(animated: Bool) {
@@ -97,11 +102,16 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             let popupSegue = segue as! CCMPopupSegue
             
             
-            popupSegue.destinationBounds = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH-60, ScreenSize.SCREEN_HEIGHT - 120)
+            popupSegue.destinationBounds = CGRectMake(0, -40, ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+            
             popupSegue.backgroundBlurRadius = 7
             popupSegue.backgroundViewAlpha = 0.3
-            popupSegue.backgroundViewColor = UIColor.blackColor()
+            popupSegue.backgroundViewColor = UIColor.clearColor()
             popupSegue.dismissableByTouchingBackground = true
+            
+            
+           
+            
             
         }
         

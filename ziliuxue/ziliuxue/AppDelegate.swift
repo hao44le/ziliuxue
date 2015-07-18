@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         //textField和键盘自适应高度的开关
         IQKeyboardManager.sharedManager().enable = true
         
-        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         WXApi.registerApp("wx6d67e31185e79352")
         //ServerMethods.obtainToken("geleichen@gmail.com", password: "gelei")
         //ServerMethods.obtainNewToken(NSUserDefaults.standardUserDefaults().objectForKey("refresh_token") as! String)
