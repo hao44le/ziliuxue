@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         
         WXApi.registerApp("wx6d67e31185e79352")
-        ServerMethods.obtainToken("chen", password: "gelei")
+        //ServerMethods.obtainToken("geleichen@gmail.com", password: "gelei")
         //ServerMethods.obtainNewToken(NSUserDefaults.standardUserDefaults().objectForKey("refresh_token") as! String)
         //ServerMethods.getCollege("1", to: "3")
         

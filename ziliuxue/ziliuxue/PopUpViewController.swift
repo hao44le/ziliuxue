@@ -8,12 +8,34 @@
 
 import UIKit
 
-class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
 
-    let name = ["商业与经济","工程学","视觉艺术与设计","新闻与传媒","科学与数学"]
+    
+    var localFilteredMajorArray : [String] = []
+    var MajorArray : [String] = ["商业与经济","工程学","视觉艺术与设计","新闻与传媒","科学与数学"]
+    var resultSeachController = UISearchController()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true
+        self.resultSeachController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            
+            controller.searchBar.barTintColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+            controller.searchBar.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
+            controller.searchBar.translucent = false
+            //controller.hidesNavigationBarDuringPresentation = true
+            
+            self.tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
 
         // Do any additional setup after loading the view.
     }
@@ -27,13 +49,39 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = self.name[indexPath.row]
+        if self.resultSeachController.active {
+            cell.textLabel?.text = self.localFilteredMajorArray[indexPath.row]
+            
+        } else {
+            cell.textLabel?.text = self.MajorArray[indexPath.row]
+        }
+        
         return cell
     }
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.name.count
+        if self.resultSeachController.active {
+            return localFilteredMajorArray.count
+        } else {
+             return self.MajorArray.count
+        }
     }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        localFilteredMajorArray.removeAll(keepCapacity: false)
+        
+        
+        //Local search
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[cd] %@", searchController.searchBar.text)
+        let array = (MajorArray as NSArray).filteredArrayUsingPredicate(searchPredicate)
+        self.localFilteredMajorArray = array as! [String]
+        
+        
+        
+        self.tableView.reloadData()
+    }
+
+    
+    
     /*
     // MARK: - Navigation
 
