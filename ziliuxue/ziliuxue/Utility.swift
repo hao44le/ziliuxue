@@ -691,6 +691,67 @@ struct ServerMethods {
         
     }
     
+    static func getCourseOverview(courseName:String!) ->[CourseOverView]
+    {
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        var result : [CourseOverView] = []
+        
+        var url = ServerConstant.get_course_overview
+        url += courseName
+        
+        manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+          
+            print("getCourseOverview success\n")
+            
+            for course in response as! NSArray {
+                let _id = course.objectForKey("_id") as! String
+                let name = course.objectForKey("name") as! String
+                let overview = course.objectForKey("overview") as! NSDictionary
+                
+                
+                let location = overview.objectForKey("location") as! String
+                let favNum = overview.objectForKey("favs") as! NSInteger
+                
+                let teacherProfile = overview.objectForKey("teacher") as! NSDictionary
+                
+                let teacherName = teacherProfile.objectForKey("name") as! String
+                let teacherPicURL = ServerConstant.baseURL + (teacherProfile.objectForKey("avatar") as! String)
+                
+                let photos = overview.objectForKey("photos") as! NSArray
+                let coursePicURL = ServerConstant.baseURL + (photos[0] as! String)
+                
+                
+                let metadata = course.objectForKey("metadata") as! NSDictionary
+                let price = metadata.objectForKey("price") as! NSInteger
+             
+                
+                let courseOverView = CourseOverView(_id: _id, courseName: name, coursePicURL: coursePicURL, teacherPicURL: teacherPicURL, teacherName: teacherName, location: location, favNum: favNum, price: price)
+                
+                result.append(courseOverView)
+                //print(college)
+                
+            }
+            
+            //{"_id":"55a7190b452c74914dd42a85","name":"北京李湘TOEFL写作班","overview":{"category":"TOEFL","subtitle":"写作课程和一对一咨询","location":"北京 海淀区","introduction":"李湘老师曾获得美国芝加哥大学教育博士学位，她已经提供了3年的TOEFL写作课程，80%的学生获得95%以上的高分。写作班每周一次4小时，讲解和联系相结合，使学生的写作在12次的课次中有显著的提高。该课程从每个季度开始。","level":"400","favs":3569,"teacher":{"name":"李湘","avatar":"/public/img/avatar.lixiang.png"},"photos":["/public/img/course1.1.png","/public/img/course1.2.png","/public/img/course1.3.png"]},"metadata":{"favs":3569,"category":"TOEFL","subcategory":"写作","level":400,"price":899}}
+            
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+        
+                print("getCourseOverview failure\n")
+                print(error)
+                
+        }
+        
+        
+        
+        
+        return result
+
+    }
+    
     
     
 
@@ -701,7 +762,7 @@ struct ServerMethods {
 
 struct ServerConstant {
     
-    
+    static let baseURL = "https://livebo.cloudapp.net"
     static let client_id = "c050c2c1-3ac0-46c7-abf6-e7edfb16aee4"
     static let signup = "https://livebo.cloudapp.net/api/auth/signup"
     static let obtain_token = "https://livebo.cloudapp.net/api/auth/token"
@@ -709,6 +770,8 @@ struct ServerConstant {
     static let get_college = "https://livebo.cloudapp.net/api/colleges?ranking="
     static let get_college_detail = "https://livebo.cloudapp.net/api/colleges/"
     static let user_profile = "https://livebo.cloudapp.net/api/profile"
+    static let get_course_overview = "https://livebo.cloudapp.net/api/courses?category="
+    static let get_course_detail = "https://livebo.cloudapp.net/api/courses/"
     
 }
 

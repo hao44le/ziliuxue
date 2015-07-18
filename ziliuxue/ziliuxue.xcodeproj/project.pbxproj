@@ -12,6 +12,7 @@
 		7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D507F1B520A2D00B7AA2E /* Tool.swift */; };
 		7B9D50851B520B0400B7AA2E /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */; };
 		7B9D50861B520B0400B7AA2E /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D50841B520B0400B7AA2E /* ProgressHUD.m */; };
+		7BC2AF351B59F9C800E5CC32 /* CourseOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF341B59F9C800E5CC32 /* CourseOverView.swift */; };
 		C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A93D1B4FDBC00014554F /* libWeChatSDK.a */; };
 		C008A9421B4FDBC00014554F /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C008A93E1B4FDBC00014554F /* read_me.txt */; };
 		C008A9441B4FDBD80014554F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A9431B4FDBD80014554F /* SystemConfiguration.framework */; };
@@ -100,6 +101,7 @@
 		7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		7B9D50831B520B0400B7AA2E /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		7B9D50841B520B0400B7AA2E /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		7BC2AF341B59F9C800E5CC32 /* CourseOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOverView.swift; sourceTree = "<group>"; };
 		C008A93D1B4FDBC00014554F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C008A93E1B4FDBC00014554F /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		C008A93F1B4FDBC00014554F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -259,6 +261,15 @@
 				7B9D50841B520B0400B7AA2E /* ProgressHUD.m */,
 			);
 			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		7BC2AF331B59F99700E5CC32 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				7BC2AF341B59F9C800E5CC32 /* CourseOverView.swift */,
+				C0EB7FE31B5543E900DF88CB /* College.swift */,
+			);
+			name = DataModel;
 			sourceTree = "<group>";
 		};
 		C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */ = {
@@ -551,6 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F5C0E71B3FC59800A2FA14 /* Library */,
+				7BC2AF331B59F99700E5CC32 /* DataModel */,
 				C026A73A1B39074400E24908 /* ViewController */,
 				C0C8F8FD1B2ED89E00D698FC /* Supporting Files */,
 			);
@@ -568,7 +580,6 @@
 				C0C8F9081B2ED89E00D698FC /* LaunchScreen.xib */,
 				C0C8F8FE1B2ED89E00D698FC /* Info.plist */,
 				C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */,
-				C0EB7FE31B5543E900DF88CB /* College.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -765,6 +776,7 @@
 				C0A5B6511B4B5C1E0089B84E /* MyClassViewController.swift in Sources */,
 				C0F5DF1A1B4A15A60088A9EE /* FirstTabTableViewCell.swift in Sources */,
 				C0C3B7B21B4CDB3D006800DD /* SchoolCostViewController.swift in Sources */,
+				7BC2AF351B59F9C800E5CC32 /* CourseOverView.swift in Sources */,
 				C0C3B7A71B4CB79F006800DD /* OverviewSchoolTabViewController.swift in Sources */,
 				C030F0C81B415F5F00DDDFDD /* CCMPopupSegue.m in Sources */,
 				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,

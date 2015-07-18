@@ -339,7 +339,7 @@
 {
 	@autoreleasepool
 	{
-		double length = label.text.length;
+		//double length = label.text.length;
 		NSTimeInterval sleep = 1;
 		[NSThread sleepForTimeInterval:sleep];
 
