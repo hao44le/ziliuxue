@@ -731,7 +731,7 @@ struct ServerMethods {
                 let price = metadata.objectForKey("price") as! NSInteger
                 
                 
-                let courseOverView = CourseOverView(_id: _id, metadata: metadata ,courseName: name, coursePicURL: coursePicURL, teacherPicURL: teacherPicURL, teacherName: teacherName, location: location, favNum: favNum, price: price)
+                let courseOverView = CourseOverView(_id: _id, metadata: metadata ,overview:overview,courseName: name, coursePicURL: coursePicURL, teacherPicURL: teacherPicURL, teacherName: teacherName, location: location, favNum: favNum, price: price)
                 
                 result.append(courseOverView)
                 //print(college)
@@ -781,7 +781,7 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 
-                print("getCourseOverview failure\n")
+                print("getCourseDetail failure\n")
                 print(error)
         }
 
@@ -824,4 +824,9 @@ struct DeviceType
     static let IS_IPHONE_6          = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
     static let IS_IPHONE_6P         = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
     static let IS_IPAD              = UIDevice.currentDevice().userInterfaceIdiom == .Pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
+}
+
+
+struct DeviceSize {
+    static let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
 }

@@ -1,15 +1,23 @@
 //
-//  SimilarCourseTableViewCell.swift
+//  SessionTableViewCell.swift
 //  ziliuxue
 //
-//  Created by Wangshuo on 7/18/15.
+//  Created by Wangshuo on 7/19/15.
 //  Copyright (c) 2015 ziliuxue. All rights reserved.
 //
 
 import UIKit
 
-class SimilarCourseTableViewCell: UITableViewCell {
+class SessionTableViewCell: UITableViewCell {
 
+    
+    
+    @IBOutlet var sessionDetail: UILabel!
+    
+    
+    @IBOutlet var sessionAddButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

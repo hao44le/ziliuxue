@@ -94,7 +94,9 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
         var courseDetailVC = segue.destinationViewController as! CourseDetailViewController
         
         var courseOverView = self.courseOverViewList[self.selectedIndex]
-        courseDetailVC.courseID =
+        courseDetailVC.courseID = courseOverView._id
+        courseDetailVC.overview = courseOverView.overview
+        courseDetailVC.metadata = courseOverView.metadata
         
     }
 
