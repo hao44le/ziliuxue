@@ -15,18 +15,22 @@ class CourseDetailViewController: UIViewController {
     
     
     
-    var courseName = ["  2015.1.1-2015.1.31  周六下午 1:00 到 5:00  地点: A","  2015.2.1-2015.2.19  周六下午 12:30 到 4:30  地点: B","  2015.2.25-2015.3.27  周六下午 1:00 到 5:00  地点: C"]
     
     
-    var similarCourseTitle = ["  北京阳光TOEFL写作初级班","  北京陈东TOEFL写作初级班"]
     
-    var similarCourseDetail = ["   2015.01.28 - 2015.4.15  | 10次课 |  北京海淀区","   2015.03.28 - 2015.5.25  | 12次课 |  北京朝阳区"]
-    var image = ["classroom","classroom2","universityBack"]
+    
+    
+    
+    var courseID : NSString!
+    var courseDetail : CourseDetail!
+    var metadata : NSDictionary!
+    var overview : NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didGetCourseDetail:"), name: "didGetCourseDetail", object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +38,15 @@ class CourseDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func didGetCourseDetail(notification:NSNotification)
+    {
+        self.courseDetail = notification.object as! CourseDetail
+        Tool.showSuccessHUD("获取成功")
+        //self.tableView.reloadData()
+        
+        
+    }
+
 
     /*
     // MARK: - Navigation

@@ -19,10 +19,15 @@ class CourseOverView: NSObject {
     var location  : String!
     var favNum  : NSInteger!
     var price  : NSInteger!
+    var metadata : NSDictionary!
+    var overview : NSDictionary!
     
-    init(_id:String,courseName:String,coursePicURL:String,teacherPicURL:String,teacherName:String,location:String,favNum:NSInteger,price:NSInteger)
+
+     init(_id:String,metadata:NSDictionary,overview:NSDictionary,courseName:String,coursePicURL:String,teacherPicURL:String,teacherName:String,location:String,favNum:NSInteger,price:NSInteger)
     {
         self._id = _id
+        self.metadata = metadata
+        self.overview = overview
         self.courseName = courseName
         self.coursePicURL = coursePicURL
         self.teacherPicURL = teacherPicURL

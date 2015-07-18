@@ -14,6 +14,7 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet var tableView: UITableView!
     var courseName:String!
     var courseOverViewList:[CourseOverView] = []
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,8 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        self.selectedIndex = indexPath.row
         self.performSegueWithIdentifier("fromCourseViewToCourseDetail", sender: self)
     }
 
@@ -80,14 +83,20 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
         
 
     }
-    /*
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        var courseDetailVC = segue.destinationViewController as! CourseDetailViewController
+        
+        var courseOverView = self.courseOverViewList[self.selectedIndex]
+        courseDetailVC.courseID =
+        
     }
-    */
+
 
 }

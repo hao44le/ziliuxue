@@ -78,7 +78,7 @@ struct ServerMethods {
                 print("createUserProfile success\n")
                 let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
                 print(dic)
-
+                
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
                 print("createUserProfile failure\n")
@@ -107,13 +107,13 @@ struct ServerMethods {
                 print("updateUserProfile success\n")
                 let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
                 print(dic)
-
+                
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileFailed", object: nil)
                 print("updateUserProfile failure\n")
                 print(error)
         }
-
+        
     }
     
     static func getUserProfile(){
@@ -130,8 +130,8 @@ struct ServerMethods {
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileSuccessed", object: nil)
                 print("getUserProfile success\n")
                 
-                    let dic =  NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-             
+                let dic =  NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                
                 print(dic)
                 
                 //print(response)
@@ -150,8 +150,8 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(getCorrectBreakPointForCollegeDetail(collegeID), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil)
-                print("getCollegeDetail success\n")
+            NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil)
+            print("getCollegeDetail success\n")
             if let message = response.objectForKey("message") as? String {
                 //not found
                 print(message)
@@ -184,7 +184,7 @@ struct ServerMethods {
                 let zipcode = address.objectForKey("zipcode") as! String
                 
                 let college = College(id: id, name: name, city: city, state: state, country: country, zipcode: zipcode, website: website, logo: logo, photos: photos)
-
+                
                 //-------------------------------------------------------------------------------------------------------------
                 //overview
                 let _rankings = overview.objectForKey("rankings") as! NSDictionary
@@ -195,27 +195,27 @@ struct ServerMethods {
                 
                 
                 
-                    //general_information
-                        let school_type = general_information.objectForKey("school_type") as! String
-                        let year_founded = general_information.objectForKey("year_founded") as! String
-                        let religious_affiliation = general_information.objectForKey("religious_affiliation") as! String
-                        let academic_calendar = general_information.objectForKey("academic_calendar") as! String
-                        let setting = general_information.objectForKey("setting") as! String
-                        let endowment = general_information.objectForKey("endowment") as! String
-                    // applying
-                        let selectivity = _applying.objectForKey("selectivity") as! String
-                        let acceptance_rate = _applying.objectForKey("acceptance_rate") as! String
-                        let application_deadline = _applying.objectForKey("application_deadline") as! String
-                        let SAT_ACT_scores_must_be_received_by = _applying.objectForKey("SAT_ACT_scores_must_be_received_by") as! String
-                    // academic
-                        let student_faculty_ration = _academic.objectForKey("student_faculty_ration") as! String
-                        let four_year_graduation_rate = _academic.objectForKey("four_year_graduation_rate") as! String
-                        let five_most_popular_majors = _academic.objectForKey("five_most_popular_majors") as! NSDictionary
+                //general_information
+                let school_type = general_information.objectForKey("school_type") as! String
+                let year_founded = general_information.objectForKey("year_founded") as! String
+                let religious_affiliation = general_information.objectForKey("religious_affiliation") as! String
+                let academic_calendar = general_information.objectForKey("academic_calendar") as! String
+                let setting = general_information.objectForKey("setting") as! String
+                let endowment = general_information.objectForKey("endowment") as! String
+                // applying
+                let selectivity = _applying.objectForKey("selectivity") as! String
+                let acceptance_rate = _applying.objectForKey("acceptance_rate") as! String
+                let application_deadline = _applying.objectForKey("application_deadline") as! String
+                let SAT_ACT_scores_must_be_received_by = _applying.objectForKey("SAT_ACT_scores_must_be_received_by") as! String
+                // academic
+                let student_faculty_ration = _academic.objectForKey("student_faculty_ration") as! String
+                let four_year_graduation_rate = _academic.objectForKey("four_year_graduation_rate") as! String
+                let five_most_popular_majors = _academic.objectForKey("five_most_popular_majors") as! NSDictionary
                 
-                    // financial
-                        let tuition_and_fees = _financial.objectForKey("tuition_and_fees") as! String
-                        let room_and_board = _financial.objectForKey("room_and_board") as! String
-               
+                // financial
+                let tuition_and_fees = _financial.objectForKey("tuition_and_fees") as! String
+                let room_and_board = _financial.objectForKey("room_and_board") as! String
+                
                 
                 
                 let collegeOverview = CollegeOverview(rankins: _rankings, school_type: school_type, year_founded: year_founded, religious_affiliation: religious_affiliation, academic_calendar: academic_calendar, setting: setting, endowment: endowment, selectivity: selectivity, acceptance_rate: acceptance_rate, application_deadline: application_deadline, SAT_ACT_scores_must_be_received_by: SAT_ACT_scores_must_be_received_by, student_faculty_ration: student_faculty_ration, four_year_graduation_rate: four_year_graduation_rate, five_most_popular_majors: five_most_popular_majors, tuition_and_fees: tuition_and_fees, room_and_board: room_and_board)
@@ -226,17 +226,17 @@ struct ServerMethods {
                 let rankings_rankings = rankings.objectForKey("rankings") as! NSDictionary
                 let key_indicators = rankings.objectForKey("key_indicators") as! NSDictionary
                 
-                    let score = key_indicators.objectForKey("score") as! String
-                    let high_school_counselor_score = key_indicators.objectForKey("high_school_counselor_score") as! String
-                    let average_freshman_retention_rate = key_indicators.objectForKey("average_freshman_retention_rate") as! String
-                    let classes_with_fewer_than_20_students = key_indicators.objectForKey("classes_with_fewer_than_20_students") as! String
-                    let classes_with_50_or_more_students = key_indicators.objectForKey("classes_with_50_or_more_students") as! String
-                    let student_falculty_ratio = key_indicators.objectForKey("student_falculty_ratio") as! String
-                    let _acceptance_rate = key_indicators.objectForKey("acceptance_rate") as! String
-                    let six_year_graduation_rate = key_indicators.objectForKey("six_year_graduation_rate") as! String
-                    let predicated_graduation_rate = key_indicators.objectForKey("predicated_graduation_rate") as! String
-                    let overperformance_over_underperformance = key_indicators.objectForKey("overperformance_over_underperformance") as! String
-                    let graduation_and_retention_rank = key_indicators.objectForKey("graduation_and_retention_rank") as! String
+                let score = key_indicators.objectForKey("score") as! String
+                let high_school_counselor_score = key_indicators.objectForKey("high_school_counselor_score") as! String
+                let average_freshman_retention_rate = key_indicators.objectForKey("average_freshman_retention_rate") as! String
+                let classes_with_fewer_than_20_students = key_indicators.objectForKey("classes_with_fewer_than_20_students") as! String
+                let classes_with_50_or_more_students = key_indicators.objectForKey("classes_with_50_or_more_students") as! String
+                let student_falculty_ratio = key_indicators.objectForKey("student_falculty_ratio") as! String
+                let _acceptance_rate = key_indicators.objectForKey("acceptance_rate") as! String
+                let six_year_graduation_rate = key_indicators.objectForKey("six_year_graduation_rate") as! String
+                let predicated_graduation_rate = key_indicators.objectForKey("predicated_graduation_rate") as! String
+                let overperformance_over_underperformance = key_indicators.objectForKey("overperformance_over_underperformance") as! String
+                let graduation_and_retention_rank = key_indicators.objectForKey("graduation_and_retention_rank") as! String
                 
                 let peer_assessment_score = key_indicators.objectForKey("peer_assessment_score") as! String
                 let faculty_resources_rank = key_indicators.objectForKey("faculty_resources_rank") as! String
@@ -261,87 +261,87 @@ struct ServerMethods {
                 //applications
                 let applications = applying.objectForKey("applications") as! NSDictionary
                 
-                    //regular_decision
-                    let regular_decision = applications.objectForKey("regular_decision") as! NSDictionary
+                //regular_decision
+                let regular_decision = applications.objectForKey("regular_decision") as! NSDictionary
                 
-                    let _application_deadline = regular_decision.objectForKey("application_deadline") as! String
-                    let priority_application_deadline = regular_decision.objectForKey("priority_application_deadline") as! String
-                    let notification_date = regular_decision.objectForKey("notification_date") as! String
-                    let deadline_for_accepting_admission_offers = regular_decision.objectForKey("deadline_for_accepting_admission_offers") as! String
-                    let students_accepted_for_terms_other_than_the_fall = regular_decision.objectForKey("students_accepted_for_terms_other_than_the_fall") as! String
-                
-                
-                
-                    //early_decision
-                    let early_decision = applications.objectForKey("early_decision") as! NSDictionary
-                
-                    let early_decision_plan_offered = early_decision.objectForKey("early_decision_plan_offered") as! String
-                    let early_decision_deadline = early_decision.objectForKey("early_decision_deadline") as! String
-                    let early_decision_sent_by = early_decision.objectForKey("early_decision_sent_by") as! String
+                let _application_deadline = regular_decision.objectForKey("application_deadline") as! String
+                let priority_application_deadline = regular_decision.objectForKey("priority_application_deadline") as! String
+                let notification_date = regular_decision.objectForKey("notification_date") as! String
+                let deadline_for_accepting_admission_offers = regular_decision.objectForKey("deadline_for_accepting_admission_offers") as! String
+                let students_accepted_for_terms_other_than_the_fall = regular_decision.objectForKey("students_accepted_for_terms_other_than_the_fall") as! String
                 
                 
                 
+                //early_decision
+                let early_decision = applications.objectForKey("early_decision") as! NSDictionary
+                
+                let early_decision_plan_offered = early_decision.objectForKey("early_decision_plan_offered") as! String
+                let early_decision_deadline = early_decision.objectForKey("early_decision_deadline") as! String
+                let early_decision_sent_by = early_decision.objectForKey("early_decision_sent_by") as! String
                 
                 
-                    //early_action
-                    let early_action = applications.objectForKey("early_action") as! NSDictionary
-                    let early_action_plan_offered = early_action.objectForKey("early_action_plan_offered") as! String
-                    let students_restricted_from_applying_to_other_early_action_plans = early_action.objectForKey("students_restricted_from_applying_to_other_early_action_plans") as! String
-                    let early_action_deadline = early_action.objectForKey("early_action_deadline") as! String
-                
-                    let early_action_decision_sent_by = early_action.objectForKey("early_action_decision_sent_by") as! String
                 
                 
-
+                
+                //early_action
+                let early_action = applications.objectForKey("early_action") as! NSDictionary
+                let early_action_plan_offered = early_action.objectForKey("early_action_plan_offered") as! String
+                let students_restricted_from_applying_to_other_early_action_plans = early_action.objectForKey("students_restricted_from_applying_to_other_early_action_plans") as! String
+                let early_action_deadline = early_action.objectForKey("early_action_deadline") as! String
+                
+                let early_action_decision_sent_by = early_action.objectForKey("early_action_decision_sent_by") as! String
                 
                 
                 
                 
                 
                 
-                    //application_fee
-                    let application_fee = applications.objectForKey("application_fee") as! NSDictionary
-                
-                    let _application_fee = application_fee.objectForKey("application_fee") as! String
-                    let application_fee_refundable = application_fee.objectForKey("application_fee_refundable") as! String
-                    let application_fee_waived_for_stdents_with_financial_need = application_fee.objectForKey("application_fee_waived_for_stdents_with_financial_need") as! String
-                    let application_fee_for_students_who_apply_online = application_fee.objectForKey("application_fee_for_students_who_apply_online") as! String
-                    let deferred_admission_allowed = application_fee.objectForKey("deferred_admission_allowed") as! String
-                    let maximum_length_of_determent = application_fee.objectForKey("maximum_length_of_determent") as! String
-                
-
                 
                 
                 
+                //application_fee
+                let application_fee = applications.objectForKey("application_fee") as! NSDictionary
                 
-                
-                    //application_formats
-                    let application_formats = applications.objectForKey("application_formats") as! NSDictionary
-                
-                
-                    let application_url = application_formats.objectForKey("application_url") as! String
-                    let common_application_accepted = application_formats.objectForKey("common_application_accepted") as! String
+                let _application_fee = application_fee.objectForKey("application_fee") as! String
+                let application_fee_refundable = application_fee.objectForKey("application_fee_refundable") as! String
+                let application_fee_waived_for_stdents_with_financial_need = application_fee.objectForKey("application_fee_waived_for_stdents_with_financial_need") as! String
+                let application_fee_for_students_who_apply_online = application_fee.objectForKey("application_fee_for_students_who_apply_online") as! String
+                let deferred_admission_allowed = application_fee.objectForKey("deferred_admission_allowed") as! String
+                let maximum_length_of_determent = application_fee.objectForKey("maximum_length_of_determent") as! String
                 
                 
                 
                 
                 
-                    //tuition_room_deposits
-                    let tuition_room_deposits = applications.objectForKey("tuition_room_deposits") as! NSDictionary
-                
-                    let tuition_deposit = tuition_room_deposits.objectForKey("tuition_deposit") as! String
-                    let tuition_deposit_refundable = tuition_room_deposits.objectForKey("tuition_deposit_refundable") as! String
-                    let room_deposit = tuition_room_deposits.objectForKey("room_deposit") as! String
-                    let room_deposit_refundable = tuition_room_deposits.objectForKey("room_deposit_refundable") as! String
                 
                 
+                //application_formats
+                let application_formats = applications.objectForKey("application_formats") as! NSDictionary
                 
                 
-                    //contact_information
-                    let contact_information = applications.objectForKey("contact_information") as! NSDictionary
-                    let admission_phone = contact_information.objectForKey("admission_phone") as! String
-                    let admission_email = contact_information.objectForKey("admission_email") as! String
-                    let admission_address = contact_information.objectForKey("admission_address") as! String
+                let application_url = application_formats.objectForKey("application_url") as! String
+                let common_application_accepted = application_formats.objectForKey("common_application_accepted") as! String
+                
+                
+                
+                
+                
+                //tuition_room_deposits
+                let tuition_room_deposits = applications.objectForKey("tuition_room_deposits") as! NSDictionary
+                
+                let tuition_deposit = tuition_room_deposits.objectForKey("tuition_deposit") as! String
+                let tuition_deposit_refundable = tuition_room_deposits.objectForKey("tuition_deposit_refundable") as! String
+                let room_deposit = tuition_room_deposits.objectForKey("room_deposit") as! String
+                let room_deposit_refundable = tuition_room_deposits.objectForKey("room_deposit_refundable") as! String
+                
+                
+                
+                
+                //contact_information
+                let contact_information = applications.objectForKey("contact_information") as! NSDictionary
+                let admission_phone = contact_information.objectForKey("admission_phone") as! String
+                let admission_email = contact_information.objectForKey("admission_email") as! String
+                let admission_address = contact_information.objectForKey("admission_address") as! String
                 
                 
                 
@@ -353,56 +353,56 @@ struct ServerMethods {
                 
                 
                 
-                    //admission_requirements
-                    let admission_requirements = requirements.objectForKey("admission_requirements") as! NSDictionary
+                //admission_requirements
+                let admission_requirements = requirements.objectForKey("admission_requirements") as! NSDictionary
                 
-                    let admission_interview = admission_requirements.objectForKey("admission_interview") as! String
-                    let campus_visit = admission_requirements.objectForKey("campus_visit") as! String
-                    let offcampus_interviews = admission_requirements.objectForKey("offcampus_interviews") as! String
-                    let open_admission_policy = admission_requirements.objectForKey("open_admission_policy") as! String
-                    let college_use_SAT_or_ACT_in_admission_decisions = admission_requirements.objectForKey("college_use_SAT_or_ACT_in_admission_decisions") as! String
-                    let required_standardized_tests = admission_requirements.objectForKey("required_standardized_tests") as! String
-                    let ACT_with_writing_test = admission_requirements.objectForKey("ACT_with_writing_test") as! String
-                    let _SAT_ACT_scores_must_be_received_by = admission_requirements.objectForKey("SAT_ACT_scores_must_be_received_by") as! String
-                    let SAT_subject_test_scores_must_be_received_by = admission_requirements.objectForKey("SAT_subject_test_scores_must_be_received_by") as! String
-                
-
+                let admission_interview = admission_requirements.objectForKey("admission_interview") as! String
+                let campus_visit = admission_requirements.objectForKey("campus_visit") as! String
+                let offcampus_interviews = admission_requirements.objectForKey("offcampus_interviews") as! String
+                let open_admission_policy = admission_requirements.objectForKey("open_admission_policy") as! String
+                let college_use_SAT_or_ACT_in_admission_decisions = admission_requirements.objectForKey("college_use_SAT_or_ACT_in_admission_decisions") as! String
+                let required_standardized_tests = admission_requirements.objectForKey("required_standardized_tests") as! String
+                let ACT_with_writing_test = admission_requirements.objectForKey("ACT_with_writing_test") as! String
+                let _SAT_ACT_scores_must_be_received_by = admission_requirements.objectForKey("SAT_ACT_scores_must_be_received_by") as! String
+                let SAT_subject_test_scores_must_be_received_by = admission_requirements.objectForKey("SAT_subject_test_scores_must_be_received_by") as! String
                 
                 
                 
                 
                 
-                    //academic_factors_considered
-                    let academic_factors_considered = requirements.objectForKey("academic_factors_considered") as! NSDictionary
-                
-                    let rigor_of_secondary_school_record = academic_factors_considered.objectForKey("rigor_of_secondary_school_record") as! String
-                    let class_rank = academic_factors_considered.objectForKey("class_rank") as! String
-                    let GPA = academic_factors_considered.objectForKey("GPA") as! String
-                    let standardized_test_scores = academic_factors_considered.objectForKey("standardized_test_scores") as! String
-                    let application_essay = academic_factors_considered.objectForKey("application_essay") as! String
-                    let recommendations = academic_factors_considered.objectForKey("recommendations") as! String
-                    let SAT_subject_tests = academic_factors_considered.objectForKey("SAT_subject_tests") as! String
                 
                 
+                //academic_factors_considered
+                let academic_factors_considered = requirements.objectForKey("academic_factors_considered") as! NSDictionary
+                
+                let rigor_of_secondary_school_record = academic_factors_considered.objectForKey("rigor_of_secondary_school_record") as! String
+                let class_rank = academic_factors_considered.objectForKey("class_rank") as! String
+                let GPA = academic_factors_considered.objectForKey("GPA") as! String
+                let standardized_test_scores = academic_factors_considered.objectForKey("standardized_test_scores") as! String
+                let application_essay = academic_factors_considered.objectForKey("application_essay") as! String
+                let recommendations = academic_factors_considered.objectForKey("recommendations") as! String
+                let SAT_subject_tests = academic_factors_considered.objectForKey("SAT_subject_tests") as! String
                 
                 
                 
-                    //nonacademic_factors_considered
-                    let nonacademic_factors_considered = requirements.objectForKey("nonacademic_factors_considered") as! NSDictionary
                 
-                    let interview = nonacademic_factors_considered.objectForKey("interview") as! String
-                    let extracurricular_activities = nonacademic_factors_considered.objectForKey("extracurricular_activities") as! String
-                    let talent_ability = nonacademic_factors_considered.objectForKey("talent_ability") as! String
-                    let character_personal_qualities = nonacademic_factors_considered.objectForKey("character_personal_qualities") as! String
-                    let first_generation_college_student = nonacademic_factors_considered.objectForKey("first_generation_college_student") as! String
-                    let alumni_relations = nonacademic_factors_considered.objectForKey("alumni_relations") as! String
-                    let geographical_residence = nonacademic_factors_considered.objectForKey("geographical_residence") as! String
-                    let state_residency = nonacademic_factors_considered.objectForKey("state_residency") as! String
-                    let _religious_affiliation = nonacademic_factors_considered.objectForKey("religious_affiliation") as! String
-                    let race_ethnicity = nonacademic_factors_considered.objectForKey("race_ethnicity") as! String
-                    let volunteer_work = nonacademic_factors_considered.objectForKey("volunteer_work") as! String
-                    let work_experience = nonacademic_factors_considered.objectForKey("work_experience") as! String
-                    let applicants_interest_level = nonacademic_factors_considered.objectForKey("applicants_interest_level") as! String
+                
+                //nonacademic_factors_considered
+                let nonacademic_factors_considered = requirements.objectForKey("nonacademic_factors_considered") as! NSDictionary
+                
+                let interview = nonacademic_factors_considered.objectForKey("interview") as! String
+                let extracurricular_activities = nonacademic_factors_considered.objectForKey("extracurricular_activities") as! String
+                let talent_ability = nonacademic_factors_considered.objectForKey("talent_ability") as! String
+                let character_personal_qualities = nonacademic_factors_considered.objectForKey("character_personal_qualities") as! String
+                let first_generation_college_student = nonacademic_factors_considered.objectForKey("first_generation_college_student") as! String
+                let alumni_relations = nonacademic_factors_considered.objectForKey("alumni_relations") as! String
+                let geographical_residence = nonacademic_factors_considered.objectForKey("geographical_residence") as! String
+                let state_residency = nonacademic_factors_considered.objectForKey("state_residency") as! String
+                let _religious_affiliation = nonacademic_factors_considered.objectForKey("religious_affiliation") as! String
+                let race_ethnicity = nonacademic_factors_considered.objectForKey("race_ethnicity") as! String
+                let volunteer_work = nonacademic_factors_considered.objectForKey("volunteer_work") as! String
+                let work_experience = nonacademic_factors_considered.objectForKey("work_experience") as! String
+                let applicants_interest_level = nonacademic_factors_considered.objectForKey("applicants_interest_level") as! String
                 
                 
                 
@@ -411,47 +411,47 @@ struct ServerMethods {
                 
                 
                 
-                    //_selectivity
-                    let _selectivity = entering_class_stats.objectForKey("selectivity") as! NSDictionary
+                //_selectivity
+                let _selectivity = entering_class_stats.objectForKey("selectivity") as! NSDictionary
                 
-                    let selectivity_selectivity = _selectivity.objectForKey("selectivity") as! String
-                    let acceptance_rate_acceptance_rate = _selectivity.objectForKey("acceptance_rate") as! String
-                    let early_decision_acceptance_rate = _selectivity.objectForKey("early_decision_acceptance_rate") as! String
-                    let early_action_acceptance_rate = _selectivity.objectForKey("early_action_acceptance_rate") as! String
-                    let acceptance_rate_wo_early_decision = _selectivity.objectForKey("acceptance_rate_wo_early_decision") as! String
-                
-                
+                let selectivity_selectivity = _selectivity.objectForKey("selectivity") as! String
+                let acceptance_rate_acceptance_rate = _selectivity.objectForKey("acceptance_rate") as! String
+                let early_decision_acceptance_rate = _selectivity.objectForKey("early_decision_acceptance_rate") as! String
+                let early_action_acceptance_rate = _selectivity.objectForKey("early_action_acceptance_rate") as! String
+                let acceptance_rate_wo_early_decision = _selectivity.objectForKey("acceptance_rate_wo_early_decision") as! String
                 
                 
                 
                 
                 
-                    //applications_acceptance_enrollments
-                    let applications_acceptance_enrollments = entering_class_stats.objectForKey("applications_acceptance_enrollments") as! NSDictionary
-                
-                    let applicants = applications_acceptance_enrollments.objectForKey("applicants") as! String
-                    let female_applicants = applications_acceptance_enrollments.objectForKey("female_applicants") as! String
-                    let male_applicants = applications_acceptance_enrollments.objectForKey("male_applicants") as! String
-                    let applicants_accepted = applications_acceptance_enrollments.objectForKey("applicants_accepted") as! String
-                    let female_applicants_accepted = applications_acceptance_enrollments.objectForKey("female_applicants_accepted") as! String
-                    let male_applicants_accepted = applications_acceptance_enrollments.objectForKey("male_applicants_accepted") as! String
-                    let freshman_enrollment = applications_acceptance_enrollments.objectForKey("freshman_enrollment") as! String
                 
                 
+                //applications_acceptance_enrollments
+                let applications_acceptance_enrollments = entering_class_stats.objectForKey("applications_acceptance_enrollments") as! NSDictionary
                 
-                
-                
-                    //wait_list
-                    let wait_list = entering_class_stats.objectForKey("wait_list") as! NSDictionary
-                
-                    let school_has_a_wait_list = wait_list.objectForKey("school_has_a_wait_list") as! String
-                    let applicants_placed_on_wait_list = wait_list.objectForKey("applicants_placed_on_wait_list") as! String
-                    let students_accepting_place_on_wait_list = wait_list.objectForKey("students_accepting_place_on_wait_list") as! String
-                    let students_accepted_from_wait_list = wait_list.objectForKey("students_accepted_from_wait_list") as! String
+                let applicants = applications_acceptance_enrollments.objectForKey("applicants") as! String
+                let female_applicants = applications_acceptance_enrollments.objectForKey("female_applicants") as! String
+                let male_applicants = applications_acceptance_enrollments.objectForKey("male_applicants") as! String
+                let applicants_accepted = applications_acceptance_enrollments.objectForKey("applicants_accepted") as! String
+                let female_applicants_accepted = applications_acceptance_enrollments.objectForKey("female_applicants_accepted") as! String
+                let male_applicants_accepted = applications_acceptance_enrollments.objectForKey("male_applicants_accepted") as! String
+                let freshman_enrollment = applications_acceptance_enrollments.objectForKey("freshman_enrollment") as! String
                 
                 
                 
-                    let collegeApplying = CollegeApplying(application_deadline: _application_deadline, priority_application_deadline: priority_application_deadline, notification_date: notification_date, deadline_for_accepting_admission_offers: deadline_for_accepting_admission_offers, students_accepted_for_terms_other_than_the_fall: students_accepted_for_terms_other_than_the_fall, early_decision_plan_offered: early_decision_plan_offered, early_decision_deadline: early_decision_deadline, early_decision_sent_by: early_decision_sent_by, early_action_plan_offered: early_action_plan_offered, students_restricted_from_applying_to_other_early_action_plans: students_restricted_from_applying_to_other_early_action_plans, early_action_deadline: early_action_deadline, early_action_decision_sent_by: early_action_decision_sent_by, application_fee: _application_fee, application_fee_refundable: application_fee_refundable, application_fee_waived_for_stdents_with_financial_need: application_fee_waived_for_stdents_with_financial_need, application_fee_for_students_who_apply_online: application_fee_for_students_who_apply_online, deferred_admission_allowed: deferred_admission_allowed, maximum_length_of_determent: maximum_length_of_determent, application_url: application_url, common_application_accepted: common_application_accepted, tuition_deposit: tuition_deposit, tuition_deposit_refundable: tuition_deposit_refundable, room_deposit: room_deposit, room_deposit_refundable: room_deposit_refundable, admission_phone: admission_phone, admission_email: admission_email, admission_address: admission_address, admission_interview: admission_interview, campus_visit: campus_visit, offcampus_interviews: offcampus_interviews, open_admission_policy: open_admission_policy, college_use_SAT_or_ACT_in_admission_decisions: college_use_SAT_or_ACT_in_admission_decisions, required_standardized_tests: required_standardized_tests, ACT_with_writing_test: ACT_with_writing_test, SAT_ACT_scores_must_be_received_by: _SAT_ACT_scores_must_be_received_by, SAT_subject_test_scores_must_be_received_by: SAT_subject_test_scores_must_be_received_by, rigor_of_secondary_school_record: rigor_of_secondary_school_record, class_rank: class_rank, GPA: GPA, standardized_test_scores: standardized_test_scores, application_essay: application_essay, recommendations: recommendations, SAT_subject_tests: SAT_subject_tests, interview: interview, extracurricular_activities: extracurricular_activities, talent_ability: talent_ability, character_personal_qualities: character_personal_qualities, first_generation_college_student: first_generation_college_student, alumni_relations: alumni_relations, geographical_residence: geographical_residence, state_residency: state_residency, religious_affiliation: _religious_affiliation, race_ethnicity: race_ethnicity, volunteer_work: volunteer_work, work_experience: work_experience, applicants_interest_level: applicants_interest_level, selectivity: selectivity_selectivity, acceptance_rate: acceptance_rate, early_decision_acceptance_rate: early_decision_acceptance_rate, early_action_acceptance_rate: early_action_acceptance_rate, acceptance_rate_wo_early_decision: acceptance_rate_wo_early_decision, applicants: applicants, female_applicants: female_applicants, male_applicants: male_applicants, applicants_accepted: applicants_accepted, female_applicants_accepted: female_applicants_accepted, male_applicants_accepted: male_applicants_accepted, freshman_enrollment: freshman_enrollment, school_has_a_wait_list: school_has_a_wait_list, applicants_placed_on_wait_list: applicants_placed_on_wait_list, students_accepting_place_on_wait_list: students_accepting_place_on_wait_list, students_accepted_from_wait_list: students_accepted_from_wait_list)
+                
+                
+                //wait_list
+                let wait_list = entering_class_stats.objectForKey("wait_list") as! NSDictionary
+                
+                let school_has_a_wait_list = wait_list.objectForKey("school_has_a_wait_list") as! String
+                let applicants_placed_on_wait_list = wait_list.objectForKey("applicants_placed_on_wait_list") as! String
+                let students_accepting_place_on_wait_list = wait_list.objectForKey("students_accepting_place_on_wait_list") as! String
+                let students_accepted_from_wait_list = wait_list.objectForKey("students_accepted_from_wait_list") as! String
+                
+                
+                
+                let collegeApplying = CollegeApplying(application_deadline: _application_deadline, priority_application_deadline: priority_application_deadline, notification_date: notification_date, deadline_for_accepting_admission_offers: deadline_for_accepting_admission_offers, students_accepted_for_terms_other_than_the_fall: students_accepted_for_terms_other_than_the_fall, early_decision_plan_offered: early_decision_plan_offered, early_decision_deadline: early_decision_deadline, early_decision_sent_by: early_decision_sent_by, early_action_plan_offered: early_action_plan_offered, students_restricted_from_applying_to_other_early_action_plans: students_restricted_from_applying_to_other_early_action_plans, early_action_deadline: early_action_deadline, early_action_decision_sent_by: early_action_decision_sent_by, application_fee: _application_fee, application_fee_refundable: application_fee_refundable, application_fee_waived_for_stdents_with_financial_need: application_fee_waived_for_stdents_with_financial_need, application_fee_for_students_who_apply_online: application_fee_for_students_who_apply_online, deferred_admission_allowed: deferred_admission_allowed, maximum_length_of_determent: maximum_length_of_determent, application_url: application_url, common_application_accepted: common_application_accepted, tuition_deposit: tuition_deposit, tuition_deposit_refundable: tuition_deposit_refundable, room_deposit: room_deposit, room_deposit_refundable: room_deposit_refundable, admission_phone: admission_phone, admission_email: admission_email, admission_address: admission_address, admission_interview: admission_interview, campus_visit: campus_visit, offcampus_interviews: offcampus_interviews, open_admission_policy: open_admission_policy, college_use_SAT_or_ACT_in_admission_decisions: college_use_SAT_or_ACT_in_admission_decisions, required_standardized_tests: required_standardized_tests, ACT_with_writing_test: ACT_with_writing_test, SAT_ACT_scores_must_be_received_by: _SAT_ACT_scores_must_be_received_by, SAT_subject_test_scores_must_be_received_by: SAT_subject_test_scores_must_be_received_by, rigor_of_secondary_school_record: rigor_of_secondary_school_record, class_rank: class_rank, GPA: GPA, standardized_test_scores: standardized_test_scores, application_essay: application_essay, recommendations: recommendations, SAT_subject_tests: SAT_subject_tests, interview: interview, extracurricular_activities: extracurricular_activities, talent_ability: talent_ability, character_personal_qualities: character_personal_qualities, first_generation_college_student: first_generation_college_student, alumni_relations: alumni_relations, geographical_residence: geographical_residence, state_residency: state_residency, religious_affiliation: _religious_affiliation, race_ethnicity: race_ethnicity, volunteer_work: volunteer_work, work_experience: work_experience, applicants_interest_level: applicants_interest_level, selectivity: selectivity_selectivity, acceptance_rate: acceptance_rate, early_decision_acceptance_rate: early_decision_acceptance_rate, early_action_acceptance_rate: early_action_acceptance_rate, acceptance_rate_wo_early_decision: acceptance_rate_wo_early_decision, applicants: applicants, female_applicants: female_applicants, male_applicants: male_applicants, applicants_accepted: applicants_accepted, female_applicants_accepted: female_applicants_accepted, male_applicants_accepted: male_applicants_accepted, freshman_enrollment: freshman_enrollment, school_has_a_wait_list: school_has_a_wait_list, applicants_placed_on_wait_list: applicants_placed_on_wait_list, students_accepting_place_on_wait_list: students_accepting_place_on_wait_list, students_accepted_from_wait_list: students_accepted_from_wait_list)
                 
                 //-------------------------------------------------------------------------------------------------------------
                 //academic
@@ -650,7 +650,7 @@ struct ServerMethods {
             
             
             
-        }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenFailed", object: nil)
                 print("obtainNewToken failure\n")
                 print(error)
@@ -679,7 +679,7 @@ struct ServerMethods {
             NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
             NSUserDefaults.standardUserDefaults().setObject(refresh_token, forKey: "refresh_token")
             
-
+            
             
             
             
@@ -706,7 +706,7 @@ struct ServerMethods {
         url += courseName
         
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-          
+            
             print("getCourseOverview success\n")
             
             for course in response as! NSArray {
@@ -729,9 +729,9 @@ struct ServerMethods {
                 
                 let metadata = course.objectForKey("metadata") as! NSDictionary
                 let price = metadata.objectForKey("price") as! NSInteger
-             
                 
-                let courseOverView = CourseOverView(_id: _id, courseName: name, coursePicURL: coursePicURL, teacherPicURL: teacherPicURL, teacherName: teacherName, location: location, favNum: favNum, price: price)
+                
+                let courseOverView = CourseOverView(_id: _id, metadata: metadata ,courseName: name, coursePicURL: coursePicURL, teacherPicURL: teacherPicURL, teacherName: teacherName, location: location, favNum: favNum, price: price)
                 
                 result.append(courseOverView)
                 //print(college)
@@ -744,18 +744,57 @@ struct ServerMethods {
             
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-        
+                
                 print("getCourseOverview failure\n")
                 print(error)
+        }
+    }
+    
+    
+    static func getCourseDetail(courseID:String!)
+    {
+        Tool.showProgressHUD("正在获取课程详情")
+        
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+    
+        var url = ServerConstant.get_course_detail
+        url += courseID
+        
+        manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            
+            print("getCourseDetail success\n")
+            
+            let resDic = response as! NSDictionary
+            
+            let id = resDic.objectForKey("_id") as! String
+            let courseName = resDic.objectForKey("name") as! String
+            let sessions = resDic.objectForKey("sessions") as! NSArray
+            
+            
+            let result = CourseDetail(_id: id, name: courseName, sessions: sessions)
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("didGetCourseDetail", object: result)
+            
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 
+                print("getCourseOverview failure\n")
+                print(error)
         }
 
+        
+        
     }
     
     
     
-
+    
 }
+
+
 
 
 
