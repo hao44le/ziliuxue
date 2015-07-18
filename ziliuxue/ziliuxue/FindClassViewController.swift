@@ -14,6 +14,8 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
     let name = ["TOEFL","IELTS","GRE","GMAT","LSAT"]
     let image = ["TOEFL_","IELTS_","GRE_","GMAT_","LSAT_"]
     
+    var selectedCourseName = ""
+    
     let IMAGE_HEIGHT : CGFloat = 200
     let IMAGE_OFFSET_SPEED : CGFloat = 25
     override func viewDidLoad() {
@@ -64,6 +66,9 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+        
+        self.selectedCourseName = self.name[indexPath.row] as String
+        
         self.performSegueWithIdentifier("toCourse", sender: self)
     }
     
@@ -113,6 +118,10 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        var courseOverviewVC = segue.destinationViewController as! CourseViewController
+        courseOverviewVC.courseName = self.selectedCourseName
+        
     }
 
 

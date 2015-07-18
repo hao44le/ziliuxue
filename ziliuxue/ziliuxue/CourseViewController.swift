@@ -10,10 +10,20 @@ import UIKit
 
 class CourseViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    
+    @IBOutlet var tableView: UITableView!
+    var courseName:String!
+    var courseOverViewList:[CourseOverView] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        ServerMethods.getCourseOverview(self.courseName)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didGetCourseOverView:"), name: "didGetCourseOverview", object: nil)
+        
+        //print(self.courseOverViewList)
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,17 +34,52 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.courseOverViewList.count
     }
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CourseTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CourseTableViewCell", forIndexPath: indexPath) as! CourseTableViewCell
+        
+        var courseOverView = self.courseOverViewList[indexPath.row] as CourseOverView
+        
+        cell.teacherImage.sd_setImageWithURL(NSURL(string: courseOverView.teacherPicURL), placeholderImage: nil)
+        
+        println(courseOverView.teacherPicURL)
+        cell.courseImage.sd_setImageWithURL(NSURL(string: courseOverView.coursePicURL), placeholderImage: nil)
+        
+        cell.coursePrice.text = "￥" + String(courseOverView.price)
+        cell.couseName.text = courseOverView.courseName
+        
+        
+        var courseDetail = courseOverView.teacherName + " |"
+        courseDetail += courseOverView.location
+        courseDetail += " |  ❤️"
+        courseDetail += String(courseOverView.favNum)
+        
+        cell.courseDetail.text = courseDetail
+        
+    
+        
+        
         return cell
     }
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("fromCourseViewToCourseDetail", sender: self)
     }
 
+    
+    func didGetCourseOverView(notification:NSNotification)
+    {
+        self.courseOverViewList = notification.object as! [CourseOverView]
+        Tool.showSuccessHUD("获取成功")
+        self.tableView.reloadData()
+        
+
+    }
     /*
     // MARK: - Navigation
 
