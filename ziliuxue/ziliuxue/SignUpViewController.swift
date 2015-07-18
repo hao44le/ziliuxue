@@ -55,7 +55,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
             return
         }
         
-        if email.text.lowercaseString.rangeOfString("@") == nil {
+        if email.text!.lowercaseString.rangeOfString("@") == nil {
             let ac = UIAlertView(title: "邮箱输入不合法", message: nil, delegate: nil, cancelButtonTitle: "好的")
             ac.show()
             return
@@ -65,7 +65,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         Tool.showProgressHUD("正在注册")
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        ServerMethods.signup(name.text, password: password.text,email:email.text)
+        ServerMethods.signup(name.text!, password: password.text!,email:email.text!)
         
         
         

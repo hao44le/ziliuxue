@@ -55,6 +55,7 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.pieChartColor = pieChartColor[indexPath.row]
         cell.percentLabel.text = percentLabel[indexPath.row]
         cell.pieView.reloadData()
+        cell.logoImageView.image = UIImage(named: self.name[indexPath.row])
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -37,6 +37,7 @@
 		C031C22A1B4F726B00277833 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C031C2291B4F726B00277833 /* MapKit.framework */; };
 		C031F1731B4A0EC6008D96D7 /* StudyPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C031F1721B4A0EC6008D96D7 /* StudyPlanViewController.swift */; };
 		C039BEAD1B3A7E1C00C8D5CE /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */; };
+		C03F5B7F1B59512A00532AC8 /* MJCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C03F5B7E1B59512A00532AC8 /* MJCollectionViewCell.m */; };
 		C063F56B1B520A9400B5053B /* BeforeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C063F56A1B520A9400B5053B /* BeforeLoginViewController.swift */; };
 		C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C072C5431B369C680055BAFE /* SignUpViewController.swift */; };
 		C07B390E1B480A6A00C1267A /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C07B39061B480A6A00C1267A /* MMDrawerBarButtonItem.m */; };
@@ -139,6 +140,8 @@
 		C031C2291B4F726B00277833 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C031F1721B4A0EC6008D96D7 /* StudyPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyPlanViewController.swift; sourceTree = "<group>"; };
 		C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		C03F5B7D1B59512A00532AC8 /* MJCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJCollectionViewCell.h; sourceTree = "<group>"; };
+		C03F5B7E1B59512A00532AC8 /* MJCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJCollectionViewCell.m; sourceTree = "<group>"; };
 		C063F56A1B520A9400B5053B /* BeforeLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeLoginViewController.swift; sourceTree = "<group>"; };
 		C072C5431B369C680055BAFE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C07B39051B480A6A00C1267A /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
@@ -424,6 +427,15 @@
 			name = FindService;
 			sourceTree = "<group>";
 		};
+		C03F5B801B59512E00532AC8 /* MJCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C03F5B7D1B59512A00532AC8 /* MJCollectionViewCell.h */,
+				C03F5B7E1B59512A00532AC8 /* MJCollectionViewCell.m */,
+			);
+			name = MJCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		C07B39041B480A6A00C1267A /* MMDrawerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +593,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C03F5B801B59512E00532AC8 /* MJCollectionViewCell */,
 				7B9D50811B520B0400B7AA2E /* ProgressHUD */,
 				C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */,
 				C0B3B2001B4E0E47000954A9 /* XYPieChart */,
@@ -795,6 +808,7 @@
 				C0C3B7AE1B4CDB11006800DD /* SchoolApplicationViewController.swift in Sources */,
 				C030F0CF1B4162D300DDDFDD /* PopUpViewController.swift in Sources */,
 				C026A7441B39080000E24908 /* ThridWizardViewController.swift in Sources */,
+				C03F5B7F1B59512A00532AC8 /* MJCollectionViewCell.m in Sources */,
 				C0F5C0E31B3F93C500A2FA14 /* SchoolDetailViewController.swift in Sources */,
 				C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */,
 			);

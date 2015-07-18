@@ -28,5 +28,7 @@
 #import "ProgressHUD.h"
 #import "UIImageView+WebCache.h"
 
+#import "MJCollectionViewCell.h"
+
 
 #endif /* Header_h */

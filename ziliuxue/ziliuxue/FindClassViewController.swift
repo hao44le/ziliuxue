@@ -8,12 +8,19 @@
 
 import UIKit
 
-class FindClassViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
+class FindClassViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,UICollectionViewDelegateFlowLayout{
 
+    @IBOutlet weak var parallaxCollectionView: UICollectionView!
     let name = ["TOEFL","IELTS","GRE","GMAT","LSAT"]
+    let image = ["TOEFL_","IELTS_","GRE_","GMAT_","LSAT_"]
+    
+    let IMAGE_HEIGHT : CGFloat = 200
+    let IMAGE_OFFSET_SPEED : CGFloat = 25
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.parallaxCollectionView.contentInset = UIEdgeInsetsMake(-60, 0, 0, 0)
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.parallaxCollectionView.reloadData()
         // Do any additional setup after loading the view.
     }
 
@@ -31,25 +38,49 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
+   
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return name.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        /*
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! FindClassCollectionViewCell
         cell.label.text = self.name[indexPath.row]
         cell.layer.cornerRadius = 62
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         return cell
+        */
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MJCell", forIndexPath: indexPath) as! MJCollectionViewCell
+        //cell.frame = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y, ScreenSize.SCREEN_WIDTH, 160)
+        cell.image = UIImage(named: image[indexPath.row])
+        cell.textLabel.text = name[indexPath.row]
+        
+        let yOffset = ((collectionView.contentOffset.y - cell.frame.origin.y) / self.IMAGE_HEIGHT) * self.IMAGE_OFFSET_SPEED
+        cell.imageOffset = CGPointMake(0, yOffset)
+        
+       return cell
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
         self.performSegueWithIdentifier("toCourse", sender: self)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(ScreenSize.SCREEN_WIDTH, 160)
+        
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        for view in self.parallaxCollectionView.visibleCells() {
+            if let cell = view as? MJCollectionViewCell {
+                let yOffset : CGFloat = ((parallaxCollectionView.contentOffset.y - cell.frame.origin.y) / self.IMAGE_HEIGHT) * self.IMAGE_OFFSET_SPEED
+                cell.imageOffset = CGPointMake(0, yOffset)
+
+            }
+            
+        }
     }
     
     

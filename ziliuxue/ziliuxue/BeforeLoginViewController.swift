@@ -33,7 +33,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.interactivePopGestureRecognizer.delegate = self
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "自留学", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         signUpButton.layer.cornerRadius = 25
@@ -48,7 +48,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController!.interactivePopGestureRecognizer.delegate = self
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         self.navigationController?.navigationBar.hidden = true
     }
     override func viewDidAppear(animated: Bool) {
@@ -58,7 +58,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController!.interactivePopGestureRecognizer.delegate = nil
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = nil
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     override func didReceiveMemoryWarning() {

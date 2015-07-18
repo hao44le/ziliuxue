@@ -129,8 +129,11 @@ struct ServerMethods {
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileSuccessed", object: nil)
                 print("getUserProfile success\n")
-                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                
+                    let dic =  NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+             
                 print(dic)
+                
                 //print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileFailed", object: nil)
