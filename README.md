@@ -1,12 +1,19 @@
 # Self Study abroad
 
 # NSNotification:
+
+
 课程：
+
+
 
     didGetCourseOverview
     didGetCourseDetail
     
 登录，注册：
+
+
+
     postweChatInfo
     weChat_login_Successed
     weChat_login_Failed
@@ -27,6 +34,8 @@
 
 用户档案：
 
+
+
     createUserProfileSuccessed
     createUserProfileFailed
     updateUserProfileSuccessed
@@ -37,6 +46,8 @@
 
 学校：
 
+
+
     getCollegeDetailSuccessed
     getCollegeDetailFailed
     getCollegeSuccessed
@@ -45,6 +56,9 @@
 
 # NSUserDefaults:
 登录：
+
+
+
     loginWay  
     loginKey
     weChat_userImageUrl
@@ -54,7 +68,13 @@
     refresh_token
     token
 
+
+
+
+
 首次Wizard：
+
+
 
     currentCelectedSchool
     numberOfFavoritedSchool
