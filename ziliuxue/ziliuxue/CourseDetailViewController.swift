@@ -98,12 +98,14 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     
     func setUpSessionScrollView()
     {
-        var session = self.sessions[self.selectedSession] as! NSDictionary
         
-        var classes = session.objectForKey("classes") as! NSArray
         
-        for i in 0..<classes.count
+        for i in 0..<self.sessions.count
         {
+            
+            var session = self.sessions[i] as! NSDictionary
+            
+            var classes = session.objectForKey("classes") as! NSArray
             var xOffset = DeviceSize.SCREEN_WIDTH * CGFloat(i) / 2
             var titleLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 20, 150, 30))
             titleLabel.text = session.objectForKey("title") as? String
@@ -114,7 +116,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
             var date = session.objectForKey("start_date") as! String + "-"
             date += session.objectForKey("end_date") as! String
             dateLabel.text = date
-            dateLabel.font = UIFont(name: "Helvetica", size: 11)
+            dateLabel.font = UIFont(name: "Helvetica", size: 10)
             self.sessionScrollView.addSubview(dateLabel)
             
             var enrollStatusLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 90, 150, 20))
