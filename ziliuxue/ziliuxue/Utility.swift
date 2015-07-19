@@ -150,7 +150,7 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(getCorrectBreakPointForCollegeDetail(collegeID), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailSuccessed", object: nil)
+            
             print("getCollegeDetail success\n")
             if let message = response.objectForKey("message") as? String {
                 //not found

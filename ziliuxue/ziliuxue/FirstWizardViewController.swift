@@ -113,6 +113,8 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
            
             
             
+        } else if segue.identifier == "toSecondWizard" {
+            
         }
         
 

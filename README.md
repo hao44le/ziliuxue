@@ -1,28 +1,61 @@
 # Self Study abroad
 
-获得用户手机：
+# NSNotification:
+课程：
 
-if DeviceType.IS_IPHONE_6 {
+    didGetCourseOverview
+    didGetCourseDetail
+    
+登录，注册：
+    postweChatInfo
+    weChat_login_Successed
+    weChat_login_Failed
+    loginSuccessed
+    loginFailed
+    signupSuccessed
+    signupFailed
+    obtainNewTokenSuccessed
+    obtainNewTokenFailed
 
-} else if DeviceType.IS_IPHONE_5 {
-
-} else if DeviceType.IS_IPHONE_6P {
-
-} else if DeviceType.IS_IPHONE_4_OR_LESS {
-
-} else if DeviceType.IS_IPAD {
-
-}
+首次Wizard：
 
 
-调用服务器API：
+    userSelectedMajorChanged
+    addTopPicture
+    removeTopPicture
 
-ServerMethods.getAllUsers(<#T##token: String##String#>)
 
-ServerMethods.getCollege(<#T##from: String##String#>, to: <#T##String#>, token: <#T##String#>)
+用户档案：
 
-ServerMethods.obtainNewToken(<#T##refresh_token: String##String#>)
+    createUserProfileSuccessed
+    createUserProfileFailed
+    updateUserProfileSuccessed
+    updateUserProfileFailed
+    getUserProfileSuccessed
+    getUserProfileFailed
 
-ServerMethods.obtainToken(<#T##username: String##String#>, password: <#T##String#>)
 
-ServerMethods.signup(<#T##username: String##String#>, password: <#T##String#>)
+学校：
+
+    getCollegeDetailSuccessed
+    getCollegeDetailFailed
+    getCollegeSuccessed
+    getCollegeFailed
+
+
+# NSUserDefaults:
+登录：
+    loginWay  
+    loginKey
+    weChat_userImageUrl
+    weChat_userNickname
+    nickName
+    weChat_token
+    refresh_token
+    token
+
+首次Wizard：
+
+    currentCelectedSchool
+    numberOfFavoritedSchool
+    numberOfFavoritedSchool
