@@ -28,8 +28,16 @@
 
 
     userSelectedMajorChanged
-    addTopPicture
-    removeTopPicture
+    
+    addCurrentUniversityToThirdUniversity
+    addCurrentUniversityToSecondUniversity
+    addCurrentUniversityToFirstUniversity
+    deleteFirstUniversityAndMoveOthersDown
+    deleteFirstUniversity
+    deleteSecondUniversityAndMoveThirdUniversityDown
+    deleteSecondUniversity
+    deleteThirdUniversity
+	
 
 
 用户档案：
@@ -74,12 +82,6 @@
 
 首次Wizard：
 
-
-
-    currentCelectedSchool
-    numberOfFavoritedSchool
-    numberOfFavoritedSchool
-    
     userDestinationCountry
     userTargetedDegree
     userSpecificMajor
@@ -90,7 +92,8 @@
     userTOEFL
     userGRE
     userGMAT
-
-
-    tmpSearchString
     
+
+    firstUniversity
+    secondUniversity
+    thirdUniversity

@@ -29,8 +29,8 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
         
         
         self.resultSeachController = ({
@@ -77,12 +77,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        if let value : String = NSUserDefaults.standardUserDefaults().objectForKey("tmpSearchString") as? String {
-            self.resultSeachController.searchBar.text = value
-        }
-    }
+
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.resultSeachController.searchBar.text == "" {
@@ -125,10 +120,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("toUniversityDetail", sender: self)
-        if self.resultSeachController.active {
-            NSUserDefaults.standardUserDefaults().setObject(self.resultSeachController.searchBar.text, forKey: "tmpSearchString")
-            self.resultSeachController.active = false
-        }
+        
     }
     
     func addTopPicture(){
