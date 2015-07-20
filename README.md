@@ -32,6 +32,7 @@
     addCurrentUniversityToThirdUniversity
     addCurrentUniversityToSecondUniversity
     addCurrentUniversityToFirstUniversity
+    deleteFirstUniversityAndMoveSecondDown
     deleteFirstUniversityAndMoveOthersDown
     deleteFirstUniversity
     deleteSecondUniversityAndMoveThirdUniversityDown

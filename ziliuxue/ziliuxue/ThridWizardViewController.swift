@@ -28,10 +28,22 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.firstPicture.image = UIImage(named: "defaultWizard1")
+        self.secondPicture.image = UIImage(named: "defaultWizard2")
+        self.thirdPicture.image = UIImage(named: "defaultWizard3")
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
         
+        let defualts = NSNotificationCenter.defaultCenter()
+        defualts.addObserver(self, selector: "deleteFirstUniversityAndMoveSecondDown", name: "deleteFirstUniversityAndMoveSecondDown", object: nil)
+        defualts.addObserver(self, selector: "addCurrentUniversityToThirdUniversity", name: "addCurrentUniversityToThirdUniversity", object: nil)
+        defualts.addObserver(self, selector: "addCurrentUniversityToSecondUniversity", name: "addCurrentUniversityToSecondUniversity", object: nil)
+        defualts.addObserver(self, selector: "addCurrentUniversityToFirstUniversity", name: "addCurrentUniversityToFirstUniversity", object: nil)
+        defualts.addObserver(self, selector: "deleteFirstUniversityAndMoveOthersDown", name: "deleteFirstUniversityAndMoveOthersDown", object: nil)
+        defualts.addObserver(self, selector: "deleteFirstUniversity", name: "deleteFirstUniversity", object: nil)
+        defualts.addObserver(self, selector: "deleteSecondUniversityAndMoveThirdUniversityDown", name: "deleteSecondUniversityAndMoveThirdUniversityDown", object: nil)
+        defualts.addObserver(self, selector: "deleteSecondUniversity", name: "deleteSecondUniversity", object: nil)
+        defualts.addObserver(self, selector: "deleteThirdUniversity", name: "deleteThirdUniversity", object: nil)
         
         self.resultSeachController = ({
             //let searchResultsController : UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("TableSearchResultsNavController") as! UINavigationController
@@ -62,7 +74,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         doneButton.layer.borderWidth = 0.5
         doneButton.layer.borderColor = UIColor.whiteColor().CGColor
         
-        
+        /*
         if DeviceType.IS_IPHONE_6 {
             self.tableViewHeightConstraint.constant = 500
         } else if DeviceType.IS_IPHONE_5 {
@@ -74,6 +86,8 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         } else if DeviceType.IS_IPAD {
             
         }
+*/
+        
         // Do any additional setup after loading the view.
     }
     
@@ -112,9 +126,29 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             cell.logo.image = UIImage(named: self.universityName[indexPath.row])
         }
         
+        if let first = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
+            if first == cell.universityName.text {
+                cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
+                return cell
+            }
+        }
+        if let second = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
+            if second == cell.universityName.text {
+                cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
+                return cell
+            }
+        }
         
+        if let third = NSUserDefaults.standardUserDefaults().objectForKey("thirdUniversity") as? String {
+            if third == cell.universityName.text {
+                cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
+                return cell
+            }
+        }
         
+        cell.like.setImage(UIImage(named: "star"), forState: UIControlState.Normal)
         return cell
+        
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -122,6 +156,8 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         self.performSegueWithIdentifier("toUniversityDetail", sender: self)
         
     }
+    
+    /*
     
     func addTopPicture(){
         //print("add function")
@@ -182,6 +218,76 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
 
     }
     
+    */
+    
+    
+    func addCurrentUniversityToThirdUniversity(){
+        //获得用户当前选择学校
+        if let third = NSUserDefaults.standardUserDefaults().objectForKey("thirdUniversity") as? String {
+            //更新图片
+            self.thirdPicture.image = UIImage(named: third)
+        }
+        
+    }
+    
+    func addCurrentUniversityToSecondUniversity(){
+        //获得用户当前选择学校
+        if let second = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
+            //更新图片
+            self.secondPicture.image = UIImage(named: second)
+        }
+        
+    }
+    func addCurrentUniversityToFirstUniversity(){
+        //获得用户当前选择学校
+        if let first = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
+            //更新图片
+            self.firstPicture.image = UIImage(named: first)
+        }
+        
+    }
+    func deleteFirstUniversityAndMoveSecondDown(){
+        if let firstUniversity = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
+            self.firstPicture.image = UIImage(named: firstUniversity)
+            self.deleteSecondUniversity()
+        }
+        
+    }
+    
+    
+    func deleteFirstUniversityAndMoveOthersDown(){
+        if let firstUniversity = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
+            if let secondUniversity = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
+                self.firstPicture.image = UIImage(named: firstUniversity)
+                self.secondPicture.image = UIImage(named: secondUniversity)
+                self.deleteThirdUniversity()
+            }
+        }
+        
+    }
+    func deleteFirstUniversity(){
+        //删除图片
+        self.firstPicture.image = UIImage(named: "defaultWizard1")
+        
+    }
+    func deleteSecondUniversityAndMoveThirdUniversityDown(){
+        if let secondUniversity = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
+            self.secondPicture.image = UIImage(named: secondUniversity)
+            self.deleteThirdUniversity()
+        }
+        
+    }
+    func deleteSecondUniversity(){
+        //删除图片
+        self.secondPicture.image = UIImage(named: "defaultWizard2")
+    }
+    
+    func deleteThirdUniversity(){
+        //删除图片
+        self.thirdPicture.image = UIImage(named: "defaultWizard3")
+    }
+
+
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         localFilteredUniversityArray.removeAll(keepCapacity: false)
         
