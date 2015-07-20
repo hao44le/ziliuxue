@@ -114,7 +114,10 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             
             
         } else if segue.identifier == "toSecondWizard" {
-            
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(detail[0], forKey: "userDestinationCountry")
+            defaults.setObject(detail[1], forKey: "userTargetedDegree")
+            defaults.setObject(detail[2], forKey: "userSpecificMajor")
         }
         
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating,UISearchBarDelegate {
 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +17,12 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var secondPicture: UIImageView!
     @IBOutlet weak var firstPicture: UIImageView!
     
+   
+    
+    
+    var localFilteredUniversityArray : [String] = []
+    var resultSeachController = UISearchController()
+    var selectedUniversity = ""
     
     var universityName = ["7","12","15","Harvard University","Stanford University"]
     
@@ -26,6 +32,29 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
         
+        
+        self.resultSeachController = ({
+            //let searchResultsController : UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("TableSearchResultsNavController") as! UINavigationController
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            //controller.delegate = self
+            controller.searchBar.sizeToFit()
+            controller.searchBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 0.8)
+            controller.searchBar.tintColor = UIColor.whiteColor()
+            controller.searchBar.placeholder = "搜索大学专业"
+            controller.searchBar.translucent = false
+            //controller.searchBar.frame = CGRectMake(0, 0, self.view.frame.width, 20)
+            controller.searchBar.delegate = self
+            controller.hidesNavigationBarDuringPresentation = false
+            //self.view.addSubview(controller.searchBar)
+            
+            //controller.searchBar.frame = CGRectMake(0, 64, ScreenSize.SCREEN_WIDTH, 44)
+            //self.view.addSubview(controller.searchBar)
+            self.tableView.tableHeaderView = controller.searchBar
+            return controller
+        })()
+
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学校", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
@@ -47,29 +76,59 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let value : String = NSUserDefaults.standardUserDefaults().objectForKey("tmpSearchString") as? String {
+            self.resultSeachController.searchBar.text = value
+        }
     }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.resultSeachController.searchBar.text == "" {
+            self.resultSeachController.searchBar.resignFirstResponder()
+            self.resultSeachController.active = false
+        }
+        
+    }
+
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.universityName.count
+        if resultSeachController.active {
+            return self.localFilteredUniversityArray.count
+        } else {
+            return self.universityName.count
+        }
+        
+        
+        
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
-        cell.universityName.text = self.universityName[indexPath.row]
-        cell.logo.image = UIImage(named: self.universityName[indexPath.row])
+        if resultSeachController.active {
+            cell.universityName.text = self.localFilteredUniversityArray[indexPath.row]
+            cell.logo.image = UIImage(named: self.localFilteredUniversityArray[indexPath.row])
+        } else {
+            cell.universityName.text = self.universityName[indexPath.row]
+            cell.logo.image = UIImage(named: self.universityName[indexPath.row])
+        }
+        
+        
+        
         return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("toUniversityDetail", sender: self)
+        if self.resultSeachController.active {
+            NSUserDefaults.standardUserDefaults().setObject(self.resultSeachController.searchBar.text, forKey: "tmpSearchString")
+            self.resultSeachController.active = false
+        }
     }
     
     func addTopPicture(){
@@ -130,6 +189,28 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         }
 
     }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        localFilteredUniversityArray.removeAll(keepCapacity: false)
+        
+        if self.resultSeachController.searchBar.text == "" {
+            self.localFilteredUniversityArray = self.universityName
+        } else {
+            //Local search
+            let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text)
+            let array = (universityName as NSArray).filteredArrayUsingPredicate(searchPredicate)
+            self.localFilteredUniversityArray = array as! [String]
+            
+            
+        }
+        
+        
+        
+        self.tableView.reloadData()
+        
+    }
+
+    
     
     
     /*

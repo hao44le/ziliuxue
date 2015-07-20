@@ -79,3 +79,18 @@
     currentCelectedSchool
     numberOfFavoritedSchool
     numberOfFavoritedSchool
+    
+    userDestinationCountry
+    userTargetedDegree
+    userSpecificMajor
+
+
+    userGPA
+    userSAT
+    userTOEFL
+    userGRE
+    userGMAT
+
+
+    tmpSearchString
+    
