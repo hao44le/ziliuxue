@@ -372,7 +372,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         //获得用户当前选择学校
         if let third = NSUserDefaults.standardUserDefaults().objectForKey("thirdUniversity") as? String {
             //更新图片
-            self.thirdPicture.image = UIImage(named: third)
+            self.thirdPicture.image = UIImage(named: third + " logo")
         }
         
     }
@@ -381,7 +381,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         //获得用户当前选择学校
         if let second = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
             //更新图片
-            self.secondPicture.image = UIImage(named: second)
+            self.secondPicture.image = UIImage(named: second + " logo")
         }
         
     }
@@ -389,13 +389,13 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         //获得用户当前选择学校
         if let first = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
             //更新图片
-            self.firstPicture.image = UIImage(named: first)
+            self.firstPicture.image = UIImage(named: first + " logo")
         }
         
     }
     func deleteFirstUniversityAndMoveSecondDown(){
         if let firstUniversity = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
-            self.firstPicture.image = UIImage(named: firstUniversity)
+            self.firstPicture.image = UIImage(named: firstUniversity + " logo")
             self.deleteSecondUniversity()
         }
         
@@ -405,8 +405,8 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     func deleteFirstUniversityAndMoveOthersDown(){
         if let firstUniversity = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
             if let secondUniversity = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
-                self.firstPicture.image = UIImage(named: firstUniversity)
-                self.secondPicture.image = UIImage(named: secondUniversity)
+                self.firstPicture.image = UIImage(named: firstUniversity + " logo")
+                self.secondPicture.image = UIImage(named: secondUniversity + " logo")
                 self.deleteThirdUniversity()
             }
         }
@@ -419,7 +419,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     func deleteSecondUniversityAndMoveThirdUniversityDown(){
         if let secondUniversity = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
-            self.secondPicture.image = UIImage(named: secondUniversity)
+            self.secondPicture.image = UIImage(named: secondUniversity + " logo")
             self.deleteThirdUniversity()
         }
         
@@ -445,7 +445,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             self.localFilteredUniversityArray = self.universityArray
         } else {
             //Local search
-            let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text)
+            let searchPredicate = NSPredicate(format: "SELF.name CONTAINS[c] %@", searchController.searchBar.text)
             let array = (universityArray as NSArray).filteredArrayUsingPredicate(searchPredicate)
             self.localFilteredUniversityArray = array as! [College]
             

@@ -88,7 +88,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         // Dispose of any resources that can be recreated.
     }
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
-        self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+        //self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
    
     @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
