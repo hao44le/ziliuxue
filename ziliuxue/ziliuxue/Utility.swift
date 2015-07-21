@@ -631,7 +631,8 @@ struct ServerMethods {
             
             
             
-            /* 下载20个college的图片
+            /* 
+            //下载20个college的图片
             let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
             var final : NSMutableDictionary = NSMutableDictionary()
             for school in result {

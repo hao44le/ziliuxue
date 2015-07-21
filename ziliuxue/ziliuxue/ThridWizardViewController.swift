@@ -44,20 +44,42 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         
     }
     
-    var localFilteredUniversityArray : [String] = []
-    var serverFilteredUniversityArray : [String] = []
+    var localFilteredUniversityArray : [College] = []
+    var serverFilteredUniversityArray : [College] = []
     var resultSeachController = UISearchController()
     var selectedUniversity = ""
     var currentPage = 1
     var maxPages = 600
-    var universityName = ["7","12","15","Harvard University","Stanford University"]
+    var universityArray : [College] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let path = NSBundle.mainBundle().pathForResource("College", ofType: "plist")
         
         
-        
+        let fileManager = NSFileManager.defaultManager()
+        let data : NSArray = NSArray(contentsOfFile: path!)!
+        for school in data {
+            let id = school.objectForKey("_id") as! String
+            let name = school.objectForKey("name") as! String
+            let general = school.objectForKey("general") as! NSDictionary
+            
+            
+            let website = general.objectForKey("website") as! String
+            let logo = name + " logo"
+            
+            let address = general.objectForKey("address") as! NSDictionary
+            let photos = [name + " photo1",name + " photo2",name + " photo3"]
+            
+            let city = address.objectForKey("city") as! String
+            let country = address.objectForKey("country") as! String
+            let state = address.objectForKey("state") as! String
+            let zipcode = address.objectForKey("zipcode") as! String
+            
+            let college = College(id: id, name: name, city: city, state: state, country: country, zipcode: zipcode, website: website, logo: logo, photos: photos)
+            universityArray.append(college)
+        }
         
         self.firstPicture.image = UIImage(named: "defaultWizard1")
         self.firstPicture.layer.cornerRadius = 32
@@ -154,7 +176,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     func loadUniversities(page:Int) {
         let end = page * 20
         let begin = end - 19
-        ServerMethods.getCollege(begin.description, to: end.description)
+        //ServerMethods.getCollege(begin.description, to: end.description)
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -175,7 +197,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.row == (self.universityName.count - 1) ) && (self.currentPage != self.maxPages) {
+        if (indexPath.row == (self.universityArray.count - 1) ) && (self.currentPage != self.maxPages) {
             self.loadUniversities(++self.currentPage)
         }
     }
@@ -191,9 +213,9 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             }
         } else {
             if self.currentPage == self.maxPages {
-                return self.universityName.count
+                return self.universityArray.count
             } else {
-                return self.universityName.count + 1
+                return self.universityArray.count + 1
             }
             
         }
@@ -219,7 +241,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row == self.universityName.count {
+        if indexPath.row == self.universityArray.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("LoadingCell", forIndexPath: indexPath) as! UITableViewCell
             let activityIndicator = cell.contentView.viewWithTag(100) as! UIActivityIndicatorView
             activityIndicator.startAnimating()
@@ -234,17 +256,19 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             if resultSeachController.active {
                 if indexPath.section == 0 {
                     //local result
-                    cell.universityName.text = self.localFilteredUniversityArray[indexPath.row]
-                    cell.logo.image = UIImage(named: self.localFilteredUniversityArray[indexPath.row])
+                    cell.universityName.text = self.localFilteredUniversityArray[indexPath.row].name
+                    cell.logo.image = UIImage(named: self.localFilteredUniversityArray[indexPath.row].logo)
                 } else {
                     //server result
-                    cell.universityName.text = self.serverFilteredUniversityArray[indexPath.row]
-                    cell.logo.image = UIImage(named: self.serverFilteredUniversityArray[indexPath.row])
+                    cell.universityName.text = self.serverFilteredUniversityArray[indexPath.row].name
+                    cell.logo.image = UIImage(named: self.serverFilteredUniversityArray[indexPath.row].logo)
                 }
                 
             } else {
-                cell.universityName.text = self.universityName[indexPath.row]
-                cell.logo.image = UIImage(named: self.universityName[indexPath.row])
+                //println(self.universityArray[indexPath.row].name)
+                //println(self.universityArray[indexPath.row].logo)
+                cell.universityName.text = self.universityArray[indexPath.row].name
+                cell.logo.image = UIImage(named: self.universityArray[indexPath.row].logo)
             }
             
             if let first = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
@@ -418,12 +442,12 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         localFilteredUniversityArray.removeAll(keepCapacity: false)
         serverFilteredUniversityArray.removeAll(keepCapacity: false)
         if self.resultSeachController.searchBar.text == "" {
-            self.localFilteredUniversityArray = self.universityName
+            self.localFilteredUniversityArray = self.universityArray
         } else {
             //Local search
             let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text)
-            let array = (universityName as NSArray).filteredArrayUsingPredicate(searchPredicate)
-            self.localFilteredUniversityArray = array as! [String]
+            let array = (universityArray as NSArray).filteredArrayUsingPredicate(searchPredicate)
+            self.localFilteredUniversityArray = array as! [College]
             
             //sever search
             getSearchResultsFromServer(searchController.searchBar.text)
