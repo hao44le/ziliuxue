@@ -116,21 +116,23 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func weChat_login_Successed(){
         NSUserDefaults.standardUserDefaults().setObject("weChat", forKey: "loginWay")
-        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        
         Tool.dismissHUD()
         LocalStore.setLogined()
         self.performSegueWithIdentifier("loginToMain", sender: self)
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
     }
     
     
     func loginSuccessed(){
         NSUserDefaults.standardUserDefaults().setObject("ziliuxue", forKey: "loginWay")
-        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        
         NSUserDefaults.standardUserDefaults().setObject(email.text, forKey: "nickName")
         LocalStore.setLogined()
         //self.activityIndicator.stopAnimating()
         Tool.dismissHUD()
         self.performSegueWithIdentifier("loginToMain", sender: self)
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
     }
     func loginFailed(){
         UIApplication.sharedApplication().endIgnoringInteractionEvents()

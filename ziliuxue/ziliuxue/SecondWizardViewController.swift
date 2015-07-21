@@ -12,6 +12,14 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
 
     @IBOutlet weak var continueButton: UIButton!
     let name = ["GPA","SAT","TOEFL","GRE","GMAT"]
+    
+    
+    var gpa:UITextField = UITextField()
+    var sat:UITextField = UITextField()
+    var toefl : UITextField = UITextField()
+    var gre : UITextField = UITextField()
+    var gmat : UITextField = UITextField()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "情况", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
@@ -30,9 +38,19 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = name[indexPath.row]
-        cell.detailTextLabel?.text =  "选择"
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
+        cell.label?.text = name[indexPath.row]
+        if indexPath.row == 0 {
+            gpa = cell.textField
+        } else if indexPath.row == 1 {
+            sat = cell.textField
+        } else if indexPath.row == 2 {
+            toefl = cell.textField
+        } else if indexPath.row == 3 {
+            gre = cell.textField
+        } else {
+            gmat = cell.textField
+        }
         return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,14 +60,22 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toThirdWizard" {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(gpa.text, forKey: "userGPA")
+            defaults.setObject(sat.text, forKey: "userSAT")
+            defaults.setObject(toefl.text, forKey: "userTOEFL")
+            defaults.setObject(gre.text, forKey: "userGRE")
+            defaults.setObject(gmat.text, forKey: "userGMAT")
+        }
     }
-    */
+    
 
 }

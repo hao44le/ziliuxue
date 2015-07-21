@@ -95,11 +95,16 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         localFilteredMajorArray.removeAll(keepCapacity: false)
         
-        
-        //Local search
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[cd] %@", searchController.searchBar.text)
-        let array = (MajorArray as NSArray).filteredArrayUsingPredicate(searchPredicate)
-        self.localFilteredMajorArray = array as! [String]
+        if self.resultSeachController.searchBar.text == "" {
+            self.localFilteredMajorArray = self.MajorArray
+        } else {
+            //Local search
+            let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text)
+            let array = (MajorArray as NSArray).filteredArrayUsingPredicate(searchPredicate)
+            self.localFilteredMajorArray = array as! [String]
+            
+            
+        }
         
         
         
@@ -120,6 +125,9 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
         NSNotificationCenter.defaultCenter().postNotificationName("userSelectedMajorChanged", object: nil, userInfo: ["major":self.selectedMajor])
         
+    }
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.resultSeachController.searchBar.resignFirstResponder()
     }
     /*
     // MARK: - Navigation

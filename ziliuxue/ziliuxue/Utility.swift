@@ -38,6 +38,7 @@ struct LocalStore {
         userDefaults.setObject("", forKey: "refresh_token")
         userDefaults.setObject(nil, forKey: "weChat_userImageUrl")
         userDefaults.setObject(nil, forKey: "weChat_userNickname")
+        userDefaults.setObject(nil, forKey: "weChat_token")
         userDefaults.setObject(nil, forKey: "nickName")
         userDefaults.setObject(false, forKey: "loginKey")
         userDefaults.setObject(nil, forKey: "loginWay")
@@ -63,27 +64,30 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
-        
-        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-        let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
-        let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
-        let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
-        let parameter = NSDictionary(objectsAndKeys: profile,"profile")
-        print(parameter)
-        
-        manager.POST(ServerConstant.user_profile, parameters: parameter
-            , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
-                print("createUserProfile success\n")
-                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-                print(dic)
-                
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
-                print("createUserProfile failure\n")
-                print(error)
+        if let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as? String {
+            manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+            let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
+            let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
+            let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
+            let parameter = NSDictionary(objectsAndKeys: profile,"profile")
+            print(parameter)
+            
+            manager.POST(ServerConstant.user_profile, parameters: parameter
+                , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
+                    print("createUserProfile success\n")
+                    let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                    print(dic)
+                    
+                }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
+                    print("createUserProfile failure\n")
+                    print(error)
+            }
+
         }
+        
+        
     }
     
     static func updateUserProfile(country:String,degree:String,major:String,gpa:Float,toefl:Float,sat:Float,my_schools:[String]){
@@ -590,7 +594,7 @@ struct ServerMethods {
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         var result : [College] = []
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-            NSNotificationCenter.defaultCenter().postNotificationName("getCollegeSuccessed", object: nil)
+            
             print("getCollege success\n")
             
             for school in response as! NSArray {
@@ -601,6 +605,7 @@ struct ServerMethods {
                 
                 let website = general.objectForKey("website") as! String
                 let logo = general.objectForKey("logo") as! String
+                
                 let address = general.objectForKey("address") as! NSDictionary
                 let photos = general.objectForKey("photos") as! [String]
                 
@@ -614,6 +619,57 @@ struct ServerMethods {
                 //print(college)
                 
             }
+            /* 一次性保存20个college做cache
+            // full path for local file data.plist
+            let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+            let path = documentDir.stringByAppendingPathComponent("data.plist")
+            let data : NSArray = response as! NSArray
+            
+            data.writeToFile(path, atomically: true)
+            
+            */
+            
+            
+            
+            /* 
+            //下载20个college的图片
+            let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+            var final : NSMutableDictionary = NSMutableDictionary()
+            for school in result {
+                
+                let logoPath = documentDir.stringByAppendingPathComponent(school.name + " logo.jpg")
+                if let image_url = NSURL(string: ServerConstant.baseURL + school.logo) {
+                    if let image_data = NSData(contentsOfURL:image_url) {
+                        if let image = UIImage(data: image_data) {
+                            UIImageJPEGRepresentation(image, 100).writeToFile(logoPath, atomically: true)
+                        }
+
+                    }
+                    
+                    
+                }
+               
+                
+                var counter = 1
+                    for photo in school.photos {
+                        if let photo_url = NSURL(string: ServerConstant.baseURL + photo) {
+                            if let photo_data = NSData(contentsOfURL: photo_url) {
+                                if let photo_itself = UIImage(data: photo_data) {
+                                    let photo_path = documentDir.stringByAppendingPathComponent(school.name + " photo.jpg" + counter.description)
+                                    counter++
+                                    UIImageJPEGRepresentation(photo_itself, 100).writeToFile(photo_path, atomically: true)
+                                }
+                            }
+                            
+
+                        }
+                }
+            }
+            */
+
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("getCollegeSuccessed", object: result)
+            
             
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in

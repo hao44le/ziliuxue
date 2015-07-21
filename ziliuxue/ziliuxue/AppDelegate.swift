@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
        //ServerMethods.updateUserProfile("USA", degree: "master's", major: "Computer Science", gpa: 3.2, toefl: 100, sat: 2000, my_schools: ["559f599582e515e069064b4c"])
         //ServerMethods.getCollegeDetail("559f599582e515e069064b4c")
         //ServerMethods.getUserProfile()
-        
+        //ServerMethods.getCollege("1", to: "10")
         //ServerMethods.getCourseOverview("TOEFL")
                 
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
