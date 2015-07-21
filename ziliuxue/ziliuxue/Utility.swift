@@ -38,6 +38,7 @@ struct LocalStore {
         userDefaults.setObject("", forKey: "refresh_token")
         userDefaults.setObject(nil, forKey: "weChat_userImageUrl")
         userDefaults.setObject(nil, forKey: "weChat_userNickname")
+        userDefaults.setObject(nil, forKey: "weChat_token")
         userDefaults.setObject(nil, forKey: "nickName")
         userDefaults.setObject(false, forKey: "loginKey")
         userDefaults.setObject(nil, forKey: "loginWay")
@@ -63,27 +64,30 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.responseSerializer = AFHTTPResponseSerializer()
         
-        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
-        
-        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-        let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
-        let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
-        let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
-        let parameter = NSDictionary(objectsAndKeys: profile,"profile")
-        print(parameter)
-        
-        manager.POST(ServerConstant.user_profile, parameters: parameter
-            , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
-                print("createUserProfile success\n")
-                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-                print(dic)
-                
-            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
-                print("createUserProfile failure\n")
-                print(error)
+        if let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as? String {
+            manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+            let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
+            let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
+            let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
+            let parameter = NSDictionary(objectsAndKeys: profile,"profile")
+            print(parameter)
+            
+            manager.POST(ServerConstant.user_profile, parameters: parameter
+                , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
+                    print("createUserProfile success\n")
+                    let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                    print(dic)
+                    
+                }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
+                    print("createUserProfile failure\n")
+                    print(error)
+            }
+
         }
+        
+        
     }
     
     static func updateUserProfile(country:String,degree:String,major:String,gpa:Float,toefl:Float,sat:Float,my_schools:[String]){

@@ -19,8 +19,33 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     
    
     
+    @IBAction func finishButtonClicked(sender: UIButton) {
+        Tool.showProgressHUD("正在上传资料")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let country = defaults.objectForKey("userDestinationCountry") as! String
+        let degree = defaults.objectForKey("userTargetedDegree") as! String
+        let major = defaults.objectForKey("userSpecificMajor") as! String
+        let gpa = defaults.objectForKey("userGPA") as! String
+        let toefl = defaults.objectForKey("userTOEFL") as! String
+        let sat = defaults.objectForKey("userSAT") as! String
+        var schools : [String] = []
+        if let firstUniversity = defaults.objectForKey("firstUniversity") as? String {
+            if let secondUniversity = defaults.objectForKey("secondUniversity") as? String {
+                if let thirdUniversity = defaults.objectForKey("thirdUniversity") as? String {
+                    schools = [firstUniversity,secondUniversity,thirdUniversity]
+                } else {
+                    schools = [firstUniversity,secondUniversity]
+                }
+            } else {
+                schools = [firstUniversity]
+            }
+        }
+        ServerMethods.createUserProfile(country, degree: degree, major: major, gpa: gpa.floatValue, toefl: toefl.floatValue, sat: sat.floatValue, my_schools: schools)
+        
+    }
     
     var localFilteredUniversityArray : [String] = []
+    var serverFilteredUniversityArray : [String] = []
     var resultSeachController = UISearchController()
     var selectedUniversity = ""
     
@@ -28,22 +53,46 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+        
         self.firstPicture.image = UIImage(named: "defaultWizard1")
+        self.firstPicture.layer.cornerRadius = 20
+        self.firstPicture.clipsToBounds = true
+        self.firstPicture.layer.borderWidth = 1
+        self.firstPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        
+        
         self.secondPicture.image = UIImage(named: "defaultWizard2")
+        self.secondPicture.layer.cornerRadius = 20
+        self.secondPicture.clipsToBounds = true
+        self.secondPicture.layer.borderWidth = 1
+        self.secondPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        
         self.thirdPicture.image = UIImage(named: "defaultWizard3")
+        self.thirdPicture.layer.cornerRadius = 20
+        self.thirdPicture.clipsToBounds = true
+        self.thirdPicture.layer.borderWidth = 1
+        self.thirdPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
         
-        let defualts = NSNotificationCenter.defaultCenter()
-        defualts.addObserver(self, selector: "deleteFirstUniversityAndMoveSecondDown", name: "deleteFirstUniversityAndMoveSecondDown", object: nil)
-        defualts.addObserver(self, selector: "addCurrentUniversityToThirdUniversity", name: "addCurrentUniversityToThirdUniversity", object: nil)
-        defualts.addObserver(self, selector: "addCurrentUniversityToSecondUniversity", name: "addCurrentUniversityToSecondUniversity", object: nil)
-        defualts.addObserver(self, selector: "addCurrentUniversityToFirstUniversity", name: "addCurrentUniversityToFirstUniversity", object: nil)
-        defualts.addObserver(self, selector: "deleteFirstUniversityAndMoveOthersDown", name: "deleteFirstUniversityAndMoveOthersDown", object: nil)
-        defualts.addObserver(self, selector: "deleteFirstUniversity", name: "deleteFirstUniversity", object: nil)
-        defualts.addObserver(self, selector: "deleteSecondUniversityAndMoveThirdUniversityDown", name: "deleteSecondUniversityAndMoveThirdUniversityDown", object: nil)
-        defualts.addObserver(self, selector: "deleteSecondUniversity", name: "deleteSecondUniversity", object: nil)
-        defualts.addObserver(self, selector: "deleteThirdUniversity", name: "deleteThirdUniversity", object: nil)
+        
+        let defaults = NSNotificationCenter.defaultCenter()
+        defaults.addObserver(self, selector: "createUserProfileSuccessed", name: "createUserProfileSuccessed", object: nil)
+        defaults.addObserver(self, selector: "createUserProfileFailed", name: "createUserProfileFailed", object: nil)
+        
+        defaults.addObserver(self, selector: "deleteFirstUniversityAndMoveSecondDown", name: "deleteFirstUniversityAndMoveSecondDown", object: nil)
+        defaults.addObserver(self, selector: "addCurrentUniversityToThirdUniversity", name: "addCurrentUniversityToThirdUniversity", object: nil)
+        defaults.addObserver(self, selector: "addCurrentUniversityToSecondUniversity", name: "addCurrentUniversityToSecondUniversity", object: nil)
+        defaults.addObserver(self, selector: "addCurrentUniversityToFirstUniversity", name: "addCurrentUniversityToFirstUniversity", object: nil)
+        defaults.addObserver(self, selector: "deleteFirstUniversityAndMoveOthersDown", name: "deleteFirstUniversityAndMoveOthersDown", object: nil)
+        defaults.addObserver(self, selector: "deleteFirstUniversity", name: "deleteFirstUniversity", object: nil)
+        defaults.addObserver(self, selector: "deleteSecondUniversityAndMoveThirdUniversityDown", name: "deleteSecondUniversityAndMoveThirdUniversityDown", object: nil)
+        defaults.addObserver(self, selector: "deleteSecondUniversity", name: "deleteSecondUniversity", object: nil)
+        defaults.addObserver(self, selector: "deleteThirdUniversity", name: "deleteThirdUniversity", object: nil)
         
         self.resultSeachController = ({
             //let searchResultsController : UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("TableSearchResultsNavController") as! UINavigationController
@@ -52,8 +101,9 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             controller.dimsBackgroundDuringPresentation = false
             //controller.delegate = self
             controller.searchBar.sizeToFit()
-            controller.searchBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 0.8)
-            controller.searchBar.tintColor = UIColor.whiteColor()
+            controller.searchBar.barTintColor = UIColor.whiteColor()
+            controller.searchBar.searchBarStyle = UISearchBarStyle.Minimal
+            controller.searchBar.tintColor = UIColor.blackColor()
             controller.searchBar.placeholder = "搜索大学专业"
             controller.searchBar.translucent = false
             //controller.searchBar.frame = CGRectMake(0, 0, self.view.frame.width, 20)
@@ -103,24 +153,57 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
 
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if self.resultSeachController.active{
+            return 2
+        } else {
+            return 1
+        }
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if resultSeachController.active {
-            return self.localFilteredUniversityArray.count
+ 
+        if self.resultSeachController.active {
+            if section == 0 {
+                return self.localFilteredUniversityArray.count
+            } else {
+                return self.serverFilteredUniversityArray.count
+            }
         } else {
             return self.universityName.count
         }
-        
-        
-        
+        //return 0
+    }
+
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if self.resultSeachController.active {
+            if section == 0 {
+                if self.localFilteredUniversityArray.count != 0 {
+                    return "最近搜索"
+                }
+                
+            } else {
+                if self.serverFilteredUniversityArray.count != 0 {
+                    return "更多学校"
+                }
+            }
+        } else {
+            return ""
+        }
+        return ""
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
         if resultSeachController.active {
-            cell.universityName.text = self.localFilteredUniversityArray[indexPath.row]
-            cell.logo.image = UIImage(named: self.localFilteredUniversityArray[indexPath.row])
+            if indexPath.section == 0 {
+                //local result
+                cell.universityName.text = self.localFilteredUniversityArray[indexPath.row]
+                cell.logo.image = UIImage(named: self.localFilteredUniversityArray[indexPath.row])
+            } else {
+                //server result
+                cell.universityName.text = self.serverFilteredUniversityArray[indexPath.row]
+                cell.logo.image = UIImage(named: self.serverFilteredUniversityArray[indexPath.row])
+            }
+            
         } else {
             cell.universityName.text = self.universityName[indexPath.row]
             cell.logo.image = UIImage(named: self.universityName[indexPath.row])
@@ -287,10 +370,13 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         self.thirdPicture.image = UIImage(named: "defaultWizard3")
     }
 
+    func getSearchResultsFromServer(keyword:String){
+        
+    }
 
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         localFilteredUniversityArray.removeAll(keepCapacity: false)
-        
+        serverFilteredUniversityArray.removeAll(keepCapacity: false)
         if self.resultSeachController.searchBar.text == "" {
             self.localFilteredUniversityArray = self.universityName
         } else {
@@ -299,7 +385,8 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             let array = (universityName as NSArray).filteredArrayUsingPredicate(searchPredicate)
             self.localFilteredUniversityArray = array as! [String]
             
-            
+            //sever search
+            getSearchResultsFromServer(searchController.searchBar.text)
         }
         
         
@@ -309,16 +396,27 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
 
     
+    func createUserProfileSuccessed(){
+        Tool.dismissHUD()
+        self.performSegueWithIdentifier("finishWizard", sender: self)
+    }
+    func createUserProfileFailed(){
+        Tool.dismissHUD()
+        Tool.showErrorHUD("建立用户资料失败，请重试")
+    }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "finishWizard" {
+            
+        }
     }
-    */
+    
 
 }

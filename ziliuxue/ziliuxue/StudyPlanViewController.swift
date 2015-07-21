@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate {
 
     let name = ["TOEFL","GRE","论文","推荐信"]
     let detailTextView = ["满分120， 最低要求90\n" + "你最高分数105\n" + "满足5/5学校要求","满分1200， 最低要求900\n" + "你最高分数950\n" + "满足2/5学校要求","3校要求1篇，2校2篇\n" + "你目前无","3校要求2封，2校3封\n" + "你目前无"]
@@ -23,10 +23,14 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
     var pieChartColor = [[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1)],[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1),UIColor.darkGrayColor()],[UIColor.darkGrayColor()],[UIColor.darkGrayColor()]]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         // Do any additional setup after loading the view.
     }
     
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+
     @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
         
         self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)

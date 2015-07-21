@@ -17,7 +17,7 @@ class ThirdWizardTableViewCell: UITableViewCell {
         //判断收藏与否
         //
         
-        if sender.currentImage == UIImage(named: "star") {
+        if self.like.currentImage == UIImage(named: "star") {
             //print("star")
             
             //收藏
