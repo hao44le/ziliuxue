@@ -2015,16 +2015,16 @@
                                                     <exclude reference="t81-iK-rOA"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="Gz3-N0-4O4"/>
-                                                    <exclude reference="QCc-6C-Qe4"/>
-                                                    <exclude reference="UBr-t4-mUw"/>
-                                                    <exclude reference="tWv-pu-2b7"/>
                                                     <exclude reference="a1H-2S-xwp"/>
                                                     <exclude reference="aNO-G4-Dy1"/>
                                                     <exclude reference="eNY-Oh-59m"/>
                                                     <exclude reference="eNj-AS-ExL"/>
                                                     <exclude reference="jpf-Lq-Yss"/>
                                                     <exclude reference="qTI-gJ-cQe"/>
+                                                    <exclude reference="Gz3-N0-4O4"/>
+                                                    <exclude reference="QCc-6C-Qe4"/>
+                                                    <exclude reference="UBr-t4-mUw"/>
+                                                    <exclude reference="tWv-pu-2b7"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -2032,10 +2032,6 @@
                                                     <include reference="t81-iK-rOA"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="Gz3-N0-4O4"/>
-                                                    <include reference="QCc-6C-Qe4"/>
-                                                    <exclude reference="UBr-t4-mUw"/>
-                                                    <include reference="tWv-pu-2b7"/>
                                                     <exclude reference="Emg-dS-kKK"/>
                                                     <exclude reference="QGY-K3-n88"/>
                                                     <include reference="a1H-2S-xwp"/>
@@ -2045,6 +2041,10 @@
                                                     <include reference="jpf-Lq-Yss"/>
                                                     <exclude reference="qTI-gJ-cQe"/>
                                                     <exclude reference="rXJ-s5-4Hb"/>
+                                                    <exclude reference="Gz3-N0-4O4"/>
+                                                    <include reference="QCc-6C-Qe4"/>
+                                                    <exclude reference="UBr-t4-mUw"/>
+                                                    <include reference="tWv-pu-2b7"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2058,6 +2058,44 @@
                                             <outlet property="universityLocation" destination="FZe-G2-ATd" id="GW7-pr-sLs"/>
                                             <outlet property="universityName" destination="X29-Rv-jlA" id="3cy-pP-aul"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="LoadingCell" rowHeight="86" id="zDS-td-5oc">
+                                        <rect key="frame" x="0.0" y="22" width="600" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zDS-td-5oc" id="Cvc-gM-eh3">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="PDP-vw-Hbi">
+                                                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                                    <animations/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="PDP-vw-Hbi" firstAttribute="centerX" secondItem="Cvc-gM-eh3" secondAttribute="centerX" id="Hjm-Sy-rHh"/>
+                                                <constraint firstItem="PDP-vw-Hbi" firstAttribute="top" secondItem="Cvc-gM-eh3" secondAttribute="topMargin" constant="25" id="g7Z-hM-bn4"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="PDP-vw-Hbi"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Hjm-Sy-rHh"/>
+                                                    <exclude reference="g7Z-hM-bn4"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="PDP-vw-Hbi"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Hjm-Sy-rHh"/>
+                                                    <include reference="g7Z-hM-bn4"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="default">
@@ -3137,6 +3175,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classroom" translatesAutoresizingMaskIntoConstraints="NO" id="V1e-L7-KdP">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <animations/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
+                                                    </variation>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB4-49-bgv">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -3206,7 +3247,8 @@
                                                             <exclude reference="Dky-2c-7wL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="168" width="320" height="52"/>
                                                         <mask key="subviews">
                                                             <include reference="PBC-ah-zhw"/>
                                                             <include reference="xWf-hn-F06"/>
@@ -3234,7 +3276,8 @@
                                                             <exclude reference="pO7-HU-xte"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="268" y="139" width="52" height="52"/>
                                                         <mask key="constraints">
                                                             <include reference="Odu-2d-LIG"/>
                                                             <include reference="pO7-HU-xte"/>

@@ -48,7 +48,8 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     var serverFilteredUniversityArray : [String] = []
     var resultSeachController = UISearchController()
     var selectedUniversity = ""
-    
+    var currentPage = 1
+    var maxPages = 600
     var universityName = ["7","12","15","Harvard University","Stanford University"]
     
     override func viewDidLoad() {
@@ -59,28 +60,30 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         
         
         self.firstPicture.image = UIImage(named: "defaultWizard1")
-        self.firstPicture.layer.cornerRadius = 20
+        self.firstPicture.layer.cornerRadius = 32
         self.firstPicture.clipsToBounds = true
-        self.firstPicture.layer.borderWidth = 1
+        self.firstPicture.layer.borderWidth = 2
         self.firstPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         
         
         self.secondPicture.image = UIImage(named: "defaultWizard2")
-        self.secondPicture.layer.cornerRadius = 20
+        self.secondPicture.layer.cornerRadius = 32
         self.secondPicture.clipsToBounds = true
-        self.secondPicture.layer.borderWidth = 1
+        self.secondPicture.layer.borderWidth = 2
         self.secondPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         
         self.thirdPicture.image = UIImage(named: "defaultWizard3")
-        self.thirdPicture.layer.cornerRadius = 20
+        self.thirdPicture.layer.cornerRadius = 32
         self.thirdPicture.clipsToBounds = true
-        self.thirdPicture.layer.borderWidth = 1
+        self.thirdPicture.layer.borderWidth = 2
         self.thirdPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
         
         
         let defaults = NSNotificationCenter.defaultCenter()
+        defaults.addObserver(self, selector: "getCollegeSuccessed:", name: "getCollegeSuccessed", object: nil)
+        defaults.addObserver(self, selector: "getCollegeFailed", name: "getCollegeFailed", object: nil)
         defaults.addObserver(self, selector: "createUserProfileSuccessed", name: "createUserProfileSuccessed", object: nil)
         defaults.addObserver(self, selector: "createUserProfileFailed", name: "createUserProfileFailed", object: nil)
         
@@ -140,8 +143,19 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         
         // Do any additional setup after loading the view.
     }
+    func getCollegeFailed(){
+        
+    }
+    func getCollegeSuccessed(notification:NSNotification){
+        let college = notification.object as! [College]
+        
+    }
     
-
+    func loadUniversities(page:Int) {
+        let end = page * 20
+        let begin = end - 19
+        ServerMethods.getCollege(begin.description, to: end.description)
+    }
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if self.resultSeachController.searchBar.text == "" {
@@ -159,6 +173,14 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             return 1
         }
     }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.row == (self.universityName.count - 1) ) && (self.currentPage != self.maxPages) {
+            self.loadUniversities(++self.currentPage)
+        }
+    }
+    
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
  
         if self.resultSeachController.active {
@@ -168,7 +190,12 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
                 return self.serverFilteredUniversityArray.count
             }
         } else {
-            return self.universityName.count
+            if self.currentPage == self.maxPages {
+                return self.universityName.count
+            } else {
+                return self.universityName.count + 1
+            }
+            
         }
         //return 0
     }
@@ -192,45 +219,58 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
-        if resultSeachController.active {
-            if indexPath.section == 0 {
-                //local result
-                cell.universityName.text = self.localFilteredUniversityArray[indexPath.row]
-                cell.logo.image = UIImage(named: self.localFilteredUniversityArray[indexPath.row])
-            } else {
-                //server result
-                cell.universityName.text = self.serverFilteredUniversityArray[indexPath.row]
-                cell.logo.image = UIImage(named: self.serverFilteredUniversityArray[indexPath.row])
-            }
+        if indexPath.row == self.universityName.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier("LoadingCell", forIndexPath: indexPath) as! UITableViewCell
+            let activityIndicator = cell.contentView.viewWithTag(100) as! UIActivityIndicatorView
+            activityIndicator.startAnimating()
+            return cell
             
         } else {
-            cell.universityName.text = self.universityName[indexPath.row]
-            cell.logo.image = UIImage(named: self.universityName[indexPath.row])
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
+            cell.logo.layer.cornerRadius = 30
+            cell.logo.clipsToBounds = true
+            //cell.logo.layer.borderWidth = 1
+            
+            if resultSeachController.active {
+                if indexPath.section == 0 {
+                    //local result
+                    cell.universityName.text = self.localFilteredUniversityArray[indexPath.row]
+                    cell.logo.image = UIImage(named: self.localFilteredUniversityArray[indexPath.row])
+                } else {
+                    //server result
+                    cell.universityName.text = self.serverFilteredUniversityArray[indexPath.row]
+                    cell.logo.image = UIImage(named: self.serverFilteredUniversityArray[indexPath.row])
+                }
+                
+            } else {
+                cell.universityName.text = self.universityName[indexPath.row]
+                cell.logo.image = UIImage(named: self.universityName[indexPath.row])
+            }
+            
+            if let first = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
+                if first == cell.universityName.text {
+                    cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
+                    return cell
+                }
+            }
+            if let second = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
+                if second == cell.universityName.text {
+                    cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
+                    return cell
+                }
+            }
+            
+            if let third = NSUserDefaults.standardUserDefaults().objectForKey("thirdUniversity") as? String {
+                if third == cell.universityName.text {
+                    cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
+                    return cell
+                }
+            }
+            
+            cell.like.setImage(UIImage(named: "star"), forState: UIControlState.Normal)
+            return cell
         }
         
-        if let first = NSUserDefaults.standardUserDefaults().objectForKey("firstUniversity") as? String {
-            if first == cell.universityName.text {
-                cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
-                return cell
-            }
-        }
-        if let second = NSUserDefaults.standardUserDefaults().objectForKey("secondUniversity") as? String {
-            if second == cell.universityName.text {
-                cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
-                return cell
-            }
-        }
-        
-        if let third = NSUserDefaults.standardUserDefaults().objectForKey("thirdUniversity") as? String {
-            if third == cell.universityName.text {
-                cell.like.setImage(UIImage(named: "star_filled"), forState: UIControlState.Normal)
-                return cell
-            }
-        }
-        
-        cell.like.setImage(UIImage(named: "star"), forState: UIControlState.Normal)
-        return cell
         
     }
 
