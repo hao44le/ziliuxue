@@ -22,6 +22,7 @@ class College: NSObject {
     
     
     init(id:String,name:String,city:String,state:String,country:String,zipcode:String,website:String,logo:String,photos:[String]){
+        
         self.id = id
         self.name = name
         self.city = city

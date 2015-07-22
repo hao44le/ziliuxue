@@ -44,6 +44,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     
     var image = ["classroom","classroom2","universityBack"]
     var collegeName = "Pricenton University"
+    var collegeDetail : CollegeDetail?
     
     @IBAction func rankingMoreButtonPressed(sender: UIButton) {
         let selectedIndex = self.tabBarController?.selectedIndex
@@ -72,6 +73,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println(self.collegeDetail!)
         swipeView.pagingEnabled = true
         self.applicationDescriptionLabel.text = applicationInfoFirstCell
         self.costFirstDescription.text = costFirstCell
