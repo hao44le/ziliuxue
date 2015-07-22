@@ -27,6 +27,7 @@
 #import "IQKeyboardManager.h"
 #import "ProgressHUD.h"
 #import "UIImageView+WebCache.h"
+#import "RatingBar.h"
 
 #import "MJCollectionViewCell.h"
 

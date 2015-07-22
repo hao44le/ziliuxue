@@ -15,9 +15,7 @@ class SessionTableViewCell: UITableViewCell {
     @IBOutlet var sessionDetail: UILabel!
     
     
-    @IBOutlet var sessionAddButton: UIButton!
-    
-    
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

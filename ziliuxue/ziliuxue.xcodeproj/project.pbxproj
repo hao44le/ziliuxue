@@ -17,6 +17,8 @@
 		7BC2AF3B1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF3A1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift */; };
 		7BC2AF3D1B5B075D00E5CC32 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF3C1B5B075D00E5CC32 /* SessionTableViewCell.swift */; };
 		7BC2AF3F1B5E920500E5CC32 /* CourseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF3E1B5E920500E5CC32 /* CourseAnnotation.swift */; };
+		7BC2AF441B5F06D900E5CC32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC2AF411B5F06D900E5CC32 /* Images.xcassets */; };
+		7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF431B5F06D900E5CC32 /* RatingBar.m */; };
 		C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A93D1B4FDBC00014554F /* libWeChatSDK.a */; };
 		C008A9421B4FDBC00014554F /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C008A93E1B4FDBC00014554F /* read_me.txt */; };
 		C008A9441B4FDBD80014554F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A9431B4FDBD80014554F /* SystemConfiguration.framework */; };
@@ -111,6 +113,9 @@
 		7BC2AF3A1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimilarCourseTableViewCell.swift; sourceTree = "<group>"; };
 		7BC2AF3C1B5B075D00E5CC32 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		7BC2AF3E1B5E920500E5CC32 /* CourseAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseAnnotation.swift; sourceTree = "<group>"; };
+		7BC2AF411B5F06D900E5CC32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7BC2AF421B5F06D900E5CC32 /* RatingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingBar.h; sourceTree = "<group>"; };
+		7BC2AF431B5F06D900E5CC32 /* RatingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingBar.m; sourceTree = "<group>"; };
 		C008A93D1B4FDBC00014554F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C008A93E1B4FDBC00014554F /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		C008A93F1B4FDBC00014554F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -281,6 +286,16 @@
 				7BC2AF361B5A78D100E5CC32 /* CourseDetail.swift */,
 			);
 			name = DataModel;
+			sourceTree = "<group>";
+		};
+		7BC2AF401B5F06D900E5CC32 /* RatingBar */ = {
+			isa = PBXGroup;
+			children = (
+				7BC2AF411B5F06D900E5CC32 /* Images.xcassets */,
+				7BC2AF421B5F06D900E5CC32 /* RatingBar.h */,
+				7BC2AF431B5F06D900E5CC32 /* RatingBar.m */,
+			);
+			path = RatingBar;
 			sourceTree = "<group>";
 		};
 		C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */ = {
@@ -619,6 +634,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7BC2AF401B5F06D900E5CC32 /* RatingBar */,
 				C03F5B801B59512E00532AC8 /* MJCollectionViewCell */,
 				7B9D50811B520B0400B7AA2E /* ProgressHUD */,
 				C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */,
@@ -725,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0C8F9051B2ED89E00D698FC /* Main.storyboard in Resources */,
+				7BC2AF441B5F06D900E5CC32 /* Images.xcassets in Resources */,
 				C0C8F90A1B2ED89E00D698FC /* LaunchScreen.xib in Resources */,
 				7B9D50851B520B0400B7AA2E /* ProgressHUD.bundle in Resources */,
 				C0C8F9071B2ED89E00D698FC /* Images.xcassets in Resources */,
@@ -797,6 +814,7 @@
 				C0C3B7A71B4CB79F006800DD /* OverviewSchoolTabViewController.swift in Sources */,
 				C030F0C81B415F5F00DDDFDD /* CCMPopupSegue.m in Sources */,
 				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,
+				7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */,
 				C0C3B7AC1B4CDAC0006800DD /* SchoolRankingViewController.swift in Sources */,
 				C07B39151B480ABE00C1267A /* CenterTabViewController.swift in Sources */,
 				7B322B121B56A1E800F7ED11 /* CourseDetailViewController.swift in Sources */,
