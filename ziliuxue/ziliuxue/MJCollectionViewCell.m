@@ -68,6 +68,8 @@
     //self.textLabel.center = CGPointMake(self.contentView.frame.size.width / 2, self.contentView.frame.size.height / 2);
     self.textLabel.font = [UIFont boldSystemFontOfSize:40.0];
     self.textLabel.textColor = [UIColor whiteColor];
+    self.textLabel.shadowColor = [UIColor blackColor];
+    self.textLabel.shadowOffset = CGSizeMake(1, -1);
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.textLabel];
 }

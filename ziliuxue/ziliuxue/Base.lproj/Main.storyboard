@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KXr-JW-D3f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KXr-JW-D3f">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -2611,8 +2611,7 @@
                                                             <exclude reference="xqc-xm-F7b"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="240" y="0.0" width="80" height="80.5"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="xqc-xm-F7b"/>
                                                         </mask>
@@ -2632,8 +2631,7 @@
                                                             <exclude reference="QeQ-VK-bl2"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="252" y="30" width="56" height="20.5"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="QeQ-VK-bl2"/>
                                                         </mask>
@@ -2817,36 +2815,16 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我的订单" id="cbG-Qd-i0B"/>
+                    <tabBarItem key="tabBarItem" title="我的订单" image="myOrder" id="cbG-Qd-i0B"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsr-9H-H0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2790" y="3790.5"/>
         </scene>
-        <!--找服务-->
-        <scene sceneID="05y-42-5jt">
-            <objects>
-                <viewController id="Ijb-Rp-4qD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BIS-wG-BVy"/>
-                        <viewControllerLayoutGuide type="bottom" id="ufn-kr-cRI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YOo-eI-IOR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="找服务" image="findService_small" id="Okw-En-TCJ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7AB-Ix-raz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2790" y="3144"/>
-        </scene>
         <!--Fourth Tab Bar View Controller-->
         <scene sceneID="qYN-ac-lSM">
             <objects>
-                <tabBarController id="tWD-aK-ZnW" customClass="FourthTabBarViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="fourthTab" id="tWD-aK-ZnW" customClass="FourthTabBarViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bnP-Pp-2hq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -2855,8 +2833,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Ijb-Rp-4qD" kind="relationship" relationship="viewControllers" id="5lP-0m-FdH"/>
-                        <segue destination="1fF-bx-uxC" kind="relationship" relationship="viewControllers" id="UYa-na-ekg"/>
+                        <segue destination="FhN-mL-Hit" kind="relationship" relationship="viewControllers" id="68X-on-Xf2"/>
+                        <segue destination="1fF-bx-uxC" kind="relationship" relationship="viewControllers" id="UhP-xf-SdN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8b-yn-uU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3216,9 +3194,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classroom" translatesAutoresizingMaskIntoConstraints="NO" id="V1e-L7-KdP">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <animations/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
-                                                    </variation>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB4-49-bgv">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -3288,8 +3263,7 @@
                                                             <exclude reference="Dky-2c-7wL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="168" width="320" height="52"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="PBC-ah-zhw"/>
                                                             <include reference="xWf-hn-F06"/>
@@ -3317,8 +3291,7 @@
                                                             <exclude reference="pO7-HU-xte"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="268" y="139" width="52" height="52"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Odu-2d-LIG"/>
                                                             <include reference="pO7-HU-xte"/>
@@ -3827,6 +3800,7 @@
                                     </mapView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIx-l2-yE1">
                                         <rect key="frame" x="210" y="629" width="180" height="37"/>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.77647066119999997" green="0.25490197539999998" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="JaA-zo-BY3"/>
@@ -3851,18 +3825,21 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLeft" translatesAutoresizingMaskIntoConstraints="NO" id="sB8-SY-D9q">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                <animations/>
                                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                     <rect key="frame" x="25" y="24" width="95" height="2"/>
                                                 </variation>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-mY-3Zl">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                <animations/>
                                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                     <rect key="frame" x="211" y="24" width="95" height="2"/>
                                                 </variation>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个点赞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqA-43-WJQ">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3872,6 +3849,7 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbB-HX-VEy" customClass="RatingBar">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                     <rect key="frame" x="87" y="41" width="147" height="30"/>
@@ -3879,6 +3857,7 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDg-wg-6vZ">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3888,6 +3867,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgL-Zp-JLw">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                <animations/>
                                                 <state key="normal" title="查看所有点赞">
                                                     <color key="titleColor" red="0.77647066119999997" green="0.25490197539999998" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -3897,6 +3877,7 @@
                                                 </variation>
                                             </button>
                                         </subviews>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.87921463815789469" alpha="1" colorSpace="calibratedWhite"/>
                                         <variation key="default">
                                             <mask key="subviews">
@@ -3922,18 +3903,21 @@
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLeft" translatesAutoresizingMaskIntoConstraints="NO" id="BfB-ti-rpZ">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <animations/>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="23" y="829" width="95" height="2"/>
                                         </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="9rU-rc-pa2">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <animations/>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="204" y="829" width="95" height="2"/>
                                         </variation>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fto-3N-Uh9">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.77647066119999997" green="0.25490197539999998" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
                                         <state key="normal" title="立即注册">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3945,6 +3929,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类似课程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3Q-Y1-c9B">
                                         <rect key="frame" x="204" y="878" width="173" height="42"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="J2o-04-0sj"/>
                                         </constraints>
@@ -3965,12 +3950,14 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Nq2-WA-rMf">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <animations/>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="20" y="1340" width="95" height="2"/>
                                         </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="W2V-lP-Gzf">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <animations/>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="201" y="1340" width="95" height="2"/>
                                         </variation>
@@ -4583,8 +4570,7 @@
                                                             <exclude reference="t8r-xT-o8Z"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="288" y="0.0" width="31" height="31"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <exclude reference="9P8-lq-EIc"/>
                                                             <include reference="B0o-47-4eG"/>
@@ -4862,8 +4848,7 @@
                                                                     <exclude reference="mMx-eD-GrT"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="168" y="8" width="152" height="21"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <exclude reference="mMx-eD-GrT"/>
                                                                 </mask>
@@ -7314,6 +7299,7 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rK8-BS-ic6" secondAttribute="trailing" id="CKw-6e-FYE"/>
                             <constraint firstItem="rK8-BS-ic6" firstAttribute="bottom" secondItem="Cx7-Tz-SYQ" secondAttribute="top" id="HTG-Ln-jBN"/>
@@ -7368,6 +7354,10 @@
                                 <include reference="uyi-l5-zUg"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fZP-q8-nlz" appends="YES" id="ewW-Z4-bBt"/>
+                            <outletCollection property="gestureRecognizers" destination="opd-S3-z7g" appends="YES" id="11W-uM-nm8"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="找课程" image="findCourse" id="sEh-mR-Kwr"/>
                     <connections>
@@ -7376,6 +7366,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLn-Ft-Fig" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="fZP-q8-nlz">
+                    <connections>
+                        <action selector="swipeLeft:" destination="761-hq-tSf" id="B83-PC-Gkj"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="opd-S3-z7g">
+                    <connections>
+                        <action selector="swipeRight:" destination="761-hq-tSf" id="SB5-LP-hyH"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2790" y="1764.75"/>
         </scene>
@@ -8039,8 +8039,7 @@
                                                                     <exclude reference="LMR-hT-9RU"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="168" y="8" width="152" height="21"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <exclude reference="LMR-hT-9RU"/>
                                                                 </mask>
@@ -9962,6 +9961,128 @@
             </objects>
             <point key="canvasLocation" x="-3484.5" y="5670.75"/>
         </scene>
+        <!--找服务-->
+        <scene sceneID="vTJ-sB-JPE">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FhN-mL-Hit" customClass="FindServiceViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zet-jl-yPv"/>
+                        <viewControllerLayoutGuide type="bottom" id="72E-9A-WOK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gNa-WM-sih">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5lz-wt-Uwh">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="b5g-r1-6j2">
+                                    <size key="itemSize" width="320" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MJCell" id="wFc-XU-Hj3" customClass="MJCollectionViewCell">
+                                        <rect key="frame" x="140" y="0.0" width="320" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="FhN-mL-Hit" id="tXx-np-1xt"/>
+                                    <outlet property="delegate" destination="FhN-mL-Hit" id="LVa-2K-P9h"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="leading" secondItem="gNa-WM-sih" secondAttribute="leading" id="0rX-sf-8BN"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="top" secondItem="zet-jl-yPv" secondAttribute="bottom" id="3M1-ek-K0w"/>
+                            <constraint firstAttribute="trailing" secondItem="5lz-wt-Uwh" secondAttribute="trailing" id="6zV-UQ-fyt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5lz-wt-Uwh" secondAttribute="trailing" id="7bt-zE-QRY"/>
+                            <constraint firstAttribute="trailing" secondItem="5lz-wt-Uwh" secondAttribute="trailing" id="FfF-nY-Rao"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="top" secondItem="zet-jl-yPv" secondAttribute="bottom" id="HeM-7k-Jpg"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="leading" secondItem="gNa-WM-sih" secondAttribute="leading" id="P16-9p-brZ"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="bottom" secondItem="72E-9A-WOK" secondAttribute="top" constant="49" id="QqI-RW-DXV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5lz-wt-Uwh" secondAttribute="trailing" id="Rgk-Oj-GQm"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="bottom" secondItem="72E-9A-WOK" secondAttribute="top" id="UcW-09-033"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="leading" secondItem="gNa-WM-sih" secondAttribute="leadingMargin" id="WXq-Ax-xC4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5lz-wt-Uwh" secondAttribute="trailing" id="bBD-uk-7O1"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="leading" secondItem="gNa-WM-sih" secondAttribute="leadingMargin" id="iBZ-FW-ug3"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="leading" secondItem="gNa-WM-sih" secondAttribute="leadingMargin" id="ju7-yf-ne7"/>
+                            <constraint firstAttribute="trailing" secondItem="5lz-wt-Uwh" secondAttribute="trailing" id="sVe-d3-gsw"/>
+                            <constraint firstItem="5lz-wt-Uwh" firstAttribute="leading" secondItem="gNa-WM-sih" secondAttribute="leading" id="wp7-by-0vL"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UcW-09-033"/>
+                                <exclude reference="sVe-d3-gsw"/>
+                                <exclude reference="HeM-7k-Jpg"/>
+                                <exclude reference="bBD-uk-7O1"/>
+                                <exclude reference="7bt-zE-QRY"/>
+                                <exclude reference="Rgk-Oj-GQm"/>
+                                <exclude reference="iBZ-FW-ug3"/>
+                                <exclude reference="P16-9p-brZ"/>
+                                <exclude reference="WXq-Ax-xC4"/>
+                                <exclude reference="ju7-yf-ne7"/>
+                                <exclude reference="FfF-nY-Rao"/>
+                                <exclude reference="wp7-by-0vL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="6zV-UQ-fyt"/>
+                                <include reference="UcW-09-033"/>
+                                <exclude reference="QqI-RW-DXV"/>
+                                <exclude reference="sVe-d3-gsw"/>
+                                <exclude reference="3M1-ek-K0w"/>
+                                <include reference="HeM-7k-Jpg"/>
+                                <exclude reference="0rX-sf-8BN"/>
+                                <exclude reference="bBD-uk-7O1"/>
+                                <exclude reference="7bt-zE-QRY"/>
+                                <exclude reference="Rgk-Oj-GQm"/>
+                                <exclude reference="iBZ-FW-ug3"/>
+                                <exclude reference="P16-9p-brZ"/>
+                                <exclude reference="WXq-Ax-xC4"/>
+                                <exclude reference="ju7-yf-ne7"/>
+                                <include reference="FfF-nY-Rao"/>
+                                <include reference="wp7-by-0vL"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="BE9-6y-aNq" appends="YES" id="eAc-xq-lpM"/>
+                            <outletCollection property="gestureRecognizers" destination="rBH-qH-r5y" appends="YES" id="tJH-OU-MB3"/>
+                        </connections>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="找服务" image="findService" id="1Xr-Ip-BYA"/>
+                    <connections>
+                        <outlet property="parallaxCollectionView" destination="5lz-wt-Uwh" id="ukO-vi-gFl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ca-Bs-9hr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="BE9-6y-aNq">
+                    <connections>
+                        <action selector="swipeLeft:" destination="FhN-mL-Hit" id="ywD-Zz-2bc"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="rBH-qH-r5y">
+                    <connections>
+                        <action selector="swipeRight:" destination="FhN-mL-Hit" id="wvZ-BW-w5x"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2791.5" y="3140.25"/>
+        </scene>
     </scenes>
     <resources>
         <image name="12" width="51" height="51"/>
@@ -9978,8 +10099,9 @@
         <image name="cost" width="33" height="33"/>
         <image name="defaultImage" width="393" height="393"/>
         <image name="findCourse" width="33" height="33"/>
-        <image name="findService_small" width="33" height="33"/>
+        <image name="findService" width="33" height="33"/>
         <image name="myClass" width="33" height="33"/>
+        <image name="myOrder" width="33" height="33"/>
         <image name="overview" width="33" height="33"/>
         <image name="personalInfoBack" width="1280" height="720"/>
         <image name="pricetonUniversity" width="178" height="177"/>
