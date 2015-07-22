@@ -1,33 +1,29 @@
 //
-//  FourthViewController.swift
+//  FourthTabBarViewController.swift
 //  
 //
-//  Created by Gelei Chen on 7/6/15.
+//  Created by Gelei Chen on 7/21/15.
 //
 //
 
 import UIKit
 
-class FourthViewController: UIViewController {
+class FourthTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        // Do any additional setup after loading the view.
         self.navigationItem.title = "找服务"
         
         self.setupLeftMenuButton()
+        // Do any additional setup after loading the view.
     }
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     func setupLeftMenuButton()
     {
         let image = UIImage(named: "left button")
@@ -45,8 +41,6 @@ class FourthViewController: UIViewController {
     {
         self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
-    
-    
 
     /*
     // MARK: - Navigation

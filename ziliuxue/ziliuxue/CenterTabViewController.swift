@@ -49,7 +49,7 @@ class CenterTabViewController: UITabBarController {
         
         
         
-        self.performSegueWithIdentifier("toWizard", sender: self)
+        //self.performSegueWithIdentifier("toWizard", sender: self)
         
     }
     

@@ -2801,24 +2801,63 @@
             </objects>
             <point key="canvasLocation" x="475.5" y="1497.75"/>
         </scene>
-        <!--Fourth View Controller-->
-        <scene sceneID="QsG-9X-XQx">
+        <!--我的订单-->
+        <scene sceneID="lRb-Lx-Ti2">
             <objects>
-                <viewController storyboardIdentifier="fourthTab" id="FrS-E2-cfm" customClass="FourthViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1fF-bx-uxC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="b7p-JM-lBk"/>
-                        <viewControllerLayoutGuide type="bottom" id="4BK-Mr-lEq"/>
+                        <viewControllerLayoutGuide type="top" id="HuI-WF-Pt0"/>
+                        <viewControllerLayoutGuide type="bottom" id="EjQ-hC-9A3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dTE-j3-uEw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="cvE-FG-pl5">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="我的订单" id="cbG-Qd-i0B"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yjF-ai-Ucs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsr-9H-H0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1867" y="3354"/>
+            <point key="canvasLocation" x="2790" y="3790.5"/>
+        </scene>
+        <!--找服务-->
+        <scene sceneID="05y-42-5jt">
+            <objects>
+                <viewController id="Ijb-Rp-4qD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BIS-wG-BVy"/>
+                        <viewControllerLayoutGuide type="bottom" id="ufn-kr-cRI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YOo-eI-IOR">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="找服务" image="findService_small" id="Okw-En-TCJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7AB-Ix-raz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2790" y="3144"/>
+        </scene>
+        <!--Fourth Tab Bar View Controller-->
+        <scene sceneID="qYN-ac-lSM">
+            <objects>
+                <tabBarController id="tWD-aK-ZnW" customClass="FourthTabBarViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="bnP-Pp-2hq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ijb-Rp-4qD" kind="relationship" relationship="viewControllers" id="5lP-0m-FdH"/>
+                        <segue destination="1fF-bx-uxC" kind="relationship" relationship="viewControllers" id="UYa-na-ekg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S8b-yn-uU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="3466.5"/>
         </scene>
         <!--Fifth Tab View Controller-->
         <scene sceneID="Mfb-G1-0Zq">
@@ -9873,6 +9912,7 @@
         <image name="cost" width="33" height="33"/>
         <image name="defaultImage" width="393" height="393"/>
         <image name="findCourse" width="33" height="33"/>
+        <image name="findService_small" width="33" height="33"/>
         <image name="myClass" width="33" height="33"/>
         <image name="overview" width="33" height="33"/>
         <image name="personalInfoBack" width="1280" height="720"/>
