@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CourseDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class CourseDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate {
 
     
     
@@ -55,6 +55,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     var sessions : NSArray = []
     var selectedSession = 0
     var similarCourses: NSArray = []
+    var pinImage = ["pinA","pinB","pinC"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +93,8 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
         self.sessionTableView.reloadData()
         
+        self.setUpSessionMapView()
+        self.addAnnotation()
         
     }
     
@@ -132,6 +135,62 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         }
         
     }
+    
+    func setUpSessionMapView()
+    {
+        
+        var session = self.sessions[0] as! NSDictionary
+        
+        var classes = session.objectForKey("classes") as! NSArray
+        var latitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("latitude") as! NSString
+        var longitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("longitude") as! NSString
+        
+        var region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue), MKCoordinateSpanMake(0.001, 0.01))
+        self.sessionMapView.setRegion(region, animated: true)
+    }
+    
+    func addAnnotation()
+    {
+        var session = self.sessions[0] as! NSDictionary
+        
+        var classes = session.objectForKey("classes") as! NSArray
+        
+        for i in 0..<classes.count{
+            var geo_location = classes[i].objectForKey("geo_location") as! NSDictionary
+            
+            var location = CLLocationCoordinate2DMake((geo_location.objectForKey("latitude") as! NSString).doubleValue, (geo_location.objectForKey("longitude") as! NSString).doubleValue)
+            var annotation = CourseAnnotation(coordinate: location, title: session.objectForKey("title") as! String, subtitle: "Shuoaaaa", image:UIImage(named: self.pinImage[i])!)
+            
+            self.sessionMapView.addAnnotation(annotation)
+            
+        }
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        if annotation.isKindOfClass(CourseAnnotation.classForCoder())
+        {
+            var identifier = "annotation"
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            
+            if annotationView == nil{
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView.canShowCallout=true;
+                annotationView.calloutOffset=CGPointMake(0, 0);
+                annotationView.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "coursePin"))
+                
+            }
+            
+            annotationView.annotation = annotation
+            annotationView.image = (annotation as! CourseAnnotation).image
+            
+            return annotationView
+        }
+        else{
+            return nil
+        }
+    }
+
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
