@@ -385,14 +385,14 @@ class CollegeFinancial : NSObject {
 
 
 class CollegeDetail: NSObject{
-    var collge: College
+    var college: College
     var collegeOverview : CollegeOverview
     var collegeRanking : CollegeRanking
     var collegeApplying : CollegeApplying
     var collegeAcademic : CollegeAcademic
     var collegeFinancial : CollegeFinancial
     init(college:College,collegeOverview : CollegeOverview,collegeRanking : CollegeRanking,collegeApplying : CollegeApplying,collegeAcademic : CollegeAcademic,collegeFinancial : CollegeFinancial){
-        self.collge = college
+        self.college = college
         self.collegeOverview = collegeOverview
         self.collegeRanking = collegeRanking
         self.collegeApplying = collegeApplying
