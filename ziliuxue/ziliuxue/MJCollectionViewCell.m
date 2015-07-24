@@ -57,20 +57,36 @@
     self.MJImageView.backgroundColor = [UIColor redColor];
     self.MJImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.MJImageView.clipsToBounds = NO;
+    
+    
+    
+    
+    
+    
+    
     [self addSubview:self.MJImageView];
 }
 
 
 - (void)setupTextLabel {
     
+    
+    
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, screenRect.size.width, self.contentView.frame.size.height)];
+    self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 119.0f, screenRect.size.width, 40)];
     //self.textLabel.center = CGPointMake(self.contentView.frame.size.width / 2, self.contentView.frame.size.height / 2);
-    self.textLabel.font = [UIFont boldSystemFontOfSize:40.0];
+    self.textLabel.font = [UIFont boldSystemFontOfSize:30.0];
     self.textLabel.textColor = [UIColor whiteColor];
-    self.textLabel.shadowColor = [UIColor blackColor];
-    self.textLabel.shadowOffset = CGSizeMake(1, -1);
+    //self.textLabel.shadowColor = [UIColor grayColor];
+    //self.textLabel.shadowOffset = CGSizeMake(1, -1);
+    
     self.textLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
+    self.textLabel.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.8];
+    
+    
+    
     [self addSubview:self.textLabel];
 }
 

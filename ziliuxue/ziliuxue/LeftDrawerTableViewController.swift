@@ -107,7 +107,7 @@ class LeftDrawerTableViewController: UITableViewController {
         switch row
         {
         case 0:
-            cell!.textLabel?.text = "            留学计划"
+            cell!.textLabel?.text = "            留学清单"
             imageView =  UIImageView(image: UIImage(named: "studyPlan"))
             
         case 1:

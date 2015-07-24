@@ -23,12 +23,14 @@ class FirstTabTableViewCell: UITableViewCell,XYPieChartDataSource{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        /*
         pieView.pieRadius = 25
         pieView.startPieAngle = CGFloat(M_PI_2)
         pieView.animationSpeed = 1.5
         pieView.dataSource = self
         pieView.pieCenter = CGPointMake(40,40)
         pieView.labelRadius = 0
+        */
         // Initialization code
     }
 

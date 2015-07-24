@@ -19,7 +19,7 @@ class CenterTabViewController: UITabBarController {
         //ServerMethods.getCollege("1", to: "20")
         
         // Do any additional setup after loading the view.
-        self.navigationItem.title = "留学计划"
+        self.navigationItem.title = "留学清单"
         
         self.tabBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
         self.tabBar.tintColor = UIColor.whiteColor()

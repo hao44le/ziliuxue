@@ -71,6 +71,8 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
         cell.universityName.text = self.universityName[indexPath.row]
         cell.logo.image = UIImage(named: self.universityName[indexPath.row])
+        cell.logo.layer.cornerRadius = 30
+        cell.logo.clipsToBounds = true
         return cell
     }
     

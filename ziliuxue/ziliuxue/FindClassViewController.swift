@@ -20,7 +20,7 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
     let IMAGE_OFFSET_SPEED : CGFloat = 25
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.parallaxCollectionView.contentInset = UIEdgeInsetsMake(-60, 0, 0, 0)
+        self.parallaxCollectionView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0)
         self.automaticallyAdjustsScrollViewInsets = false
         self.parallaxCollectionView.reloadData()
         // Do any additional setup after loading the view.

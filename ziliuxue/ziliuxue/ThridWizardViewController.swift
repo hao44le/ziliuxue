@@ -83,24 +83,22 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             universityArray.append(college)
         }
         
-        self.firstPicture.image = UIImage(named: "defaultWizard1")
-        self.firstPicture.layer.cornerRadius = 32
-        self.firstPicture.clipsToBounds = true
-        self.firstPicture.layer.borderWidth = 2
-        self.firstPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        self.firstPicture.image = UIImage(named: "dark_like")
+        //self.firstPicture.layer.cornerRadius = 33.5
+        //self.firstPicture.clipsToBounds = true
+        //self.firstPicture.layer.borderWidth = 2
+        //self.firstPicture.layer.borderColor = UIColor.grayColor().CGColor
         
-        
-        self.secondPicture.image = UIImage(named: "defaultWizard2")
-        self.secondPicture.layer.cornerRadius = 32
-        self.secondPicture.clipsToBounds = true
-        self.secondPicture.layer.borderWidth = 2
-        self.secondPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
-        
-        self.thirdPicture.image = UIImage(named: "defaultWizard3")
-        self.thirdPicture.layer.cornerRadius = 32
-        self.thirdPicture.clipsToBounds = true
-        self.thirdPicture.layer.borderWidth = 2
-        self.thirdPicture.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        self.secondPicture.image = UIImage(named: "dark_like")
+        //self.secondPicture.layer.cornerRadius = 33.5
+        //self.secondPicture.clipsToBounds = true
+        //self.secondPicture.layer.borderWidth = 2
+        //self.secondPicture.layer.borderColor = UIColor.grayColor().CGColor
+        self.thirdPicture.image = UIImage(named: "dark_like")
+        //self.thirdPicture.layer.cornerRadius = 33.5
+        //self.thirdPicture.clipsToBounds = true
+        //self.thirdPicture.layer.borderWidth = 2
+        //self.thirdPicture.layer.borderColor = UIColor.grayColor().CGColor
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "addTopPicture", name: "addTopPicture", object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeTopPicture", name: "removeTopPicture", object: nil)
         
@@ -442,7 +440,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     func deleteFirstUniversity(){
         //删除图片
-        self.firstPicture.image = UIImage(named: "defaultWizard1")
+        self.firstPicture.image = UIImage(named: "dark_like")
         
     }
     func deleteSecondUniversityAndMoveThirdUniversityDown(){
@@ -454,12 +452,12 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     func deleteSecondUniversity(){
         //删除图片
-        self.secondPicture.image = UIImage(named: "defaultWizard2")
+        self.secondPicture.image = UIImage(named: "dark_like")
     }
     
     func deleteThirdUniversity(){
         //删除图片
-        self.thirdPicture.image = UIImage(named: "defaultWizard3")
+        self.thirdPicture.image = UIImage(named: "dark_like")
     }
 
     func getSearchResultsFromServer(keyword:String){
