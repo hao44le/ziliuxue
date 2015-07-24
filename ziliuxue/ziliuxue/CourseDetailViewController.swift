@@ -10,13 +10,14 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CourseDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate {
+class CourseDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,UIScrollViewDelegate {
 
-    
+    let kCoursePicScrollViewTag = 2006
     
     @IBOutlet var backgroundScrollView: UIScrollView!
     
     @IBOutlet var coursePicScrollView: UIScrollView!
+    var pageControl:UIPageControl!
     
     @IBOutlet var teacherPic: UIImageView!
     
@@ -71,6 +72,9 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         self.teacherIntro.text = self.overview.objectForKey("introduction") as? String
         self.coursePrice.text = " ￥" + String(self.metadata.objectForKey("price") as! NSInteger)
         
+        self.setupCoursePicScrollView()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,7 +93,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
         self.sessionName.text = self.sessions[0]["title"] as! String + "--课程信息"
         
-        self.setUpSessionScrollView()
+        //self.setUpSessionScrollView()
         
         self.sessionTableView.reloadData()
         
@@ -98,43 +102,94 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
     }
     
-    
-    func setUpSessionScrollView()
+    func setupCoursePicScrollView()
     {
+        var scrollSize:CGSize = CGSizeMake(ScreenSize.SCREEN_WIDTH * 3, 0)
         
+        self.coursePicScrollView.contentSize = scrollSize
+        self.coursePicScrollView.showsHorizontalScrollIndicator = false
+        self.coursePicScrollView.pagingEnabled = true
+        self.coursePicScrollView.maximumZoomScale = 2.0
+        self.coursePicScrollView.bounces = false
         
-        for i in 0..<self.sessions.count
+        var pageControlSize:CGSize = CGSizeMake(120, 40)
+        
+        var framePageControl:CGRect = CGRectMake((self.coursePicScrollView.frame.width-pageControlSize.width)/2, ScreenSize.SCREEN_HEIGHT/2.25, pageControlSize.width, pageControlSize.height)
+        
+        self.pageControl = UIPageControl(frame: framePageControl)
+        self.pageControl.hidesForSinglePage = true
+        self.pageControl.userInteractionEnabled = false
+        self.pageControl.backgroundColor = UIColor.clearColor()
+        self.pageControl.numberOfPages = 3
+        
+        var count:CGFloat = 0
+        for i in 0..<3
         {
+            let xPosition  = ScreenSize.SCREEN_WIDTH * CGFloat(i)
+            var courseImage = UIImageView(frame: CGRectMake(xPosition, 0, ScreenSize.SCREEN_WIDTH, self.coursePicScrollView.frame.height))
             
-            var session = self.sessions[i] as! NSDictionary
+            var urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[i]) as! String) as String
+            var picURL = NSURL(string: urlString)
             
-            var classes = session.objectForKey("classes") as! NSArray
-            var xOffset = DeviceSize.SCREEN_WIDTH * CGFloat(i) / 2
-            var titleLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 20, 150, 30))
-            titleLabel.text = session.objectForKey("title") as? String
-            titleLabel.font = UIFont(name: "Helvetica-Bold", size: 17)
-            self.sessionScrollView.addSubview(titleLabel)
+            courseImage.sd_setImageWithURL(picURL, placeholderImage: nil)
             
-            var dateLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 55, 150, 30))
-            var date = session.objectForKey("start_date") as! String + "-"
-            date += session.objectForKey("end_date") as! String
-            dateLabel.text = date
-            dateLabel.font = UIFont(name: "Helvetica", size: 10)
-            self.sessionScrollView.addSubview(dateLabel)
-            
-            var enrollStatusLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 90, 150, 20))
-            var status = "已报" + String(session.objectForKey("enrollment") as! NSInteger)
-            status += "人     "
-            status += String(session.objectForKey("vacancy") as! NSInteger)
-            status += "空位"
-            enrollStatusLabel.text = status
-            enrollStatusLabel.font = UIFont(name: "Helvetica", size: 16)
-            
-            self.sessionScrollView.addSubview(enrollStatusLabel)
-            
+            self.coursePicScrollView.addSubview(courseImage)
+         
         }
         
+        println("======")
+        println(self.coursePicScrollView.subviews)
+
     }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView)
+    {
+        
+        let index = fabs(self.coursePicScrollView.contentOffset.x) / ScreenSize.SCREEN_WIDTH
+        
+        let i = Int(index)
+        
+        self.pageControl.currentPage = i
+        
+    }
+    
+    
+//    func setUpSessionScrollView()
+//    {
+//        
+//        
+//        for i in 0..<self.sessions.count
+//        {
+//            
+//            var session = self.sessions[i] as! NSDictionary
+//            
+//            var classes = session.objectForKey("classes") as! NSArray
+//            var xOffset = DeviceSize.SCREEN_WIDTH * CGFloat(i) / 2
+//            var titleLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 20, 150, 30))
+//            titleLabel.text = session.objectForKey("title") as? String
+//            titleLabel.font = UIFont(name: "Helvetica-Bold", size: 17)
+//            self.sessionScrollView.addSubview(titleLabel)
+//            
+//            var dateLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 55, 150, 30))
+//            var date = session.objectForKey("start_date") as! String + "-"
+//            date += session.objectForKey("end_date") as! String
+//            dateLabel.text = date
+//            dateLabel.font = UIFont(name: "Helvetica", size: 10)
+//            self.sessionScrollView.addSubview(dateLabel)
+//            
+//            var enrollStatusLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 90, 150, 20))
+//            var status = "已报" + String(session.objectForKey("enrollment") as! NSInteger)
+//            status += "人     "
+//            status += String(session.objectForKey("vacancy") as! NSInteger)
+//            status += "空位"
+//            enrollStatusLabel.text = status
+//            enrollStatusLabel.font = UIFont(name: "Helvetica", size: 16)
+//            
+//            self.sessionScrollView.addSubview(enrollStatusLabel)
+//            
+//        }
+//        
+//    }
     
     func setUpSessionMapView()
     {

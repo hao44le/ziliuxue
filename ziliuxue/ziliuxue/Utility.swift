@@ -895,6 +895,4 @@ struct DeviceType
 }
 
 
-struct DeviceSize {
-    static let SCREEN_WIDTH = UIScreen.mainScreen().bounds.size.width
-}
+
