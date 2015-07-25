@@ -179,14 +179,14 @@ struct ServerMethods {
                 let financial = response.objectForKey("financial") as! NSDictionary
                 
                 
-                /*
+                
                 //一次性保存20个college做cache
                 // full path for local file data.plist
                 let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
                 let path = documentDir.stringByAppendingPathComponent("\(name).plist")
                 let data : NSDictionary = response as! NSDictionary
                 data.writeToFile(path, atomically: true)
-                */
+                
                 
                 
                 let website = general.objectForKey("website") as! String

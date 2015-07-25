@@ -83,7 +83,7 @@ class LeftDrawerTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 9
+        return 8
     }
 
     
@@ -126,11 +126,11 @@ class LeftDrawerTableViewController: UITableViewController {
             cell!.textLabel?.text = "            找同学校友"
             imageView =  UIImageView(image: UIImage(named: "findClassmate"))
             
-        case 7:
+        case 6:
             cell!.textLabel?.text = "            个人信息"
             imageView =  UIImageView(image: UIImage(named: "personalInfo"))
             
-        case 8:
+        case 7:
             cell!.textLabel?.text = "            登出"
             imageView =  UIImageView(image: UIImage(named: "logout"))
             
@@ -138,7 +138,14 @@ class LeftDrawerTableViewController: UITableViewController {
             cell?.selectionStyle = UITableViewCellSelectionStyle.None
             cell?.userInteractionEnabled = false
         }
-        imageView.frame = CGRectMake(30, 10, 30, 30)
+        
+        if DeviceType.IS_IPHONE_6P {
+            imageView.frame = CGRectMake(30, 20, 30, 30)
+        } else if DeviceType.IS_IPHONE_4_OR_LESS {
+            imageView.frame = CGRectMake(30, 5, 30, 30)
+        } else {
+            imageView.frame = CGRectMake(30, 10, 30, 30)
+        }
         cell?.addSubview(imageView)
         //cell?.imageView?.frame = CGRectMake(0, 0, 20, 20)
         return cell!
@@ -146,13 +153,13 @@ class LeftDrawerTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if DeviceType.IS_IPHONE_5 {
-            return 47.3
+            return 53
         } else if DeviceType.IS_IPHONE_6 {
-            return 58.4
+            return 68
         } else if DeviceType.IS_IPHONE_6P {
-            return 66
+            return 76
         } else if DeviceType.IS_IPHONE_4_OR_LESS {
-            return 37.6
+            return 41
         } else {
             return 50
         }
@@ -178,10 +185,10 @@ class LeftDrawerTableViewController: UITableViewController {
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("fourthTab") as! FourthTabBarViewController
         case 4:
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("fifthTab") as! FifthTabViewController
-        case 7:
+        case 6:
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalInfoTab") as! PersonalInfoViewController
             
-        case 8:
+        case 7:
             LocalStore.setLogout()
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
         default:

@@ -83,11 +83,14 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
             
             
             
-            
+            /*
             firstImageOfSwipeView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.photos[0]), placeholderImage: UIImage(named: imageArray[0]), options: SDWebImageOptions.AllowInvalidSSLCertificates)
             secondImageOfSwipeView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.photos[1]), placeholderImage: UIImage(named: imageArray[1]), options: SDWebImageOptions.AllowInvalidSSLCertificates)
             thirdImageOfSwipeView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.photos[2]), placeholderImage: UIImage(named: imageArray[2]), options: SDWebImageOptions.AllowInvalidSSLCertificates)
-            
+            */
+            firstImageOfSwipeView.image = UIImage(named: college!.name + " photo1")
+            secondImageOfSwipeView.image = UIImage(named: college!.name + " photo2")
+            thirdImageOfSwipeView.image = UIImage(named: college!.name + " photo3")
         }
     }
     
@@ -129,7 +132,8 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     }
     
     func setUpView(){
-        self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
+        //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
+        self.logoImageView.image = UIImage(named: college!.name + " logo")
         self.universityName.text = self.collegeName
         self.tuitionLabel.text = self.collegeOverview!.tuition_and_fees
         //self.numberOfStudent.text = self.collegeOverview!.
