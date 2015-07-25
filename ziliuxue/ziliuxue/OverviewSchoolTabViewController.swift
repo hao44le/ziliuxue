@@ -107,7 +107,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         self.costFirstDescription.text = costFirstCell
         self.costSecondDescription.text = costSecondCell
         self.setUpView()
-        
+        //self.universityDescription.hidden = true
         // Do any additional setup after loading the view.
     }
     
