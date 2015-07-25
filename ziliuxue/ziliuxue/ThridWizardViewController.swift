@@ -513,8 +513,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         // Pass the selected object to the new view controller.
         if segue.identifier == "toUniversityDetail" {
             let tab = segue.destinationViewController as! SchoolSepecificTabBarController
-            let vc : OverviewSchoolTabViewController = tab.viewControllers![0] as! OverviewSchoolTabViewController
-            vc.collegeDetail = self.collegeDetail!
+            tab.collegeDetail = self.collegeDetail
             
         }
     }

@@ -10,9 +10,41 @@ import UIKit
 
 class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var nationalUniversityLabel: UILabel!
 
-    var rankingLeft = ["分数","高中平均GPA","平均新生保持率","<20学生的课","<50学生的课","学生老师比例","2013秋季接受率","6年毕业率","毕业率预期"]
-    var rankingRight = ["100","4.9(5)","98%","70.9%","11%","6:1","7.4%","97%","94%"]
+    var rankingLeft = ["分数","高中平均GPA","平均新生保持率","<20学生的课","<50学生的课","学生老师比例","2013秋季接受率","6年毕业率","毕业率预期","Overperformance/Underperformance","毕业滞留排名","互评得分","教师资源排名","全职教师占比","学生选择排名","SAT/ACT 25% - 75%区间","高中班级的TOP10％的新生","高中班级的TOP25％的新生","财政资源排名","校友捐赠排名","平均校友捐赠比例"]
+    var rankingRight = ["100","4.9(5)","98%","70.9%","11%","6:1","7.4%","97%","94%","","","","","","","","","","","",""]
+    
+    var collegeRanking : CollegeRanking? {
+        didSet {
+            //print("1")
+            
+            self.rankingRight[0] = collegeRanking!.score
+            self.rankingRight[1] = collegeRanking!.high_school_counselor_score
+            self.rankingRight[2] = collegeRanking!.average_freshman_retention_rate
+            self.rankingRight[3] = collegeRanking!.classes_with_fewer_than_20_students
+            self.rankingRight[4] = collegeRanking!.classes_with_50_or_more_students
+            self.rankingRight[5] = collegeRanking!.student_falculty_ratio
+            self.rankingRight[6] = collegeRanking!.acceptance_rate
+            self.rankingRight[7] = collegeRanking!.six_year_graduation_rate
+            self.rankingRight[8] = collegeRanking!.predicated_graduation_rate
+            self.rankingRight[9] = collegeRanking!.overperformance_over_underperformance
+            self.rankingRight[10] = collegeRanking!.graduation_and_retention_rank
+            self.rankingRight[11] = collegeRanking!.peer_assessment_score
+            self.rankingRight[12] = collegeRanking!.faculty_resources_rank
+            self.rankingRight[13] = collegeRanking!.percent_of_faculty_who_are_fulltime
+            self.rankingRight[14] = collegeRanking!.student_selectivity_rank
+            self.rankingRight[15] = collegeRanking!.SAT_ACT_25th_75th_percentile
+            self.rankingRight[16] = collegeRanking!.freshmen_in_top10percent_of_high_school_class
+            self.rankingRight[17] = collegeRanking!.freshmen_in_top25percent_of_high_school_class
+            self.rankingRight[18] = collegeRanking!.financial_resource_rank
+            self.rankingRight[19] = collegeRanking!.alumni_giving_rank
+            self.rankingRight[20] = collegeRanking!.average_alumni_giving_rate
+        }
+    }
+    
+    
+    
     @IBAction func swipeRight(sender: AnyObject) {
         let selectedIndex = self.tabBarController?.selectedIndex
         self.tabBarController?.selectedIndex = selectedIndex! - 1
@@ -25,6 +57,7 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer!.enabled = false
+        self.nationalUniversityLabel.text = collegeRanking?.rankings.objectForKey("National Universities") as? String
         // Do any additional setup after loading the view.
     }
 

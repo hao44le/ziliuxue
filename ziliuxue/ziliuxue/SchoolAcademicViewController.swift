@@ -19,6 +19,10 @@ class SchoolAcademicViewController: UIViewController {
         let selectedIndex = self.tabBarController?.selectedIndex
         self.tabBarController?.selectedIndex = selectedIndex! + 1
     }
+    
+    var collegeAcademic : CollegeAcademic?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer!.enabled = false

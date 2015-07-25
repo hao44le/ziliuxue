@@ -25,6 +25,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     
     var applicationLeft = ["基本教育","毕业课程要求","课程大学"]
     var applicationRight = ["是","7","人类学，数学，英语，外语，理科，历史，社会科学"]
+    var collegeApplication : CollegeApplying?
     
     override func viewDidLoad() {
         super.viewDidLoad()

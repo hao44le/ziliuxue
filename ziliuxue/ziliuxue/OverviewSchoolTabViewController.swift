@@ -56,44 +56,25 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     var imageArray = ["classroom","classroom2","universityBack"]
     var collegeName = "Pricenton University"
     
-    var college: College?
+    var college: College? {
+        didSet{
+            firstImageOfSwipeView.image = UIImage(named: college!.name + " photo1")
+            secondImageOfSwipeView.image = UIImage(named: college!.name + " photo2")
+            thirdImageOfSwipeView.image = UIImage(named: college!.name + " photo3")
+            self.collegeName = self.college!.name
+        }
+    }
     var collegeOverview : CollegeOverview?
-    var collegeRanking : CollegeRanking?
-    var collegeApplying : CollegeApplying?
-    var collegeAcademic : CollegeAcademic?
+    //var collegeRanking : CollegeRanking?
+    //var collegeApplying : CollegeApplying?
+    //var collegeAcademic : CollegeAcademic?
     var collegeFinancial : CollegeFinancial?
     
     var firstImageOfSwipeView : UIImageView = UIImageView()
     var secondImageOfSwipeView : UIImageView = UIImageView()
     var thirdImageOfSwipeView : UIImageView = UIImageView()
 
-    
-    var collegeDetail : CollegeDetail? {
-        didSet{
-            self.college = collegeDetail!.college
-            
-            
-            self.collegeName = self.college!.name
-            
-            self.collegeOverview = collegeDetail!.collegeOverview
-            self.collegeRanking = collegeDetail!.collegeRanking
-            self.collegeApplying = collegeDetail!.collegeApplying
-            self.collegeAcademic = collegeDetail!.collegeAcademic
-            self.collegeFinancial = collegeDetail!.collegeFinancial
-            
-            
-            
-            /*
-            firstImageOfSwipeView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.photos[0]), placeholderImage: UIImage(named: imageArray[0]), options: SDWebImageOptions.AllowInvalidSSLCertificates)
-            secondImageOfSwipeView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.photos[1]), placeholderImage: UIImage(named: imageArray[1]), options: SDWebImageOptions.AllowInvalidSSLCertificates)
-            thirdImageOfSwipeView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.photos[2]), placeholderImage: UIImage(named: imageArray[2]), options: SDWebImageOptions.AllowInvalidSSLCertificates)
-            */
-            firstImageOfSwipeView.image = UIImage(named: college!.name + " photo1")
-            secondImageOfSwipeView.image = UIImage(named: college!.name + " photo2")
-            thirdImageOfSwipeView.image = UIImage(named: college!.name + " photo3")
-        }
-    }
-    
+        
     @IBAction func rankingMoreButtonPressed(sender: UIButton) {
         let selectedIndex = self.tabBarController?.selectedIndex
         self.tabBarController?.selectedIndex = selectedIndex! + 1
@@ -121,7 +102,6 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         swipeView.pagingEnabled = true
         self.applicationDescriptionLabel.text = applicationInfoFirstCell
         self.costFirstDescription.text = costFirstCell

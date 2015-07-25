@@ -15,6 +15,11 @@ class SchoolCostViewController: UIViewController {
         let selectedIndex = self.tabBarController?.selectedIndex
         self.tabBarController?.selectedIndex = selectedIndex! - 1
     }
+    
+    
+    
+    var collegeCost : CollegeFinancial?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer!.enabled = false

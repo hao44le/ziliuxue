@@ -126,8 +126,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "toUniversity" {
             let tab = segue.destinationViewController as! SchoolSepecificTabBarController
-            let vc : OverviewSchoolTabViewController = tab.viewControllers![0] as! OverviewSchoolTabViewController
-            vc.collegeDetail = self.collegeDetail!
+            tab.collegeDetail = self.collegeDetail
             
         }
     }
