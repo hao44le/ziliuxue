@@ -118,6 +118,14 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             defaults.setObject(detail[0], forKey: "userDestinationCountry")
             defaults.setObject(detail[1], forKey: "userTargetedDegree")
             defaults.setObject(detail[2], forKey: "userSpecificMajor")
+            let vc = segue.destinationViewController as! SecondWizardViewController
+            if detail[1] == "本科" {
+                vc.name = ["GPA","托福","SAT"]
+            } else if detail[1] == "工商管理硕士" {
+               vc.name = ["GPA","托福","GMAT"]
+            } else {
+                vc.name = ["GPA","托福","GRE"]
+            }
         }
         
 

@@ -11,7 +11,7 @@ import UIKit
 class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var continueButton: UIButton!
-    let name = ["GPA","SAT","TOEFL","GRE","GMAT"]
+    var name : [String] = []
     
     
     var gpa:UITextField = UITextField()
@@ -42,15 +42,23 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
         cell.label?.text = name[indexPath.row]
         if indexPath.row == 0 {
             gpa = cell.textField
+            gpa.placeholder = "平均学术成绩满分4.0"
         } else if indexPath.row == 1 {
-            sat = cell.textField
-        } else if indexPath.row == 2 {
             toefl = cell.textField
-        } else if indexPath.row == 3 {
-            gre = cell.textField
+            toefl.placeholder = "满分120"
         } else {
-            gmat = cell.textField
+            if name[2] == "SAT" {
+                sat = cell.textField
+                sat.placeholder = "满分2400"
+            } else if name[2] == "GMAT" {
+                gmat = cell.textField
+                gmat.placeholder = "满分800"
+            } else {
+                gre = cell.textField
+                gre.placeholder = "满分346"
+            }
         }
+        
         return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

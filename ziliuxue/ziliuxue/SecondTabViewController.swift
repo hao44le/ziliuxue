@@ -98,7 +98,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.universityName.text = self.universityArray[indexPath.row].name
         cell.logo.image = UIImage(named: self.universityArray[indexPath.row].logo)
         cell.logo.layer.cornerRadius = 23
-        cell.universityName.sizeToFit()
+        //cell.universityName.sizeToFit()
         cell.logo.clipsToBounds = true
         return cell
     }
