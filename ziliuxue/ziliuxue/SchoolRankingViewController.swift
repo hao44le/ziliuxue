@@ -77,11 +77,12 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("sepecifcRankingCell", forIndexPath: indexPath) as! CollegeInfoTableViewCell
         cell.leftLabel.text = rankingLeft[indexPath.row]
         cell.rightLabel.text = rankingRight[indexPath.row]
+        /*
         if DeviceType.IS_IPHONE_6{
             cell.firstLabelWidth.constant = 187
         } else if DeviceType.IS_IPHONE_6P{
             cell.firstLabelWidth.constant = 205
-        }
+        }*/
         return cell
     }
     /*

@@ -140,11 +140,13 @@ class LeftDrawerTableViewController: UITableViewController {
         }
         
         if DeviceType.IS_IPHONE_6P {
-            imageView.frame = CGRectMake(30, 20, 30, 30)
+            imageView.frame = CGRectMake(30, 24, 25, 25)
         } else if DeviceType.IS_IPHONE_4_OR_LESS {
-            imageView.frame = CGRectMake(30, 5, 30, 30)
-        } else {
-            imageView.frame = CGRectMake(30, 10, 30, 30)
+            imageView.frame = CGRectMake(30, 5, 25, 25)
+        } else if DeviceType.IS_IPHONE_5{
+            imageView.frame = CGRectMake(32, 12, 25, 25)
+        } else if DeviceType.IS_IPHONE_6 {
+            imageView.frame = CGRectMake(32, 19, 25, 25)
         }
         cell?.addSubview(imageView)
         //cell?.imageView?.frame = CGRectMake(0, 0, 20, 20)
