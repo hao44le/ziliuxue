@@ -8,31 +8,42 @@
 
 import UIKit
 
-class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
+class LoginViewController: UIViewController,UITextFieldDelegate {
 
-    var email:UITextField = UITextField()
-    var password:UITextField = UITextField()
+
     
-    @IBOutlet weak var wechatLogoToTopLayoutGuideConstriant: NSLayoutConstraint!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailView: UIView!
+    
+    
+    @IBOutlet weak var weChatImage: UIImageView!
+    @IBOutlet weak var weiboImage: UIImageView!
+   
     @IBOutlet weak var weiboButton: UIButton!
     @IBOutlet weak var wechatButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
     
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var hintLabel: UILabel!
+    @IBOutlet weak var passwordView: UIView!
     let name = ["电子邮件","密码"]
     
     @IBAction func tapped(sender: UITapGestureRecognizer) {
-        email.resignFirstResponder()
-        password.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     @IBAction func loginClicked(sender: UIButton) {
         //println(email.text)
         //println(password.text)
         
-        if email.text == "" {
+        if emailTextField.text == "" {
             let ac = UIAlertView(title: "请输入邮箱", message: nil, delegate: nil, cancelButtonTitle: "好的")
             ac.show()
-        } else if password.text == "" {
+        } else if passwordTextField.text == "" {
             let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
             ac.show()
         } else {
@@ -42,7 +53,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
             //dispatch_async(dispatch_get_global_queue(priority, 0)){ () -> Void in
         
-                ServerMethods.obtainToken(self.email.text!, password: self.password.text!)
+                ServerMethods.obtainToken(self.emailTextField.text!, password: self.passwordTextField.text!)
                 //dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     //self.activityIndicator.stopAnimating()
                     
@@ -76,25 +87,35 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         WXApi.sendReq(req)
         
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 10
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+         IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 150
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.passwordLabel.hidden = true
+        self.passwordTextField.hidden = true
+        self.passwordView.hidden = true
+        self.loginButton.hidden = true
         //self.navigationController!.interactivePopGestureRecognizer.delegate = self
-        
-        
+       
         self.navigationController?.navigationBar.hidden = false
         
                NSNotificationCenter.defaultCenter().addObserver(self, selector: "weChat_login_Successed", name: "weChat_login_Successed", object: nil)
         
         
         
-        wechatButton.layer.cornerRadius = 20
+        wechatButton.layer.cornerRadius = 25
         wechatButton.layer.borderWidth = 1
         wechatButton.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         
         
-        weiboButton.layer.cornerRadius = 20
+        weiboButton.layer.cornerRadius = 25
         weiboButton.layer.borderWidth = 1
         weiboButton.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
         
@@ -127,7 +148,7 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func loginSuccessed(){
         NSUserDefaults.standardUserDefaults().setObject("ziliuxue", forKey: "loginWay")
         
-        NSUserDefaults.standardUserDefaults().setObject(email.text, forKey: "nickName")
+        NSUserDefaults.standardUserDefaults().setObject(emailTextField.text, forKey: "nickName")
         LocalStore.setLogined()
         //self.activityIndicator.stopAnimating()
         Tool.dismissHUD()
@@ -141,39 +162,56 @@ class LoginViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         ac.show()
     }
     
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                //self.view.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+                
+                self.weiboImage.hidden = false
+                self.weChatImage.hidden = false
+                self.weiboButton.hidden = false
+                self.wechatButton.hidden = false
+                self.hintLabel.hidden = false
+                
+                if self.emailTextField.text == "" {
+                    self.passwordTextField.hidden = true
+                    self.passwordLabel.hidden = true
+                    self.passwordView.hidden = true
+                    self.loginButton.hidden = true
+                }
+                
+            })
+        
+        
+        return true
+    }
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                //self.view.frame = CGRectMake(0, -210, ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+                
+                self.hintLabel.hidden = true
+                self.weiboImage.hidden = true
+                self.weChatImage.hidden = true
+                self.weiboButton.hidden = true
+                self.wechatButton.hidden = true
+                self.passwordLabel.hidden = false
+                self.passwordTextField.hidden = false
+                self.passwordView.hidden = false
+                self.loginButton.hidden = false
+            })
+        } else {
+            
+        }
+        
+        return true
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
-            cell.label.text = self.name[indexPath.row]
-        
-        if indexPath.row == 0 {
-            
-            email = cell.textField
-        } else {
-            cell.textField.secureTextEntry = true
-            password = cell.textField
-        }
-            return cell
-       
-        
-    }
-    
-    
- 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

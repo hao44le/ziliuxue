@@ -42,20 +42,20 @@ class SecondWizardViewController: UIViewController,UITableViewDelegate,UITableVi
         cell.label?.text = name[indexPath.row]
         if indexPath.row == 0 {
             gpa = cell.textField
-            gpa.placeholder = "平均学术成绩满分4.0"
+            gpa.placeholder = "x.x / 平均学术成绩满分4.0"
         } else if indexPath.row == 1 {
             toefl = cell.textField
-            toefl.placeholder = "满分120"
+            toefl.placeholder = "xxx / 满分120"
         } else {
             if name[2] == "SAT" {
                 sat = cell.textField
-                sat.placeholder = "满分2400"
+                sat.placeholder = "xxxx / 满分2400"
             } else if name[2] == "GMAT" {
                 gmat = cell.textField
-                gmat.placeholder = "满分800"
+                gmat.placeholder = "xxx / 满分800"
             } else {
                 gre = cell.textField
-                gre.placeholder = "满分346"
+                gre.placeholder = "xxx / 满分346"
             }
         }
         
