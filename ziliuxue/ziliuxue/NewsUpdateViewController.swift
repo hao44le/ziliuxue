@@ -16,8 +16,9 @@ class NewsUpdateViewController: UIViewController,XYPieChartDataSource,XYPieChart
     }
     @IBOutlet weak var pieView: XYPieChart!
     var pieChartValue = [CGFloat(1),CGFloat(3)]
-    var pieChartColor = [UIColor.brownColor(),UIColor.brownColor(),UIColor.brownColor(),UIColor.brownColor(),UIColor.brownColor()]
-    var slices = [27,69,73,58,30]
+    var pieChartColor = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
+    var slices = [11,8,6,6,6]
+    var text = ["经济学","政治学","生物","心理学","公共政策"]
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,10 +29,13 @@ class NewsUpdateViewController: UIViewController,XYPieChartDataSource,XYPieChart
         self.pieView.dataSource = self
         self.pieView.delegate = self
         self.pieView.startPieAngle = CGFloat(M_PI_2)
-        self.pieView.animationSpeed = 1.0
-        //self.pieView.labelRadius = 160
-        //self.pieView.showPercentage = true
-        //self.pieView.pieCenter = CGPointMake(150, 150)
+        self.pieView.animationSpeed = 1.5
+        self.pieView.showLabel = true
+        self.pieView.labelColor = UIColor.whiteColor()
+        self.pieView.labelFont = UIFont.systemFontOfSize(20)
+        self.pieView.labelRadius = 100
+        self.pieView.showPercentage = false
+        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 0)
         // Do any additional setup after loading the view.
     }
 
@@ -51,7 +55,9 @@ class NewsUpdateViewController: UIViewController,XYPieChartDataSource,XYPieChart
     func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
     return CGFloat(self.slices[Int(index)])
     }
-    
+    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
+        return self.text[Int(index)]
+    }
 
 
     /*
