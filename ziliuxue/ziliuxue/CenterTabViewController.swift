@@ -33,7 +33,7 @@ class CenterTabViewController: UITabBarController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        /*
+        
         if !LocalStore.isIntroVisited(){
             if !LocalStore.isLogined(){
                 self.performSegueWithIdentifier("toLogin", sender: self)
@@ -47,7 +47,7 @@ class CenterTabViewController: UITabBarController {
             }
         }
         
-        */
+        
         
         
         //self.performSegueWithIdentifier("toWizard", sender: self)
