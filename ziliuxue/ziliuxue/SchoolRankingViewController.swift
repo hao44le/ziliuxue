@@ -74,9 +74,9 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
         return rankingLeft.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("sepecifcRankingCell", forIndexPath: indexPath) as! CollegeInfoTableViewCell
-        cell.leftLabel.text = rankingLeft[indexPath.row]
-        cell.rightLabel.text = rankingRight[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("sepecifcRankingCell", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel!.text = rankingLeft[indexPath.row]
+        cell.detailTextLabel!.text = rankingRight[indexPath.row]
         /*
         if DeviceType.IS_IPHONE_6{
             cell.firstLabelWidth.constant = 187

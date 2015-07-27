@@ -242,27 +242,27 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         if tableView == basicInfoTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("basicInfoCell", forIndexPath: indexPath) as! CollegeInfoTableViewCell
-            cell.leftLabel.text = basicInfoLeft[indexPath.row]
-            cell.rightLabel.text = basicInfoRight[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+            cell.textLabel!.text = basicInfoLeft[indexPath.row]
+            cell.detailTextLabel!.text = basicInfoRight[indexPath.row]
             return cell
         } else if tableView == applicationInfoTableView{
-                let cell = tableView.dequeueReusableCellWithIdentifier("applicationInfoCell", forIndexPath: indexPath) as! CollegeInfoTableViewCell
-                cell.leftLabel.text = applicationInfoLeft[indexPath.row]
-                cell.rightLabel.text = applicationInfoRight[indexPath.row]
+                let cell = tableView.dequeueReusableCellWithIdentifier("applicationInfoCell", forIndexPath: indexPath) as! UITableViewCell
+                cell.textLabel!.text = applicationInfoLeft[indexPath.row]
+                cell.detailTextLabel!.text = applicationInfoRight[indexPath.row]
                 return cell
             
         } else if tableView == academicInfoTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("academicInfoCell", forIndexPath: indexPath) as! CollegeInfoTableViewCell
-            cell.leftLabel.text = academicInfoLeft[indexPath.row]
-            cell.rightLabel.text = academicInfoRight[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("academicInfoCell", forIndexPath: indexPath) as! UITableViewCell
+            cell.textLabel!.text = academicInfoLeft[indexPath.row]
+            cell.detailTextLabel!.text = academicInfoRight[indexPath.row]
             
             
             return cell
         } else if tableView == costInfoTableView {
-            let cell = tableView.dequeueReusableCellWithIdentifier("costInfoCell", forIndexPath: indexPath) as! CollegeInfoTableViewCell
-            cell.leftLabel.text = costInfoLeft[indexPath.row]
-            cell.rightLabel.text = costInfoRight[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("costInfoCell", forIndexPath: indexPath) as! UITableViewCell
+            cell.textLabel!.text = costInfoLeft[indexPath.row]
+            cell.detailTextLabel!.text = costInfoRight[indexPath.row]
             return cell
         }
         

@@ -74,6 +74,111 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
 
     var collegeApplication : CollegeApplying? {
         didSet{
+            //regular_decision
+            methodRightForRD[0] = collegeApplication!.application_deadline
+            methodRightForRD[1] = collegeApplication!.priority_application_deadline
+            methodRightForRD[2] = collegeApplication!.notification_date
+            methodRightForRD[3] = collegeApplication!.deadline_for_accepting_admission_offers
+            methodRightForRD[4] = collegeApplication!.students_accepted_for_terms_other_than_the_fall
+            
+            //early_decision
+            methodRightForED[0] = collegeApplication!.early_decision_plan_offered
+            methodRightForED[1] = collegeApplication!.early_decision_deadline
+            methodRightForED[2] = collegeApplication!.early_decision_sent_by
+            
+            //early_action
+            methodRightForEA[0] = collegeApplication!.early_action_plan_offered
+            methodRightForEA[1] = collegeApplication!.students_restricted_from_applying_to_other_early_action_plans
+            methodRightForEA[2] = collegeApplication!.early_action_deadline
+            methodRightForEA[3] = collegeApplication!.early_action_decision_sent_by
+            
+            //application_fee
+            methodRightForApplicationFee[0] = collegeApplication!.application_fee
+            methodRightForApplicationFee[1] = collegeApplication!.application_fee_refundable
+            methodRightForApplicationFee[2] = collegeApplication!.application_fee_waived_for_stdents_with_financial_need
+            methodRightForApplicationFee[3] = collegeApplication!.application_fee_for_students_who_apply_online
+            methodRightForApplicationFee[4] = collegeApplication!.deferred_admission_allowed
+            methodRightForApplicationFee[5] = collegeApplication!.maximum_length_of_determent
+            
+            
+            //application_formats
+            methodRightForApplicationWay[0] = collegeApplication!.application_url
+            methodRightForApplicationWay[1] = collegeApplication!.common_application_accepted
+            
+            //tuition_room_deposits
+            methodRightForDeposit[0] = collegeApplication!.tuition_deposit
+            methodRightForDeposit[1] = collegeApplication!.tuition_deposit_refundable
+            methodRightForDeposit[2] = collegeApplication!.room_deposit
+            methodRightForDeposit[3] = collegeApplication!.room_deposit_refundable
+            
+            //contact_information
+            methodRightForContactInformation[0] = collegeApplication!.admission_phone
+            methodRightForContactInformation[1] = collegeApplication!.admission_email
+            methodRightForContactInformation[2] = collegeApplication!.admission_address
+            
+            
+            //admission_requirements
+            requirementRightForAR[0] = collegeApplication!.admission_interview
+            requirementRightForAR[1] = collegeApplication!.campus_visit
+            requirementRightForAR[2] = collegeApplication!.offcampus_interviews
+            requirementRightForAR[3] = collegeApplication!.open_admission_policy
+            requirementRightForAR[4] = collegeApplication!.college_use_SAT_or_ACT_in_admission_decisions
+            requirementRightForAR[5] = collegeApplication!.required_standardized_tests
+            requirementRightForAR[6] = collegeApplication!.ACT_with_writing_test
+            requirementRightForAR[7] = collegeApplication!.SAT_ACT_scores_must_be_received_by
+            requirementRightForAR[8] = collegeApplication!.SAT_subject_test_scores_must_be_received_by
+            
+            
+            //academic_factors_considered
+            requirementRightForAFC[0] = collegeApplication!.rigor_of_secondary_school_record
+            requirementRightForAFC[1] = collegeApplication!.class_rank
+            requirementRightForAFC[2] = collegeApplication!.GPA
+            requirementRightForAFC[3] = collegeApplication!.standardized_test_scores
+            requirementRightForAFC[4] = collegeApplication!.application_essay
+            requirementRightForAFC[5] = collegeApplication!.recommendations
+            requirementRightForAFC[6] = collegeApplication!.SAT_subject_tests
+            
+            //nonacademic_factors_considered
+            requirementRightForNFC[0] = collegeApplication!.interview
+            requirementRightForNFC[1] = collegeApplication!.extracurricular_activities
+            requirementRightForNFC[2] = collegeApplication!.talent_ability
+            requirementRightForNFC[3] = collegeApplication!.character_personal_qualities
+            requirementRightForNFC[4] = collegeApplication!.first_generation_college_student
+            requirementRightForNFC[5] = collegeApplication!.alumni_relations
+            requirementRightForNFC[6] = collegeApplication!.geographical_residence
+            requirementRightForNFC[7] = collegeApplication!.state_residency
+            requirementRightForNFC[8] = collegeApplication!.religious_affiliation
+            requirementRightForNFC[9] = collegeApplication!.race_ethnicity
+            requirementRightForNFC[10] = collegeApplication!.volunteer_work
+            requirementRightForNFC[11] = collegeApplication!.work_experience
+            requirementRightForNFC[12] = collegeApplication!.applicants_interest_level
+            
+            
+            //selectivity
+            statisticsRightForSelectivity[0] = collegeApplication!.selectivity
+            statisticsRightForSelectivity[1] = collegeApplication!.acceptance_rate
+            statisticsRightForSelectivity[2] = collegeApplication!.early_decision_acceptance_rate
+            statisticsRightForSelectivity[3] = collegeApplication!.early_action_acceptance_rate
+            statisticsRightForSelectivity[4] = collegeApplication!.acceptance_rate_wo_early_decision
+            
+            
+            
+            //applications_acceptance_enrollments
+            statisticsRightForACE[0] = collegeApplication!.applicants
+            statisticsRightForACE[1] = collegeApplication!.female_applicants
+            statisticsRightForACE[2] = collegeApplication!.male_applicants
+            statisticsRightForACE[3] = collegeApplication!.applicants_accepted
+            statisticsRightForACE[4] = collegeApplication!.female_applicants_accepted
+            statisticsRightForACE[5] = collegeApplication!.male_applicants_accepted
+            statisticsRightForACE[6] = collegeApplication!.freshman_enrollment
+            
+            
+            //wait_list
+            statisticsRightForWL[0] = collegeApplication!.school_has_a_wait_list
+            statisticsRightForWL[1] = collegeApplication!.applicants_placed_on_wait_list
+            statisticsRightForWL[2] = collegeApplication!.students_accepting_place_on_wait_list
+            statisticsRightForWL[3] = collegeApplication!.students_accepted_from_wait_list
+            
             
         }
     }
@@ -141,44 +246,44 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("sepecificApplicationCell", forIndexPath: indexPath) as! CollegeInfoTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("sepecificApplicationCell", forIndexPath: indexPath) as! UITableViewCell
         if tableView == applicationMethodTableView {
             switch indexPath.section {
             case 0:
-                cell.leftLabel.text = self.methodLeftForRD[indexPath.row]
-                cell.rightLabel.text = self.methodRightForRD[indexPath.row]
+                cell.textLabel!.text = self.methodLeftForRD[indexPath.row]
+                cell.detailTextLabel!.text = self.methodRightForRD[indexPath.row]
             case 1:
-                cell.leftLabel.text = self.methodLeftForED[indexPath.row]
-                cell.rightLabel.text = self.methodRightForED[indexPath.row]
+                cell.textLabel!.text = self.methodLeftForED[indexPath.row]
+                cell.detailTextLabel!.text = self.methodRightForED[indexPath.row]
             case 2:
-                cell.leftLabel.text = self.methodLeftForEA[indexPath.row]
-                cell.rightLabel.text = self.methodRightForEA[indexPath.row]
+                cell.textLabel!.text = self.methodLeftForEA[indexPath.row]
+                cell.detailTextLabel!.text = self.methodRightForEA[indexPath.row]
             case 3:
-                cell.leftLabel.text = self.methodLeftForApplicationFee[indexPath.row]
-                cell.rightLabel.text = self.methodRightForApplicationFee[indexPath.row]
+                cell.textLabel!.text = self.methodLeftForApplicationFee[indexPath.row]
+                cell.detailTextLabel!.text = self.methodRightForApplicationFee[indexPath.row]
             case 4:
-                cell.leftLabel.text = self.methodLeftForApplicationWay[indexPath.row]
-                cell.rightLabel.text = self.methodRightForApplicationWay[indexPath.row]
+                cell.textLabel!.text = self.methodLeftForApplicationWay[indexPath.row]
+                cell.detailTextLabel!.text = self.methodRightForApplicationWay[indexPath.row]
             case 5:
-                cell.leftLabel.text = self.methodLeftForDeposit[indexPath.row]
-                cell.rightLabel.text = self.methodRightForDeposit[indexPath.row]
+                cell.textLabel!.text = self.methodLeftForDeposit[indexPath.row]
+                cell.detailTextLabel!.text = self.methodRightForDeposit[indexPath.row]
             case 6:
-                cell.leftLabel.text = self.methodLeftForContactInformation[indexPath.row]
-                cell.rightLabel.text = self.methodRightForContactInformation[indexPath.row]
+                cell.textLabel!.text = self.methodLeftForContactInformation[indexPath.row]
+                cell.detailTextLabel!.text = self.methodRightForContactInformation[indexPath.row]
             default:
                 break
             }
         } else if tableView == applicationReuirementTableView {
             switch indexPath.section {
             case 0:
-                cell.leftLabel.text = self.requirementLeftForAR[indexPath.row]
-                cell.rightLabel.text = self.requirementRightForAR[indexPath.row]
+                cell.textLabel!.text = self.requirementLeftForAR[indexPath.row]
+                cell.detailTextLabel!.text = self.requirementRightForAR[indexPath.row]
             case 1:
-                cell.leftLabel.text = self.requirementLeftForAFC[indexPath.row]
-                cell.rightLabel.text = self.requirementRightForAFC[indexPath.row]
+                cell.textLabel!.text = self.requirementLeftForAFC[indexPath.row]
+                cell.detailTextLabel!.text = self.requirementRightForAFC[indexPath.row]
             case 2:
-                cell.leftLabel.text = self.requirementLeftForNFC[indexPath.row]
-                cell.rightLabel.text = self.requirementRightForNFC[indexPath.row]
+                cell.textLabel!.text = self.requirementLeftForNFC[indexPath.row]
+                cell.detailTextLabel!.text = self.requirementRightForNFC[indexPath.row]
             default:
                 break
             }
@@ -186,14 +291,14 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         } else {
             switch indexPath.section {
             case 0:
-                cell.leftLabel.text = self.statisticsLeftForSelectivity[indexPath.row]
-                cell.rightLabel.text = self.statisticsRightForSelectivity[indexPath.row]
+                cell.textLabel!.text = self.statisticsLeftForSelectivity[indexPath.row]
+                cell.detailTextLabel!.text = self.statisticsRightForSelectivity[indexPath.row]
             case 1:
-                cell.leftLabel.text = self.statisticsLeftForACE[indexPath.row]
-                cell.rightLabel.text = self.statisticsRightForACE[indexPath.row]
+                cell.textLabel!.text = self.statisticsLeftForACE[indexPath.row]
+                cell.detailTextLabel!.text = self.statisticsRightForACE[indexPath.row]
             case 2:
-                cell.leftLabel.text = self.statisticsLeftForWL[indexPath.row]
-                cell.rightLabel.text = self.statisticsRightForWL[indexPath.row]
+                cell.textLabel!.text = self.statisticsLeftForWL[indexPath.row]
+                cell.detailTextLabel!.text = self.statisticsRightForWL[indexPath.row]
             default:
                 break
             }
