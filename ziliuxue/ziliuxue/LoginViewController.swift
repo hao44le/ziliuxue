@@ -96,6 +96,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
          IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 150
+        self.passwordTextField.secureTextEntry = true
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.passwordLabel.hidden = true
