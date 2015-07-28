@@ -23,6 +23,7 @@ class FindServiceViewController: UIViewController,UICollectionViewDelegate,UICol
         self.parallaxCollectionView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0)
         self.automaticallyAdjustsScrollViewInsets = false
         self.parallaxCollectionView.reloadData()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -71,6 +72,8 @@ class FindServiceViewController: UIViewController,UICollectionViewDelegate,UICol
         
         self.selectedServiceName = self.name[indexPath.row] as String
         
+        self.performSegueWithIdentifier("toService", sender: self)
+        
         //self.performSegueWithIdentifier("toCourse", sender: self)
     }
     
@@ -89,16 +92,71 @@ class FindServiceViewController: UIViewController,UICollectionViewDelegate,UICol
             
         }
     }
+   
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toService" {
+            let vc = segue.destinationViewController as! ServiceOverviewViewController
+            vc.topName = "找" + self.selectedServiceName + "服务"
+            
+            switch self.selectedServiceName {
+            case name[0] :
+                vc.teacherName = ["    Stephenie An","    Alex Song","    Julia Chen","    王小米","    黄大卫","    张佳丽","    Ken Wang","    Sara Qiao"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[1] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[2] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[3] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[4] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[5] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[6] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[7] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            case name[8] :
+                vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
+                vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]
+                vc.detail = ["计算机，电子工程，信息系统工程","计算机，人工智能，电子工程 | 北美高校","社会，人文，心理 | 北美高校","文理各科推荐信，简历","法律类个人声明，简历，推荐信","化学类，物理化学类论文，个人声明，推荐信","化学，计算机，化工个人声明，简历","MBA类个人声明，论文，简历，推荐信"]
+                vc.like = ["12,568","9,268","8,973","7,835","11,763","9,268","8,973","7,835"]
+            default:
+                break
+            }
+        }
     }
-    */
+    
 
 }
