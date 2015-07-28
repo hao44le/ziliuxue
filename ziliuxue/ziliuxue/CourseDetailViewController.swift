@@ -82,6 +82,10 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        Tool.dismissHUD()
+    }
+    
     func didGetCourseDetail(notification:NSNotification)
     {
         self.courseDetail = notification.object as! CourseDetail
@@ -107,7 +111,6 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         var scrollSize:CGSize = CGSizeMake(ScreenSize.SCREEN_WIDTH * 3, 0)
         
         self.coursePicScrollView.contentSize = scrollSize
-        self.coursePicScrollView.showsHorizontalScrollIndicator = false
         self.coursePicScrollView.pagingEnabled = true
         self.coursePicScrollView.maximumZoomScale = 2.0
         self.coursePicScrollView.bounces = false
@@ -121,24 +124,24 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         self.pageControl.userInteractionEnabled = false
         self.pageControl.backgroundColor = UIColor.clearColor()
         self.pageControl.numberOfPages = 3
-        
-        var count:CGFloat = 0
+
         for i in 0..<3
         {
             let xPosition  = ScreenSize.SCREEN_WIDTH * CGFloat(i)
-            var courseImage = UIImageView(frame: CGRectMake(xPosition, 0, ScreenSize.SCREEN_WIDTH, self.coursePicScrollView.frame.height))
+            var courseImage = UIImageView(frame: CGRectMake(xPosition, 0, ScreenSize.SCREEN_WIDTH, 235))
             
             var urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[i]) as! String) as String
             var picURL = NSURL(string: urlString)
             
-            courseImage.sd_setImageWithURL(picURL, placeholderImage: nil)
-            
+            //courseImage.sd_setImageWithURL(picURL, placeholderImage: nil)
+            courseImage.image = UIImage(named: "Massachusetts Institute of Technology photo1")
+            println("======")
+            println(courseImage.frame)
             self.coursePicScrollView.addSubview(courseImage)
          
         }
         
-        println("======")
-        println(self.coursePicScrollView.subviews)
+
 
     }
     

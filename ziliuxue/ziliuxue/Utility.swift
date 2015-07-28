@@ -738,7 +738,7 @@ struct ServerMethods {
             NSNotificationCenter.defaultCenter().postNotificationName("loginSuccessed", object: nil)
             print("login success\n")
             
-            //print(response)
+            print(response)
             let dic = response as! NSDictionary
             let refresh_token = dic.objectForKey("refresh_token") as! String
             let token = dic.objectForKey("token") as! String
