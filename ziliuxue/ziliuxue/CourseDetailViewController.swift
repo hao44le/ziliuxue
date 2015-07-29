@@ -10,14 +10,16 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CourseDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,UIScrollViewDelegate {
+class CourseDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,UIScrollViewDelegate,SwipeViewDelegate, SwipeViewDataSource {
 
     let kCoursePicScrollViewTag = 2006
     
     @IBOutlet var backgroundScrollView: UIScrollView!
     
-    @IBOutlet var coursePicScrollView: UIScrollView!
-    var pageControl:UIPageControl!
+    @IBOutlet var coursePicSwipeView: SwipeView!
+    
+    @IBOutlet var pageControl: UIPageControl!
+    
     
     @IBOutlet var teacherPic: UIImageView!
     
@@ -36,8 +38,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     @IBOutlet var teacherIntro: UILabel!
     
     @IBOutlet var bookMarkButton: UIButton!
-    
-    @IBOutlet var sessionScrollView: UIScrollView!
+
     
     @IBOutlet var sessionName: UILabel!
     
@@ -74,7 +75,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         var teacherURL = NSURL(string: ServerConstant.baseURL + ((self.overview["teacher"] as! NSDictionary)["avatar"] as! String))
         self.teacherPic.sd_setImageWithURL(teacherURL, placeholderImage: nil)
         
-        self.setupCoursePicScrollView()
+        
         
         
     }
@@ -99,7 +100,6 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
         self.sessionName.text = self.sessions[0]["title"] as! String + "--课程信息"
         
-        //self.setUpSessionScrollView()
         
         self.sessionTableView.reloadData()
         
@@ -108,54 +108,25 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
     }
     
-    func setupCoursePicScrollView()
-    {
-        var scrollSize:CGSize = CGSizeMake(ScreenSize.SCREEN_WIDTH * 3, 0)
-        
-        self.coursePicScrollView.contentSize = scrollSize
-        self.coursePicScrollView.pagingEnabled = true
-        self.coursePicScrollView.maximumZoomScale = 2.0
-        self.coursePicScrollView.bounces = false
-        
-        var pageControlSize:CGSize = CGSizeMake(120, 40)
-        
-        var framePageControl:CGRect = CGRectMake((self.coursePicScrollView.frame.width-pageControlSize.width)/2, ScreenSize.SCREEN_HEIGHT/2.25, pageControlSize.width, pageControlSize.height)
-        
-        self.pageControl = UIPageControl(frame: framePageControl)
-        self.pageControl.hidesForSinglePage = true
-        self.pageControl.userInteractionEnabled = false
-        self.pageControl.backgroundColor = UIColor.clearColor()
-        self.pageControl.numberOfPages = 3
-
-        for i in 0..<3
-        {
-            let xPosition  = ScreenSize.SCREEN_WIDTH * CGFloat(i)
-            var courseImage = UIImageView(frame: CGRectMake(xPosition, 0, ScreenSize.SCREEN_WIDTH, 235))
-            
-            var urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[i]) as! String) as String
-            var picURL = NSURL(string: urlString)
-            
-            //courseImage.sd_setImageWithURL(picURL, placeholderImage: nil)
-            courseImage.image = UIImage(named: "Massachusetts Institute of Technology photo1")
-            println("======")
-            println(courseImage.frame)
-            self.coursePicScrollView.addSubview(courseImage)
-         
-        }
-        
-
-
+    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
+        return 3
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView)
-    {
+    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
+//        ScreenSize.SCREEN_WIDTH * CGFloat(index)
+        var coursePicImage = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 233))
+        var urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[index]) as! String) as String
+        var picURL = NSURL(string: urlString)
         
-        let index = fabs(self.coursePicScrollView.contentOffset.x) / ScreenSize.SCREEN_WIDTH
+        coursePicImage.sd_setImageWithURL(picURL, placeholderImage: nil)
+        //coursePicImage.image = UIImage(named: "Massachusetts Institute of Technology photo1")
+        return coursePicImage
         
-        let i = Int(index)
+    }
+
+    func swipeViewDidScroll(swipeView: SwipeView!) {
         
-        self.pageControl.currentPage = i
-        
+        self.pageControl.currentPage = swipeView.currentPage
     }
     
 
