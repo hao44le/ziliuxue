@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KXr-JW-D3f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KXr-JW-D3f">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -269,7 +269,7 @@
                                     <constraint firstAttribute="height" constant="32" id="naJ-gk-OPd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -311,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pps-BK-IPw">
@@ -2569,7 +2569,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -2673,7 +2673,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -3194,7 +3194,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -3357,9 +3357,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classroom" translatesAutoresizingMaskIntoConstraints="NO" id="V1e-L7-KdP">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <animations/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
-                                                    </variation>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB4-49-bgv">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -3429,8 +3426,7 @@
                                                             <exclude reference="Dky-2c-7wL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="168" width="320" height="52"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="PBC-ah-zhw"/>
                                                             <include reference="xWf-hn-F06"/>
@@ -3458,8 +3454,7 @@
                                                             <exclude reference="pO7-HU-xte"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="268" y="139" width="52" height="52"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Odu-2d-LIG"/>
                                                             <include reference="pO7-HU-xte"/>
@@ -3672,6 +3667,7 @@
                                                 </variation>
                                             </label>
                                         </subviews>
+                                        <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="cEg-pg-H57" firstAttribute="leading" secondItem="3w0-kd-Vgo" secondAttribute="leading" id="EE9-TR-yjI"/>
@@ -3686,8 +3682,7 @@
                                                 <exclude reference="hSB-Fw-sG1"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="233"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="cEg-pg-H57"/>
                                             </mask>
@@ -3742,9 +3737,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="66" y="366" width="184" height="19"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="李相" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZ9-c3-lk2">
                                         <rect key="frame" x="241" y="371" width="118" height="37"/>
@@ -3807,8 +3799,7 @@
                                                 <exclude reference="GJb-Bl-5Si"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="108" y="817" width="104" height="26"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <exclude reference="GJb-Bl-5Si"/>
                                             </mask>
@@ -3820,9 +3811,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="33" y="1026" width="234" height="32"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="北京李相TOEFL写作班" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTU-mY-0qg">
                                         <rect key="frame" x="124" y="289" width="352" height="62"/>
@@ -3919,9 +3907,6 @@
                                                 <animations/>
                                             </tableViewCell>
                                         </prototypes>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="-3" y="1333" width="319" height="217"/>
-                                        </variation>
                                         <connections>
                                             <outlet property="dataSource" destination="ySf-sg-pla" id="UiA-n4-SNG"/>
                                             <outlet property="delegate" destination="ySf-sg-pla" id="afe-BP-JyR"/>
@@ -3953,9 +3938,6 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLeft" translatesAutoresizingMaskIntoConstraints="NO" id="sB8-SY-D9q">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <animations/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="25" y="24" width="95" height="2"/>
-                                                </variation>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个点赞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqA-43-WJQ">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -3973,8 +3955,7 @@
                                                         <exclude reference="MO7-Xm-xGG"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="122" y="9" width="76" height="32"/>
+                                                <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="JMb-zt-uXv"/>
                                                         <include reference="MO7-Xm-xGG"/>
@@ -3985,9 +3966,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="87" y="41" width="145" height="30"/>
-                                                </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊，李老师的课不错啊" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDg-wg-6vZ">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -4003,8 +3981,7 @@
                                                         <exclude reference="hDY-te-dpH"/>
                                                     </mask>
                                                 </variation>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="18" y="79" width="284" height="116"/>
+                                                <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="hDY-te-dpH"/>
                                                     </mask>
@@ -4017,16 +3994,10 @@
                                                     <color key="titleColor" red="0.77647066119999997" green="0.25490197539999998" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="115" y="203" width="90" height="30"/>
-                                                </variation>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-mY-3Zl">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <animations/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="196" y="24" width="95" height="2"/>
-                                                </variation>
                                             </imageView>
                                         </subviews>
                                         <animations/>
@@ -4103,8 +4074,7 @@
                                                 <exclude reference="sYj-SV-KcQ"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="549" width="319" height="254"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
                                                 <include reference="sB8-SY-D9q"/>
                                                 <include reference="CqA-43-WJQ"/>
@@ -4149,9 +4119,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLeft" translatesAutoresizingMaskIntoConstraints="NO" id="BfB-ti-rpZ">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <animations/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="23" y="828" width="80" height="2"/>
-                                        </variation>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="9rU-rc-pa2">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -4166,8 +4133,7 @@
                                                 <exclude reference="y63-gD-Mhm"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="235" y="829" width="63" height="2"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="y63-gD-Mhm"/>
                                             </mask>
@@ -4204,9 +4170,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="112" y="1299" width="96" height="26"/>
-                                        </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Nq2-WA-rMf">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -4228,9 +4191,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="W2V-lP-Gzf">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <animations/>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="200" y="1311" width="94" height="2"/>
-                                        </variation>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIx-l2-yE1">
                                         <rect key="frame" x="210" y="629" width="180" height="37"/>
@@ -4249,8 +4209,7 @@
                                                 <exclude reference="bc2-gD-t7c"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="178" y="495" width="125" height="31"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="Zyr-cT-7EJ"/>
                                                 <include reference="bc2-gD-t7c"/>
@@ -4357,9 +4316,39 @@
                                         <exclude reference="OIx-l2-yE1"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="7pU-Nq-hJc"/>
+                                        <exclude reference="maA-7U-DZL"/>
+                                        <exclude reference="S9J-rp-V9i"/>
+                                        <exclude reference="9Tv-I3-M7R"/>
+                                        <exclude reference="C4O-Va-Ha9"/>
+                                        <exclude reference="VAL-cK-93w"/>
+                                        <exclude reference="a9y-VK-cCs"/>
+                                        <exclude reference="hKL-eU-xpw"/>
+                                        <exclude reference="vh3-fc-dGg"/>
+                                        <exclude reference="Zuf-tE-sPN"/>
+                                        <exclude reference="5qU-1E-evt"/>
+                                        <exclude reference="6Yi-g9-y2o"/>
+                                        <exclude reference="aBu-AO-k1k"/>
+                                        <exclude reference="ore-Hj-wEA"/>
+                                        <exclude reference="ts5-Jb-I9e"/>
+                                        <exclude reference="Q88-gG-9M1"/>
+                                        <exclude reference="YH7-oa-i0Q"/>
                                         <exclude reference="3Kf-KI-XnF"/>
                                         <exclude reference="TCW-Vu-omC"/>
                                         <exclude reference="zM5-Z1-Hue"/>
+                                        <exclude reference="AYE-ry-eUs"/>
+                                        <exclude reference="RA1-Mj-3Nt"/>
+                                        <exclude reference="ivw-BQ-lrF"/>
+                                        <exclude reference="lcy-NC-d66"/>
+                                        <exclude reference="oje-m7-ojR"/>
+                                        <exclude reference="AbP-sM-fhM"/>
+                                        <exclude reference="LgM-ID-KTG"/>
+                                        <exclude reference="ect-i2-X5g"/>
+                                        <exclude reference="gtq-im-eW3"/>
+                                        <exclude reference="9Xz-FS-8T5"/>
+                                        <exclude reference="YGh-bd-HDf"/>
+                                        <exclude reference="I2h-JU-Ckj"/>
+                                        <exclude reference="aQ1-Kc-0Fr"/>
                                         <exclude reference="B9T-Ik-7q1"/>
                                         <exclude reference="MJe-Mz-QfJ"/>
                                         <exclude reference="Wra-Os-had"/>
@@ -4369,13 +4358,13 @@
                                         <exclude reference="AbP-Dr-0DO"/>
                                         <exclude reference="X0i-Pj-shi"/>
                                         <exclude reference="nC8-CB-cg9"/>
+                                        <exclude reference="BXY-8F-njq"/>
+                                        <exclude reference="zT9-jb-OfI"/>
                                         <exclude reference="5Uv-4W-UM4"/>
                                         <exclude reference="Jzu-XO-YvI"/>
                                         <exclude reference="eD9-18-TYc"/>
                                         <exclude reference="qn2-Hg-RA7"/>
                                         <exclude reference="zNL-CN-gzG"/>
-                                        <exclude reference="BXY-8F-njq"/>
-                                        <exclude reference="zT9-jb-OfI"/>
                                         <exclude reference="DXs-eT-dNS"/>
                                         <exclude reference="IUH-YJ-9E4"/>
                                         <exclude reference="IVW-OG-C4b"/>
@@ -4385,10 +4374,6 @@
                                         <exclude reference="jWR-c7-gQS"/>
                                         <exclude reference="Rb0-pB-J2V"/>
                                         <exclude reference="e2L-ec-SUz"/>
-                                        <exclude reference="I2h-JU-Ckj"/>
-                                        <exclude reference="aQ1-Kc-0Fr"/>
-                                        <exclude reference="9Xz-FS-8T5"/>
-                                        <exclude reference="YGh-bd-HDf"/>
                                         <exclude reference="0lu-et-Nje"/>
                                         <exclude reference="6S6-1z-uQG"/>
                                         <exclude reference="EfD-cH-BCh"/>
@@ -4396,37 +4381,11 @@
                                         <exclude reference="sAa-hg-0Ed"/>
                                         <exclude reference="ulK-Lp-qg8"/>
                                         <exclude reference="y5l-53-Bni"/>
-                                        <exclude reference="Zuf-tE-sPN"/>
-                                        <exclude reference="AbP-sM-fhM"/>
-                                        <exclude reference="LgM-ID-KTG"/>
-                                        <exclude reference="ect-i2-X5g"/>
-                                        <exclude reference="gtq-im-eW3"/>
-                                        <exclude reference="9Tv-I3-M7R"/>
-                                        <exclude reference="C4O-Va-Ha9"/>
-                                        <exclude reference="VAL-cK-93w"/>
-                                        <exclude reference="a9y-VK-cCs"/>
-                                        <exclude reference="hKL-eU-xpw"/>
-                                        <exclude reference="vh3-fc-dGg"/>
                                         <exclude reference="5Tf-aw-hei"/>
                                         <exclude reference="b7j-cN-mDJ"/>
                                         <exclude reference="jRP-51-P2U"/>
                                         <exclude reference="ohz-4A-eJX"/>
-                                        <exclude reference="S9J-rp-V9i"/>
-                                        <exclude reference="7pU-Nq-hJc"/>
-                                        <exclude reference="maA-7U-DZL"/>
                                         <exclude reference="GZu-az-yk5"/>
-                                        <exclude reference="5qU-1E-evt"/>
-                                        <exclude reference="6Yi-g9-y2o"/>
-                                        <exclude reference="aBu-AO-k1k"/>
-                                        <exclude reference="ore-Hj-wEA"/>
-                                        <exclude reference="ts5-Jb-I9e"/>
-                                        <exclude reference="Q88-gG-9M1"/>
-                                        <exclude reference="YH7-oa-i0Q"/>
-                                        <exclude reference="AYE-ry-eUs"/>
-                                        <exclude reference="RA1-Mj-3Nt"/>
-                                        <exclude reference="ivw-BQ-lrF"/>
-                                        <exclude reference="lcy-NC-d66"/>
-                                        <exclude reference="oje-m7-ojR"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -4445,9 +4404,39 @@
                                         <include reference="OIx-l2-yE1"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="7pU-Nq-hJc"/>
+                                        <include reference="maA-7U-DZL"/>
+                                        <include reference="S9J-rp-V9i"/>
+                                        <include reference="9Tv-I3-M7R"/>
+                                        <include reference="C4O-Va-Ha9"/>
+                                        <include reference="VAL-cK-93w"/>
+                                        <include reference="a9y-VK-cCs"/>
+                                        <include reference="hKL-eU-xpw"/>
+                                        <exclude reference="vh3-fc-dGg"/>
+                                        <include reference="Zuf-tE-sPN"/>
+                                        <include reference="5qU-1E-evt"/>
+                                        <include reference="6Yi-g9-y2o"/>
+                                        <include reference="aBu-AO-k1k"/>
+                                        <include reference="ore-Hj-wEA"/>
+                                        <include reference="ts5-Jb-I9e"/>
+                                        <include reference="Q88-gG-9M1"/>
+                                        <include reference="YH7-oa-i0Q"/>
                                         <include reference="3Kf-KI-XnF"/>
                                         <include reference="TCW-Vu-omC"/>
                                         <include reference="zM5-Z1-Hue"/>
+                                        <include reference="AYE-ry-eUs"/>
+                                        <include reference="RA1-Mj-3Nt"/>
+                                        <include reference="ivw-BQ-lrF"/>
+                                        <include reference="lcy-NC-d66"/>
+                                        <include reference="oje-m7-ojR"/>
+                                        <include reference="AbP-sM-fhM"/>
+                                        <include reference="LgM-ID-KTG"/>
+                                        <include reference="ect-i2-X5g"/>
+                                        <include reference="gtq-im-eW3"/>
+                                        <include reference="9Xz-FS-8T5"/>
+                                        <include reference="YGh-bd-HDf"/>
+                                        <include reference="I2h-JU-Ckj"/>
+                                        <include reference="aQ1-Kc-0Fr"/>
                                         <include reference="B9T-Ik-7q1"/>
                                         <include reference="MJe-Mz-QfJ"/>
                                         <include reference="Wra-Os-had"/>
@@ -4457,13 +4446,13 @@
                                         <include reference="AbP-Dr-0DO"/>
                                         <include reference="X0i-Pj-shi"/>
                                         <include reference="nC8-CB-cg9"/>
+                                        <include reference="BXY-8F-njq"/>
+                                        <include reference="zT9-jb-OfI"/>
                                         <include reference="5Uv-4W-UM4"/>
                                         <include reference="Jzu-XO-YvI"/>
                                         <include reference="eD9-18-TYc"/>
                                         <include reference="qn2-Hg-RA7"/>
                                         <include reference="zNL-CN-gzG"/>
-                                        <include reference="BXY-8F-njq"/>
-                                        <include reference="zT9-jb-OfI"/>
                                         <include reference="DXs-eT-dNS"/>
                                         <include reference="IUH-YJ-9E4"/>
                                         <include reference="IVW-OG-C4b"/>
@@ -4473,10 +4462,6 @@
                                         <include reference="jWR-c7-gQS"/>
                                         <include reference="Rb0-pB-J2V"/>
                                         <include reference="e2L-ec-SUz"/>
-                                        <include reference="I2h-JU-Ckj"/>
-                                        <include reference="aQ1-Kc-0Fr"/>
-                                        <include reference="9Xz-FS-8T5"/>
-                                        <include reference="YGh-bd-HDf"/>
                                         <include reference="0lu-et-Nje"/>
                                         <include reference="6S6-1z-uQG"/>
                                         <include reference="EfD-cH-BCh"/>
@@ -4484,37 +4469,11 @@
                                         <exclude reference="sAa-hg-0Ed"/>
                                         <include reference="ulK-Lp-qg8"/>
                                         <include reference="y5l-53-Bni"/>
-                                        <include reference="Zuf-tE-sPN"/>
-                                        <include reference="AbP-sM-fhM"/>
-                                        <include reference="LgM-ID-KTG"/>
-                                        <include reference="ect-i2-X5g"/>
-                                        <include reference="gtq-im-eW3"/>
-                                        <include reference="9Tv-I3-M7R"/>
-                                        <include reference="C4O-Va-Ha9"/>
-                                        <include reference="VAL-cK-93w"/>
-                                        <include reference="a9y-VK-cCs"/>
-                                        <include reference="hKL-eU-xpw"/>
-                                        <exclude reference="vh3-fc-dGg"/>
                                         <include reference="5Tf-aw-hei"/>
                                         <include reference="b7j-cN-mDJ"/>
                                         <include reference="jRP-51-P2U"/>
                                         <include reference="ohz-4A-eJX"/>
-                                        <include reference="S9J-rp-V9i"/>
-                                        <include reference="7pU-Nq-hJc"/>
-                                        <include reference="maA-7U-DZL"/>
                                         <include reference="GZu-az-yk5"/>
-                                        <include reference="5qU-1E-evt"/>
-                                        <include reference="6Yi-g9-y2o"/>
-                                        <include reference="aBu-AO-k1k"/>
-                                        <include reference="ore-Hj-wEA"/>
-                                        <include reference="ts5-Jb-I9e"/>
-                                        <include reference="Q88-gG-9M1"/>
-                                        <include reference="YH7-oa-i0Q"/>
-                                        <include reference="AYE-ry-eUs"/>
-                                        <include reference="RA1-Mj-3Nt"/>
-                                        <include reference="ivw-BQ-lrF"/>
-                                        <include reference="lcy-NC-d66"/>
-                                        <include reference="oje-m7-ojR"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -4828,8 +4787,7 @@
                                                             <exclude reference="t8r-xT-o8Z"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="281" y="25" width="31" height="31"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <exclude reference="9P8-lq-EIc"/>
                                                             <exclude reference="XWe-Co-boj"/>
@@ -5089,7 +5047,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="2la-13-EDY">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1531" id="7lj-ii-LK5"/>
                                         </constraints>
@@ -5104,7 +5062,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -5170,7 +5128,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qo0-YC-EEB">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1463" id="3kk-l9-p8a">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="1444"/>
@@ -5187,7 +5145,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -5287,7 +5245,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="oNw-KX-2mr">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="879" id="WgV-Xx-qco"/>
                                         </constraints>
@@ -5302,7 +5260,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -5852,7 +5810,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -5907,7 +5865,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -6025,7 +5983,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -6088,7 +6046,7 @@
                                             <constraint firstAttribute="width" constant="104" id="QyH-37-1bk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -6901,7 +6859,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -6983,7 +6941,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -7050,7 +7008,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -7130,7 +7088,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -8217,7 +8175,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -8579,7 +8537,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -8820,7 +8778,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="E2r-FB-rsy">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1531" id="sK1-oh-L28"/>
                                         </constraints>
@@ -8835,7 +8793,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -8901,7 +8859,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="1fW-1y-hhE">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1463" id="H5q-Cc-qyL">
                                                 <variation key="heightClass=regular-widthClass=compact" constant="1444"/>
@@ -8918,7 +8876,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -9018,7 +8976,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fdl-xk-u3O">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="879" id="lmL-pm-fAu"/>
                                         </constraints>
@@ -9033,7 +8991,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -9583,7 +9541,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -9638,7 +9596,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -9756,7 +9714,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -9819,7 +9777,7 @@
                                             <constraint firstAttribute="width" constant="104" id="pRb-br-pHV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -10384,7 +10342,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -10466,7 +10424,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -10533,7 +10491,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -10613,7 +10571,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -11700,7 +11658,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact">
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -11948,7 +11906,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classroom" translatesAutoresizingMaskIntoConstraints="NO" id="Su9-p1-K43">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teacher_5" translatesAutoresizingMaskIntoConstraints="NO" id="Su9-p1-K43">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <animations/>
                                                     <constraints>
@@ -11959,8 +11917,7 @@
                                                             <exclude reference="ujM-sh-bf5"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="ujM-sh-bf5"/>
                                                         </mask>
@@ -11975,9 +11932,6 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="16" y="0.0" width="304" height="26"/>
-                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计算机，电子工程，信息系统工程" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZp-Ii-rTR">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -11985,9 +11939,6 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="16" y="25" width="181" height="27"/>
-                                                            </variation>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="weN-Bs-fR3">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -12000,8 +11951,7 @@
                                                                     <exclude reference="y6a-bc-Op1"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="252" y="24" width="20" height="20"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="y6a-bc-Op1"/>
                                                                 </mask>
@@ -12021,8 +11971,7 @@
                                                                     <exclude reference="Wfy-qV-yDS"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="278" y="23" width="42" height="21"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="Wfy-qV-yDS"/>
                                                                 </mask>
@@ -12073,8 +12022,7 @@
                                                             <exclude reference="RKG-g9-TR4"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="187" width="320" height="52"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="9Jl-Jm-C6a"/>
                                                             <include reference="OZp-Ii-rTR"/>
@@ -12127,7 +12075,9 @@
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Su9-p1-K43" secondAttribute="trailing" id="2zd-bq-PBU"/>
-                                                <constraint firstItem="QDs-oo-hFv" firstAttribute="top" secondItem="uHo-4U-o9s" secondAttribute="bottom" constant="8" symbolic="YES" id="47N-I2-PUr"/>
+                                                <constraint firstItem="QDs-oo-hFv" firstAttribute="top" secondItem="uHo-4U-o9s" secondAttribute="bottom" constant="8" symbolic="YES" id="47N-I2-PUr">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                                </constraint>
                                                 <constraint firstItem="Su9-p1-K43" firstAttribute="trailing" secondItem="QDs-oo-hFv" secondAttribute="trailing" id="5k5-LW-c3D"/>
                                                 <constraint firstItem="QDs-oo-hFv" firstAttribute="top" secondItem="Su9-p1-K43" secondAttribute="bottom" constant="8" symbolic="YES" id="Iqx-BD-c57"/>
                                                 <constraint firstItem="uHo-4U-o9s" firstAttribute="leading" secondItem="QDs-oo-hFv" secondAttribute="leading" id="Rbj-0D-QJa"/>
@@ -12254,6 +12204,7 @@
         <image name="star" width="33" height="33"/>
         <image name="star_filled" width="33" height="33"/>
         <image name="studyPlan_small" width="25" height="25"/>
+        <image name="teacher_5" width="640" height="360"/>
         <image name="wechatLogo" width="68" height="54"/>
         <image name="weiboLogo" width="32" height="32"/>
     </resources>
