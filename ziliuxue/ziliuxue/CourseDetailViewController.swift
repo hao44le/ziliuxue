@@ -71,6 +71,8 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         self.courseSubTitle.text = self.overview.objectForKey("subtitle") as? String
         self.teacherIntro.text = self.overview.objectForKey("introduction") as? String
         self.coursePrice.text = " ￥" + String(self.metadata.objectForKey("price") as! NSInteger)
+        var teacherURL = NSURL(string: ServerConstant.baseURL + ((self.overview["teacher"] as! NSDictionary)["avatar"] as! String))
+        self.teacherPic.sd_setImageWithURL(teacherURL, placeholderImage: nil)
         
         self.setupCoursePicScrollView()
         
@@ -156,43 +158,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
     }
     
-    
-//    func setUpSessionScrollView()
-//    {
-//        
-//        
-//        for i in 0..<self.sessions.count
-//        {
-//            
-//            var session = self.sessions[i] as! NSDictionary
-//            
-//            var classes = session.objectForKey("classes") as! NSArray
-//            var xOffset = DeviceSize.SCREEN_WIDTH * CGFloat(i) / 2
-//            var titleLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 20, 150, 30))
-//            titleLabel.text = session.objectForKey("title") as? String
-//            titleLabel.font = UIFont(name: "Helvetica-Bold", size: 17)
-//            self.sessionScrollView.addSubview(titleLabel)
-//            
-//            var dateLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 55, 150, 30))
-//            var date = session.objectForKey("start_date") as! String + "-"
-//            date += session.objectForKey("end_date") as! String
-//            dateLabel.text = date
-//            dateLabel.font = UIFont(name: "Helvetica", size: 10)
-//            self.sessionScrollView.addSubview(dateLabel)
-//            
-//            var enrollStatusLabel = UILabel(frame: CGRectMake(10 + CGFloat(xOffset) , 90, 150, 20))
-//            var status = "已报" + String(session.objectForKey("enrollment") as! NSInteger)
-//            status += "人     "
-//            status += String(session.objectForKey("vacancy") as! NSInteger)
-//            status += "空位"
-//            enrollStatusLabel.text = status
-//            enrollStatusLabel.font = UIFont(name: "Helvetica", size: 16)
-//            
-//            self.sessionScrollView.addSubview(enrollStatusLabel)
-//            
-//        }
-//        
-//    }
+
     
     func setUpSessionMapView()
     {
