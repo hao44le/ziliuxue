@@ -17,8 +17,8 @@
 		7BC2AF3B1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF3A1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift */; };
 		7BC2AF3D1B5B075D00E5CC32 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF3C1B5B075D00E5CC32 /* SessionTableViewCell.swift */; };
 		7BC2AF3F1B5E920500E5CC32 /* CourseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF3E1B5E920500E5CC32 /* CourseAnnotation.swift */; };
-		7BC2AF441B5F06D900E5CC32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC2AF411B5F06D900E5CC32 /* Images.xcassets */; };
 		7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF431B5F06D900E5CC32 /* RatingBar.m */; };
+		7BC2AF4E1B6D2AD000E5CC32 /* WriterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF4D1B6D2AD000E5CC32 /* WriterDetailViewController.swift */; };
 		C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A93D1B4FDBC00014554F /* libWeChatSDK.a */; };
 		C008A9421B4FDBC00014554F /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C008A93E1B4FDBC00014554F /* read_me.txt */; };
 		C008A9441B4FDBD80014554F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A9431B4FDBD80014554F /* SystemConfiguration.framework */; };
@@ -127,9 +127,9 @@
 		7BC2AF3A1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimilarCourseTableViewCell.swift; sourceTree = "<group>"; };
 		7BC2AF3C1B5B075D00E5CC32 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		7BC2AF3E1B5E920500E5CC32 /* CourseAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseAnnotation.swift; sourceTree = "<group>"; };
-		7BC2AF411B5F06D900E5CC32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BC2AF421B5F06D900E5CC32 /* RatingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingBar.h; sourceTree = "<group>"; };
 		7BC2AF431B5F06D900E5CC32 /* RatingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingBar.m; sourceTree = "<group>"; };
+		7BC2AF4D1B6D2AD000E5CC32 /* WriterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriterDetailViewController.swift; sourceTree = "<group>"; };
 		C008A93D1B4FDBC00014554F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C008A93E1B4FDBC00014554F /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		C008A93F1B4FDBC00014554F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -319,7 +319,6 @@
 		7BC2AF401B5F06D900E5CC32 /* RatingBar */ = {
 			isa = PBXGroup;
 			children = (
-				7BC2AF411B5F06D900E5CC32 /* Images.xcassets */,
 				7BC2AF421B5F06D900E5CC32 /* RatingBar.h */,
 				7BC2AF431B5F06D900E5CC32 /* RatingBar.m */,
 			);
@@ -494,6 +493,7 @@
 				C0C0359D1B671FBB00CB704C /* ServiceOverviewViewController.swift */,
 				C05CA2B61B5F21DF00F0529E /* FindServiceViewController.swift */,
 				C0AB2E461B5E846C0010E42E /* FourthTabBarViewController.swift */,
+				7BC2AF4D1B6D2AD000E5CC32 /* WriterDetailViewController.swift */,
 			);
 			name = FindService;
 			sourceTree = "<group>";
@@ -792,7 +792,6 @@
 			files = (
 				C036D0061B5F6229009252FE /* Harvard University.plist in Resources */,
 				C0C8F9051B2ED89E00D698FC /* Main.storyboard in Resources */,
-				7BC2AF441B5F06D900E5CC32 /* Images.xcassets in Resources */,
 				C036D0071B5F6229009252FE /* Massachusetts Institute of Technology.plist in Resources */,
 				C0C8F90A1B2ED89E00D698FC /* LaunchScreen.xib in Resources */,
 				C036D0091B5F6229009252FE /* Stanford University.plist in Resources */,
@@ -894,6 +893,7 @@
 				7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */,
 				C07B39111B480A6A00C1267A /* UIViewController+MMDrawerController.m in Sources */,
 				7BC2AF3F1B5E920500E5CC32 /* CourseAnnotation.swift in Sources */,
+				7BC2AF4E1B6D2AD000E5CC32 /* WriterDetailViewController.swift in Sources */,
 				C0C3B7A51B4BBA6E006800DD /* SchoolSepecificTabBarController.swift in Sources */,
 				C0C035A01B67200B00CB704C /* ServiceOverviewTableViewCell.swift in Sources */,
 				C0EB7FE21B54C47200DF88CB /* FindClassCollectionViewCell.swift in Sources */,

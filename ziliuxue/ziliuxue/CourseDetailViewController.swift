@@ -20,25 +20,25 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     
     @IBOutlet var pageControl: UIPageControl!
     
-    
     @IBOutlet var teacherPic: UIImageView!
     
     @IBOutlet var courseName: UILabel!
     
     @IBOutlet var coursePrice: UILabel!
+    
     @IBOutlet var favNum: UILabel!
     
+    @IBOutlet var ratingBar: RatingBar!
+    
+    @IBOutlet var favButton: UIButton!
     
     @IBOutlet var teacherName: UILabel!
     
-    
     @IBOutlet var courseSubTitle: UILabel!
-    
     
     @IBOutlet var teacherIntro: UILabel!
     
     @IBOutlet var bookMarkButton: UIButton!
-
     
     @IBOutlet var sessionName: UILabel!
     
@@ -75,8 +75,11 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         var teacherURL = NSURL(string: ServerConstant.baseURL + ((self.overview["teacher"] as! NSDictionary)["avatar"] as! String))
         self.teacherPic.sd_setImageWithURL(teacherURL, placeholderImage: nil)
         
+        self.favButton.layer.borderWidth = 1
+        self.favButton.layer.borderColor = UIColor.redColor().CGColor
+        self.favButton.layer.cornerRadius = self.favButton.frame.width / 6
         
-        
+    
         
     }
 
@@ -113,7 +116,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-//        ScreenSize.SCREEN_WIDTH * CGFloat(index)
+
         var coursePicImage = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 233))
         var urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[index]) as! String) as String
         var picURL = NSURL(string: urlString)
@@ -196,7 +199,19 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
         if tableView == self.sessionTableView{
             
-            return self.sessions.count
+            if self.sessions != []
+            {
+                var session = self.sessions[0] as! NSDictionary
+                
+                var classes = session.objectForKey("classes") as! NSArray
+                return classes.count
+            }
+            else
+            {
+                return 0
+            }
+            
+            
             
         } else if tableView == self.similarTableView{
         
@@ -215,13 +230,22 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
             var session = self.sessions[self.selectedSession] as! NSDictionary
             
             var classes = session.objectForKey("classes") as! NSArray
-            
+  
             var singleClass = classes[indexPath.row] as! NSDictionary
-            var classDetail = singleClass.objectForKey("start_date") as! String + "-"
-            classDetail += singleClass.objectForKey("end_date") as! String
-            
-            
+            var classDetail = (singleClass.objectForKey("start_date") as! NSString).substringToIndex(10) + "-"
+            classDetail += (singleClass.objectForKey("end_date") as! NSString).substringToIndex(10)
+            classDetail += "  "
+            classDetail += singleClass.objectForKey("day_of_week") as! String
+            classDetail += "  "
+            classDetail += singleClass.objectForKey("class_starts_at") as! String
+            classDetail += "-"
+            classDetail += singleClass.objectForKey("class_ends_at") as! String
+            classDetail += "  地点："
+            var locationIndex = ["A","B","C"]
+            classDetail += locationIndex[indexPath.row] as String
+                
             cell.sessionDetail.text = classDetail
+            
             
             return cell
         } else if tableView == self.similarTableView{
