@@ -12176,6 +12176,7 @@
                                             <outlet property="name" destination="uHo-4U-o9s" id="ADU-oJ-KYT"/>
                                             <outlet property="teacherImage" destination="Su9-p1-K43" id="uuM-HN-f7U"/>
                                             <outlet property="titleLabel" destination="9Jl-Jm-C6a" id="pre-9z-jGJ"/>
+                                            <segue destination="PUd-7n-wgF" kind="show" id="uFN-pj-asc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -12237,8 +12238,63 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfS-wN-Wx0">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teacher_21" translatesAutoresizingMaskIntoConstraints="NO" id="H2f-jF-BxO">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="219"/>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ken Wang写手" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCJ-qj-Via">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="167" width="155" height="30"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ken Wang" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8d-DN-8qV">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="227" width="122" height="31"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPu-AK-eV5">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <string key="text">Ken Wang is a senior Ph.D student in University of 
+Michigan, Ann Arbor. He is specialized in Chemical
+Engineering and Informatics. He has been actively 
+helping other chinese students to prepare for graduate
+school applications for over 3 years.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="266" width="384" height="103"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="H2f-jF-BxO"/>
+                                        <exclude reference="PCJ-qj-Via"/>
+                                        <exclude reference="o8d-DN-8qV"/>
+                                        <exclude reference="CPu-AK-eV5"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="449"/>
+                                    <mask key="subviews">
+                                        <include reference="H2f-jF-BxO"/>
+                                        <include reference="PCJ-qj-Via"/>
+                                        <include reference="o8d-DN-8qV"/>
+                                        <include reference="CPu-AK-eV5"/>
+                                    </mask>
                                 </variation>
                             </scrollView>
                         </subviews>
@@ -12288,6 +12344,7 @@
         <image name="star" width="33" height="33"/>
         <image name="star_filled" width="33" height="33"/>
         <image name="studyPlan_small" width="25" height="25"/>
+        <image name="teacher_21" width="640" height="360"/>
         <image name="teacher_5" width="640" height="360"/>
         <image name="wechatLogo" width="68" height="54"/>
         <image name="weiboLogo" width="32" height="32"/>
