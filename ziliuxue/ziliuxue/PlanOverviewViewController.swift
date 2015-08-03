@@ -36,6 +36,11 @@ class PlanOverviewViewController: UIViewController,UITableViewDelegate,UITableVi
         cell.textLabel?.text = list[indexPath.row]
         return cell
     }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let secondViewController = LandingPageDetailViewController()
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
     /*
     // MARK: - Navigation
 
