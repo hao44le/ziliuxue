@@ -122,10 +122,6 @@ class LeftDrawerTableViewController: UITableViewController {
             cell!.textLabel?.text = "            找服务"
             imageView =  UIImageView(image: UIImage(named: "findService"))
             
-        case 4:
-            cell!.textLabel?.text = "            找同学校友"
-            imageView =  UIImageView(image: UIImage(named: "findClassmate"))
-            
         case 6:
             cell!.textLabel?.text = "            个人信息"
             imageView =  UIImageView(image: UIImage(named: "personalInfo"))
@@ -185,8 +181,6 @@ class LeftDrawerTableViewController: UITableViewController {
             
         case 3:
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("fourthTab") as! FourthTabBarViewController
-        case 4:
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("fifthTab") as! FifthTabViewController
         case 6:
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalInfoTab") as! PersonalInfoViewController
             
