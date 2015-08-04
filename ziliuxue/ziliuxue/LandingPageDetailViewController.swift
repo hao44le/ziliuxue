@@ -21,7 +21,7 @@ class LandingPageDetailViewController: UIViewController {
        
         
         self.view.backgroundColor = UIColor.whiteColor()
-        setUpVideo("123")
+        setUpVideo("456")
         
         
         
@@ -36,18 +36,19 @@ class LandingPageDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
+    /*
     override func shouldAutorotate() -> Bool {
         return true
     }
     override func supportedInterfaceOrientations() -> Int {
-                   return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
+        return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
        
     }
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
         
         return UIInterfaceOrientation.Portrait
     }
+    */
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -14,8 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
 
     var window: UIWindow?
     var drawerController:MMDrawerController!
+    var isFullScreen = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "willEnterFullScreen", name:MPMoviePlayerWillEnterFullscreenNotification , object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "willExitFullScreen", name:MPMoviePlayerWillExitFullscreenNotification, object: nil)
         
         //textField和键盘自适应高度的开关
         IQKeyboardManager.sharedManager().enable = true
@@ -60,13 +65,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         // Override point for customization after application launch.
         return true
     }
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
-        if self.classForCoder.isSubclassOfClass(MPMoviePlayerController.classForCoder()) {
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
-        }
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    func willEnterFullScreen(){
+        isFullScreen = true
+    }
+    func willExitFullScreen(){
+        isFullScreen = false
     }
     
+    
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
+        if isFullScreen {
+            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
+        } else {
+            return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+        }
+        
+    }
+
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
