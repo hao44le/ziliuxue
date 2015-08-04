@@ -21,7 +21,7 @@ class LandingPageDetailViewController: UIViewController {
        
         
         self.view.backgroundColor = UIColor.whiteColor()
-        setUpVideo("123")
+        setUpVideo("456")
         
         
         
