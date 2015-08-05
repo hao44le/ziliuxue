@@ -10,29 +10,29 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-class LandingPageDetailViewController: UIViewController {
+class LandingPageDetailViewController: UIViewController{
     
-    let imageView = UIImageView()
+    @IBOutlet weak var scrollView: UIScrollView!
     var moviePlayer : MPMoviePlayerController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.whiteColor()
        
         
-        self.view.backgroundColor = UIColor.whiteColor()
-        setUpVideo("456")
-        
-        
-        
+       
+        setUpVideo()
         
         let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         button.addTarget(self, action: "playVideo", forControlEvents: UIControlEvents.TouchUpInside)
-        //button.backgroundColor = UIColor.whiteColor()
-        button.frame = self.imageView.frame
+        //button!.backgroundColor = UIColor.clearColor()
+        button.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
         
         button.setImage(UIImage(named: "play"), forState: UIControlState.Normal)
-        self.view.addSubview(button)
+        self.scrollView.addSubview(button)
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -54,33 +54,50 @@ class LandingPageDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func playVideo(){
         self.moviePlayer!.prepareToPlay()
         self.moviePlayer!.play()
         self.moviePlayer!.setFullscreen(true, animated: true)
     }
     
-    func setUpVideo(name:String){
-        if let path = NSBundle.mainBundle().pathForResource(name, ofType: "mp4"), url = NSURL(fileURLWithPath: path), moviePlayer = MPMoviePlayerController(contentURL: url){
+    func setUpVideo(){
+        
+        if let url = NSURL(string: "http://krtv.qiniudn.com/150522nextapp"), moviePlayer = MPMoviePlayerController(contentURL: url){
             self.moviePlayer = moviePlayer
-            moviePlayer.view.frame = CGRectMake(0, 60, ScreenSize.SCREEN_WIDTH, 200)
+            moviePlayer.view.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
+            //moviePlayer.movieSourceType = MPMovieSourceType.Streaming
            // moviePlayer.controlStyle = MPMovieControlStyle.Fullscreen
             //moviePlayer.fullscreen = true
-            moviePlayer.scalingMode = .AspectFill
+            moviePlayer.scalingMode = MPMovieScalingMode.AspectFit
             
-            self.view.addSubview(moviePlayer.view)
+            self.scrollView.addSubview(moviePlayer.view)
             loadImage(url)
             //self.view.bringSubviewToFront(moviePlayer.view)
         } else {
             debugPrintln("something wrong")
         }
     }
+
+   
+    
     
     func loadImage(url:NSURL){
+        let imageView = UIImageView()
+        imageView.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
+        imageView.clipsToBounds = true
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.alpha = 0.9
+        
+        imageView.image = UIImage(named: "classroom")
+        
+        self.scrollView.addSubview(imageView)
+        
+        /*
         let asset = AVURLAsset(URL: url, options: nil)
         let generator = AVAssetImageGenerator(asset: asset)
         generator.appliesPreferredTrackTransform = true
-        let time = CMTimeMake(1, 1)
+        let time = CMTimeMake(1, 2)
         let imgRef = generator.copyCGImageAtTime(time, actualTime: nil, error: nil)
         let thumbnail = UIImage(CGImage: imgRef)
         self.imageView.frame = CGRectMake(0, 60, ScreenSize.SCREEN_WIDTH, 200)
@@ -89,7 +106,12 @@ class LandingPageDetailViewController: UIViewController {
         self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
         self.imageView.alpha = 0.9
         self.view.addSubview(self.imageView)
+        */
+    
+        
     }
+    
+    
     
 
     /*

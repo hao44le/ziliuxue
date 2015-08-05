@@ -38,8 +38,7 @@ class PlanOverviewViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let secondViewController = LandingPageDetailViewController()
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+        self.performSegueWithIdentifier("detail", sender: self)
     }
     /*
     // MARK: - Navigation

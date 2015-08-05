@@ -102,6 +102,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         swipeView.pagingEnabled = true
         self.applicationDescriptionLabel.text = applicationInfoFirstCell
         self.costFirstDescription.text = costFirstCell
@@ -114,6 +115,9 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     func setUpView(){
         //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
         self.logoImageView.image = UIImage(named: college!.name + " logo")
+        self.logoImageView.layer.cornerRadius = self.logoImageView.frame.width / 2
+        //cell.universityName.sizeToFit()
+        self.logoImageView.clipsToBounds = true
         self.universityName.text = self.collegeName
         self.tuitionLabel.text = self.collegeOverview!.tuition_and_fees
         //self.numberOfStudent.text = self.collegeOverview!.
