@@ -77,7 +77,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
         self.favButton.layer.borderWidth = 1
         self.favButton.layer.borderColor = UIColor.redColor().CGColor
-        self.favButton.layer.cornerRadius = self.favButton.frame.width / 6
+        self.favButton.layer.cornerRadius = self.favButton.frame.width / 2
         
     
         
