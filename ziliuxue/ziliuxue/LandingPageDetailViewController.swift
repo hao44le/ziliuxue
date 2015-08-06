@@ -13,24 +13,25 @@ import AVFoundation
 class LandingPageDetailViewController: UIViewController{
     
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    
+    @IBOutlet weak var firstView: UIView!
+    
     var moviePlayer : MPMoviePlayerController?
+    var topName = ""
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = self.topName
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.whiteColor()
-       
+       self.navigationController?.navigationBar.topItem?.title = ""
         
        
         setUpVideo()
-        
-        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        button.addTarget(self, action: "playVideo", forControlEvents: UIControlEvents.TouchUpInside)
-        //button!.backgroundColor = UIColor.clearColor()
-        button.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
-        
-        button.setImage(UIImage(named: "play"), forState: UIControlState.Normal)
-        self.scrollView.addSubview(button)
         
         
         
@@ -73,6 +74,7 @@ class LandingPageDetailViewController: UIViewController{
             
             self.scrollView.addSubview(moviePlayer.view)
             loadImage(url)
+            setupButton()
             //self.view.bringSubviewToFront(moviePlayer.view)
         } else {
             debugPrintln("something wrong")
@@ -111,6 +113,16 @@ class LandingPageDetailViewController: UIViewController{
         
     }
     
+    
+    func setupButton(){
+        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        button.addTarget(self, action: "playVideo", forControlEvents: UIControlEvents.TouchUpInside)
+        //button!.backgroundColor = UIColor.clearColor()
+        button.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
+        
+        button.setImage(UIImage(named: "play"), forState: UIControlState.Normal)
+        self.scrollView.addSubview(button)
+    }
     
     
 

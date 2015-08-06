@@ -12,13 +12,19 @@ class PlanOverviewViewController: UIViewController,UITableViewDelegate,UITableVi
 
     var list : [String] = [""]
     var topName = ""
+    var selectedName = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = self.topName
+        
         self.navigationController?.navigationBar.topItem?.title = "清单"
         self.navigationController?.interactivePopGestureRecognizer.enabled = true
+        
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = self.topName
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,16 +44,21 @@ class PlanOverviewViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.selectedName = list[indexPath.row]
         self.performSegueWithIdentifier("detail", sender: self)
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "detail" {
+            let vc = segue.destinationViewController as! LandingPageDetailViewController
+            vc.topName = self.selectedName
+        }
     }
-    */
+    
 
 }
