@@ -44,15 +44,26 @@ class ServiceOverviewViewController: UIViewController,UITableViewDelegate,UITabl
         cell.teacherImage.image = UIImage(named: "teacher_" + self.teacherImage[indexPath.row])
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let writerDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WriterDetailViewController") as! WriterDetailViewController
+        writerDetailVC.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(writerDetailVC, animated: true)
     }
-    */
+
+    
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        var destinationVC = segue.destinationViewController as! WriterDetailViewController
+//        destinationVC.hidesBottomBarWhenPushed = true
+//        
+//    }
+
 
 }

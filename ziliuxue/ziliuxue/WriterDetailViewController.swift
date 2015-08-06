@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WriterDetailViewController: UIViewController {
+class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     
     @IBOutlet var backScrollView: UIScrollView!
@@ -19,6 +19,7 @@ class WriterDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1500)
         
   
     }
@@ -28,6 +29,32 @@ class WriterDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        return nil
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "comments"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        if (cell == nil) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
+        }
+     
+        return cell!
+        
+    }
 
     /*
     // MARK: - Navigation
