@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate{
+class SignUpViewController: UIViewController,UIGestureRecognizerDelegate{
 
     var email:UITextField = UITextField()
     var password:UITextField = UITextField()
@@ -16,10 +16,8 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     var repeated_password:UITextField = UITextField()
     let field = ["名字","电子邮件","密码","重输密码"]
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var signupButtonToBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var signUpButton: UIButton!
-    
-    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     @IBAction func signupClicked(sender: UIButton) {
         
@@ -99,6 +97,7 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let swipe = UISwipeGestureRecognizer(target: self, action: "swiped")
         swipe.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipe)
@@ -124,38 +123,6 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-        
-    }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
-        cell.label.text = field[indexPath.row]
-
-        
-        
-        switch indexPath.row {
-        case 0 :
-            name = cell.textField
-        case 1:
-             email = cell.textField
-        case 2:
-            cell.textField.secureTextEntry = true
-            password = cell.textField
-            
-        case 3:
-            cell.textField.secureTextEntry = true
-            repeated_password = cell.textField
-        default:
-            break
-        }
-        return cell
-    }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return field.count
     }
     
     
