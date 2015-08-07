@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate{
 
     var email:UITextField = UITextField()
     var password:UITextField = UITextField()
@@ -99,6 +99,9 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipe = UISwipeGestureRecognizer(target: self, action: "swiped")
+        swipe.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipe)
         //self.navigationController!.interactivePopGestureRecognizer.delegate = self
        self.navigationController?.navigationBar.hidden = false
         signUpButton.layer.cornerRadius = 25
@@ -112,6 +115,9 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         // Do any additional setup after loading the view.
     }
 
+    func swiped(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     
 
     
@@ -152,6 +158,25 @@ class SignUpViewController: UIViewController,UITableViewDelegate,UITableViewData
         return field.count
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = nil
+    }
+    
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
     
     /*
     // MARK: - Navigation

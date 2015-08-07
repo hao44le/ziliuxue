@@ -22,7 +22,7 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         self.definesPresentationContext = true
         let navigationBar = UINavigationBar(frame: CGRectMake(0, -40, ScreenSize.SCREEN_WIDTH, 61))
-        navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+        navigationBar.barTintColor = Utils.mainColor
         navigationBar.tintColor = UIColor.whiteColor()
         navigationBar.barStyle = UIBarStyle.Black
         
@@ -39,7 +39,7 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             controller.dimsBackgroundDuringPresentation = false
             //controller.delegate = self
             controller.searchBar.sizeToFit()
-            controller.searchBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 0.8)
+            controller.searchBar.barTintColor = UIColor(red: 249/255, green: 99/255, blue: 50/255, alpha: 0.8)
             controller.searchBar.tintColor = UIColor.whiteColor()
             controller.searchBar.placeholder = "搜索大学专业"
             controller.searchBar.translucent = true

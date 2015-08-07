@@ -18,6 +18,7 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
     let fourth = [0]
     var selectedIndex = 0
     
+    
     //var slice = [[100],[40,60],[100],[100]]
     //var percentLabel = ["5/5","2/5","0/2","0/3"]
     //var pieChartColor = [[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1)],[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1),UIColor.darkGrayColor()],[UIColor.darkGrayColor()],[UIColor.darkGrayColor()]]
@@ -46,6 +47,7 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
