@@ -838,7 +838,7 @@
                                     <action selector="weChatClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wtd-ra-54m"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zNi-Kg-sy6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zNi-Kg-sy6">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -857,7 +857,7 @@
                                     <action selector="weiboClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bDO-SO-liI"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jFX-wP-mOt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jFX-wP-mOt">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -944,7 +944,6 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.38823529411764707" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="JhP-Ab-UDe"/>
                                     <constraint firstAttribute="height" constant="49" id="a1a-3M-7ip">
                                         <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                                     </constraint>
@@ -960,7 +959,6 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <exclude reference="JhP-Ab-UDe"/>
                                         <include reference="a1a-3M-7ip"/>
                                     </mask>
                                 </variation>
@@ -984,14 +982,14 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Zx-a0-zpJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Zx-a0-zpJ">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="再次输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yma-Q1-iDS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="再次输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yma-Q1-iDS">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1025,11 +1023,9 @@
                             <constraint firstItem="4Zx-a0-zpJ" firstAttribute="leading" secondItem="VCo-et-fdp" secondAttribute="trailing" constant="8" symbolic="YES" id="7g7-qI-h3W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zNi-Kg-sy6" secondAttribute="trailing" constant="-2" id="82A-rI-CCk"/>
                             <constraint firstItem="Ltj-mQ-M7g" firstAttribute="top" secondItem="zNi-Kg-sy6" secondAttribute="top" id="8AL-7p-FSz"/>
-                            <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="y8k-2c-9rB" secondAttribute="bottom" constant="257" id="8JW-Th-Qal"/>
                             <constraint firstItem="7z8-XS-P6O" firstAttribute="top" secondItem="4Zx-a0-zpJ" secondAttribute="bottom" constant="17" id="8tV-pv-ant"/>
                             <constraint firstItem="yma-Q1-iDS" firstAttribute="leading" secondItem="7OB-b3-oPl" secondAttribute="trailing" constant="8" symbolic="YES" id="8tr-WC-KDf"/>
                             <constraint firstItem="Ltj-mQ-M7g" firstAttribute="trailing" secondItem="cln-nB-bEu" secondAttribute="trailing" id="9ef-VX-IRI"/>
-                            <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="y8k-2c-9rB" secondAttribute="bottom" constant="433" id="9pC-5s-ivG"/>
                             <constraint firstItem="zNi-Kg-sy6" firstAttribute="bottom" secondItem="Ltj-mQ-M7g" secondAttribute="bottom" id="AAD-lo-VcD"/>
                             <constraint firstItem="7z8-XS-P6O" firstAttribute="trailing" secondItem="4Zx-a0-zpJ" secondAttribute="trailing" id="AiI-nO-zUR"/>
                             <constraint firstItem="4Zx-a0-zpJ" firstAttribute="top" secondItem="cwA-EI-poM" secondAttribute="top" id="Amk-lo-n8a"/>
@@ -1048,9 +1044,6 @@
                             <constraint firstItem="jFX-wP-mOt" firstAttribute="top" secondItem="zNi-Kg-sy6" secondAttribute="bottom" constant="18" id="Rxe-PW-bsA"/>
                             <constraint firstItem="4Zx-a0-zpJ" firstAttribute="leading" secondItem="jFX-wP-mOt" secondAttribute="leading" id="SIZ-p1-OSQ"/>
                             <constraint firstItem="jFX-wP-mOt" firstAttribute="leading" secondItem="zNi-Kg-sy6" secondAttribute="leading" id="SkA-Ix-OfW"/>
-                            <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="y8k-2c-9rB" secondAttribute="bottom" constant="128" id="T1N-kz-UoB">
-                                <variation key="heightClass=regular-widthClass=compact" constant="257"/>
-                            </constraint>
                             <constraint firstItem="7OB-b3-oPl" firstAttribute="top" secondItem="cwA-EI-poM" secondAttribute="bottom" constant="27" id="T3g-CP-cCi"/>
                             <constraint firstItem="VCo-et-fdp" firstAttribute="top" secondItem="cln-nB-bEu" secondAttribute="bottom" constant="26" id="Ubv-KS-eB4"/>
                             <constraint firstItem="yma-Q1-iDS" firstAttribute="trailing" secondItem="7z8-XS-P6O" secondAttribute="trailing" id="Ura-1Y-p5N"/>
@@ -1084,7 +1077,7 @@
                             </constraint>
                             <constraint firstItem="KiP-DM-TU0" firstAttribute="top" secondItem="7OB-b3-oPl" secondAttribute="bottom" constant="484" id="y9O-Yc-MWd"/>
                             <constraint firstItem="y8k-2c-9rB" firstAttribute="centerX" secondItem="adh-5S-ZkQ" secondAttribute="centerX" id="yKO-Bf-nNW">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                         </constraints>
                         <variation key="default">
@@ -1158,8 +1151,6 @@
                                 <exclude reference="hZU-mV-U1O"/>
                                 <exclude reference="xc1-tZ-129"/>
                                 <exclude reference="yKO-Bf-nNW"/>
-                                <exclude reference="8JW-Th-Qal"/>
-                                <exclude reference="9pC-5s-ivG"/>
                                 <exclude reference="y9O-Yc-MWd"/>
                             </mask>
                         </variation>
@@ -1234,9 +1225,6 @@
                                 <include reference="hZU-mV-U1O"/>
                                 <include reference="xc1-tZ-129"/>
                                 <include reference="yKO-Bf-nNW"/>
-                                <exclude reference="8JW-Th-Qal"/>
-                                <exclude reference="9pC-5s-ivG"/>
-                                <exclude reference="T1N-kz-UoB"/>
                                 <include reference="mwf-bd-0Nj"/>
                                 <exclude reference="y9O-Yc-MWd"/>
                             </mask>
@@ -1247,8 +1235,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="qZ3-fv-nMH"/>
                     <connections>
+                        <outlet property="email" destination="jFX-wP-mOt" id="Jgw-Z7-x5b"/>
+                        <outlet property="emailButton" destination="cln-nB-bEu" id="JZK-sV-up1"/>
+                        <outlet property="name" destination="zNi-Kg-sy6" id="rng-uu-Wfl"/>
+                        <outlet property="nameButton" destination="Ltj-mQ-M7g" id="Tzd-3Z-KRb"/>
+                        <outlet property="password" destination="4Zx-a0-zpJ" id="fBv-o6-7lK"/>
+                        <outlet property="passwordButton" destination="cwA-EI-poM" id="zel-QR-V5F"/>
+                        <outlet property="repeatedPasswordButton" destination="7z8-XS-P6O" id="BfD-lR-u2W"/>
+                        <outlet property="repeated_password" destination="yma-Q1-iDS" id="aSc-B3-4Dw"/>
                         <outlet property="signUpButton" destination="y8k-2c-9rB" id="Ax7-07-YkU"/>
-                        <outlet property="signupButtonToBottomConstraint" destination="mwf-bd-0Nj" id="KNk-fz-n5x"/>
                         <segue destination="KXr-JW-D3f" kind="show" identifier="signupToMain" id="eQw-Is-T1U"/>
                     </connections>
                 </viewController>

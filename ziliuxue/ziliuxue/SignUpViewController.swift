@@ -10,13 +10,22 @@ import UIKit
 
 class SignUpViewController: UIViewController,UIGestureRecognizerDelegate{
 
-    var email:UITextField = UITextField()
-    var password:UITextField = UITextField()
-    var name:UITextField = UITextField()
-    var repeated_password:UITextField = UITextField()
+    @IBOutlet weak var email:UITextField!
+    @IBOutlet weak var password:UITextField!
+    @IBOutlet weak var name:UITextField!
+    @IBOutlet weak var repeated_password:UITextField!
+    
+    @IBOutlet weak var nameButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var passwordButton: UIButton!
+    @IBOutlet weak var repeatedPasswordButton: UIButton!
+    
+    
+    
+    
+    
     let field = ["名字","电子邮件","密码","重输密码"]
     
-    @IBOutlet weak var signupButtonToBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var signUpButton: UIButton!
     
     @IBAction func signupClicked(sender: UIButton) {
@@ -106,7 +115,33 @@ class SignUpViewController: UIViewController,UIGestureRecognizerDelegate{
         signUpButton.layer.cornerRadius = 25
         signUpButton.layer.borderWidth = 0.5
         signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
-
+        
+        nameButton.layer.cornerRadius = 25
+        nameButton.layer.borderWidth = 0.5
+        nameButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        emailButton.layer.cornerRadius = 25
+        emailButton.layer.borderWidth = 0.5
+        emailButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        passwordButton.layer.cornerRadius = 25
+        passwordButton.layer.borderWidth = 0.5
+        passwordButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        repeatedPasswordButton.layer.cornerRadius = 25
+        repeatedPasswordButton.layer.borderWidth = 0.5
+        repeatedPasswordButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        
+        
+        
+        self.password.secureTextEntry = true
+        self.repeated_password.secureTextEntry = true
+        self.name.attributedPlaceholder = NSAttributedString(string: "用户名", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.email.attributedPlaceholder = NSAttributedString(string: "邮箱", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.password.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.repeated_password.attributedPlaceholder = NSAttributedString(string: "再次输入密码", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        
  
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupSuccessed", name: "signupSuccessed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupFailed", name: "signupFailed", object: nil)
