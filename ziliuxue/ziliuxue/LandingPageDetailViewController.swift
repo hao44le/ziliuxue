@@ -26,6 +26,9 @@ class LandingPageDetailViewController: UIViewController{
     var moviePlayer : MPMoviePlayerController?
     var topName = ""
     
+    
+    var names :[String]?
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = self.topName
     }
@@ -35,7 +38,9 @@ class LandingPageDetailViewController: UIViewController{
         
         self.view.backgroundColor = UIColor.whiteColor()
        self.navigationController?.navigationBar.topItem?.title = ""
-        
+        self.firstLabel.text = names![0]
+        self.secondLabel.text = names![1]
+        self.thirdLabel.text = names![2]
        
         setUpVideo()
         
