@@ -192,7 +192,7 @@ class LeftDrawerTableViewController: UITableViewController {
         }
         
         navi = UINavigationController(rootViewController: vc!)
-        navi!.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+        navi!.navigationBar.barTintColor = Utils.mainColor
         navi!.navigationBar.tintColor = UIColor.whiteColor()
         navi!.navigationBar.barStyle = UIBarStyle.Black
         

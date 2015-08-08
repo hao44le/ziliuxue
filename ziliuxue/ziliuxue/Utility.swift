@@ -9,7 +9,7 @@
 import UIKit
 
 class Utils: NSObject {
-    
+    static let mainColor = UIColor(red: 249/255, green: 99/255, blue: 50/255, alpha: 1)
 }
 
 

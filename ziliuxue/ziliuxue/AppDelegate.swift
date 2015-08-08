@@ -44,8 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         
         let navigationController = UINavigationController(rootViewController: centerViewController)
+        navigationController.navigationBar.shadowImage = UIImage()
         
-        navigationController.navigationBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+        navigationController.navigationBar.barTintColor = Utils.mainColor
         navigationController.navigationBar.tintColor = UIColor.whiteColor()
         navigationController.navigationBar.barStyle = UIBarStyle.Black
         //navigationController.navigationBar.tintColor = UIColor.whiteColor()

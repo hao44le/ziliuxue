@@ -17,7 +17,7 @@ class ThirdTabViewController: UITabBarController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = "找课程"
         
-        self.tabBar.barTintColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1)
+        self.tabBar.barTintColor = Utils.mainColor
         self.tabBar.tintColor = UIColor.whiteColor()
         self.setupLeftMenuButton()
     }

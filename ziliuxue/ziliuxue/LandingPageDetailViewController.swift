@@ -14,11 +14,33 @@ class LandingPageDetailViewController: UIViewController{
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var secondView: UIView!
     
+    @IBOutlet weak var fourthView: UIView!
+    @IBOutlet weak var thirdView: UIView!
     @IBOutlet weak var firstView: UIView!
+    
+    @IBOutlet weak var thirdLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var firstLabel: UILabel!
+    
+    
+    @IBOutlet weak var firstViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var secondViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var thirdViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var fourthViewHeight: NSLayoutConstraint!
+    
+    var secondHeightVariable : CGFloat = 356
+    var thirdHeightVariable : CGFloat = 356
+    var fourthHeightVariable : CGFloat = 356
+    
+    var scrollViewHeight : CGFloat = 1731
     
     var moviePlayer : MPMoviePlayerController?
     var topName = ""
+    var names :[String]?
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = self.topName
@@ -29,13 +51,28 @@ class LandingPageDetailViewController: UIViewController{
         
         self.view.backgroundColor = UIColor.whiteColor()
        self.navigationController?.navigationBar.topItem?.title = ""
-        
-       
+        self.firstLabel.text = names![0]
+        self.secondLabel.text = names![1]
+        self.thirdLabel.text = names![2]
+        let imageView = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 50))
         setUpVideo()
         
         
         
         // Do any additional setup after loading the view.
+    }
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        self.secondViewHeight.constant = secondHeightVariable
+        self.thirdViewHeight.constant = thirdHeightVariable
+        self.fourthViewHeight.constant = fourthHeightVariable
+        
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //println(self.scrollView.frame)
+        //println(self.firstView.frame)
+        self.scrollView.contentSize.height = scrollViewHeight
     }
     /*
     override func shouldAutorotate() -> Bool {

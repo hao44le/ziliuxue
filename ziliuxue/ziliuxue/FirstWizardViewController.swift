@@ -77,14 +77,14 @@ class FirstWizardViewController: UIViewController,UITableViewDelegate,UITableVie
         switch indexPath.row {
         case 0:
            
-            MMPickerView.showPickerViewInView(self.view, withStrings: ["美国","加拿大"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedCountry,"height":260], completion: { (selected:String!) -> Void in
+            MMPickerView.showPickerViewInView(self.view, withStrings: ["美国","加拿大"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:Utils.mainColor,MMselectedObject:selectedCountry,"height":260], completion: { (selected:String!) -> Void in
                 self.selectedCountry = selected
                 self.detail[0] = selected
                 self.tableView.reloadData()
             })
            
         case 1:
-            MMPickerView.showPickerViewInView(self.view, withStrings: ["本科","硕士研究生","博士研究生","工商管理硕士"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1),MMselectedObject:selectedDegree,"height":260], completion: { (selected:String!) -> Void in
+            MMPickerView.showPickerViewInView(self.view, withStrings: ["本科","硕士研究生","博士研究生","工商管理硕士"], withOptions: [MMbackgroundColor:UIColor.whiteColor(),MMbuttonColor:Utils.mainColor,MMselectedObject:selectedDegree,"height":260], completion: { (selected:String!) -> Void in
                 self.selectedDegree = selected
                 self.detail[1] = selected
                 self.tableView.reloadData()

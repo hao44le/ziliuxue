@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController,UITextFieldDelegate {
+class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecognizerDelegate {
 
 
     
@@ -25,11 +25,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     
     
+    @IBOutlet weak var passwordImageView: UIImageView!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var passwordView: UIView!
+    
+    @IBOutlet weak var emailPlaceholderLabel: UILabel!
+    @IBOutlet weak var passwordPlaceholderLabel: UILabel!
     let name = ["电子邮件","密码"]
     
     @IBAction func tapped(sender: UITapGestureRecognizer) {
@@ -88,13 +92,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 10
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipe = UISwipeGestureRecognizer(target: self, action: "swiped")
+        swipe.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipe)
          IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 150
         self.passwordTextField.secureTextEntry = true
         self.emailTextField.delegate = self
@@ -103,6 +106,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.passwordTextField.hidden = true
         self.passwordView.hidden = true
         self.loginButton.hidden = true
+        self.passwordImageView.hidden = true
+        self.passwordPlaceholderLabel.hidden = true
         //self.navigationController!.interactivePopGestureRecognizer.delegate = self
        
         self.navigationController?.navigationBar.hidden = false
@@ -113,15 +118,16 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         wechatButton.layer.cornerRadius = 25
         wechatButton.layer.borderWidth = 1
-        wechatButton.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        wechatButton.layer.borderColor = Utils.mainColor.CGColor
         
         
         weiboButton.layer.cornerRadius = 25
         weiboButton.layer.borderWidth = 1
-        weiboButton.layer.borderColor = UIColor(red: 162/255, green: 49/255, blue: 59/255, alpha: 1).CGColor
+        weiboButton.layer.borderColor = Utils.mainColor.CGColor
+
         
         
-        loginButton.layer.cornerRadius = 15
+        loginButton.layer.cornerRadius = self.loginButton.frame.width / 2
         loginButton.layer.borderWidth = 0.5
         loginButton.layer.borderColor = UIColor.whiteColor().CGColor
         
@@ -134,6 +140,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         //self.activityIndicator.startAnimating()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func swiped(){
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func weChat_login_Successed(){
@@ -175,12 +185,14 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 self.hintLabel.hidden = false
                 
                 if self.emailTextField.text == "" {
+                    //self.emailPlaceholderLabel.hidden = false
                     self.passwordTextField.hidden = true
                     self.passwordLabel.hidden = true
                     self.passwordView.hidden = true
                     self.loginButton.hidden = true
+                    self.passwordImageView.hidden = true
+                    self.passwordPlaceholderLabel.hidden = true
                 }
-                
             })
         
         
@@ -188,10 +200,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+
         if textField == emailTextField {
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
+            
                 //self.view.frame = CGRectMake(0, -210, ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
                 
+                
+            
                 self.hintLabel.hidden = true
                 self.weiboImage.hidden = true
                 self.weChatImage.hidden = true
@@ -201,9 +216,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 self.passwordTextField.hidden = false
                 self.passwordView.hidden = false
                 self.loginButton.hidden = false
-            })
+                self.passwordImageView.hidden = false
+                self.passwordPlaceholderLabel.hidden = false
+            
+            return true
         } else {
             
+            //self.passwordPlaceholderLabel.hidden = true
         }
         
         return true
@@ -217,6 +236,26 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 10
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = nil
+    }
+    
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+
 
 
 }
