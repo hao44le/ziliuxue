@@ -14,9 +14,15 @@ class LandingPageDetailViewController: UIViewController{
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var secondView: UIView!
     
+    @IBOutlet weak var fourthView: UIView!
+    @IBOutlet weak var thirdView: UIView!
     @IBOutlet weak var firstView: UIView!
     
+    @IBOutlet weak var thirdLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var firstLabel: UILabel!
     var moviePlayer : MPMoviePlayerController?
     var topName = ""
     
