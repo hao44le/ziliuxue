@@ -9,13 +9,16 @@
 import UIKit
 import MediaPlayer
 import AVFoundation
+import MapKit
+import CoreLocation
 
-class LandingPageDetailViewController: UIViewController{
+class LandingPageDetailViewController: UIViewController,CLLocationManagerDelegate{
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var secondView: UIView!
     
+    @IBOutlet weak var fifthView: UIView!
     @IBOutlet weak var fourthView: UIView!
     @IBOutlet weak var thirdView: UIView!
     @IBOutlet weak var firstView: UIView!
@@ -23,6 +26,7 @@ class LandingPageDetailViewController: UIViewController{
     @IBOutlet weak var thirdLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var fourthLabel: UILabel!
     
     
     @IBOutlet weak var firstViewHeight: NSLayoutConstraint!
@@ -32,15 +36,20 @@ class LandingPageDetailViewController: UIViewController{
     
     @IBOutlet weak var fourthViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var fifthViewHeight: NSLayoutConstraint!
     var secondHeightVariable : CGFloat = 356
     var thirdHeightVariable : CGFloat = 356
     var fourthHeightVariable : CGFloat = 356
+    var fifthViewHeightVariable : CGFloat = 356
     
-    var scrollViewHeight : CGFloat = 1731
+    var scrollViewHeight : CGFloat = 2000
     
     var moviePlayer : MPMoviePlayerController?
     var topName = ""
     var names :[String]?
+    let locationManager = CLLocationManager()
+    var location:CLLocationCoordinate2D?
+    var mapView: MKMapView!
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = self.topName
@@ -48,12 +57,30 @@ class LandingPageDetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse{
+            self.locationManager.requestWhenInUseAuthorization()
+            
+        } else {
+            locationManager.startUpdatingLocation()
+        }
         self.view.backgroundColor = UIColor.whiteColor()
        self.navigationController?.navigationBar.topItem?.title = ""
-        self.firstLabel.text = names![0]
-        self.secondLabel.text = names![1]
-        self.thirdLabel.text = names![2]
+        switch names!.count {
+        case 1:
+             self.firstLabel.text = names![0]
+        case 2:
+            self.secondLabel.text = names![1]
+        case 3:
+            self.thirdLabel.text = names![2]
+        case 4:
+            self.fourthLabel.text = names![3]
+        default:
+            break
+        }
+        for name in names! {
+            
+        }
+        
         let imageView = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 50))
         setUpVideo()
         
@@ -66,6 +93,7 @@ class LandingPageDetailViewController: UIViewController{
         self.secondViewHeight.constant = secondHeightVariable
         self.thirdViewHeight.constant = thirdHeightVariable
         self.fourthViewHeight.constant = fourthHeightVariable
+        self.fifthViewHeight.constant = fifthViewHeightVariable
         
     }
     override func viewDidLayoutSubviews() {
@@ -161,6 +189,28 @@ class LandingPageDetailViewController: UIViewController{
         self.scrollView.addSubview(button)
     }
     
+    func getDataFromServer() -> Void {
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        if let currentLocation = locations {
+            
+            if location == nil {
+                getDataFromServer()
+                //self.tableView.reloadData()
+            }
+            let thisLocation : CLLocation = currentLocation[0] as! CLLocation
+            location = thisLocation.coordinate
+        }
+    }
+
     
 
     /*
