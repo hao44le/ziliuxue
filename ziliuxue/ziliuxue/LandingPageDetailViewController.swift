@@ -12,7 +12,7 @@ import AVFoundation
 import MapKit
 import CoreLocation
 
-class LandingPageDetailViewController: UIViewController,CLLocationManagerDelegate{
+class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -50,6 +50,8 @@ class LandingPageDetailViewController: UIViewController,CLLocationManagerDelegat
     let locationManager = CLLocationManager()
     var location:CLLocationCoordinate2D?
     var mapView: MKMapView!
+    let regionRadius: CLLocationDistance = 10000
+    var geo_location : NSDictionary = ["longitude":"-157.829444","latitude":"21.282778","title":"test"]
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = self.topName
@@ -60,9 +62,8 @@ class LandingPageDetailViewController: UIViewController,CLLocationManagerDelegat
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse{
             self.locationManager.requestWhenInUseAuthorization()
             
-        } else {
-            locationManager.startUpdatingLocation()
         }
+        setupMapView(self.thirdView)
         self.view.backgroundColor = UIColor.whiteColor()
        self.navigationController?.navigationBar.topItem?.title = ""
         switch names!.count {
@@ -88,6 +89,18 @@ class LandingPageDetailViewController: UIViewController,CLLocationManagerDelegat
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    func setupMapView(whichView:UIView){
+        mapView = MKMapView(frame: CGRectMake(0, 30, ScreenSize.SCREEN_WIDTH, 300))
+        
+        mapView.delegate = self
+        let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+        loadInitialData()
+        centerMapOnLocation(initialLocation)
+        whichView.addSubview(mapView)
+    }
+    
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.secondViewHeight.constant = secondHeightVariable
@@ -189,28 +202,42 @@ class LandingPageDetailViewController: UIViewController,CLLocationManagerDelegat
         self.scrollView.addSubview(button)
     }
     
-    func getDataFromServer() -> Void {
-        
-    }
-    
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let currentLocation = locations {
-            
-            if location == nil {
-                getDataFromServer()
-                //self.tableView.reloadData()
-            }
-            let thisLocation : CLLocation = currentLocation[0] as! CLLocation
-            location = thisLocation.coordinate
-        }
+    func loadInitialData() {
+        let location = CLLocationCoordinate2DMake((geo_location.objectForKey("latitude") as! NSString).doubleValue, (geo_location.objectForKey("longitude") as! NSString).doubleValue)
+        let annotation = CourseAnnotation(coordinate: location, title: geo_location.objectForKey("title") as! String, subtitle: "", image:UIImage(named: "coursePin")!)
+        self.mapView.addAnnotation(annotation)
     }
 
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    func mapView(mapView: MKMapView!,
+        viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+            if annotation.isKindOfClass(CourseAnnotation.classForCoder())
+            {
+                var identifier = "annotation"
+                var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+                
+                if annotationView == nil{
+                    annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                    annotationView.canShowCallout=true;
+                    annotationView.calloutOffset=CGPointMake(0, 0);
+                    annotationView.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "coursePin"))
+                    
+                }
+                
+                annotationView.annotation = annotation
+                annotationView.image = (annotation as! CourseAnnotation).image
+                
+                return annotationView
+            }
+            else{
+                return nil
+            }
+    }
     
 
     /*
