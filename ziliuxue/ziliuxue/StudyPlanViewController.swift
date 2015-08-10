@@ -22,9 +22,15 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
     //var slice = [[100],[40,60],[100],[100]]
     //var percentLabel = ["5/5","2/5","0/2","0/3"]
     //var pieChartColor = [[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1)],[UIColor(red: 162/250, green: 49/250, blue: 59/250, alpha: 1),UIColor.darkGrayColor()],[UIColor.darkGrayColor()],[UIColor.darkGrayColor()]]
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
+    }
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController!.interactivePopGestureRecognizer!.delegate = nil
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController!.interactivePopGestureRecognizer!.delegate = self
+        
         self.navigationController?.interactivePopGestureRecognizer.enabled = false
         // Do any additional setup after loading the view.
     }
