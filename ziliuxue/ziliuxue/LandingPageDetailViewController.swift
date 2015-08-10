@@ -156,6 +156,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
             //self.view.bringSubviewToFront(moviePlayer.view)
         } else {
             debugPrintln("something wrong")
+            
         }
     }
 
