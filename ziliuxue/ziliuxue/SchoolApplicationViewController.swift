@@ -186,8 +186,17 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer!.enabled = false
-
+        
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //print("1")
+        //self.hidesBottomBarWhenPushed = true
+        //println(self.navigationController?.toolbar)
+        //self.navigationController?.toolbarHidden = true
+        //self.navigationController?.setToolbarHidden(true, animated: animated)
+        
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

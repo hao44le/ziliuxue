@@ -126,7 +126,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "toUniversity" {
-            let tab = segue.destinationViewController as! SchoolSepecificTabBarController
+            let tab = segue.destinationViewController as! OverviewSchoolTabViewController
             tab.collegeDetail = self.collegeDetail
             
         }
