@@ -12,7 +12,7 @@ import AVFoundation
 import MapKit
 import CoreLocation
 
-class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
+class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScrollViewDelegate{
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -52,6 +52,10 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
     var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 10000
     var geo_location : NSDictionary = ["longitude":"-157.829444","latitude":"21.282778","title":"test"]
+    let imageView = UIImageView()
+    let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    var readyToPlay = false
+    var moviewPlayerOriginFrame : CGRect?
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = self.topName
@@ -59,6 +63,8 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "playbackStateChanged", name: MPMoviePlayerPlaybackStateDidChangeNotification, object: nil)
+        self.scrollView.delegate = self
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse{
             self.locationManager.requestWhenInUseAuthorization()
             
@@ -82,12 +88,22 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
             
         }
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 50))
+        //let imageView = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 50))
         setUpVideo()
         
         
         
         // Do any additional setup after loading the view.
+    }
+    func playbackStateChanged(){
+        //println(self.moviePlayer!.playbackState.rawValue)
+        if self.moviePlayer!.playbackState.rawValue == 2 {
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                self.moviePlayer!.view.frame = self.moviewPlayerOriginFrame!
+                self.scrollView.sendSubviewToBack(self.moviePlayer!.view)
+            })
+            
+        }
     }
     
     
@@ -137,7 +153,11 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
     func playVideo(){
         self.moviePlayer!.prepareToPlay()
         self.moviePlayer!.play()
-        self.moviePlayer!.setFullscreen(true, animated: true)
+        self.imageView.hidden = true
+        self.button.hidden = true
+        self.readyToPlay = true
+        //self.view.bringSubviewToFront(moviePlayer!.view)
+        //self.moviePlayer!.setFullscreen(true, animated: true)
     }
     
     func setUpVideo(){
@@ -145,6 +165,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
         if let url = NSURL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/0640_vod.m3u8"), moviePlayer = MPMoviePlayerController(contentURL: url){
             self.moviePlayer = moviePlayer
             moviePlayer.view.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
+            self.moviewPlayerOriginFrame = moviePlayer.view.frame
             //moviePlayer.movieSourceType = MPMovieSourceType.Streaming
            // moviePlayer.controlStyle = MPMovieControlStyle.Fullscreen
             //moviePlayer.fullscreen = true
@@ -164,7 +185,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
     
     
     func loadImage(url:NSURL){
-        let imageView = UIImageView()
+        
         imageView.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
         imageView.clipsToBounds = true
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
@@ -194,7 +215,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
     
     
     func setupButton(){
-        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        
         button.addTarget(self, action: "playVideo", forControlEvents: UIControlEvents.TouchUpInside)
         //button!.backgroundColor = UIColor.clearColor()
         button.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
@@ -238,6 +259,39 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate{
             else{
                 return nil
             }
+    }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.readyToPlay && self.moviePlayer!.playbackState.rawValue == 1{
+            //print("1")
+            let frame = self.moviePlayer!.view.frame
+            
+            
+            
+            //self.moviePlayer!.view.removeFromSuperview()
+            
+            let newFrame = CGRectMake(0, scrollView.contentOffset.y, frame.width, frame.height)
+            self.moviePlayer!.view.frame = newFrame
+            
+            //if firstTimeScroll {
+                //firstTimeScroll = false
+                //self.moviePlayer!.view.removeFromSuperview()
+                //self.view.addSubview(moviePlayer!.view)
+                //let scrollViewNewFrame = CGRectMake(0, frame.height, frame.width, self.scrollView.frame.height)
+                //self.scrollView.frame = scrollViewNewFrame
+            //}
+            
+            
+            //self.view.addSubview(self.moviePlayer!.view)
+            //UIApplication.sharedApplication().keyWindow?.bringSubviewToFront(self.moviePlayer!.view)
+            //self.view.layer.zPosition = 1
+            //self.view.bringSubviewToFront(self.moviePlayer!.view)
+            self.scrollView.bringSubviewToFront(self.moviePlayer!.view)
+            
+            
+            
+            
+        }
     }
     
 
