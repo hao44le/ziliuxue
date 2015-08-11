@@ -64,7 +64,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     
     
     let statisticsHeader = ["竞争性","录取统计","等待名单-Wait List"]
-    let statisticsLeftForSelectivity = ["竞争程度","录取率","提前录取录取率","提前行动录取率","acceptance_rate_wo_early_decision"]
+    let statisticsLeftForSelectivity = ["竞争程度","录取率","提前录取录取率","提前行动录取率","去掉EA的录取率"]
     var statisticsRightForSelectivity = ["","","","",""]
     let statisticsLeftForACE = ["申请者","女性申请者","男性申请者","录取的申请者","女性录取总数","男性录取总数","大一新生入学人数"]
     var statisticsRightForACE = ["","","","","","",""]
@@ -186,8 +186,17 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer!.enabled = false
-
+        
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //print("1")
+        //self.hidesBottomBarWhenPushed = true
+        //println(self.navigationController?.toolbar)
+        //self.navigationController?.toolbarHidden = true
+        //self.navigationController?.setToolbarHidden(true, animated: animated)
+        
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -304,11 +313,27 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
             }
             
         }
-
+        
+        //cell.detailTextLabel?.layer.shadowColor = UIColor.grayColor().CGColor
+        //cell.detailTextLabel?.layer.shadowOffset = CGSizeMake(1, -1)
+        //cell.layer.shouldRasterize = true
+        if cell.detailTextLabel?.text == "Yes" {
+            cell.detailTextLabel!.text = ""
+            let imageView = UIImageView(image: UIImage(named: "yes"))
+            cell.accessoryView = imageView
+            //cell.imageView?.image = UIImage(named: "yes")
+        } else if cell.detailTextLabel?.text == "No" {
+            
+            cell.detailTextLabel!.text = ""
+            let imageView = UIImageView(image: UIImage(named: "no"))
+            cell.accessoryView = imageView
+        }
         return cell
     }
 
+    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         if tableView == applicationMethodTableView {
             return self.methodHeader[section]
         } else if tableView == applicationReuirementTableView {
@@ -317,6 +342,33 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
             return self.statisticsHeader[section]
         }
     }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRectMake(0, 0, 20, 20))
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(15)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints()
+        //label.text = "1"
+        
+        if tableView == applicationMethodTableView {
+            label.text =  self.methodHeader[section]
+        } else if tableView == applicationReuirementTableView {
+            label.text = self.requirementHeader[section]
+        } else {
+            label.text = self.statisticsHeader[section]
+        }
+        return label
+        
+    }
+    /*
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if view.isKindOfClass(UITableViewHeaderFooterView.classForCoder()) {
+            let tableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            tableViewHeaderFooterView.textLabel.textAlignment = NSTextAlignment.Center
+        }
+    }
+    */
     /*
     // MARK: - Navigation
 

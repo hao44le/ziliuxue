@@ -21,8 +21,8 @@ class CenterTabViewController: UITabBarController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = "留学清单"
         
-        self.tabBar.barTintColor = Utils.mainColor
-        self.tabBar.tintColor = UIColor.whiteColor()
+        self.tabBar.barTintColor = Utils.tabbarColor
+        self.tabBar.tintColor = Utils.mainColor
         self.setupLeftMenuButton()
         
         self.navigationItem.backBarButtonItem = nil

@@ -32,9 +32,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var passwordView: UIView!
     
-    @IBOutlet weak var emailPlaceholderLabel: UILabel!
-    @IBOutlet weak var passwordPlaceholderLabel: UILabel!
-    let name = ["电子邮件","密码"]
+    //@IBOutlet weak var emailPlaceholderLabel: UILabel!
+    //@IBOutlet weak var passwordPlaceholderLabel: UILabel!
+    //let name = ["电子邮件","密码"]
     
     @IBAction func tapped(sender: UITapGestureRecognizer) {
         emailTextField.resignFirstResponder()
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
         self.passwordView.hidden = true
         self.loginButton.hidden = true
         self.passwordImageView.hidden = true
-        self.passwordPlaceholderLabel.hidden = true
+        //self.passwordPlaceholderLabel.hidden = true
         //self.navigationController!.interactivePopGestureRecognizer.delegate = self
        
         self.navigationController?.navigationBar.hidden = false
@@ -131,7 +131,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
         loginButton.layer.borderWidth = 0.5
         loginButton.layer.borderColor = UIColor.whiteColor().CGColor
         
-
+        self.emailTextField.attributedPlaceholder = NSAttributedString(string: "邮箱", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
 
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginSuccessed", name: "loginSuccessed", object: nil)
@@ -191,7 +192,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
                     self.passwordView.hidden = true
                     self.loginButton.hidden = true
                     self.passwordImageView.hidden = true
-                    self.passwordPlaceholderLabel.hidden = true
+                    //self.passwordPlaceholderLabel.hidden = true
                 }
             })
         
@@ -217,7 +218,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
                 self.passwordView.hidden = false
                 self.loginButton.hidden = false
                 self.passwordImageView.hidden = false
-                self.passwordPlaceholderLabel.hidden = false
+                //self.passwordPlaceholderLabel.hidden = false
             
             return true
         } else {

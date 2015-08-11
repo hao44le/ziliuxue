@@ -64,6 +64,13 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
             self.collegeName = self.college!.name
         }
     }
+    var collegeDetail : CollegeDetail?{
+        didSet{
+            self.collegeOverview = collegeDetail!.collegeOverview
+            self.collegeFinancial = collegeDetail!.collegeFinancial
+            self.college = collegeDetail!.college
+        }
+    }
     var collegeOverview : CollegeOverview?
     //var collegeRanking : CollegeRanking?
     //var collegeApplying : CollegeApplying?
@@ -76,23 +83,31 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
 
         
     @IBAction func rankingMoreButtonPressed(sender: UIButton) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 1
+        //let selectedIndex = self.tabBarController?.selectedIndex
+        //self.tabBarController?.selectedIndex = selectedIndex! + 1
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "排名", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.performSegueWithIdentifier("toRanking", sender: self)
     }
     
     @IBAction func applicationMoreButtonPressed(sender: UIButton) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 2
+        //let selectedIndex = self.tabBarController?.selectedIndex
+        //self.tabBarController?.selectedIndex = selectedIndex! + 2
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "申请", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.performSegueWithIdentifier("toApplication", sender: self)
     }
     
     @IBAction func academicMoreButtonPressed(sender: UIButton) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 3
+        //let selectedIndex = self.tabBarController?.selectedIndex
+        //self.tabBarController?.selectedIndex = selectedIndex! + 3
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学术", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.performSegueWithIdentifier("toAcamidec", sender: self)
     }
     
     @IBAction func costMoreButtonPressed(sender: UIButton) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 4
+        //let selectedIndex = self.tabBarController?.selectedIndex
+        //self.tabBarController?.selectedIndex = selectedIndex! + 4
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "费用", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        self.performSegueWithIdentifier("toCost", sender: self)
     }
     
     
@@ -103,6 +118,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
         self.applicationDescriptionLabel.text = applicationInfoFirstCell
         self.costFirstDescription.text = costFirstCell
@@ -115,7 +131,9 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     func setUpView(){
         //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
         self.logoImageView.image = UIImage(named: college!.name + " logo")
-        self.logoImageView.layer.cornerRadius = self.logoImageView.frame.width / 2
+        self.logoImageView.layer.cornerRadius = 54
+        self.logoImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        self.logoImageView.layer.borderWidth = 2
         //cell.universityName.sizeToFit()
         self.logoImageView.clipsToBounds = true
         self.universityName.text = self.collegeName
@@ -160,6 +178,9 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        //self.hidesBottomBarWhenPushed = true
+        //self.tabBarController?.tabBar.hidden = true
+        //self.navigationController?.setToolbarHidden(true, animated: false)
         self.navigationController?.navigationBar.topItem?.title = self.collegeName
         //println(college!.name + college!.logo)
         
@@ -277,14 +298,32 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        switch segue.identifier! {
+            case "toRanking":
+                let vc = segue.destinationViewController as! SchoolRankingViewController
+                vc.collegeRanking = collegeDetail!.collegeRanking
+            case "toApplication":
+                let vc = segue.destinationViewController as! SchoolApplicationViewController
+                vc.collegeApplication = collegeDetail!.collegeApplying
+            
+            
+            case "toAcamidec":
+                let vc = segue.destinationViewController as! SchoolAcademicViewController
+                vc.collegeAcademic = collegeDetail!.collegeAcademic
+            case "toCost":
+                let vc = segue.destinationViewController as! SchoolCostViewController
+                vc.collegeCost = collegeDetail!.collegeFinancial
+        default:
+            break
+        }
     }
-    */
+    
 
 }
