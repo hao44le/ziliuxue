@@ -13,8 +13,8 @@ class FourthTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "找服务"
-        self.tabBar.barTintColor = Utils.mainColor
-        self.tabBar.tintColor = UIColor.whiteColor()
+        self.tabBar.barTintColor = Utils.tabbarColor
+        self.tabBar.tintColor = Utils.mainColor
 
         self.setupLeftMenuButton()
         // Do any additional setup after loading the view.
