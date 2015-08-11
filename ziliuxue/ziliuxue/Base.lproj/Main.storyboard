@@ -11972,7 +11972,8 @@
                                                             <exclude reference="ujM-sh-bf5"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
                                                         <mask key="constraints">
                                                             <include reference="ujM-sh-bf5"/>
                                                         </mask>
@@ -11987,6 +11988,9 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="16" y="0.0" width="304" height="26"/>
+                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计算机，电子工程，信息系统工程" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZp-Ii-rTR">
                                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -11994,6 +11998,9 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="16" y="25" width="181" height="27"/>
+                                                            </variation>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="weN-Bs-fR3">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -12006,7 +12013,8 @@
                                                                     <exclude reference="y6a-bc-Op1"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="252" y="24" width="20" height="20"/>
                                                                 <mask key="constraints">
                                                                     <include reference="y6a-bc-Op1"/>
                                                                 </mask>
@@ -12026,7 +12034,8 @@
                                                                     <exclude reference="Wfy-qV-yDS"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="278" y="23" width="42" height="21"/>
                                                                 <mask key="constraints">
                                                                     <include reference="Wfy-qV-yDS"/>
                                                                 </mask>
@@ -12077,7 +12086,8 @@
                                                             <exclude reference="RKG-g9-TR4"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="187" width="320" height="52"/>
                                                         <mask key="subviews">
                                                             <include reference="9Jl-Jm-C6a"/>
                                                             <include reference="OZp-Ii-rTR"/>
@@ -12637,7 +12647,7 @@ school applications for over 3 years.</string>
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstAttribute="bottom" secondItem="ZfS-wN-Wx0" secondAttribute="bottom" constant="49" id="geI-g3-BRu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="49"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
                             </constraint>
                         </constraints>
                         <variation key="default">
@@ -12664,14 +12674,14 @@ school applications for over 3 years.</string>
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="1000"/>
+                    <size key="freeformSize" width="400" height="950"/>
                     <connections>
                         <outlet property="backScrollView" destination="ZfS-wN-Wx0" id="dJE-ii-5mo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncy-Xu-DiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5652" y="3234.75"/>
+            <point key="canvasLocation" x="5592" y="3287.25"/>
         </scene>
         <!--Landing Page Detail View Controller-->
         <scene sceneID="MRq-cm-fdt">
@@ -12682,11 +12692,10 @@ school applications for over 3 years.</string>
                         <viewControllerLayoutGuide type="bottom" id="dFm-mG-WNk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NdH-rM-TwO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="2100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SB6-3z-iN0">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="1751"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-gP-fg6">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -13208,14 +13217,14 @@ school applications for over 3 years.</string>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="s6n-Id-Lti"/>
                                                         <exclude reference="hOg-Ty-XLh"/>
+                                                        <exclude reference="s6n-Id-Lti"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <include reference="s6n-Id-Lti"/>
                                                         <include reference="hOg-Ty-XLh"/>
+                                                        <include reference="s6n-Id-Lti"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -13244,9 +13253,9 @@ school applications for over 3 years.</string>
                                                 <exclude reference="DIP-Eh-0Wf"/>
                                                 <exclude reference="Emh-iT-5Wa"/>
                                                 <exclude reference="m3O-Yj-bS1"/>
+                                                <exclude reference="5u7-ZN-moq"/>
                                                 <exclude reference="OaT-Y1-EIB"/>
                                                 <exclude reference="afD-Up-2RB"/>
-                                                <exclude reference="5u7-ZN-moq"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
@@ -13262,9 +13271,9 @@ school applications for over 3 years.</string>
                                                 <include reference="DIP-Eh-0Wf"/>
                                                 <include reference="Emh-iT-5Wa"/>
                                                 <include reference="m3O-Yj-bS1"/>
+                                                <include reference="5u7-ZN-moq"/>
                                                 <include reference="OaT-Y1-EIB"/>
                                                 <include reference="afD-Up-2RB"/>
-                                                <include reference="5u7-ZN-moq"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -13297,16 +13306,11 @@ school applications for over 3 years.</string>
                                         <exclude reference="YZo-nI-vrP"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="D2Z-Pz-hLZ"/>
-                                        <exclude reference="hTr-jC-mQ9"/>
                                         <exclude reference="4IG-0x-Ee9"/>
                                         <exclude reference="Eqg-1R-MqX"/>
                                         <exclude reference="axC-vh-qFX"/>
                                         <exclude reference="j9U-gl-28F"/>
                                         <exclude reference="lN2-gU-Zcu"/>
-                                        <exclude reference="C8L-XW-5tc"/>
-                                        <exclude reference="NMG-gr-N3c"/>
-                                        <exclude reference="Wte-D6-qdj"/>
                                         <exclude reference="dLO-S6-rtA"/>
                                         <exclude reference="mOB-N3-5Na"/>
                                         <exclude reference="x7K-Yj-Dtk"/>
@@ -13314,6 +13318,11 @@ school applications for over 3 years.</string>
                                         <exclude reference="Ad9-OA-Q5i"/>
                                         <exclude reference="GYV-ee-sMe"/>
                                         <exclude reference="ONv-3F-P59"/>
+                                        <exclude reference="D2Z-Pz-hLZ"/>
+                                        <exclude reference="hTr-jC-mQ9"/>
+                                        <exclude reference="C8L-XW-5tc"/>
+                                        <exclude reference="NMG-gr-N3c"/>
+                                        <exclude reference="Wte-D6-qdj"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -13325,16 +13334,11 @@ school applications for over 3 years.</string>
                                         <include reference="YZo-nI-vrP"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="D2Z-Pz-hLZ"/>
-                                        <include reference="hTr-jC-mQ9"/>
                                         <include reference="4IG-0x-Ee9"/>
                                         <include reference="Eqg-1R-MqX"/>
                                         <include reference="axC-vh-qFX"/>
                                         <include reference="j9U-gl-28F"/>
                                         <include reference="lN2-gU-Zcu"/>
-                                        <include reference="C8L-XW-5tc"/>
-                                        <include reference="NMG-gr-N3c"/>
-                                        <include reference="Wte-D6-qdj"/>
                                         <include reference="dLO-S6-rtA"/>
                                         <include reference="mOB-N3-5Na"/>
                                         <include reference="x7K-Yj-Dtk"/>
@@ -13342,6 +13346,11 @@ school applications for over 3 years.</string>
                                         <include reference="Ad9-OA-Q5i"/>
                                         <include reference="GYV-ee-sMe"/>
                                         <include reference="ONv-3F-P59"/>
+                                        <include reference="D2Z-Pz-hLZ"/>
+                                        <include reference="hTr-jC-mQ9"/>
+                                        <include reference="C8L-XW-5tc"/>
+                                        <include reference="NMG-gr-N3c"/>
+                                        <include reference="Wte-D6-qdj"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -13408,8 +13417,8 @@ school applications for over 3 years.</string>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="constraints">
-                                    <exclude reference="C8p-2L-X7E"/>
                                     <exclude reference="812-d5-WZK"/>
+                                    <exclude reference="C8p-2L-X7E"/>
                                 </mask>
                             </variation>
                         </imageView>
@@ -13440,14 +13449,14 @@ school applications for over 3 years.</string>
                             <nil key="highlightedColor"/>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="MxW-rF-fOq"/>
                                     <exclude reference="4Vo-Im-tao"/>
+                                    <exclude reference="MxW-rF-fOq"/>
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
                                 <mask key="constraints">
-                                    <include reference="MxW-rF-fOq"/>
                                     <include reference="4Vo-Im-tao"/>
+                                    <include reference="MxW-rF-fOq"/>
                                 </mask>
                             </variation>
                         </label>
@@ -13471,14 +13480,14 @@ school applications for over 3 years.</string>
                         </mask>
                         <mask key="constraints">
                             <exclude reference="VhC-tr-7oU"/>
-                            <exclude reference="wnM-VL-UBJ"/>
                             <exclude reference="MI4-LV-N3X"/>
-                            <exclude reference="qTj-I3-IZt"/>
-                            <exclude reference="Cyc-ED-ilR"/>
+                            <exclude reference="wnM-VL-UBJ"/>
                             <exclude reference="2Y5-Pe-EOD"/>
-                            <exclude reference="Fdz-M9-WtH"/>
+                            <exclude reference="Cyc-ED-ilR"/>
+                            <exclude reference="qTj-I3-IZt"/>
                             <exclude reference="3e6-QK-bHT"/>
                             <exclude reference="AQg-NN-zzw"/>
+                            <exclude reference="Fdz-M9-WtH"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
@@ -13489,14 +13498,14 @@ school applications for over 3 years.</string>
                         </mask>
                         <mask key="constraints">
                             <include reference="VhC-tr-7oU"/>
-                            <include reference="wnM-VL-UBJ"/>
                             <include reference="MI4-LV-N3X"/>
-                            <include reference="qTj-I3-IZt"/>
-                            <include reference="Cyc-ED-ilR"/>
+                            <include reference="wnM-VL-UBJ"/>
                             <include reference="2Y5-Pe-EOD"/>
-                            <include reference="Fdz-M9-WtH"/>
+                            <include reference="Cyc-ED-ilR"/>
+                            <include reference="qTj-I3-IZt"/>
                             <include reference="3e6-QK-bHT"/>
                             <include reference="AQg-NN-zzw"/>
+                            <include reference="Fdz-M9-WtH"/>
                         </mask>
                     </variation>
                 </view>
