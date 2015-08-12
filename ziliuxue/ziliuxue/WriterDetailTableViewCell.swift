@@ -10,12 +10,10 @@ import UIKit
 
 class WriterDetailTableViewCell: UITableViewCell {
 
-    var itemLabel:UILabel?
-    var detailLabel:UILabel?
-    var priceLabel:UILabel?
-    var button:UIButton?
-    var hasPrice:Bool?
-    var hasButton:Bool?
+    var itemLabel:UILabel!
+    var detailLabel:UILabel!
+    var priceLabel:UILabel!
+    var button:UIButton!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
@@ -26,12 +24,16 @@ class WriterDetailTableViewCell: UITableViewCell {
         self.addSubview(backgroundView)
         
         self.itemLabel = UILabel(frame: CGRectMake(5, 0, 60, 40))
-        self.backgroundView?.addSubview(self.itemLabel!)
+        self.addSubview(self.itemLabel!)
         
-        if self.hasPrice == true
-        {
-            print("==========")
-        }
+        self.detailLabel = UILabel(frame: CGRectMake(75, 0, 250, 40))
+        self.addSubview(self.detailLabel)
+        
+        self.priceLabel = UILabel(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 130, 0, 80, 40))
+        self.addSubview(self.priceLabel)
+        
+        self.button = UIButton(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 50, 0, 40, 40))
+        self.addSubview(self.button)
     
     }
 

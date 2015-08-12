@@ -13,6 +13,9 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
     
     @IBOutlet var backScrollView: UIScrollView!
     
+    
+    @IBOutlet var tableView: UITableView!
+    
     var comments = ["超强写作老师。条理超清晰，循序渐进，提高很快","超强的写作老师，我的OFFER可以100%归功于Ken Wang. ","太牛，太值了。超强，超快，超幽默！"]
     var sample = [["化学","针对化学理论专业"],["化工","针对化工材料专业"],["信息","针对化学化工类信息工程"],["计算机","针对计算机应用和人工智能"]]
     var resume = ["content":"包括2次电话会谈和2次修改","category":"本科，硕士研究生，或工业界找工作","format":"Word, PDF 或其他通用格式","time":"2 周"]
@@ -22,7 +25,10 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1500)
+        self.backScrollView.frame = CGRectMake(0, 64, ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame))
+        self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame))
+        println(self.tableView.frame)
+        println(self.backScrollView.contentSize)
         
   
     }
@@ -130,6 +136,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         else
         {
+            
             let cellIdentifier = "WriterDetailCommon"
             var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? WriterDetailTableViewCell
     
@@ -137,6 +144,25 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
                 cell = WriterDetailTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
         
             }
+            
+            var row = indexPath.row
+            switch indexPath.section{
+            case 1:
+                cell?.itemLabel.text = self.sample[row][0]
+                cell?.detailLabel.text = self.sample[row][1]
+//            case 2:
+//                cell?.itemLabel.text =
+            case 3:
+                cell?.itemLabel.text = self.selfIntro[0][0]
+                cell?.detailLabel.text = self.selfIntro[0][1]
+                cell?.priceLabel.text = self.selfIntro[row][2]
+                cell?.priceLabel?.font = UIFont(name: "Helvetica", size: 15)
+            default:
+                break
+                
+            }
+            
+            
             
             
             

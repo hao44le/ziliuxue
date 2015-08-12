@@ -3455,6 +3455,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classroom" translatesAutoresizingMaskIntoConstraints="NO" id="V1e-L7-KdP">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <animations/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
+                                                    </variation>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB4-49-bgv">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -3524,7 +3527,8 @@
                                                             <exclude reference="Dky-2c-7wL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="168" width="320" height="52"/>
                                                         <mask key="subviews">
                                                             <include reference="PBC-ah-zhw"/>
                                                             <include reference="xWf-hn-F06"/>
@@ -3552,7 +3556,8 @@
                                                             <exclude reference="pO7-HU-xte"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="268" y="139" width="52" height="52"/>
                                                         <mask key="constraints">
                                                             <include reference="Odu-2d-LIG"/>
                                                             <include reference="pO7-HU-xte"/>
@@ -4080,14 +4085,6 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgL-Zp-JLw">
-                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                <animations/>
-                                                <state key="normal" title="查看所有点赞">
-                                                    <color key="titleColor" red="0.77647066119999997" green="0.25490197539999998" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorRight" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-mY-3Zl">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <animations/>
@@ -4131,26 +4128,19 @@
                                             </imageView>
                                         </subviews>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.87921463815789469" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="centerX" secondItem="DDg-wg-6vZ" secondAttribute="centerX" id="0al-Yu-eia"/>
                                             <constraint firstItem="CqA-43-WJQ" firstAttribute="leading" secondItem="sB8-SY-D9q" secondAttribute="trailing" constant="2" id="1MW-hf-E1P"/>
                                             <constraint firstItem="CqA-43-WJQ" firstAttribute="centerY" secondItem="sB8-SY-D9q" secondAttribute="centerY" id="23h-ha-9Pk"/>
-                                            <constraint firstAttribute="centerX" secondItem="BgL-Zp-JLw" secondAttribute="centerX" id="4pn-du-aUk"/>
                                             <constraint firstItem="20J-j7-0mV" firstAttribute="leading" secondItem="dd5-0u-RKD" secondAttribute="leading" constant="89" id="5F0-vr-S7f"/>
                                             <constraint firstItem="CqA-43-WJQ" firstAttribute="centerY" secondItem="b2W-mY-3Zl" secondAttribute="centerY" id="6ab-xg-Ube"/>
                                             <constraint firstAttribute="centerX" secondItem="20J-j7-0mV" secondAttribute="centerX" id="9Ib-Qp-EAB"/>
                                             <constraint firstItem="CqA-43-WJQ" firstAttribute="top" secondItem="dd5-0u-RKD" secondAttribute="top" constant="9" id="AML-po-9hd"/>
                                             <constraint firstItem="DDg-wg-6vZ" firstAttribute="centerY" secondItem="dd5-0u-RKD" secondAttribute="centerY" id="BmH-4z-5yd"/>
-                                            <constraint firstItem="BgL-Zp-JLw" firstAttribute="top" secondItem="DDg-wg-6vZ" secondAttribute="bottom" constant="8" id="E7E-Ii-NkO">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="18"/>
-                                            </constraint>
                                             <constraint firstItem="b2W-mY-3Zl" firstAttribute="leading" secondItem="CqA-43-WJQ" secondAttribute="trailing" constant="-2" id="HAv-Ft-C0E"/>
                                             <constraint firstItem="CqA-43-WJQ" firstAttribute="leading" secondItem="sB8-SY-D9q" secondAttribute="trailing" constant="2" id="JAc-eb-zdt"/>
                                             <constraint firstAttribute="trailing" secondItem="DDg-wg-6vZ" secondAttribute="trailing" constant="17" id="OlP-Sx-EH3"/>
-                                            <constraint firstItem="BgL-Zp-JLw" firstAttribute="top" secondItem="DDg-wg-6vZ" secondAttribute="bottom" constant="8" symbolic="YES" id="PY9-Ng-fqB">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="18"/>
-                                            </constraint>
                                             <constraint firstItem="20J-j7-0mV" firstAttribute="top" secondItem="CqA-43-WJQ" secondAttribute="bottom" constant="1" id="PaZ-o5-qE2"/>
                                             <constraint firstItem="CqA-43-WJQ" firstAttribute="top" secondItem="dd5-0u-RKD" secondAttribute="top" constant="9" id="SVy-dh-hQD"/>
                                             <constraint firstItem="b2W-mY-3Zl" firstAttribute="leading" secondItem="CqA-43-WJQ" secondAttribute="trailing" constant="-2" id="Vj3-j6-TaG"/>
@@ -4173,7 +4163,6 @@
                                             <mask key="subviews">
                                                 <exclude reference="sB8-SY-D9q"/>
                                                 <exclude reference="CqA-43-WJQ"/>
-                                                <exclude reference="BgL-Zp-JLw"/>
                                                 <exclude reference="b2W-mY-3Zl"/>
                                                 <exclude reference="DDg-wg-6vZ"/>
                                                 <exclude reference="20J-j7-0mV"/>
@@ -4194,9 +4183,6 @@
                                                 <exclude reference="tnc-yX-dh1"/>
                                                 <exclude reference="vHy-v1-ZsN"/>
                                                 <exclude reference="yxb-TZ-jzS"/>
-                                                <exclude reference="4pn-du-aUk"/>
-                                                <exclude reference="E7E-Ii-NkO"/>
-                                                <exclude reference="PY9-Ng-fqB"/>
                                                 <exclude reference="5F0-vr-S7f"/>
                                                 <exclude reference="9Ib-Qp-EAB"/>
                                                 <exclude reference="PaZ-o5-qE2"/>
@@ -4212,7 +4198,6 @@
                                             <mask key="subviews">
                                                 <include reference="sB8-SY-D9q"/>
                                                 <include reference="CqA-43-WJQ"/>
-                                                <include reference="BgL-Zp-JLw"/>
                                                 <include reference="b2W-mY-3Zl"/>
                                                 <include reference="DDg-wg-6vZ"/>
                                                 <include reference="20J-j7-0mV"/>
@@ -4233,9 +4218,6 @@
                                                 <include reference="tnc-yX-dh1"/>
                                                 <exclude reference="vHy-v1-ZsN"/>
                                                 <include reference="yxb-TZ-jzS"/>
-                                                <include reference="4pn-du-aUk"/>
-                                                <include reference="E7E-Ii-NkO"/>
-                                                <include reference="PY9-Ng-fqB"/>
                                                 <include reference="5F0-vr-S7f"/>
                                                 <include reference="9Ib-Qp-EAB"/>
                                                 <include reference="PaZ-o5-qE2"/>
@@ -4348,6 +4330,17 @@
                                             </mask>
                                         </variation>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgL-Zp-JLw">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <animations/>
+                                        <state key="normal" backgroundImage="seeAllFavs">
+                                            <color key="titleColor" red="0.77647066119999997" green="0.25490197539999998" blue="0.12549020350000001" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="102" y="748" width="116" height="40"/>
+                                        </variation>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <constraints>
@@ -4446,6 +4439,7 @@
                                         <exclude reference="Nq2-WA-rMf"/>
                                         <exclude reference="W2V-lP-Gzf"/>
                                         <exclude reference="OIx-l2-yE1"/>
+                                        <exclude reference="BgL-Zp-JLw"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="7pU-Nq-hJc"/>
@@ -4534,6 +4528,7 @@
                                         <include reference="Nq2-WA-rMf"/>
                                         <include reference="W2V-lP-Gzf"/>
                                         <include reference="OIx-l2-yE1"/>
+                                        <include reference="BgL-Zp-JLw"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="7pU-Nq-hJc"/>
@@ -11955,7 +11950,7 @@
                         <viewControllerLayoutGuide type="bottom" id="IKT-yC-xXb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NP7-ia-Jjz">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="950"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfS-wN-Wx0">
@@ -12102,7 +12097,9 @@ school applications for over 3 years.</string>
                                             <constraint firstItem="AiL-j3-dO9" firstAttribute="firstBaseline" secondItem="jpa-CE-jEm" secondAttribute="firstBaseline" id="E4v-oj-Hqb"/>
                                             <constraint firstItem="AiL-j3-dO9" firstAttribute="baseline" secondItem="jpa-CE-jEm" secondAttribute="baseline" id="JAA-Jc-W4Q"/>
                                             <constraint firstItem="GT0-b9-Ldg" firstAttribute="baseline" secondItem="U0s-OG-nmL" secondAttribute="baseline" id="JxS-nz-fxl"/>
-                                            <constraint firstItem="AiL-j3-dO9" firstAttribute="leading" secondItem="jpa-CE-jEm" secondAttribute="trailing" constant="99" id="NEn-c7-dLp"/>
+                                            <constraint firstItem="AiL-j3-dO9" firstAttribute="leading" secondItem="jpa-CE-jEm" secondAttribute="trailing" constant="99" id="NEn-c7-dLp">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="98"/>
+                                            </constraint>
                                             <constraint firstItem="GT0-b9-Ldg" firstAttribute="leading" secondItem="bGS-1f-oVr" secondAttribute="leading" id="Sgp-qJ-q7r"/>
                                             <constraint firstAttribute="height" constant="72" id="TyR-JF-gde"/>
                                             <constraint firstAttribute="trailing" secondItem="GT0-b9-Ldg" secondAttribute="trailing" constant="15" id="UmD-J0-hrR"/>
@@ -12184,14 +12181,6 @@ school applications for over 3 years.</string>
                                             </mask>
                                         </variation>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dg1-oL-pqM">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="PUd-7n-wgF" id="aWR-6B-Six"/>
-                                            <outlet property="delegate" destination="PUd-7n-wgF" id="Mvw-rR-gZy"/>
-                                        </connections>
-                                    </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qb-TT-2mR">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
@@ -12214,6 +12203,17 @@ school applications for over 3 years.</string>
                                             </mask>
                                         </variation>
                                     </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dg1-oL-pqM">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="576" width="400" height="424"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="dataSource" destination="PUd-7n-wgF" id="aWR-6B-Six"/>
+                                            <outlet property="delegate" destination="PUd-7n-wgF" id="Mvw-rR-gZy"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.99536379419999998" green="0.99536379419999998" blue="0.99536379419999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -12228,11 +12228,14 @@ school applications for over 3 years.</string>
                                     <constraint firstItem="o8d-DN-8qV" firstAttribute="leading" secondItem="CPu-AK-eV5" secondAttribute="leading" id="9dz-Rn-m7h"/>
                                     <constraint firstAttribute="trailing" secondItem="sNt-X5-aU1" secondAttribute="trailing" id="Ax2-Od-UGV"/>
                                     <constraint firstItem="H2f-jF-BxO" firstAttribute="leading" secondItem="ZfS-wN-Wx0" secondAttribute="leading" id="Ga9-lx-zdA"/>
+                                    <constraint firstAttribute="bottom" secondItem="dg1-oL-pqM" secondAttribute="bottom" id="Ixg-QQ-bOD"/>
                                     <constraint firstItem="2Qb-TT-2mR" firstAttribute="top" secondItem="ZfS-wN-Wx0" secondAttribute="top" constant="350" id="Iyz-aH-O86">
                                         <variation key="heightClass=regular-widthClass=compact" constant="449"/>
                                     </constraint>
                                     <constraint firstAttribute="centerX" secondItem="sNt-X5-aU1" secondAttribute="centerX" id="K0z-u2-3eI"/>
-                                    <constraint firstItem="dg1-oL-pqM" firstAttribute="top" secondItem="sNt-X5-aU1" secondAttribute="bottom" id="MlG-el-j44"/>
+                                    <constraint firstItem="dg1-oL-pqM" firstAttribute="top" secondItem="sNt-X5-aU1" secondAttribute="bottom" id="MlG-el-j44">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstAttribute="centerX" secondItem="CPu-AK-eV5" secondAttribute="centerX" id="T9l-GU-O78"/>
                                     <constraint firstAttribute="trailing" secondItem="H2f-jF-BxO" secondAttribute="trailing" id="TUN-Bw-2Xr"/>
                                     <constraint firstItem="o8d-DN-8qV" firstAttribute="leading" secondItem="ZfS-wN-Wx0" secondAttribute="leading" constant="8" id="aad-FU-JcG"/>
@@ -12251,7 +12254,7 @@ school applications for over 3 years.</string>
                                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                     </constraint>
                                     <constraint firstAttribute="bottom" secondItem="o8d-DN-8qV" secondAttribute="bottom" constant="509" id="lnj-FA-hy7">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="639"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="1088"/>
                                     </constraint>
                                     <constraint firstItem="o8d-DN-8qV" firstAttribute="top" secondItem="H2f-jF-BxO" secondAttribute="bottom" constant="8" symbolic="YES" id="nf7-fn-DFP">
                                         <variation key="heightClass=regular-widthClass=compact" constant="14"/>
@@ -12270,14 +12273,13 @@ school applications for over 3 years.</string>
                                         <exclude reference="o8d-DN-8qV"/>
                                         <exclude reference="CPu-AK-eV5"/>
                                         <exclude reference="sNt-X5-aU1"/>
-                                        <exclude reference="dg1-oL-pqM"/>
                                         <exclude reference="2Qb-TT-2mR"/>
+                                        <exclude reference="dg1-oL-pqM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="1xZ-ke-YSY"/>
-                                        <exclude reference="T9l-GU-O78"/>
-                                        <exclude reference="hhH-Sy-z21"/>
-                                        <exclude reference="rCo-Ea-iyr"/>
+                                        <exclude reference="Ga9-lx-zdA"/>
+                                        <exclude reference="TUN-Bw-2Xr"/>
+                                        <exclude reference="cRa-mj-yMt"/>
                                         <exclude reference="jjV-4I-Y5w"/>
                                         <exclude reference="1c1-ee-WaW"/>
                                         <exclude reference="9dz-Rn-m7h"/>
@@ -12285,20 +12287,22 @@ school applications for over 3 years.</string>
                                         <exclude reference="lnj-FA-hy7"/>
                                         <exclude reference="nf7-fn-DFP"/>
                                         <exclude reference="o8x-Xv-6zI"/>
+                                        <exclude reference="1xZ-ke-YSY"/>
+                                        <exclude reference="T9l-GU-O78"/>
+                                        <exclude reference="hhH-Sy-z21"/>
+                                        <exclude reference="rCo-Ea-iyr"/>
                                         <exclude reference="Iyz-aH-O86"/>
                                         <exclude reference="ajQ-Ji-JLn"/>
                                         <exclude reference="r57-kk-TAW"/>
-                                        <exclude reference="Ga9-lx-zdA"/>
-                                        <exclude reference="TUN-Bw-2Xr"/>
-                                        <exclude reference="cRa-mj-yMt"/>
-                                        <exclude reference="8rP-un-a92"/>
-                                        <exclude reference="MlG-el-j44"/>
-                                        <exclude reference="kka-AR-LwM"/>
-                                        <exclude reference="r8r-v1-Z16"/>
                                         <exclude reference="4Pj-7E-tGb"/>
                                         <exclude reference="Ax2-Od-UGV"/>
                                         <exclude reference="K0z-u2-3eI"/>
                                         <exclude reference="enQ-vp-hfX"/>
+                                        <exclude reference="8rP-un-a92"/>
+                                        <exclude reference="Ixg-QQ-bOD"/>
+                                        <exclude reference="MlG-el-j44"/>
+                                        <exclude reference="kka-AR-LwM"/>
+                                        <exclude reference="r8r-v1-Z16"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -12308,14 +12312,13 @@ school applications for over 3 years.</string>
                                         <include reference="o8d-DN-8qV"/>
                                         <include reference="CPu-AK-eV5"/>
                                         <include reference="sNt-X5-aU1"/>
-                                        <include reference="dg1-oL-pqM"/>
                                         <include reference="2Qb-TT-2mR"/>
+                                        <include reference="dg1-oL-pqM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="1xZ-ke-YSY"/>
-                                        <include reference="T9l-GU-O78"/>
-                                        <include reference="hhH-Sy-z21"/>
-                                        <include reference="rCo-Ea-iyr"/>
+                                        <include reference="Ga9-lx-zdA"/>
+                                        <include reference="TUN-Bw-2Xr"/>
+                                        <include reference="cRa-mj-yMt"/>
                                         <include reference="jjV-4I-Y5w"/>
                                         <include reference="1c1-ee-WaW"/>
                                         <include reference="9dz-Rn-m7h"/>
@@ -12323,20 +12326,22 @@ school applications for over 3 years.</string>
                                         <include reference="lnj-FA-hy7"/>
                                         <include reference="nf7-fn-DFP"/>
                                         <include reference="o8x-Xv-6zI"/>
+                                        <include reference="1xZ-ke-YSY"/>
+                                        <include reference="T9l-GU-O78"/>
+                                        <include reference="hhH-Sy-z21"/>
+                                        <include reference="rCo-Ea-iyr"/>
                                         <include reference="Iyz-aH-O86"/>
                                         <include reference="ajQ-Ji-JLn"/>
                                         <include reference="r57-kk-TAW"/>
-                                        <include reference="Ga9-lx-zdA"/>
-                                        <include reference="TUN-Bw-2Xr"/>
-                                        <include reference="cRa-mj-yMt"/>
-                                        <include reference="8rP-un-a92"/>
-                                        <include reference="MlG-el-j44"/>
-                                        <include reference="kka-AR-LwM"/>
-                                        <include reference="r8r-v1-Z16"/>
                                         <include reference="4Pj-7E-tGb"/>
                                         <include reference="Ax2-Od-UGV"/>
                                         <include reference="K0z-u2-3eI"/>
                                         <include reference="enQ-vp-hfX"/>
+                                        <include reference="8rP-un-a92"/>
+                                        <include reference="Ixg-QQ-bOD"/>
+                                        <include reference="MlG-el-j44"/>
+                                        <exclude reference="kka-AR-LwM"/>
+                                        <include reference="r8r-v1-Z16"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -12350,7 +12355,7 @@ school applications for over 3 years.</string>
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstAttribute="bottom" secondItem="ZfS-wN-Wx0" secondAttribute="bottom" constant="49" id="geI-g3-BRu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                         </constraints>
                         <variation key="default">
@@ -12377,9 +12382,10 @@ school applications for over 3 years.</string>
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="950"/>
+                    <size key="freeformSize" width="400" height="1000"/>
                     <connections>
                         <outlet property="backScrollView" destination="ZfS-wN-Wx0" id="dJE-ii-5mo"/>
+                        <outlet property="tableView" destination="dg1-oL-pqM" id="Jf2-st-Wut"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncy-Xu-DiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -13200,7 +13206,6 @@ school applications for over 3 years.</string>
                             <include reference="10z-eN-oFa"/>
                         </mask>
                         <mask key="constraints">
-                            <include reference="VhC-tr-7oU"/>
                             <exclude reference="VhC-tr-7oU"/>
                             <include reference="MI4-LV-N3X"/>
                             <include reference="wnM-VL-UBJ"/>
@@ -13247,7 +13252,8 @@ school applications for over 3 years.</string>
         <image name="password" width="40" height="51"/>
         <image name="personalInfoBack" width="1280" height="720"/>
         <image name="raking" width="25" height="25"/>
-        <image name="ratingStar" width="322" height="68"/>
+        <image name="ratingStar" width="220" height="62"/>
+        <image name="seeAllFavs" width="220" height="74"/>
         <image name="star" width="33" height="33"/>
         <image name="star_filled" width="50" height="50"/>
         <image name="studyPlan_small" width="25" height="25"/>
