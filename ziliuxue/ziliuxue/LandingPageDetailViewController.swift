@@ -162,7 +162,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     
     func setUpVideo(){
         
-        if let url = NSURL(string: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/0640_vod.m3u8"), moviePlayer = MPMoviePlayerController(contentURL: url){
+        if let url = NSURL(string: "http://livebo.cloudapp.net:8080/hls/sl.m3u8"), moviePlayer = MPMoviePlayerController(contentURL: url){
             self.moviePlayer = moviePlayer
             moviePlayer.view.frame = CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 200)
             self.moviewPlayerOriginFrame = moviePlayer.view.frame
