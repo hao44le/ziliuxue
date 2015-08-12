@@ -12,7 +12,7 @@ import AVFoundation
 import MapKit
 import CoreLocation
 
-class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScrollViewDelegate{
+class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScrollViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -37,6 +37,28 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     @IBOutlet weak var fourthViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var fifthViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var introducationLabel: UILabel!
+    
+    @IBOutlet weak var firstTopicLabel: UILabel!
+    @IBOutlet weak var secondTopicLabel: UILabel!
+    
+    @IBOutlet weak var thirdTopicLabel: UILabel!
+    
+    
+    
+    var titleLabelContent = ""
+    var timeLabelContent = "2016.1.12 10.38"
+    var introducationLabelContent = "西洋的王博士重点谈谈各国留学的优势和适合的人群。他曾留学澳洲。转学新西兰，最后到美国就业，多次参与各国留学的评论。他的经验非常值得借鉴。                                                            "
+    var firstTopicLabelContent = "1"
+    var secondTopicLabelContent = "2"
+    var thirdTopicLabelContent = "3"
+
+    var viewWhichHoldsMap = 2
+    var viewWhichHoldsTableView = 3
+    
     var secondHeightVariable : CGFloat = 356
     var thirdHeightVariable : CGFloat = 356
     var fourthHeightVariable : CGFloat = 356
@@ -46,7 +68,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     
     var moviePlayer : MPMoviePlayerController?
     var topName = ""
-    var names :[String]?
+    //var names :[String]?
     let locationManager = CLLocationManager()
     var location:CLLocationCoordinate2D?
     var mapView: MKMapView!
@@ -56,6 +78,9 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     var readyToPlay = false
     var moviewPlayerOriginFrame : CGRect?
+    var tableView : UITableView = UITableView()
+    var tableViewLeft : [String] = []
+    var tableViewRight : [String] = []
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = self.topName
@@ -63,15 +88,43 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.titleLabel.text = titleLabelContent
+        self.timeLabel.text = timeLabelContent
+        self.introducationLabel.text = introducationLabelContent
+        self.firstTopicLabel.text = firstTopicLabelContent
+        self.secondTopicLabel.text = secondTopicLabelContent
+        self.thirdTopicLabel.text = thirdTopicLabelContent
+        self.firstTopicLabel.sizeToFit()
+        self.secondTopicLabel.sizeToFit()
+        self.thirdTopicLabel.sizeToFit()
+        self.firstLabel.text = firstTopicLabelContent
+        self.secondLabel.text = secondTopicLabelContent
+        self.thirdLabel.text = thirdTopicLabelContent
+        self.firstLabel.sizeToFit()
+        self.secondLabel.sizeToFit()
+        self.thirdLabel.sizeToFit()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "playbackStateChanged", name: MPMoviePlayerPlaybackStateDidChangeNotification, object: nil)
         self.scrollView.delegate = self
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse{
             self.locationManager.requestWhenInUseAuthorization()
             
         }
-        setupMapView(self.thirdView)
+        switch viewWhichHoldsMap {
+        case 2:
+            setupMapView(self.secondView)
+        case 3:
+            setupMapView(self.thirdView)
+        case 4:
+            setupMapView(self.fourthView)
+        case 5:
+            setupMapView(self.fifthView)
+        default :
+            break
+        }
         self.view.backgroundColor = UIColor.whiteColor()
-       self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.topItem?.title = ""
+        /*
         switch names!.count {
         case 1:
              self.firstLabel.text = names![0]
@@ -84,13 +137,22 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
         default:
             break
         }
-        for name in names! {
-            
-        }
+        */
         
         //let imageView = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 50))
         setUpVideo()
-        
+        switch viewWhichHoldsTableView {
+        case 2:
+            setUpTableView(self.secondView)
+        case 3:
+            setUpTableView(self.thirdView)
+        case 4:
+            setUpTableView(self.fourthView)
+        case 5:
+            setUpTableView(self.fifthView)
+        default :
+            break
+        }
         
         
         // Do any additional setup after loading the view.
@@ -105,7 +167,31 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
             
         }
     }
-    
+    func setUpTableView(whichView:UIView){
+        self.tableView.frame = CGRectMake(0, 30, ScreenSize.SCREEN_WIDTH, 300)
+        //self.tableView.registerClass(UITableViewCell(), forCellReuseIdentifier: "cell")
+        self.tableView.dataSource = self
+        //self.tableViewRight = ["1","2"]
+        //self.tableViewLeft = ["4","5"]
+        self.tableView.rowHeight = 50
+        //self.tableView.registerClass(UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell").classForCoder, forCellReuseIdentifier: "cell")
+        whichView.addSubview(self.tableView)
+        self.tableView.reloadData()
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableViewLeft.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let CellIdentifier = "CellIdentifier"
+        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: CellIdentifier)
+        }
+        
+        cell!.textLabel!.text = self.tableViewLeft[indexPath.row]
+        cell!.detailTextLabel?.text = self.tableViewRight[indexPath.row]
+        return cell!
+    }
     
     func setupMapView(whichView:UIView){
         mapView = MKMapView(frame: CGRectMake(0, 30, ScreenSize.SCREEN_WIDTH, 300))
@@ -159,6 +245,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
         //self.view.bringSubviewToFront(moviePlayer!.view)
         //self.moviePlayer!.setFullscreen(true, animated: true)
     }
+    
     
     func setUpVideo(){
         
