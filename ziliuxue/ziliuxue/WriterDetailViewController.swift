@@ -25,7 +25,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.backScrollView.frame = CGRectMake(0, 64, ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame))
+        self.backScrollView.frame = CGRectMake(0, 64, ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame) - 200)
         self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame))
         println(self.tableView.frame)
         println(self.backScrollView.contentSize)

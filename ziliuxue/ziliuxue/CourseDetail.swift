@@ -17,14 +17,15 @@ class CourseDetail: NSObject {
     var overview : NSDictionary!
     var sessions : NSArray!
     var metadata: NSDictionary!
+    var similars:NSArray!
     
     
-    
-    init(_id:String, name:String,sessions:NSArray)
+    init(_id:String, name:String,sessions:NSArray,similars:NSArray)
     {
         self._id = _id
         self.name = name
         self.sessions = sessions
+        self.similars = similars
     }
     
 }

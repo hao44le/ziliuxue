@@ -54,6 +54,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     var metadata : NSDictionary!
     var overview : NSDictionary!
     
+
     var sessions : NSArray = []
     var selectedSession = 0
     var similarCourses: NSArray = []
@@ -73,12 +74,8 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         self.teacherIntro.text = self.overview.objectForKey("introduction") as? String
         self.coursePrice.text = " ￥" + String(self.metadata.objectForKey("price") as! NSInteger)
         var teacherURL = NSURL(string: ServerConstant.baseURL + ((self.overview["teacher"] as! NSDictionary)["avatar"] as! String))
-        self.teacherPic.sd_setImageWithURL(teacherURL, placeholderImage: nil)
-        
-        self.favButton.layer.borderWidth = 1
-        self.favButton.layer.borderColor = UIColor.redColor().CGColor
-        self.favButton.layer.cornerRadius = self.favButton.frame.width / 2
-        
+        //self.teacherPic.sd_setImageWithURL(teacherURL, placeholderImage: nil)
+     
     
         
     }
@@ -103,8 +100,10 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
         self.sessionName.text = self.sessions[0]["title"] as! String + "--课程信息"
         
-        
+        self.similarCourses = self.courseDetail.similars
+     
         self.sessionTableView.reloadData()
+        self.similarTableView.reloadData()
         
         self.setUpSessionMapView()
         self.addAnnotation()
@@ -157,7 +156,7 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
             var geo_location = classes[i].objectForKey("geo_location") as! NSDictionary
             
             var location = CLLocationCoordinate2DMake((geo_location.objectForKey("latitude") as! NSString).doubleValue, (geo_location.objectForKey("longitude") as! NSString).doubleValue)
-            var annotation = CourseAnnotation(coordinate: location, title: session.objectForKey("title") as! String, subtitle: "Shuoaaaa", image:UIImage(named: self.pinImage[i])!)
+            var annotation = CourseAnnotation(coordinate: location, title: session.objectForKey("title") as! String, subtitle: "点击查看详情", image:UIImage(named: self.pinImage[i])!)
             
             self.sessionMapView.addAnnotation(annotation)
             
@@ -214,12 +213,15 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
             
             
         } else if tableView == self.similarTableView{
-        
+       
             return self.similarCourses.count
             
+        }else
+        {
+            return 0
         }
         
-        return 0
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -245,19 +247,30 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
             classDetail += locationIndex[indexPath.row] as String
                 
             cell.sessionDetail.text = classDetail
-            
+        
             
             return cell
         } else if tableView == self.similarTableView{
             let cell = tableView.dequeueReusableCellWithIdentifier("SimilarCourseTableViewCell", forIndexPath: indexPath) as! SimilarCourseTableViewCell
             
+            var row = indexPath.row
+            cell.courseName.text = self.similarCourses[row]["name"] as? String
+            cell.courseDetail.text = self.similarCourses[row]["summary"] as? String
+            var price = "￥" + String(self.similarCourses[row]["price"] as! Int)
+            cell.price.text = price
+            var teacherImage = [UIImage(named: "teacher1")!,UIImage(named: "teacher2")!]
+            cell.avatarImageView.image = teacherImage[row]
+
             return cell
             
+        }else{
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
+    
+            return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
         
-        return cell
         
     }
     

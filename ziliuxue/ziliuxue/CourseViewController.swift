@@ -92,6 +92,7 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         var courseDetailVC = segue.destinationViewController as! CourseDetailViewController
+        courseDetailVC.hidesBottomBarWhenPushed = true
         
         var courseOverView = self.courseOverViewList[self.selectedIndex]
         courseDetailVC.courseID = courseOverView._id

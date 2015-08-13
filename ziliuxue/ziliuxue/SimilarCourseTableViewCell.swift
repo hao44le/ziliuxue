@@ -10,6 +10,15 @@ import UIKit
 
 class SimilarCourseTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet var avatarImageView: UIImageView!
+    
+    @IBOutlet var courseName: UILabel!
+    
+    @IBOutlet var courseDetail: UILabel!
+    
+    @IBOutlet var price: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

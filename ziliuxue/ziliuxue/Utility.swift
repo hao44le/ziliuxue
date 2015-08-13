@@ -841,9 +841,10 @@ struct ServerMethods {
             let id = resDic.objectForKey("_id") as! String
             let courseName = resDic.objectForKey("name") as! String
             let sessions = resDic.objectForKey("sessions") as! NSArray
+            let similars = resDic.objectForKey("similars") as! NSArray
             
             
-            let result = CourseDetail(_id: id, name: courseName, sessions: sessions)
+            let result = CourseDetail(_id: id, name: courseName, sessions: sessions,similars:similars)
             
             NSNotificationCenter.defaultCenter().postNotificationName("didGetCourseDetail", object: result)
             
