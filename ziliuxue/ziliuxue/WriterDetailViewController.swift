@@ -25,10 +25,13 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        
         self.backScrollView.frame = CGRectMake(0, 64, ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame) - 200)
         self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame))
-        println(self.tableView.frame)
-        println(self.backScrollView.contentSize)
+//        println(self.tableView.frame)
+//        println(self.backScrollView.contentSize)
         
   
     }
@@ -37,6 +40,9 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 4

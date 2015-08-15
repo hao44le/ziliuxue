@@ -854,13 +854,43 @@ struct ServerMethods {
                 print("getCourseDetail failure\n")
                 print(error)
         }
-
-        
-        
     }
     
     
     
+    static func getServiceProviders(categoryName:String!)
+    {
+        Tool.showProgressHUD("正在获取写手信息")
+        
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        
+        var url = ServerConstant.get_service_providers
+        url += categoryName
+        
+        manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            
+            print("getServiceProvider success\n")
+            
+            let resArray = response as! NSArray
+            
+            var resultArray = ServiceWriterOverView.objectArrayWithKeyValuesArray(resArray)
+          
+            NSNotificationCenter.defaultCenter().postNotificationName("didGetServiceProvider", object: resultArray)
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                
+                print("getServiceProvider failure\n")
+                print(error)
+        }
+        
+        
+        
+    }
+
+ 
     
 }
 
@@ -881,6 +911,8 @@ struct ServerConstant {
     static let user_profile = "https://livebo.cloudapp.net/api/profile"
     static let get_course_overview = "https://livebo.cloudapp.net/api/courses?category="
     static let get_course_detail = "https://livebo.cloudapp.net/api/courses/"
+    static let get_service_providers = "https://livebo.cloudapp.net/api/writers?category="
+    static let get_writer_detail = "https://livebo.cloudapp.net/api/writers?category="
     
 }
 

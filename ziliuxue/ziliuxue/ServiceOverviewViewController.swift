@@ -18,17 +18,48 @@ class ServiceOverviewViewController: UIViewController,UITableViewDelegate,UITabl
     
     var topName = ""
     
+    var categoryName:String?
+    
+    var overViewArray:NSArray!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = self.topName
         //self.navigationController?.navigationBar.topItem?.title = ""
         // Do any additional setup after loading the view.
+        
+        if nil != self.categoryName{
+            ServerMethods.getServiceProviders(self.categoryName)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didGetServiceProvider:"), name: "didGetServiceProvider", object: nil)
+        }
+        
+        println(self.categoryName)
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func didGetServiceProvider(notification:NSNotification)
+    {
+        self.overViewArray = notification.object as? NSArray
+        Tool.showSuccessHUD("获取成功")
+        
+        for item in self.overViewArray{
+            
+            var a = item as! ServiceWriterOverView
+            println(a.name)
+            
+        }
+        
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
