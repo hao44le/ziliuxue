@@ -30,6 +30,7 @@
 #import "RatingBar.h"
 
 #import "MJCollectionViewCell.h"
+#import "MJExtension.h"
 
 
 

@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_IQKeyboardManager 2
 #define COCOAPODS_VERSION_PATCH_IQKeyboardManager 4
 
+// MJExtension
+#define COCOAPODS_POD_AVAILABLE_MJExtension
+#define COCOAPODS_VERSION_MAJOR_MJExtension 2
+#define COCOAPODS_VERSION_MINOR_MJExtension 5
+#define COCOAPODS_VERSION_PATCH_MJExtension 7
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
