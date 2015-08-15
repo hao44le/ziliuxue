@@ -88,21 +88,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titleLabel.text = titleLabelContent
-        self.timeLabel.text = timeLabelContent
-        self.introducationLabel.text = introducationLabelContent
-        self.firstTopicLabel.text = firstTopicLabelContent
-        self.secondTopicLabel.text = secondTopicLabelContent
-        self.thirdTopicLabel.text = thirdTopicLabelContent
-        self.firstTopicLabel.sizeToFit()
-        self.secondTopicLabel.sizeToFit()
-        self.thirdTopicLabel.sizeToFit()
-        self.firstLabel.text = firstTopicLabelContent
-        self.secondLabel.text = secondTopicLabelContent
-        self.thirdLabel.text = thirdTopicLabelContent
-        self.firstLabel.sizeToFit()
-        self.secondLabel.sizeToFit()
-        self.thirdLabel.sizeToFit()
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "playbackStateChanged", name: MPMoviePlayerPlaybackStateDidChangeNotification, object: nil)
         self.scrollView.delegate = self
@@ -110,20 +96,8 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
             self.locationManager.requestWhenInUseAuthorization()
             
         }
-        switch viewWhichHoldsMap {
-        case 2:
-            setupMapView(self.secondView)
-        case 3:
-            setupMapView(self.thirdView)
-        case 4:
-            setupMapView(self.fourthView)
-        case 5:
-            setupMapView(self.fifthView)
-        default :
-            break
-        }
-        self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.topItem?.title = ""
+        setUpView()
+        
         /*
         switch names!.count {
         case 1:
@@ -140,19 +114,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
         */
         
         //let imageView = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 50))
-        setUpVideo()
-        switch viewWhichHoldsTableView {
-        case 2:
-            setUpTableView(self.secondView)
-        case 3:
-            setUpTableView(self.thirdView)
-        case 4:
-            setUpTableView(self.fourthView)
-        case 5:
-            setUpTableView(self.fifthView)
-        default :
-            break
-        }
+        
         
         
         // Do any additional setup after loading the view.
@@ -167,13 +129,91 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
             
         }
     }
+    
+    func setUpView(){
+        self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.titleLabel.text = titleLabelContent
+        self.timeLabel.text = timeLabelContent
+        self.introducationLabel.text = introducationLabelContent
+        self.firstTopicLabel.text = firstTopicLabelContent
+        self.secondTopicLabel.text = secondTopicLabelContent
+        self.thirdTopicLabel.text = thirdTopicLabelContent
+        self.firstTopicLabel.sizeToFit()
+        self.secondTopicLabel.sizeToFit()
+        self.thirdTopicLabel.sizeToFit()
+        self.firstLabel.text = firstTopicLabelContent
+        self.secondLabel.text = secondTopicLabelContent
+        self.thirdLabel.text = thirdTopicLabelContent
+        self.firstLabel.sizeToFit()
+        self.secondLabel.sizeToFit()
+        self.thirdLabel.sizeToFit()
+        switch viewWhichHoldsMap {
+        case 2:
+            setupMapView(self.secondView)
+        case 3:
+            setupMapView(self.thirdView)
+        case 4:
+            setupMapView(self.fourthView)
+        case 5:
+            setupMapView(self.fifthView)
+        default :
+            break
+        }
+        setUpVideo()
+        switch viewWhichHoldsTableView {
+        case 2:
+            setUpTableView(self.secondView)
+        case 3:
+            setUpTableView(self.thirdView)
+        case 4:
+            setUpTableView(self.fourthView)
+        case 5:
+            setUpTableView(self.fifthView)
+        default :
+            break
+        }
+        
+        //更新托福分数
+        let label = UILabel(frame: CGRectMake(0, 10, ScreenSize.SCREEN_WIDTH, 100))
+        label.text = "请更新您的托福分数，以便获得更精准的学校推荐"
+        label.textAlignment = NSTextAlignment.Center
+        label.numberOfLines = 0
+        label.font = UIFont.systemFontOfSize(13)
+        self.fourthView.addSubview(label)
+        
+        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        button.frame = CGRectMake((ScreenSize.SCREEN_WIDTH - 100) / 2, 110, 100, 50)
+        
+        //button.backgroundColor = UIColor.blueColor()
+        //button.tintColor = Utils.mainColor
+        button.setTitle("更新分数", forState: UIControlState.Normal)
+        button.setTitleColor(Utils.mainColor, forState: UIControlState.Normal)
+        button.layer.cornerRadius = 20
+        button.layer.borderWidth = 2
+        button.layer.borderColor = Utils.mainColor.CGColor
+        button.addTarget(self, action: "buttonTouched", forControlEvents: UIControlEvents.TouchUpInside)
+        //button.userInteractionEnabled = true
+        self.fourthView.addSubview(button)
+        
+        self.fifthView.hidden = true
+        self.scrollViewHeight -= self.fifthView.frame.height
+        
+    }
+    
+    func buttonTouched(){
+        println("更新分数")
+    }
+    
     func setUpTableView(whichView:UIView){
         self.tableView.frame = CGRectMake(0, 30, ScreenSize.SCREEN_WIDTH, 300)
         //self.tableView.registerClass(UITableViewCell(), forCellReuseIdentifier: "cell")
         self.tableView.dataSource = self
         //self.tableViewRight = ["1","2"]
         //self.tableViewLeft = ["4","5"]
-        self.tableView.rowHeight = 50
+        self.tableView.rowHeight = 40
+        self.tableView.allowsSelection = false
+        self.tableView.scrollEnabled = false
         //self.tableView.registerClass(UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell").classForCoder, forCellReuseIdentifier: "cell")
         whichView.addSubview(self.tableView)
         self.tableView.reloadData()

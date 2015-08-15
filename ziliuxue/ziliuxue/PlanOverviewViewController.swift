@@ -496,8 +496,8 @@ class PlanOverviewViewController: UIViewController,UITableViewDelegate,UITableVi
             vc.firstTopicLabelContent = firstTopicLabelContent
             vc.secondTopicLabelContent = secondTopicLabelContent
             vc.thirdTopicLabelContent = thirdTopicLabelContent
-            vc.tableViewLeft = ["1","2","3","4","5","6","7"]
-            vc.tableViewRight = ["3","4","5","6","7","8","9"]
+            vc.tableViewLeft = ["UIUC","普渡大学","斯坦福大学","MIT","华盛顿大学","卡耐基梅隆大学","加州大学伯克利分校"]
+            vc.tableViewRight = ["100","90","110","110","90","110","110"]
         }
     }
     
