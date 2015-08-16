@@ -33,11 +33,6 @@ class ServiceOverviewViewController: UIViewController,UITableViewDelegate,UITabl
             NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didGetServiceProvider:"), name: "didGetServiceProvider", object: nil)
         }
         
-        println(self.categoryName)
-        
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,12 +46,12 @@ class ServiceOverviewViewController: UIViewController,UITableViewDelegate,UITabl
         self.overViewArray = notification.object as? NSArray
         Tool.showSuccessHUD("获取成功")
         
-        for item in self.overViewArray{
-            
-            var a = item as! ServiceWriterOverView
-            println(a.name)
-            
-        }
+//        for item in self.overViewArray{
+//            
+//            var a = item as! ServiceWriterOverView
+//            println(a.name)
+//            
+//        }
         
     }
     

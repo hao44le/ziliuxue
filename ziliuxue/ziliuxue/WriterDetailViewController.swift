@@ -16,9 +16,29 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
     
     @IBOutlet var tableView: UITableView!
     
-    var comments = ["超强写作老师。条理超清晰，循序渐进，提高很快","超强的写作老师，我的OFFER可以100%归功于Ken Wang. ","太牛，太值了。超强，超快，超幽默！"]
-    var sample = [["化学","针对化学理论专业"],["化工","针对化工材料专业"],["信息","针对化学化工类信息工程"],["计算机","针对计算机应用和人工智能"]]
-    var resume = ["content":"包括2次电话会谈和2次修改","category":"本科，硕士研究生，或工业界找工作","format":"Word, PDF 或其他通用格式","time":"2 周"]
+    var id:String?
+    
+    var detailDataDic:ServiceWriterDetail?
+    
+    
+    @IBOutlet var avatar: UIImageView!
+    
+    
+    @IBOutlet var titleLabel: UILabel!
+    
+    @IBOutlet var name: UILabel!
+    
+    @IBOutlet var descriptionLabel: UILabel!
+    
+    @IBOutlet var completed_casesLabel: UILabel!
+    
+    @IBOutlet var years_in_serviceLabel: UILabel!
+    
+    @IBOutlet var favLabel: UILabel!
+    
+    
+    
+
     var selfIntro = [["化学类","本科","￥1999"],["化工","研究生","￥1799"],["信息","本科","￥2099"],["计算机","研究生","￥3999"]]
     
     override func viewDidLoad() {
@@ -26,10 +46,18 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
 
         // Do any additional setup after loading the view.
         
+        self.id = "55c949b958ef03209890b4c6"
         
+        if nil != self.id{
+            
+            ServerMethods.getWriterDetail(self.id)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didGetWriterDetail:"), name: "didGetWriterDetail", object: nil)
+        }
         
         self.backScrollView.frame = CGRectMake(0, 64, ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame) - 200)
-        self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, CGRectGetMaxY(self.tableView.frame))
+        
+        self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1000)
+        
 //        println(self.tableView.frame)
 //        println(self.backScrollView.contentSize)
         
@@ -41,19 +69,40 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-
+    func didGetWriterDetail(notification:NSNotification)
+    {
+        self.detailDataDic = notification.object as? ServiceWriterDetail
+        Tool.showSuccessHUD("获取成功")
+        
+        var avatarURL = NSURL(string: ServerConstant.baseURL + self.detailDataDic!.avatar_url)
+        self.avatar.sd_setImageWithURL(avatarURL, placeholderImage: nil)
+        
+        self.name.text = self.detailDataDic?.name
+        self.titleLabel.text = self.detailDataDic?.title
+        
+        
+        self.tableView.reloadData()
+        
+        
+        
+    }
 
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        if nil != self.detailDataDic{
+            return 4
+        }
+        else{
+            return 0
+        }
     }
-    
+
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         switch section{
         case 0:
             var commentHeaderView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
-            commentHeaderView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            commentHeaderView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
             var starView = UIImageView(frame: CGRectMake(5, 0, 80, 20))
             starView.image = UIImage(named: "ratingStar")
             commentHeaderView.addSubview(starView)
@@ -61,7 +110,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
             return commentHeaderView
         case 1:
             var sampleView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
-            sampleView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            sampleView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
             var leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
             leftLabel.text = "部分写作样本"
             leftLabel.font = UIFont(name: "Helvetica", size: 13)
@@ -75,7 +124,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
             return sampleView
         case 2:
             var resumeView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
-            resumeView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            resumeView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
             var leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
             leftLabel.text = "写作服务：个人简历"
             leftLabel.font = UIFont(name: "Helvetica", size: 13)
@@ -90,7 +139,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
             
         case 3:
             var selfIntroView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
-            selfIntroView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
+            selfIntroView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
             var leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
             leftLabel.text = "写作服务：个人声明"
             leftLabel.font = UIFont(name: "Helvetica", size: 13)
@@ -106,9 +155,9 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         switch section
         {
         case 0:
-            return self.comments.count
+            return self.detailDataDic!.comments.count
         case 1:
-            return self.sample.count
+            return self.detailDataDic!.samples.count
         case 2:
             return 4
         case 3:
@@ -116,7 +165,8 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         default:
             return 0
         }
-        
+    
+
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -135,8 +185,16 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
             }
             
-            cell?.textLabel?.text = self.comments[indexPath.row] 
+            cell?.textLabel?.text = self.detailDataDic!.comments[indexPath.row] as? String
             cell?.textLabel?.font = UIFont(name: "Helvetica", size: 13)
+            
+            if indexPath.row == (self.detailDataDic!.comments.count - 1){
+                cell?.textLabel?.text = "查看全部231条评价"
+                cell?.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
+                cell?.textLabel?.font = UIFont(name: "Helvetica", size: 14)
+                cell?.textLabel?.textColor = UIColor.blueColor()
+            }
+            
             
             return cell!
         }
@@ -154,24 +212,37 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
             var row = indexPath.row
             switch indexPath.section{
             case 1:
-                cell?.itemLabel.text = self.sample[row][0]
-                cell?.detailLabel.text = self.sample[row][1]
-//            case 2:
-//                cell?.itemLabel.text =
+                cell?.itemLabel.text = self.detailDataDic!.samples[row]["area"] as? String
+                cell?.detailLabel.text = self.detailDataDic!.samples[row]["description"] as? String
+            case 2:
+                switch row{
+                case 0:
+                    cell?.itemLabel.text = "内容"
+                    cell?.detailLabel.text = self.detailDataDic?.services[0]["description"] as? String
+                case 1:
+                    cell?.itemLabel.text = "类别"
+                    cell?.detailLabel.text = self.detailDataDic?.services[0]["targets"] as? String
+                case 2:
+                    cell?.itemLabel.text = "格式"
+                    cell?.detailLabel.text = self.detailDataDic?.services[0]["format"] as? String
+                case 3:
+                    cell?.itemLabel.text = "时间"
+                    cell?.detailLabel.text = self.detailDataDic?.services[0]["time"] as? String
+                default:
+                    
+                    break
+                }
             case 3:
                 cell?.itemLabel.text = self.selfIntro[0][0]
                 cell?.detailLabel.text = self.selfIntro[0][1]
                 cell?.priceLabel.text = self.selfIntro[row][2]
-                cell?.priceLabel?.font = UIFont(name: "Helvetica", size: 15)
+            
+                cell?.button.setBackgroundImage(UIImage(named: "buyButton"), forState: UIControlState.Normal)
             default:
                 break
                 
             }
-            
-            
-            
-            
-            
+
             return cell!
         }
         

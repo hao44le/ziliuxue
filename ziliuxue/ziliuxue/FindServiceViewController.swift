@@ -116,7 +116,7 @@ class FindServiceViewController: UIViewController,UICollectionViewDelegate,UICol
                 
                 
                 vc.categoryName = "resume"
-                
+        
             case name[1] :
                 vc.teacherName = ["    Sherry Fang","    Emily Chang","    Julia Chen","    王小兰","    Nancy Jiang","    张佳丽","    Jun Wang","    Amanda Chen"]
                 vc.titleName = ["计算机高级简历","计算机电子工程高级个人声明，论文写手","社会人文心理科高级个人声明，推荐信写手","推荐信，简历高级写手","法律类高级个人声明，简历写手","化学，物化高级论文写手","化学，计算机个人声明，简历高级写手","MBA类个人声明，论文，简历高级写手"]

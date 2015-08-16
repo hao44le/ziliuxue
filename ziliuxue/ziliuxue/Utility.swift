@@ -873,7 +873,7 @@ struct ServerMethods {
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
             print("getServiceProvider success\n")
-            
+
             let resArray = response as! NSArray
             
             var resultArray = ServiceWriterOverView.objectArrayWithKeyValuesArray(resArray)
@@ -885,12 +885,38 @@ struct ServerMethods {
                 print("getServiceProvider failure\n")
                 print(error)
         }
+    }
+    
+    static func getWriterDetail(id:String!)
+    {
+        Tool.showProgressHUD("正在获取写手详细信息")
         
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         
+        var url = ServerConstant.get_writer_detail
+        url += id
         
+        manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            
+            print("getWriterDetail success\n")
+            
+            let resDic = response as! NSDictionary
+            
+            var resultDic = ServiceWriterDetail(keyValues: resDic)
+        
+            NSNotificationCenter.defaultCenter().postNotificationName("didGetWriterDetail", object: resultDic)
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                
+                print("getWriterDetail failure\n")
+                print(error)
+        }
     }
 
- 
+    
     
 }
 
@@ -912,7 +938,7 @@ struct ServerConstant {
     static let get_course_overview = "https://livebo.cloudapp.net/api/courses?category="
     static let get_course_detail = "https://livebo.cloudapp.net/api/courses/"
     static let get_service_providers = "https://livebo.cloudapp.net/api/writers?category="
-    static let get_writer_detail = "https://livebo.cloudapp.net/api/writers?category="
+    static let get_writer_detail = "https://livebo.cloudapp.net/api/writers/"
     
 }
 

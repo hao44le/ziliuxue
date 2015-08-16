@@ -23,16 +23,19 @@ class WriterDetailTableViewCell: UITableViewCell {
         backgroundView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         self.addSubview(backgroundView)
         
-        self.itemLabel = UILabel(frame: CGRectMake(5, 0, 60, 40))
+        self.itemLabel = UILabel(frame: CGRectMake(10, 0, 60, 40))
+        self.itemLabel?.font = UIFont(name: "Helvetica", size: 15)
         self.addSubview(self.itemLabel!)
         
         self.detailLabel = UILabel(frame: CGRectMake(75, 0, 250, 40))
+        self.detailLabel?.font = UIFont(name: "Helvetica", size: 15)
         self.addSubview(self.detailLabel)
         
         self.priceLabel = UILabel(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 130, 0, 80, 40))
+        self.priceLabel?.font = UIFont(name: "Helvetica", size: 15)
         self.addSubview(self.priceLabel)
         
-        self.button = UIButton(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 50, 0, 40, 40))
+        self.button = UIButton(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 70, 5, 60, 30))
         self.addSubview(self.button)
     
     }
