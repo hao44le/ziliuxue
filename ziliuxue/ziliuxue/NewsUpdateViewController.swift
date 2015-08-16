@@ -23,7 +23,7 @@ class NewsUpdateViewController: UIViewController{
     */
     
     var scrollView: UIScrollView!
-    var timeline:   TimelineView!
+    var timeline:   TimelineOverview!
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -43,7 +43,7 @@ class NewsUpdateViewController: UIViewController{
         self.pieView.showPercentage = false
         self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 0)
         */
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineOverviewButtonTouched:", name: "timelineOverviewButtonTouched", object: nil)
         
         self.pieView.hidden = true
         
@@ -62,14 +62,14 @@ class NewsUpdateViewController: UIViewController{
             NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: -50)
             ])
-        timeline = TimelineView(bulletType: .Circle, timeFrames: [
-            TimeFrame(text: "New Year's Day", date: "January 1", image: UIImage(named: "fireworks.jpeg"),detail: "2011.5.16"),
-            TimeFrame(text: "The month of love!", date: "February 14", image: UIImage(named: "heart.png"),detail: "2011.5.16"),
-            TimeFrame(text: "Comes like a lion, leaves like a lamb", date: "March",  image: nil,detail: "1"),
-            TimeFrame(text: "Dumb stupid pranks.", date: "April 1", image: UIImage(named: "april.jpeg"),detail: "1"),
-            TimeFrame(text: "That's right. No image is necessary!", date: "No image?", image: nil,detail: "1"),
-            TimeFrame(text: "This control can stretch. It doesn't matter how long or short the text is, or how many times you wiggle your nose and make a wish. The control always fits the content, and even extends a while at the end so the scroll view it is put into, even when pulled pretty far down, does not show the end of the scroll view.", date: "Long text", image: nil,detail: "1"),
-            TimeFrame(text: "Hope this helps someone!", date: "That's it!", image: nil,detail: "1")
+        timeline = TimelineOverview(bulletType: .Circle, TimeOverviewFrames: [
+            TimeOverviewFrame(text: "New Year's Day", date: "January 1", image: UIImage(named: "fireworks.jpeg"),detail: "2011.5.16"),
+            TimeOverviewFrame(text: "The month of love!", date: "February 14", image: UIImage(named: "heart.png"),detail: "2011.5.16"),
+            TimeOverviewFrame(text: "Comes like a lion, leaves like a lamb", date: "March",  image: nil,detail: "1"),
+            TimeOverviewFrame(text: "Dumb stupid pranks.", date: "April 1", image: UIImage(named: "april.jpeg"),detail: "1"),
+            TimeOverviewFrame(text: "That's right. No image is necessary!", date: "No image?", image: nil,detail: "1"),
+            TimeOverviewFrame(text: "This control can stretch. It doesn't matter how long or short the text is, or how many times you wiggle your nose and make a wish. The control always fits the content, and even extends a while at the end so the scroll view it is put into, even when pulled pretty far down, does not show the end of the scroll view.", date: "Long text", image: nil,detail: "1"),
+            TimeOverviewFrame(text: "Hope this helps someone!", date: "That's it!", image: nil,detail: "1")
             ])
         scrollView.addSubview(timeline)
         scrollView.addConstraints([
@@ -88,6 +88,13 @@ class NewsUpdateViewController: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func timelineOverviewButtonTouched(notification:NSNotification){
+        let userInfo : NSDictionary = notification.userInfo!
+        let selection = userInfo.objectForKey("currentSelection") as! String
+        println(selection)
+        self.performSegueWithIdentifier("toTimelineDetail", sender: self)
     }
     
     /*
