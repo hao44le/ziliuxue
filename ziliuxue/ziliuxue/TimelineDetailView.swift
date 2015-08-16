@@ -235,6 +235,9 @@ public class TimelineView: UIView {
 			NSLayoutConstraint(item: bullet, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 0)
 			])
 		
+        
+        
+        
 		//image
 		if let image = element.image{
 			
@@ -263,18 +266,7 @@ public class TimelineView: UIView {
 				NSLayoutConstraint(item: imageView, attribute: .Bottom, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Bottom, multiplier: 1.0, constant: 0)
 				])
 			
-			let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-			button.setTranslatesAutoresizingMaskIntoConstraints(false)
-			button.backgroundColor = UIColor.clearColor()
-			button.tag = imageTag
-			//button.addTarget(self, action: "tapImage:", forControlEvents: UIControlEvents.TouchUpInside)
-			v.addSubview(button)
-			v.addConstraints([
-				NSLayoutConstraint(item: button, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -60),
-				NSLayoutConstraint(item: button, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 130),
-				NSLayoutConstraint(item: button, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-				NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 0)
-				])
+			
 		}
 		
 		let y = element.image == nil ? 0 as CGFloat : 145.0 as CGFloat
@@ -335,10 +327,13 @@ public class TimelineView: UIView {
 			NSLayoutConstraint(item: line, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 14),
 			NSLayoutConstraint(item: line, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: -14)
 			])
+        
+        
+        
 		
 		return v
 	}
-	
+    
     /*
 	func tapImage(button: UIButton){
 		var imageView: UIImageView? = nil
