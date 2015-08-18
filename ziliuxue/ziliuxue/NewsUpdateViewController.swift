@@ -44,7 +44,7 @@ class NewsUpdateViewController: UIViewController{
         self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 0)
         */
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineOverviewButtonTouched:", name: "timelineOverviewButtonTouched", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineOverviewImageTouched:", name: "timelineOverviewImageTouched", object: nil)
         self.pieView.hidden = true
         
         
@@ -64,7 +64,7 @@ class NewsUpdateViewController: UIViewController{
             ])
         
         timeline = TimelineOverview(bulletType: .Circle, TimeOverviewFrames: [
-            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"January 1",title:"2011.5.16",time:"New Year's Day")], image: UIImage(named: "fireworks.jpeg")),
+            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"January 1",title:"2011.5.16",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.1",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.2",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.3",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.4",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.5",time:"New Year's Day")], image: UIImage(named: "fireworks.jpeg")),
             TimeOverviewFrame(section:[TimelineOverviewSection(detail:"January 1",title:"2011.5.16",time:"New Year's Day")], image: UIImage(named: "fireworks.jpeg"))
             ])
         scrollView.addSubview(timeline)
@@ -91,6 +91,11 @@ class NewsUpdateViewController: UIViewController{
         let selection = userInfo.objectForKey("currentSelection") as! String
         println(selection)
         self.performSegueWithIdentifier("toTimelineDetail", sender: self)
+    }
+    func timelineOverviewImageTouched(notification:NSNotification){
+        let userInfo : NSDictionary = notification.userInfo!
+        let selection = userInfo.objectForKey("currentSelection") as! Int
+        println(selection)
     }
     
     /*
