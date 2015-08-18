@@ -27,8 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         WXApi.registerApp("wx6d67e31185e79352")
-        ServerMethods.signup("456", password: "456", email: "456789@gmail.com")
+        //ServerMethods.signup("456", password: "456", email: "31201234567890@gmail.com")
         //ServerMethods.obtainToken("geleichen@gmail.com", password: "gelei")
+        //ServerMethods.changeUserAvatar("15")
         //ServerMethods.obtainNewToken(NSUserDefaults.standardUserDefaults().objectForKey("refresh_token") as! String)
         //ServerMethods.getCollege("1", to: "3")
         
