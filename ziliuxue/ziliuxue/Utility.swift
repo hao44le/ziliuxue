@@ -561,14 +561,33 @@ struct ServerMethods {
     static func signup(username:String,password:String,email:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"name",password,"password",email,"email")
+        
+        
+        let image = UIImage(named: "gelei_chen")
+        let size = CGSize(width: 100, height: 100)
+        UIGraphicsBeginImageContext(size)
+        image!.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let path = documentDir.stringByAppendingPathComponent("Image.png")
+        UIImagePNGRepresentation(newImage).writeToFile(path, atomically: true)
+        
+        let avatar = UIImagePNGRepresentation(newImage).base64EncodedDataWithOptions(NSDataBase64EncodingOptions.allZeros)
+        
+        
+        
+        
+        
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"name",password,"password",email,"email",avatar,"avatar")
         print(userInfo)
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
             print("signup success\n")
             print(response)
             
-            print(response)
+            //print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("signupFailed", object: nil)
                 print("signup failure\n")
