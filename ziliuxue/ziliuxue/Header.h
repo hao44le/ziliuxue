@@ -31,6 +31,7 @@
 
 #import "MJCollectionViewCell.h"
 #import "MJExtension.h"
+#import <pop/POP.h>
 
 
 

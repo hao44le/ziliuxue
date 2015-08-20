@@ -561,19 +561,42 @@ struct ServerMethods {
     static func signup(username:String,password:String,email:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"name",password,"password",email,"email")
-        print(userInfo)
+        
+        
+        let image = UIImage(named: "15")
+        let size = CGSize(width: 100, height: 100)
+        UIGraphicsBeginImageContext(size)
+        image!.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        /*
+        let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let path = documentDir.stringByAppendingPathComponent("Image.png")
+        UIImagePNGRepresentation(newImage).writeToFile(path, atomically: true)
+        */
+        //let imageData = UIImageJPEGRepresentation(newImage, 1.0)
+        //let string = imageData.base64EncodedDataWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength) as! String
+        let avatar = UIImagePNGRepresentation(newImage).base64EncodedStringWithOptions(nil)
+        println(avatar)
+        
+        
+        
+        
+        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"name",password,"password",email,"email",avatar,"avatar")
+        //print(userInfo)
+        
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
             print("signup success\n")
             print(response)
             
-            print(response)
+            //print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("signupFailed", object: nil)
                 print("signup failure\n")
                 print(error)
         }
+        
         
     }
     
@@ -588,6 +611,30 @@ struct ServerMethods {
             print(respose)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 print("getAllUsers failure\n")
+        }
+    }
+    
+    static func changeUserAvatar(imageName:String){
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        
+        let image = UIImage(named: imageName)
+        let size = CGSize(width: 100, height: 100)
+        UIGraphicsBeginImageContext(size)
+        image!.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let avatar = UIImagePNGRepresentation(newImage).base64EncodedStringWithOptions(nil)
+        //println(avatar)
+        let userInfo = NSDictionary(objectsAndKeys: avatar,"avatar")
+        manager.PUT(ServerConstant.update_user_avatar, parameters: userInfo, success: { (o:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                println("change user avatar susseed")
+            println(response)
+            }) { (o:AFHTTPRequestOperation!, error:NSError!) -> Void in
+            println("change user avatar failed")
+                println(error)
         }
     }
     
@@ -939,7 +986,7 @@ struct ServerConstant {
     static let get_course_detail = "https://livebo.cloudapp.net/api/courses/"
     static let get_service_providers = "https://livebo.cloudapp.net/api/writers?category="
     static let get_writer_detail = "https://livebo.cloudapp.net/api/writers/"
-    
+    static let update_user_avatar = "https://livebo.cloudapp.net/api/users"
 }
 
 

@@ -44,7 +44,7 @@ class NewsUpdateViewController: UIViewController{
         self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 0)
         */
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineOverviewButtonTouched:", name: "timelineOverviewButtonTouched", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineOverviewImageTouched:", name: "timelineOverviewImageTouched", object: nil)
         self.pieView.hidden = true
         
         
@@ -62,14 +62,10 @@ class NewsUpdateViewController: UIViewController{
             NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: -50)
             ])
+        
         timeline = TimelineOverview(bulletType: .Circle, TimeOverviewFrames: [
-            TimeOverviewFrame(text: "New Year's Day", date: "January 1", image: UIImage(named: "fireworks.jpeg"),detail: "2011.5.16"),
-            TimeOverviewFrame(text: "The month of love!", date: "February 14", image: UIImage(named: "heart.png"),detail: "2011.5.16"),
-            TimeOverviewFrame(text: "Comes like a lion, leaves like a lamb", date: "March",  image: nil,detail: "1"),
-            TimeOverviewFrame(text: "Dumb stupid pranks.", date: "April 1", image: UIImage(named: "april.jpeg"),detail: "1"),
-            TimeOverviewFrame(text: "That's right. No image is necessary!", date: "No image?", image: nil,detail: "1"),
-            TimeOverviewFrame(text: "This control can stretch. It doesn't matter how long or short the text is, or how many times you wiggle your nose and make a wish. The control always fits the content, and even extends a while at the end so the scroll view it is put into, even when pulled pretty far down, does not show the end of the scroll view.", date: "Long text", image: nil,detail: "1"),
-            TimeOverviewFrame(text: "Hope this helps someone!", date: "That's it!", image: nil,detail: "1")
+            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"January 1",title:"2011.5.16",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.1",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.2",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.3",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.4",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.5",time:"New Year's Day")], image: UIImage(named: "fireworks.jpeg")),
+            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"January 1",title:"2011.5.16",time:"New Year's Day")], image: UIImage(named: "fireworks.jpeg"))
             ])
         scrollView.addSubview(timeline)
         scrollView.addConstraints([
@@ -95,6 +91,11 @@ class NewsUpdateViewController: UIViewController{
         let selection = userInfo.objectForKey("currentSelection") as! String
         println(selection)
         self.performSegueWithIdentifier("toTimelineDetail", sender: self)
+    }
+    func timelineOverviewImageTouched(notification:NSNotification){
+        let userInfo : NSDictionary = notification.userInfo!
+        let selection = userInfo.objectForKey("currentSelection") as! Int
+        println(selection)
     }
     
     /*

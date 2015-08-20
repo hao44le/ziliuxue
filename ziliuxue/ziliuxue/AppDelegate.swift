@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         WXApi.registerApp("wx6d67e31185e79352")
+        //ServerMethods.signup("456", password: "456", email: "31201234567890@gmail.com")
         //ServerMethods.obtainToken("geleichen@gmail.com", password: "gelei")
+        //ServerMethods.changeUserAvatar("15")
         //ServerMethods.obtainNewToken(NSUserDefaults.standardUserDefaults().objectForKey("refresh_token") as! String)
         //ServerMethods.getCollege("1", to: "3")
         
@@ -109,7 +111,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         return WXApi.handleOpenURL(url, delegate: self)
     }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return WXApi.handleOpenURL(url, delegate: self)
+        
+        if sourceApplication == "com.tencent.xin" {
+            return WXApi.handleOpenURL(url, delegate: self)
+            
+        } else {
+            var navi:UINavigationController?
+            var vc:UIViewController?
+            if url.scheme == "zlx" {
+                if url.host == "login" {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
+                } else if url.host == "signup" {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
+                } else if url.host == "secondTab" {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("secondTab") as! SecondTabViewController
+                }  else if url.host == "thirdTab" {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! ThirdTabViewController
+                } else if url.host == "fourthTab" {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("fourthTab") as! FourthTabBarViewController
+                }  else if url.host == "personalInfo" {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalInfoTab") as! PersonalInfoViewController
+                } else if url.host == "timeline" {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
+                    let tab = vc as! CenterTabViewController
+                    tab.selectedIndex = 1
+                } else if url.host == nil {
+                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController
+                }
+                navi = UINavigationController(rootViewController: vc!)
+                navi!.navigationBar.barTintColor = Utils.mainColor
+                navi!.navigationBar.tintColor = UIColor.whiteColor()
+                navi!.navigationBar.barStyle = UIBarStyle.Black
+                
+                self.drawerController.setCenterViewController(navi, withCloseAnimation: true, completion: nil)
+            }
+            
+        }
+        return false
     }
     func onResp(resp: BaseResp!) {
         if let result = resp as? SendAuthResp {

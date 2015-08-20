@@ -2,6 +2,9 @@
 
 # NSNotification:
 
+timeline overview：
+
+    timelineOverviewButtonTouched
 
 课程：
 

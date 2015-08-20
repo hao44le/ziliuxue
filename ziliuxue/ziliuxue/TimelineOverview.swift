@@ -17,19 +17,22 @@ public struct TimeOverviewFrame{
     /**
     A description of the event.
     */
-    let text: String
+    let section : [TimelineOverviewSection]
+    let image: UIImage?
+}
+
+public struct TimelineOverviewSection{
+    /**
+    A description of the event.
+    */
+    let detail: String
     /**
     The date that the event occured.
     */
-    let date: String
-    /**
-    An optional image to show with the text and the date in the timeline.
-    */
-    let image: UIImage?
+    let title: String
     
-    let detail : String
+    let time : String
 }
-
 
 
 /**
@@ -119,6 +122,8 @@ public class TimelineOverview: UIView {
         setupContent()
     }
     
+    private var dataArray : [UIView] = []
+    private var numberOfView = 0
     //MARK: Private Methods
     
     private func setupContent(){
@@ -200,7 +205,8 @@ public class TimelineOverview: UIView {
     
     private func blockForTimeOverviewFrame(element: TimeOverviewFrame, imageTag: Int) -> UIView{
         let v = UIView()
-        
+        self.dataArray.append(v)
+        self.numberOfView++
         v.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         //bullet
@@ -232,112 +238,172 @@ public class TimelineOverview: UIView {
             imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
             v.addSubview(imageView)
-            imageView.tag = imageTag
+            imageView.tag = self.numberOfView
             v.addConstraints([
                 NSLayoutConstraint(item: imageView, attribute: .Left, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Left, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: imageView, attribute: .Right, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Right, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Top, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: imageView, attribute: .Bottom, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Bottom, multiplier: 1.0, constant: 0)
                 ])
-            /*
+            
+            //button
             let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
             button.setTranslatesAutoresizingMaskIntoConstraints(false)
             button.backgroundColor = UIColor.clearColor()
             button.tag = imageTag
-            //button.addTarget(self, action: "tapImage:", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            //button.backgroundColor = UIColor.blueColor()
+            //self.currentSelection = titleLabel.text
+            button.addTarget(self, action: "tapImage:", forControlEvents: UIControlEvents.TouchUpInside)
             v.addSubview(button)
             v.addConstraints([
-                NSLayoutConstraint(item: button, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -60),
-                NSLayoutConstraint(item: button, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: button, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-                NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 0)
+                NSLayoutConstraint(item: button, attribute: .Left, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: button, attribute: .Right, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Right, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Top, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: button, attribute: .Bottom, relatedBy: .Equal, toItem: backgroundViewForImage, attribute: .Bottom, multiplier: 1.0, constant: 0)
                 ])
-            */
+            
         }
         
         let y = element.image == nil ? 0 as CGFloat : 145.0 as CGFloat
+        var counter : CGFloat = 0
         
-        let titleLabel = UILabel()
-        titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        titleLabel.font = UIFont(name: "ArialMT", size: 20)
-        titleLabel.textColor = titleLabelColor
-        titleLabel.text = element.date
-        titleLabel.numberOfLines = 0
-        titleLabel.layer.masksToBounds = false
-        v.addSubview(titleLabel)
-        v.addConstraints([
-            NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-            NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-            NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: y - 5)
-            ])
-        
-        let detailLabel = UILabel()
-        detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        detailLabel.font = UIFont(name: "ArialMT", size: 20)
-        detailLabel.textColor = detailLabelColor
-        detailLabel.text = element.detail
-        detailLabel.numberOfLines = 0
-        detailLabel.layer.masksToBounds = false
-        detailLabel.textAlignment = NSTextAlignment.Right
-        v.addSubview(detailLabel)
-        v.addConstraints([
-            NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-            NSLayoutConstraint(item: detailLabel, attribute: .Right, relatedBy: .Equal, toItem: v, attribute: .Right, multiplier: 1.0, constant: -10),
-            NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: y - 5)
-            ])
-        
-        let textLabel = UILabel()
-        textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textLabel.font = UIFont(name: "ArialMT", size: 16)
-        textLabel.text = element.text
-        textLabel.textColor = detailLabelColor
-        textLabel.numberOfLines = 0
-        textLabel.layer.masksToBounds = false
-        v.addSubview(textLabel)
-        v.addConstraints([
-            NSLayoutConstraint(item: textLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-            NSLayoutConstraint(item: textLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-            NSLayoutConstraint(item: textLabel, attribute: .Top, relatedBy: .Equal, toItem: titleLabel, attribute: .Bottom, multiplier: 1.0, constant: 5),
-            NSLayoutConstraint(item: textLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
-            ])
+        for section in element.section {
+            ++counter
+            let titleLabel = UILabel()
+            titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            titleLabel.font = UIFont(name: "ArialMT", size: 20)
+            titleLabel.textColor = titleLabelColor
+            titleLabel.text = section.title
+            titleLabel.numberOfLines = 0
+            titleLabel.layer.masksToBounds = false
+            let counterEqualToOne = (y-5) * counter
+            v.addSubview(titleLabel)
+            
+            
+            let timeLabel = UILabel()
+            timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            timeLabel.font = UIFont(name: "ArialMT", size: 20)
+            timeLabel.textColor = detailLabelColor
+            timeLabel.text = section.time
+            timeLabel.numberOfLines = 0
+            timeLabel.layer.masksToBounds = false
+            timeLabel.textAlignment = NSTextAlignment.Right
+            let counterDoesNotEqualToOne = (140 + 70 * (counter - 1))
+            v.addSubview(timeLabel)
+            
+
+            if counter == 1 {
+                v.addConstraints([
+                    NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterEqualToOne)
+                    ])
+                
+                v.addConstraints([
+                    NSLayoutConstraint(item: timeLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: timeLabel, attribute: .Right, relatedBy: .Equal, toItem: v, attribute: .Right, multiplier: 1.0, constant: -10),
+                    NSLayoutConstraint(item: timeLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterEqualToOne)
+                    ])
+            } else {
+                v.addConstraints([
+                    NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterDoesNotEqualToOne)
+                    ])
+                
+                v.addConstraints([
+                    NSLayoutConstraint(item: timeLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: timeLabel, attribute: .Right, relatedBy: .Equal, toItem: v, attribute: .Right, multiplier: 1.0, constant: -10),
+                    NSLayoutConstraint(item: timeLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterDoesNotEqualToOne)
+                    ])
+
+            }
+            
+            if Int(counter) == element.section.count {
+                let detailLabel = UILabel()
+                detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                detailLabel.font = UIFont(name: "ArialMT", size: 16)
+                detailLabel.text = section.detail
+                detailLabel.textColor = detailLabelColor
+                detailLabel.numberOfLines = 0
+                detailLabel.layer.masksToBounds = false
+                v.addSubview(detailLabel)
+                v.addConstraints([
+                    NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
+                    NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25),
+                    NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
+                    ])
+
+            } else {
+                let detailLabel = UILabel()
+                detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                detailLabel.font = UIFont(name: "ArialMT", size: 16)
+                detailLabel.text = section.detail
+                detailLabel.textColor = detailLabelColor
+                detailLabel.numberOfLines = 0
+                detailLabel.layer.masksToBounds = false
+                v.addSubview(detailLabel)
+                v.addConstraints([
+                    NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
+                    NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25)
+                    //NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
+                    ])
+
+            }
+            
+            
+            //button
+            let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+            button.setTranslatesAutoresizingMaskIntoConstraints(false)
+            button.backgroundColor = UIColor.clearColor()
+            button.tag = imageTag
+            button.titleLabel?.text = titleLabel.text
+            //button.backgroundColor = UIColor.blueColor()
+            //self.currentSelection = titleLabel.text
+            button.addTarget(self, action: "tapSection:", forControlEvents: UIControlEvents.TouchUpInside)
+            v.addSubview(button)
+            v.addConstraints([
+                NSLayoutConstraint(item: button, attribute: .Width, relatedBy: .Equal, toItem: titleLabel, attribute: .Width, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: button, attribute: .Height, relatedBy: .Equal, toItem: titleLabel, attribute: .Height, multiplier: 1.0, constant: 50),
+                NSLayoutConstraint(item: button, attribute: .Left, relatedBy: .Equal, toItem: titleLabel, attribute: .Left, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: titleLabel, attribute: .Top, multiplier: 1.0, constant: 0)
+                ])
+            
+        }
         
         //draw the line between the bullets
+        
         let line = UIView()
         line.setTranslatesAutoresizingMaskIntoConstraints(false)
         line.backgroundColor = lineColor
         v.addSubview(line)
         sendSubviewToBack(line)
         v.addConstraints([
-            NSLayoutConstraint(item: line, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 1),
-            NSLayoutConstraint(item: line, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 16.5),
-            NSLayoutConstraint(item: line, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 14),
-            NSLayoutConstraint(item: line, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: -14)
-            ])
+        NSLayoutConstraint(item: line, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 1),
+        NSLayoutConstraint(item: line, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 16.5),
+        NSLayoutConstraint(item: line, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 14),
+        NSLayoutConstraint(item: line, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: -14)
+        ])
         
-        //button
-        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        button.setTranslatesAutoresizingMaskIntoConstraints(false)
-        button.backgroundColor = UIColor.clearColor()
-        button.tag = imageTag
-        button.titleLabel?.text = titleLabel.text
-        button.tintColor = UIColor.whiteColor()
-        //self.currentSelection = titleLabel.text
-        button.addTarget(self, action: "tapImage:", forControlEvents: UIControlEvents.TouchUpInside)
-        v.addSubview(button)
-        v.addConstraints([
-            NSLayoutConstraint(item: button, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -60),
-            NSLayoutConstraint(item: button, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: button, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-            NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 0)
-            ])
 
         
         return v
     }
-    func tapImage(button: UIButton){
+    func tapSection(button: UIButton){
         //println("tapped")
         
         NSNotificationCenter.defaultCenter().postNotificationName("timelineOverviewButtonTouched", object: nil, userInfo: ["currentSelection":button.titleLabel!.text!])
+    }
+    func tapImage(button:UIButton){
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            let view = self.dataArray[self.numberOfView - 1]
+            
+            
+        })
+        NSNotificationCenter.defaultCenter().postNotificationName("timelineOverviewImageTouched", object: nil, userInfo: ["currentSelection":button.tag])
     }
     /*
     func tapImage(button: UIButton){
