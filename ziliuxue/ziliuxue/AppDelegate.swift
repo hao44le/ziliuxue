@@ -261,6 +261,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
                         let privilege = dic.objectForKey("privilege") as! NSArray
                         
                         manager.securityPolicy.allowInvalidCertificates = true
+                        manager.securityPolicy.validatesDomainName = false
                         let others = NSDictionary(objectsAndKeys: city,"city",country,"country",language,"language",province,"province",sex,"sex",unionid,"unionid",privilege,"privilege")
                         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",openid,"open_id",nickname,"nickname",headimgurl,"img_url",others,"others")
                         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
