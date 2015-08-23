@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		47CF44BAB11326517D1316EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB668C83B7354CCF44BD8E39 /* libPods.a */; };
+		7B0890B81B8893E600EB352B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890B71B8893E600EB352B /* QuartzCore.framework */; };
+		7B0890BA1B8893FE00EB352B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890B91B8893FE00EB352B /* Security.framework */; };
+		7B0890BC1B88940600EB352B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890BB1B88940600EB352B /* CoreTelephony.framework */; };
+		7B0890BE1B88940E00EB352B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890BD1B88940E00EB352B /* CoreText.framework */; };
+		7B0890BF1B88941900EB352B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A9491B4FDD990014554F /* UIKit.framework */; };
+		7B0890C01B88942100EB352B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A94B1B4FDD9E0014554F /* Foundation.framework */; };
+		7B0890C21B88942B00EB352B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890C11B88942B00EB352B /* CoreGraphics.framework */; };
 		7B322B121B56A1E800F7ED11 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B322B111B56A1E800F7ED11 /* CourseDetailViewController.swift */; };
 		7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D507F1B520A2D00B7AA2E /* Tool.swift */; };
 		7B9D50851B520B0400B7AA2E /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */; };
@@ -123,6 +130,11 @@
 /* Begin PBXFileReference section */
 		00167EB716BD028099626F64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1C321C7FDF9F7B164B7EC6EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7B0890B71B8893E600EB352B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7B0890B91B8893FE00EB352B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7B0890BB1B88940600EB352B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7B0890BD1B88940E00EB352B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		7B0890C11B88942B00EB352B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7B322B111B56A1E800F7ED11 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		7B9D507F1B520A2D00B7AA2E /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -260,9 +272,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B0890C21B88942B00EB352B /* CoreGraphics.framework in Frameworks */,
+				7B0890C01B88942100EB352B /* Foundation.framework in Frameworks */,
+				7B0890BF1B88941900EB352B /* UIKit.framework in Frameworks */,
+				7B0890BE1B88940E00EB352B /* CoreText.framework in Frameworks */,
+				7B0890BC1B88940600EB352B /* CoreTelephony.framework in Frameworks */,
+				7B0890BA1B8893FE00EB352B /* Security.framework in Frameworks */,
+				C0F7A67A1B58B23A0022F716 /* ImageIO.framework in Frameworks */,
+				7B0890B81B8893E600EB352B /* QuartzCore.framework in Frameworks */,
 				C03CCC8D1B71F50B00E80D99 /* MediaPlayer.framework in Frameworks */,
 				C03CCC8B1B71F50000E80D99 /* AVFoundation.framework in Frameworks */,
-				C0F7A67A1B58B23A0022F716 /* ImageIO.framework in Frameworks */,
 				C008A94E1B4FDDE10014554F /* libstdc++.dylib in Frameworks */,
 				C008A9481B4FDBF50014554F /* libsqlite3.0.dylib in Frameworks */,
 				C008A9461B4FDBEB0014554F /* libz.dylib in Frameworks */,
@@ -296,6 +315,11 @@
 		6B06404AC2686512A5297FAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B0890C11B88942B00EB352B /* CoreGraphics.framework */,
+				7B0890BD1B88940E00EB352B /* CoreText.framework */,
+				7B0890BB1B88940600EB352B /* CoreTelephony.framework */,
+				7B0890B91B8893FE00EB352B /* Security.framework */,
+				7B0890B71B8893E600EB352B /* QuartzCore.framework */,
 				C03CCC8C1B71F50B00E80D99 /* MediaPlayer.framework */,
 				C03CCC8A1B71F50000E80D99 /* AVFoundation.framework */,
 				C0F7A6791B58B23A0022F716 /* ImageIO.framework */,
@@ -778,7 +802,6 @@
 				TargetAttributes = {
 					C0C8F8F91B2ED89E00D698FC = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = MA3FRWNL5H;
 					};
 					C0C8F90E1B2ED89E00D698FC = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -1007,6 +1030,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shuo Wang (36DP86ZYYH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1052,6 +1076,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shuo Wang (36DP86ZYYH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

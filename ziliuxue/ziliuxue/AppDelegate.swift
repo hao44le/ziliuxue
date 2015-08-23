@@ -9,13 +9,17 @@
 import UIKit
 import MediaPlayer
 
+
+
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDelegate {
 
     var window: UIWindow?
     var drawerController:MMDrawerController!
     var isFullScreen = false
-
+    var kWeiboAppKey = "975466949"
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
@@ -24,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         //textField和键盘自适应高度的开关
         IQKeyboardManager.sharedManager().enable = true
+        
+        
+        //weibo初始化
+        WeiboSDK.enableDebugMode(true)
+        WeiboSDK.registerApp(kWeiboAppKey)
+        
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         WXApi.registerApp("wx6d67e31185e79352")
@@ -107,15 +117,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        return WXApi.handleOpenURL(url, delegate: self)
-    }
+    //Apple 已经弃用这个方法 只留用下面的方法即可
+//    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+//        
+//        var urlString = url.absoluteString
+//        if urlString!.hasPrefix(""){
+//            
+//        }else if urlString!.hasPrefix(""){
+//            
+//        }
+//        return WXApi.handleOpenURL(url, delegate: self)
+//    }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
+        println(sourceApplication)
         if sourceApplication == "com.tencent.xin" {
             return WXApi.handleOpenURL(url, delegate: self)
             
-        } else {
+        }else if sourceApplication == "com.sina.weibo"{
+            
+            return WeiboSDK.handleOpenURL(url, delegate: self)
+        }else {
             var navi:UINavigationController?
             var vc:UIViewController?
             if url.scheme == "zlx" {
@@ -149,6 +171,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         }
         return false
     }
+    
+    
+    func didReceiveWeiboRequest(request: WBBaseRequest!) {
+        
+        println("request============")
+        println(request.userInfo)
+    }
+    
+    func didReceiveWeiboResponse(response: WBBaseResponse!) {
+        
+        if response.isKindOfClass(WBAuthorizeResponse){
+            println("response============statusCode")
+            println(response.statusCode.rawValue)
+            println("response============userID")
+            println((response as! WBAuthorizeResponse).userID)
+            println("response============accessToken")
+            println((response as! WBAuthorizeResponse).accessToken)
+            println("response============userInfo")
+            println(response.userInfo)
+            println("response============requestUserInfo")
+            println(response.requestUserInfo)
+        }else if response.isKindOfClass(WBSendMessageToWeiboResponse){
+            
+        }else if response.isKindOfClass(WBPaymentResponse){
+            
+        }
+
+    }
+    
+    
     func onResp(resp: BaseResp!) {
         if let result = resp as? SendAuthResp {
             let code = result.code

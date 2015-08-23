@@ -32,6 +32,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var passwordView: UIView!
     
+    var kWeiboRedirectURI = "https://api.weibo.com/oauth2/default.html"
+    
     //@IBOutlet weak var emailPlaceholderLabel: UILabel!
     //@IBOutlet weak var passwordPlaceholderLabel: UILabel!
     //let name = ["电子邮件","密码"]
@@ -79,6 +81,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
 
 
     @IBAction func weiboClicked(sender: UIButton) {
+        
+        var request = WBAuthorizeRequest.request() as! WBAuthorizeRequest
+        request.redirectURI = kWeiboRedirectURI
+        request.scope = "all"
+        request.userInfo = ["SSO_From":"LoginController"]
+        WeiboSDK.sendRequest(request)
+        
     }
 
     @IBAction func weChatClicked(sender: UIButton) {
