@@ -23,8 +23,10 @@ class NewsUpdateViewController: UIViewController{
     */
     
     var scrollView: UIScrollView!
-    //var timeline:   TimelineOverview!
-    var timeline : TimelineView!
+    var timeline:   TimelineOverview!
+    var currentSelection : String = ""
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         //self.pieView.reloadData()
@@ -62,21 +64,12 @@ class NewsUpdateViewController: UIViewController{
             NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: -50)
             ])
-        /*
+        
         timeline = TimelineOverview(bulletType: .Circle, TimeOverviewFrames: [
-            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"",title:"GPA: 3.8",time:"2011.5.12"),TimelineOverviewSection(detail:"智能推荐： 重考，参加TOEFL补习班",title:"TOEFL: 80",time:"2011.5.16"),TimelineOverviewSection(detail:"January 1",title:"2011.5.2",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.3",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.4",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.5",time:"New Year's Day")], image: UIImage(named: "fireworks.jpeg")),
-            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"January 1",title:"2011.5.16",time:"New Year's Day")], image: UIImage(named: "fireworks.jpeg"))
+            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"",title:"GPA: 3.8",time:"2011.5.12"),TimelineOverviewSection(detail:"智能推荐： 重考，参加TOEFL补习班",title:"TOEFL: 80",time:"2011.5.16"),TimelineOverviewSection(detail:"January 1",title:"2011.5.2",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.3",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.4",time:"New Year's Day"),TimelineOverviewSection(detail:"January 1",title:"2011.5.5",time:"New Year's Day")], image: nil,title:"了解留学过程",time:"2011.5"),
+            TimeOverviewFrame(section:[TimelineOverviewSection(detail:"January 1",title:"2011.5.16",time:"New Year's Day")], image: nil,title:"留学准备",time:"2011.5-12")
             ])
-        */
-        timeline = TimelineView(bulletType: .Circle, timeFrames: [
-            TimeFrame(text: "New Year's Day", date: "January 1", image: UIImage(named: "fireworks"),detail:"1"),
-            TimeFrame(text: "The month of love!", date: "February 14", image: UIImage(named: "heart"),detail:"1"),
-            TimeFrame(text: "Comes like a lion, leaves like a lamb", date: "March",  image: nil,detail:"1"),
-            TimeFrame(text: "Dumb stupid pranks.", date: "April 1", image: UIImage(named: "april"),detail:"1"),
-            TimeFrame(text: "That's right. No image is necessary!", date: "No image?", image: nil,detail:"1"),
-            TimeFrame(text: "This control can stretch. It doesn't matter how long or short the text is, or how many times you wiggle your nose and make a wish. The control always fits the content, and even extends a while at the end so the scroll view it is put into, even when pulled pretty far down, does not show the end of the scroll view.", date: "Long text", image: nil,detail:"1"),
-            TimeFrame(text: "Hope this helps someone!", date: "That's it!", image: nil,detail:"1")
-            ])
+
         scrollView.addSubview(timeline)
         scrollView.addConstraints([
             NSLayoutConstraint(item: timeline, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -99,7 +92,7 @@ class NewsUpdateViewController: UIViewController{
     func timelineOverviewButtonTouched(notification:NSNotification){
         let userInfo : NSDictionary = notification.userInfo!
         let selection = userInfo.objectForKey("currentSelection") as! String
-        println(selection)
+        self.currentSelection = selection
         self.performSegueWithIdentifier("toTimelineDetail", sender: self)
     }
     func timelineOverviewImageTouched(notification:NSNotification){
@@ -125,14 +118,18 @@ class NewsUpdateViewController: UIViewController{
     */
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toTimelineDetail" {
+            let vc = segue.destinationViewController as! TimelineDetailViewController
+            vc.viewTitle = self.currentSelection
+        }
     }
-    */
+    
 
 }

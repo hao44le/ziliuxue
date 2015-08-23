@@ -19,6 +19,8 @@ public struct TimeOverviewFrame{
     */
     let section : [TimelineOverviewSection]
     let image: UIImage?
+    let title : String?
+    let time : String?
 }
 
 public struct TimelineOverviewSection{
@@ -147,6 +149,7 @@ public class TimelineOverview: UIView {
         
         for element in TimeOverviewFrames{
             let v = blockForTimeOverviewFrame(element, imageTag: i)
+            
             addSubview(v)
             addConstraints([
                 NSLayoutConstraint(item: v, attribute: .Top, relatedBy: .Equal, toItem: viewFromAbove, attribute: .Bottom, multiplier: 1.0, constant: 0),
@@ -265,14 +268,53 @@ public class TimelineOverview: UIView {
             
         }
         
-        let y = element.image == nil ? 0 as CGFloat : 145.0 as CGFloat
+        if let title = element.title {
+            
+            if element.image == nil {
+                let titleLabel = UILabel()
+                titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                titleLabel.font = UIFont(name: "ArialMT", size: 25)
+                titleLabel.textColor = UIColor.blackColor()
+                titleLabel.text = title
+                titleLabel.numberOfLines = 0
+                titleLabel.layer.masksToBounds = false
+                v.addSubview(titleLabel)
+                v.addConstraints([
+                    NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -60),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 30),
+                    NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: -12)
+                    ])
+                
+                let timeLabel = UILabel()
+                timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                timeLabel.font = UIFont(name: "ArialMT", size: 18)
+                timeLabel.textColor = UIColor.lightGrayColor()
+                timeLabel.textAlignment = NSTextAlignment.Right
+                timeLabel.text = element.time!
+                timeLabel.numberOfLines = 0
+                timeLabel.layer.masksToBounds = false
+                v.addSubview(timeLabel)
+                v.addConstraints([
+                    NSLayoutConstraint(item: timeLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -60),
+                    NSLayoutConstraint(item: timeLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40),
+                    NSLayoutConstraint(item: timeLabel, attribute: .Right, relatedBy: .Equal, toItem: v, attribute: .Right, multiplier: 1.0, constant: -10),
+                    NSLayoutConstraint(item: timeLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: -12)
+                    ])
+
+                
+                
+            }
+        }
+        
+        let y = element.image == nil ? 40 as CGFloat : 145.0 as CGFloat
         var counter : CGFloat = 0
         
         for section in element.section {
             ++counter
             let titleLabel = UILabel()
             titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-            titleLabel.font = UIFont(name: "ArialMT", size: 20)
+            titleLabel.font = UIFont(name: "ArialMT", size: 18)
             titleLabel.textColor = titleLabelColor
             titleLabel.text = section.title
             titleLabel.numberOfLines = 0
@@ -283,13 +325,13 @@ public class TimelineOverview: UIView {
             
             let timeLabel = UILabel()
             timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-            timeLabel.font = UIFont(name: "ArialMT", size: 20)
+            timeLabel.font = UIFont(name: "ArialMT", size: 16)
             timeLabel.textColor = detailLabelColor
             timeLabel.text = section.time
             timeLabel.numberOfLines = 0
             timeLabel.layer.masksToBounds = false
             timeLabel.textAlignment = NSTextAlignment.Right
-            let counterDoesNotEqualToOne = (140 + 70 * (counter - 1))
+            let counterDoesNotEqualToOne = ((y-5) + 70 * (counter - 1))
             v.addSubview(timeLabel)
             
 
@@ -319,39 +361,41 @@ public class TimelineOverview: UIView {
                     ])
 
             }
-            
-            if Int(counter) == element.section.count {
-                let detailLabel = UILabel()
-                detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-                detailLabel.font = UIFont(name: "ArialMT", size: 16)
-                detailLabel.text = section.detail
-                detailLabel.textColor = detailLabelColor
-                detailLabel.numberOfLines = 0
-                detailLabel.layer.masksToBounds = false
-                v.addSubview(detailLabel)
-                v.addConstraints([
-                    NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-                    NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-                    NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25),
-                    NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
-                    ])
-
-            } else {
-                let detailLabel = UILabel()
-                detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-                detailLabel.font = UIFont(name: "ArialMT", size: 16)
-                detailLabel.text = section.detail
-                detailLabel.textColor = detailLabelColor
-                detailLabel.numberOfLines = 0
-                detailLabel.layer.masksToBounds = false
-                v.addSubview(detailLabel)
-                v.addConstraints([
-                    NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-                    NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-                    NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25)
-                    //NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
-                    ])
-
+            if section.detail != "" {
+                if Int(counter) == element.section.count {
+                    let detailLabel = UILabel()
+                    detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    detailLabel.font = UIFont(name: "ArialMT", size: 13)
+                    detailLabel.text = section.detail
+                    detailLabel.textColor = detailLabelColor
+                    detailLabel.numberOfLines = 0
+                    detailLabel.layer.masksToBounds = false
+                    v.addSubview(detailLabel)
+                    v.addConstraints([
+                        NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                        NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
+                        NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25),
+                        NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
+                        ])
+                    
+                } else {
+                    let detailLabel = UILabel()
+                    detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    detailLabel.font = UIFont(name: "ArialMT", size: 13)
+                    detailLabel.text = section.detail
+                    detailLabel.textColor = detailLabelColor
+                    detailLabel.numberOfLines = 0
+                    detailLabel.layer.masksToBounds = false
+                    v.addSubview(detailLabel)
+                    v.addConstraints([
+                        NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                        NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
+                        NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25)
+                        //NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
+                        ])
+                    
+                }
+ 
             }
             
             
