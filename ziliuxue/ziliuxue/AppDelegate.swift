@@ -182,22 +182,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
     func didReceiveWeiboResponse(response: WBBaseResponse!) {
         
         if response.isKindOfClass(WBAuthorizeResponse){
-            println("response============statusCode")
-            println(response.statusCode.rawValue)
-            println("response============userID")
-            println((response as! WBAuthorizeResponse).userID)
-            println("response============accessToken")
-            println((response as! WBAuthorizeResponse).accessToken)
-            println("response============userInfo")
-            println(response.userInfo)
-            println("response============requestUserInfo")
-            println(response.requestUserInfo)
+
+            if response.statusCode.rawValue == 0{
+                Tool.showSuccessHUD("授权成功")
+                self.queryWeiboUserData((response as! WBAuthorizeResponse).userID, accessToken: (response as! WBAuthorizeResponse).accessToken)
+            }else{
+                Tool.showErrorHUD("授权失败")
+            }
+   
+//            println("response============userID")
+//            println((response as! WBAuthorizeResponse).userID)
+//            println("response============accessToken")
+//            println((response as! WBAuthorizeResponse).accessToken)
+//            println("response============userInfo")
+//            println(response.userInfo)
+//
+//            println(response.requestUserInfo)
         }else if response.isKindOfClass(WBSendMessageToWeiboResponse){
             
         }else if response.isKindOfClass(WBPaymentResponse){
             
         }
 
+    }
+    
+    func queryWeiboUserData(userID:NSString,accessToken:NSString){
+        
+        var weiboURL = "https://api.weibo.com/2/users/show.json"
+        let manager = AFHTTPRequestOperationManager()
+        manager.securityPolicy.allowInvalidCertificates = true
+        
+        var param = ["uid":userID,"access_token":accessToken]
+        
+        manager.GET(weiboURL, parameters: param, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+            
+            print("getWeiboUserData success\n")
+            
+            println(response)
+            
+
+            
+            }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
+                
+                print("getWeiboUserData failure\n")
+                print(error)
+        }
+
+        
     }
     
     
