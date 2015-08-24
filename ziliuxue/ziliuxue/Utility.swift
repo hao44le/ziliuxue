@@ -63,6 +63,7 @@ struct ServerMethods {
         
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.responseSerializer = AFHTTPResponseSerializer()
         
         if let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as? String {
@@ -95,6 +96,7 @@ struct ServerMethods {
         
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.responseSerializer = AFHTTPResponseSerializer()
         
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
@@ -124,6 +126,7 @@ struct ServerMethods {
     static func getUserProfile(){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.responseSerializer = AFHTTPResponseSerializer()
         
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
@@ -153,6 +156,7 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(getCorrectBreakPointForCollegeDetail(collegeID), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
@@ -561,6 +565,7 @@ struct ServerMethods {
     static func signup(username:String,password:String,email:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         
         
         let image = UIImage(named: "15")
@@ -605,6 +610,7 @@ struct ServerMethods {
     static func getAllUsers(token:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(ServerConstant.get_user, parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
             print("getAllUsers success\n")
@@ -618,6 +624,7 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         
         let image = UIImage(named: imageName)
@@ -651,6 +658,7 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         var result : [College] = []
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
@@ -749,6 +757,7 @@ struct ServerMethods {
     static func obtainNewToken(refresh_token:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",refresh_token,"refresh_token")
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenSuccessed", object: nil)
@@ -776,6 +785,8 @@ struct ServerMethods {
     static func obtainToken(email:String,password:String){
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
+        
         let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",email,"email",password,"password")
         
         
@@ -815,6 +826,7 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         var result : [CourseOverView] = []
         
@@ -874,6 +886,7 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
     
         var url = ServerConstant.get_course_detail
@@ -912,6 +925,7 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         
         var url = ServerConstant.get_service_providers
@@ -941,6 +955,7 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         
         var url = ServerConstant.get_writer_detail
