@@ -152,7 +152,7 @@ public class TimelineOverview: UIView {
             
             addSubview(v)
             addConstraints([
-                NSLayoutConstraint(item: v, attribute: .Top, relatedBy: .Equal, toItem: viewFromAbove, attribute: .Bottom, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: v, attribute: .Top, relatedBy: .Equal, toItem: viewFromAbove, attribute: .Bottom, multiplier: 1.0, constant: 20),
                 NSLayoutConstraint(item: v, attribute: .Left, relatedBy: .Equal, toItem: viewFromAbove, attribute: .Left, multiplier: 1.0, constant: 0),
                 NSLayoutConstraint(item: v, attribute: .Width, relatedBy: .Equal, toItem: viewFromAbove, attribute: .Width, multiplier: 1.0, constant: 0),
                 ])
@@ -211,6 +211,20 @@ public class TimelineOverview: UIView {
         self.dataArray.append(v)
         self.numberOfView++
         v.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        //backgroundView
+        let backgroundView = UIView()
+        backgroundView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        backgroundView.backgroundColor = UIColor.lightGrayColor()
+        backgroundView.layer.cornerRadius = 10
+        v.addSubview(backgroundView)
+        v.addConstraints([
+            NSLayoutConstraint(item: backgroundView, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+            NSLayoutConstraint(item: backgroundView, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 35),
+            NSLayoutConstraint(item: backgroundView, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: -30),
+            NSLayoutConstraint(item: backgroundView, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 30)
+            ])
+
         
         //bullet
         let s = CGSize(width: 14, height: 14)
