@@ -137,7 +137,7 @@ public class TimelineOverview: UIView {
         guideView.setTranslatesAutoresizingMaskIntoConstraints(false)
         addSubview(guideView)
         addConstraints([
-            NSLayoutConstraint(item: guideView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 24),
+            NSLayoutConstraint(item: guideView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 10),
             NSLayoutConstraint(item: guideView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: guideView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: guideView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
@@ -212,19 +212,8 @@ public class TimelineOverview: UIView {
         self.numberOfView++
         v.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        //backgroundView
-        let backgroundView = UIView()
-        backgroundView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        backgroundView.backgroundColor = UIColor.lightGrayColor()
-        backgroundView.layer.cornerRadius = 10
-        v.addSubview(backgroundView)
-        v.addConstraints([
-            NSLayoutConstraint(item: backgroundView, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-            NSLayoutConstraint(item: backgroundView, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 35),
-            NSLayoutConstraint(item: backgroundView, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: -30),
-            NSLayoutConstraint(item: backgroundView, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 30)
-            ])
-
+        
+        
         
         //bullet
         let s = CGSize(width: 14, height: 14)
@@ -325,6 +314,15 @@ public class TimelineOverview: UIView {
         var counter : CGFloat = 0
         
         for section in element.section {
+            
+            //backgroundView
+            let backgroundView = UIView()
+            backgroundView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            backgroundView.backgroundColor = UIColor.lightGrayColor()
+            backgroundView.layer.cornerRadius = 10
+            v.addSubview(backgroundView)
+            
+            
             ++counter
             let titleLabel = UILabel()
             titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -361,6 +359,11 @@ public class TimelineOverview: UIView {
                     NSLayoutConstraint(item: timeLabel, attribute: .Right, relatedBy: .Equal, toItem: v, attribute: .Right, multiplier: 1.0, constant: -10),
                     NSLayoutConstraint(item: timeLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterEqualToOne)
                     ])
+                v.addConstraints([
+                    NSLayoutConstraint(item: backgroundView, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: backgroundView, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 35),
+                    NSLayoutConstraint(item: backgroundView, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterEqualToOne)
+                    ])
             } else {
                 v.addConstraints([
                     NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
@@ -373,42 +376,41 @@ public class TimelineOverview: UIView {
                     NSLayoutConstraint(item: timeLabel, attribute: .Right, relatedBy: .Equal, toItem: v, attribute: .Right, multiplier: 1.0, constant: -10),
                     NSLayoutConstraint(item: timeLabel, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterDoesNotEqualToOne)
                     ])
+                v.addConstraints([
+                    NSLayoutConstraint(item: backgroundView, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: backgroundView, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 35),
+                    NSLayoutConstraint(item: backgroundView, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: counterDoesNotEqualToOne)
+                    ])
 
             }
             if section.detail != "" {
+                
+                let detailLabel = UILabel()
+                detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                detailLabel.font = UIFont(name: "ArialMT", size: 13)
+                detailLabel.text = section.detail
+                detailLabel.textColor = detailLabelColor
+                detailLabel.numberOfLines = 0
+                detailLabel.layer.masksToBounds = false
+                v.addSubview(detailLabel)
+                v.addConstraints([
+                    NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
+                    NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
+                    NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 40)
+                    ])
+                
                 if Int(counter) == element.section.count {
-                    let detailLabel = UILabel()
-                    detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-                    detailLabel.font = UIFont(name: "ArialMT", size: 13)
-                    detailLabel.text = section.detail
-                    detailLabel.textColor = detailLabelColor
-                    detailLabel.numberOfLines = 0
-                    detailLabel.layer.masksToBounds = false
-                    v.addSubview(detailLabel)
+                    
                     v.addConstraints([
-                        NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-                        NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-                        NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25),
+                        
                         NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
                         ])
                     
-                } else {
-                    let detailLabel = UILabel()
-                    detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-                    detailLabel.font = UIFont(name: "ArialMT", size: 13)
-                    detailLabel.text = section.detail
-                    detailLabel.textColor = detailLabelColor
-                    detailLabel.numberOfLines = 0
-                    detailLabel.layer.masksToBounds = false
-                    v.addSubview(detailLabel)
-                    v.addConstraints([
-                        NSLayoutConstraint(item: detailLabel, attribute: .Width, relatedBy: .Equal, toItem: v, attribute: .Width, multiplier: 1.0, constant: -40),
-                        NSLayoutConstraint(item: detailLabel, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 40),
-                        NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: timeLabel, attribute: .Top, multiplier: 1.0, constant: 25)
-                        //NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: -10)
-                        ])
                     
-                }
+                }                
+                v.addConstraints([
+                    NSLayoutConstraint(item: backgroundView, attribute: .Bottom, relatedBy: .Equal, toItem: detailLabel, attribute: .Bottom, multiplier: 1.0, constant: 0)
+                    ])
  
             }
             
@@ -443,7 +445,7 @@ public class TimelineOverview: UIView {
         NSLayoutConstraint(item: line, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 1),
         NSLayoutConstraint(item: line, attribute: .Left, relatedBy: .Equal, toItem: v, attribute: .Left, multiplier: 1.0, constant: 16.5),
         NSLayoutConstraint(item: line, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 14),
-        NSLayoutConstraint(item: line, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: -14)
+        NSLayoutConstraint(item: line, attribute: .Height, relatedBy: .Equal, toItem: v, attribute: .Height, multiplier: 1.0, constant: 7)
         ])
         
 
