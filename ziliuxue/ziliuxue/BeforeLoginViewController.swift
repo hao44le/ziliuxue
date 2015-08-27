@@ -36,9 +36,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "自留学", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
-        signUpButton.layer.cornerRadius = 25
-        signUpButton.layer.borderWidth = 0.5
-        signUpButton.layer.borderColor = UIColor.whiteColor().CGColor
+
         
         
         loginButton.layer.cornerRadius = 25
