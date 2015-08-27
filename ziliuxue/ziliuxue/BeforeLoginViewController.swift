@@ -10,6 +10,7 @@ import UIKit
 
 class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var inputField: UITextField!
@@ -22,6 +23,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
     }
 
     @IBAction func weChatButtonClicked(sender: UIButton) {
+        
     }
     
     
@@ -46,9 +48,13 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         weChatButton.layer.borderWidth = 0.5
         weChatButton.layer.borderColor = UIColor.whiteColor().CGColor
         
-        inputField.layer.cornerRadius = 25
+        inputField.layer.cornerRadius = 20
         inputField.layer.borderWidth = 0.5
         inputField.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        backButton.layer.cornerRadius = 25
+        backButton.layer.borderWidth = 0.5
+        backButton.layer.borderColor = UIColor.whiteColor().CGColor
         
         loginButton.layer.cornerRadius = 25
         loginButton.layer.borderWidth = 0.5
