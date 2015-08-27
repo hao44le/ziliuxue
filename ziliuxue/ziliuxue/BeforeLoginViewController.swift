@@ -10,16 +10,18 @@ import UIKit
 
 class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var inputField: UITextField!
 
+    @IBOutlet weak var weChatButton: UIButton!
     
+    @IBOutlet weak var weiboButton: UIButton!
     
-    @IBAction func signupClicked(sender: AnyObject) {
-        
-        //performSegueWithIdentifier("toView", sender: self)
-        
+    @IBAction func weiboButtonClicked(sender: UIButton) {
+    }
+
+    @IBAction func weChatButtonClicked(sender: UIButton) {
     }
     
     
@@ -36,8 +38,17 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "自留学", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
-
+        weiboButton.layer.cornerRadius = 25
+        weiboButton.layer.borderWidth = 0.5
+        weiboButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         
+        weChatButton.layer.cornerRadius = 25
+        weChatButton.layer.borderWidth = 0.5
+        weChatButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        inputField.layer.cornerRadius = 25
+        inputField.layer.borderWidth = 0.5
+        inputField.layer.borderColor = UIColor.whiteColor().CGColor
         
         loginButton.layer.cornerRadius = 25
         loginButton.layer.borderWidth = 0.5
@@ -49,19 +60,11 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         self.navigationController?.navigationBar.hidden = true
     }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController!.interactivePopGestureRecognizer!.delegate = nil
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         return false
