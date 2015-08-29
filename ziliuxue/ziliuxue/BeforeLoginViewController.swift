@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
+class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var weiboBottomLayout: NSLayoutConstraint!
     @IBOutlet weak var bottomLayout: NSLayoutConstraint!
@@ -50,7 +50,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
     }
     
     @IBAction func viewPasswordButtonClicked(sender: UIButton) {
-        self.passwordInputField.secureTextEntry != self.passwordInputField.secureTextEntry
+        self.passwordInputField.secureTextEntry = !self.passwordInputField.secureTextEntry
     }
     
     @IBAction func loginClicked(sender: UIButton) {
@@ -58,6 +58,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         if !firstClick {
             self.firstClick = true
             self.setAllHiddenView(false)
+            
         } else {
             if usernameInputfield.text == "" {
                 let ac = UIAlertView(title: "请输入邮箱", message: nil, delegate: nil, cancelButtonTitle: "好的")
@@ -126,6 +127,8 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
     
     
     func setupView(){
+        self.usernameInputfield.delegate = self
+        self.passwordInputField.delegate = self
         
         self.passwordInputField.hidden = true
         self.passwordbackButton.hidden = true
@@ -165,6 +168,14 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         loginButton.layer.borderColor = UIColor.whiteColor().CGColor
         */
     }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == self.usernameInputfield {
+            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 105
+        } else {
+            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 60
+        }
+
+    }
     
     func setAllHiddenView(option:Bool){
         self.passwordInputField.alpha = 0
@@ -187,7 +198,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         self.passwordInputField.pop_addAnimation(anim, forKey: "alpha")
         self.usernameInputfield.pop_addAnimation(anim, forKey: "alpha")
         
-        
+        self.usernameInputfield.becomeFirstResponder()
         
     }
     
@@ -201,6 +212,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.hidden = false
         self.navigationController!.interactivePopGestureRecognizer!.delegate = nil
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 10
     }
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         return false

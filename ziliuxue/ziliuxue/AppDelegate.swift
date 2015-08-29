@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
         //textField和键盘自适应高度的开关
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        IQKeyboardManager.sharedManager().overrideKeyboardAppearance = true
+        IQKeyboardManager.sharedManager().keyboardAppearance = UIKeyboardAppearance.Dark
         
         //weibo初始化
         WeiboSDK.enableDebugMode(true)
