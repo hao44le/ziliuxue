@@ -8,36 +8,18 @@
 
 import UIKit
 
-class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITableViewDelegate,UITableViewDataSource {
+class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource {
+
 
     
-    
-    
-    @IBOutlet weak var acceptance_rate: UILabel!
-    
-    @IBOutlet weak var applicationDeadline: UILabel!
-    
-    @IBOutlet weak var numberOfStudent: UILabel!
-    
-    @IBOutlet weak var tuitionLabel: UILabel!
-    
-    @IBOutlet weak var costSecondDescription: UILabel!
-    @IBOutlet weak var costFirstDescription: UILabel!
-    @IBOutlet weak var applicationDescriptionLabel: UILabel!
+    @IBOutlet var backScrollView: UIScrollView!
+
     @IBOutlet weak var universityDescription: UITextView!
     @IBOutlet weak var universityName: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
-    
-    @IBOutlet weak var basicInfoTableView: UITableView!
-    
-    @IBOutlet weak var applicationInfoTableView: UITableView!
-    
-    @IBOutlet weak var academicInfoTableView: UITableView!
-    
-    @IBOutlet weak var costInfoTableView: UITableView!
-    
+
     var basicInfoLeft = ["学校类型","成立时间","宗教联系","学期","地理","2013年捐款"]
     var basicInfoRight = ["私立，男女同校","1746","无","学期","郊区","＄18,786,132,000"]
     
@@ -66,17 +48,11 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     }
     var collegeDetail : CollegeDetail?{
         didSet{
-            self.collegeOverview = collegeDetail!.collegeOverview
-            self.collegeFinancial = collegeDetail!.collegeFinancial
+         
             self.college = collegeDetail!.college
         }
     }
-    var collegeOverview : CollegeOverview?
-    //var collegeRanking : CollegeRanking?
-    //var collegeApplying : CollegeApplying?
-    //var collegeAcademic : CollegeAcademic?
-    var collegeFinancial : CollegeFinancial?
-    
+
     var firstImageOfSwipeView : UIImageView = UIImageView()
     var secondImageOfSwipeView : UIImageView = UIImageView()
     var thirdImageOfSwipeView : UIImageView = UIImageView()
@@ -109,69 +85,31 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "费用", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.performSegueWithIdentifier("toCost", sender: self)
     }
-    
-    
-    
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.backScrollView.contentSize = CGSize(width: ScreenSize.SCREEN_WIDTH, height: 1604)
+        println(self.backScrollView.contentSize)
         swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
-        self.applicationDescriptionLabel.text = applicationInfoFirstCell
-        self.costFirstDescription.text = costFirstCell
-        self.costSecondDescription.text = costSecondCell
+
+       
         self.setUpView()
-        //self.universityDescription.hidden = true
-        // Do any additional setup after loading the view.
+
     }
     
     func setUpView(){
-        //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
+    
         self.logoImageView.image = UIImage(named: college!.name + " logo")
         self.logoImageView.layer.cornerRadius = 54
         self.logoImageView.layer.borderColor = UIColor.whiteColor().CGColor
         self.logoImageView.layer.borderWidth = 2
-        //cell.universityName.sizeToFit()
+      
         self.logoImageView.clipsToBounds = true
         self.universityName.text = self.collegeName
-        self.tuitionLabel.text = self.collegeOverview!.tuition_and_fees
-        //self.numberOfStudent.text = self.collegeOverview!.
-        self.applicationDeadline.text = self.collegeOverview!.application_deadline
-        self.acceptance_rate.text = self.collegeOverview!.acceptance_rate
-        self.basicInfoRight[0] = self.collegeOverview!.school_type
-        self.basicInfoRight[1] = self.collegeOverview!.year_founded
-        self.basicInfoRight[2] = self.collegeOverview!.religious_affiliation
-        self.basicInfoRight[3] = self.collegeOverview!.academic_calendar
-        self.basicInfoRight[4] = self.collegeOverview!.setting
-        self.basicInfoRight[5] = self.collegeOverview!.endowment
-        
-        self.applicationInfoRight[0] = self.collegeOverview!.selectivity
-        self.applicationInfoRight[1] = self.collegeOverview!.acceptance_rate
-        self.applicationInfoRight[2] = self.collegeOverview!.application_deadline
-        self.applicationInfoRight[3] = self.collegeOverview!.SAT_ACT_scores_must_be_received_by
-        
-        self.academicInfoRight[1] = self.collegeOverview!.student_faculty_ration
-        self.academicInfoRight[2] = self.collegeOverview!.four_year_graduation_rate
-        
-        var counter = 4
-        self.collegeOverview?.five_most_popular_majors.enumerateKeysAndObjectsUsingBlock({ (key:AnyObject!, value:AnyObject!, bool:UnsafeMutablePointer<ObjCBool>) -> Void in
-            //println(key)
-            self.academicInfoLeft[counter] = key as! String
-            self.academicInfoRight[counter] = value as! String
-            counter++
-        })
-        
-        
-        self.costInfoRight[0] = self.collegeFinancial!.tuition_and_fees
-        self.costInfoRight[1] = self.collegeFinancial!.room_and_board
-        self.costInfoRight[2] = self.collegeFinancial!.estimated_cost_of_books_and_supplies
-        self.costInfoRight[3] = self.collegeFinancial!.estimated_personal_expenses
-        self.costInfoRight[4] = self.collegeFinancial!.average_need_based_scholarship
-        self.costInfoRight[5] = self.collegeFinancial!.students_who_received_need_based_scholarship
-        
+
         
         
     }
@@ -182,7 +120,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         //self.tabBarController?.tabBar.hidden = true
         //self.navigationController?.setToolbarHidden(true, animated: false)
         self.navigationController?.navigationBar.topItem?.title = self.collegeName
-        //println(college!.name + college!.logo)
+
         
     }
     override func didReceiveMemoryWarning() {
@@ -216,7 +154,6 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
             if let image = UIImage(named: college!.name + "photo\(index)") {
                 imageView.image = image
             } else {
-                //println(ServerConstant.baseURL + college!.photos[index])
                 switch index {
                 case 0:
                     imageView.image = firstImageOfSwipeView.image
@@ -248,55 +185,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         self.pageControl.currentPage = swipeView.currentPage
     }
 
-    // MARK: UITableView
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == basicInfoTableView{
-            return basicInfoLeft.count
-        } else if tableView == applicationInfoTableView{
-            return applicationInfoLeft.count
-        } else if tableView == academicInfoTableView {
-            return academicInfoLeft.count
-        } else if tableView == costInfoTableView{
-            return costInfoLeft.count
-        }
-        return 1
-    }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        if tableView == basicInfoTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel!.text = basicInfoLeft[indexPath.row]
-            cell.detailTextLabel!.text = basicInfoRight[indexPath.row]
-            return cell
-        } else if tableView == applicationInfoTableView{
-                let cell = tableView.dequeueReusableCellWithIdentifier("applicationInfoCell", forIndexPath: indexPath) as! UITableViewCell
-                cell.textLabel!.text = applicationInfoLeft[indexPath.row]
-                cell.detailTextLabel!.text = applicationInfoRight[indexPath.row]
-                return cell
-            
-        } else if tableView == academicInfoTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("academicInfoCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel!.text = academicInfoLeft[indexPath.row]
-            cell.detailTextLabel!.text = academicInfoRight[indexPath.row]
-            
-            
-            return cell
-        } else if tableView == costInfoTableView {
-            let cell = tableView.dequeueReusableCellWithIdentifier("costInfoCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel!.text = costInfoLeft[indexPath.row]
-            cell.detailTextLabel!.text = costInfoRight[indexPath.row]
-            return cell
-        }
-        
-        
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        return cell
-        
-    }
 
     
     // MARK: - Navigation
@@ -305,24 +194,24 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        switch segue.identifier! {
-            case "toRanking":
-                let vc = segue.destinationViewController as! SchoolRankingViewController
-                vc.collegeRanking = collegeDetail!.collegeRanking
-            case "toApplication":
-                let vc = segue.destinationViewController as! SchoolApplicationViewController
-                vc.collegeApplication = collegeDetail!.collegeApplying
-            
-            
-            case "toAcamidec":
-                let vc = segue.destinationViewController as! SchoolAcademicViewController
-                vc.collegeAcademic = collegeDetail!.collegeAcademic
-            case "toCost":
-                let vc = segue.destinationViewController as! SchoolCostViewController
-                vc.collegeCost = collegeDetail!.collegeFinancial
-        default:
-            break
-        }
+//        switch segue.identifier! {
+//            case "toRanking":
+//                let vc = segue.destinationViewController as! SchoolRankingViewController
+//                vc.collegeRanking = collegeDetail!.collegeRanking
+//            case "toApplication":
+//                let vc = segue.destinationViewController as! SchoolApplicationViewController
+//                vc.collegeApplication = collegeDetail!.collegeApplying
+//            
+//            
+//            case "toAcamidec":
+//                let vc = segue.destinationViewController as! SchoolAcademicViewController
+//                vc.collegeAcademic = collegeDetail!.collegeAcademic
+//            case "toCost":
+//                let vc = segue.destinationViewController as! SchoolCostViewController
+//                vc.collegeCost = collegeDetail!.collegeFinancial
+//        default:
+//            break
+//        }
     }
     
 
