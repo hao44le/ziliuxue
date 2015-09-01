@@ -13,6 +13,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     @IBOutlet weak var weiboBottomLayout: NSLayoutConstraint!
     @IBOutlet weak var bottomLayout: NSLayoutConstraint!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
     
     @IBOutlet weak var passwordbackButton: UIButton!
     @IBOutlet weak var passwordInputField: UITextField!
@@ -79,6 +80,12 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         
         
     }
+    
+    @IBAction func signupClicked(sender: UIButton) {
+        
+    }
+    
+    
     
     
     var firstClick = false

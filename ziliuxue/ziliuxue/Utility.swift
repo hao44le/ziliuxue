@@ -9,7 +9,7 @@
 import UIKit
 
 class Utils: NSObject {
-    static let mainColor = UIColor(red: 249/255, green: 99/255, blue: 50/255, alpha: 1)
+    static let mainColor = UIColor(red: 0/255, green: 135/255, blue: 218/255, alpha: 1)
     static let tabbarColor = UIColor(white: 1, alpha: 0.8)
 }
 

@@ -11,7 +11,7 @@
         <!--Before Login View Controller-->
         <scene sceneID="hLp-pf-xNV">
             <objects>
-                <viewController id="n9S-2x-kgU" customClass="BeforeLoginViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="n9S-2x-kgU" customClass="BeforeLoginViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="beX-7p-26H"/>
                         <viewControllerLayoutGuide type="bottom" id="Caz-jf-EX1"/>
@@ -43,40 +43,56 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="MsU-sf-OGr">
+                                    <constraint firstAttribute="height" constant="50" id="OhY-Wj-MZU"/>
+                                    <constraint firstAttribute="width" constant="170" id="bua-GM-hY1"/>
+                                    <constraint firstAttribute="height" constant="50" id="mLl-1n-pDV">
                                         <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                                     </constraint>
-                                    <constraint firstAttribute="height" constant="50" id="OhY-Wj-MZU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="注册/登录">
+                                <state key="normal" title="注册">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="MsU-sf-OGr"/>
                                         <exclude reference="OhY-Wj-MZU"/>
+                                        <exclude reference="bua-GM-hY1"/>
+                                        <exclude reference="mLl-1n-pDV"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="MsU-sf-OGr"/>
                                         <exclude reference="OhY-Wj-MZU"/>
+                                        <exclude reference="bua-GM-hY1"/>
+                                        <include reference="mLl-1n-pDV"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="loginClicked:" destination="n9S-2x-kgU" eventType="touchUpInside" id="dJ1-k8-wFV"/>
+                                    <action selector="signupClicked:" destination="n9S-2x-kgU" eventType="touchUpInside" id="cQv-SS-gmN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixf-nN-TeG">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7DR-hl-WH1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="   微博登陆">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7DR-hl-WH1"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7DR-hl-WH1"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="weiboButtonClicked:" destination="n9S-2x-kgU" eventType="touchUpInside" id="usn-yP-8tt"/>
                                 </connections>
@@ -96,35 +112,35 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weiboLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-9U-kEk">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="f2K-8r-65T"/>
+                                    <constraint firstAttribute="height" constant="32" id="9LK-G6-4Z5"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="f2K-8r-65T"/>
+                                        <exclude reference="9LK-G6-4Z5"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="f2K-8r-65T"/>
+                                        <include reference="9LK-G6-4Z5"/>
                                     </mask>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechatLogo" translatesAutoresizingMaskIntoConstraints="NO" id="JYp-bJ-4fW">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="U5r-JZ-eqg"/>
-                                    <constraint firstAttribute="height" constant="27" id="j7C-J8-3Xn"/>
+                                    <constraint firstAttribute="width" constant="34" id="KiN-is-diY"/>
+                                    <constraint firstAttribute="height" constant="27" id="eEv-KA-Qc9"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="U5r-JZ-eqg"/>
-                                        <exclude reference="j7C-J8-3Xn"/>
+                                        <exclude reference="KiN-is-diY"/>
+                                        <exclude reference="eEv-KA-Qc9"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="U5r-JZ-eqg"/>
-                                        <include reference="j7C-J8-3Xn"/>
+                                        <include reference="KiN-is-diY"/>
+                                        <include reference="eEv-KA-Qc9"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -144,123 +160,156 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="7wo-ek-Gc9">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="TDH-K8-EDd"/>
-                                    <constraint firstAttribute="width" constant="30" id="juK-Vi-fah"/>
+                                    <constraint firstAttribute="width" constant="30" id="GkS-Jc-Olb"/>
+                                    <constraint firstAttribute="height" constant="30" id="YkE-FB-6ft"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="TDH-K8-EDd"/>
-                                        <exclude reference="juK-Vi-fah"/>
+                                        <exclude reference="GkS-Jc-Olb"/>
+                                        <exclude reference="YkE-FB-6ft"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="TDH-K8-EDd"/>
-                                        <include reference="juK-Vi-fah"/>
+                                        <include reference="GkS-Jc-Olb"/>
+                                        <include reference="YkE-FB-6ft"/>
                                     </mask>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-cY-c8B">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="YUk-jT-2Vz"/>
+                                    <constraint firstAttribute="height" constant="30" id="uTe-II-XdV"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="YUk-jT-2Vz"/>
+                                        <exclude reference="uTe-II-XdV"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="YUk-jT-2Vz"/>
+                                        <include reference="uTe-II-XdV"/>
                                     </mask>
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1z4-ER-S3u">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="QiQ-49-S5h"/>
+                                    <constraint firstAttribute="width" constant="30" id="Gbs-WI-VXC"/>
                                 </constraints>
                                 <state key="normal" image="heart">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="QiQ-49-S5h"/>
+                                        <exclude reference="Gbs-WI-VXC"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="QiQ-49-S5h"/>
+                                        <include reference="Gbs-WI-VXC"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <action selector="viewPasswordButtonClicked:" destination="n9S-2x-kgU" eventType="touchUpInside" id="gi6-5w-88k"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSd-J8-fhz">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hgA-G5-Kq7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="登陆">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hgA-G5-Kq7"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="hgA-G5-Kq7"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="loginClicked:" destination="n9S-2x-kgU" eventType="touchUpInside" id="ywd-Ng-jEN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Caz-jf-EX1" firstAttribute="top" secondItem="Cr9-9U-kEk" secondAttribute="bottom" constant="60" id="5Ve-2D-cvl">
-                                <variation key="heightClass=regular-widthClass=compact" constant="63"/>
+                            <constraint firstItem="JYp-bJ-4fW" firstAttribute="top" secondItem="15W-i7-KjE" secondAttribute="bottom" constant="29" id="0be-Oi-lNh"/>
+                            <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="4iF-u3-cax" secondAttribute="top" id="1J0-hm-azP"/>
+                            <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="wHY-FE-vck" secondAttribute="bottom" constant="14" id="1ha-Zw-ktv">
+                                <variation key="heightClass=regular-widthClass=compact" constant="25"/>
                             </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="1z4-ER-S3u" secondAttribute="trailing" constant="4" id="5ma-5W-KaR"/>
-                            <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="wHY-FE-vck" secondAttribute="bottom" constant="5" id="6N6-vx-U6e"/>
-                            <constraint firstItem="0oO-3H-x4V" firstAttribute="leading" secondItem="15W-i7-KjE" secondAttribute="leading" id="6qZ-Oa-ECR"/>
+                            <constraint firstItem="Caz-jf-EX1" firstAttribute="top" secondItem="ixf-nN-TeG" secondAttribute="bottom" constant="45" id="2CX-ls-AX9">
+                                <variation key="heightClass=regular-widthClass=compact" constant="34"/>
+                            </constraint>
+                            <constraint firstItem="1z4-ER-S3u" firstAttribute="top" secondItem="EqD-cY-c8B" secondAttribute="top" id="3pe-D4-N6l"/>
+                            <constraint firstItem="ixf-nN-TeG" firstAttribute="leading" secondItem="0oO-3H-x4V" secondAttribute="leading" id="5Bg-vc-VAW"/>
+                            <constraint firstItem="4iF-u3-cax" firstAttribute="leading" secondItem="dXv-IQ-FMf" secondAttribute="leading" id="5kP-VA-GX5"/>
                             <constraint firstItem="wHY-FE-vck" firstAttribute="centerY" secondItem="1Z8-g8-JU6" secondAttribute="centerY" constant="54.5" id="78A-yV-a7r"/>
-                            <constraint firstItem="wHY-FE-vck" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" id="7Zb-wI-Ek1"/>
-                            <constraint firstItem="dXv-IQ-FMf" firstAttribute="centerY" secondItem="7wo-ek-Gc9" secondAttribute="centerY" id="7wA-wr-apm"/>
-                            <constraint firstItem="Cr9-9U-kEk" firstAttribute="top" secondItem="0oO-3H-x4V" secondAttribute="bottom" constant="30" id="Fht-fh-Per">
-                                <variation key="heightClass=regular-widthClass=compact" constant="27"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1z4-ER-S3u" secondAttribute="trailing" constant="4" id="83h-UK-Dwk"/>
+                            <constraint firstAttribute="trailing" secondItem="1Z8-g8-JU6" secondAttribute="trailing" id="8Oa-JT-T1w"/>
+                            <constraint firstItem="JYp-bJ-4fW" firstAttribute="leading" secondItem="Cr9-9U-kEk" secondAttribute="leading" id="9Y0-ve-iIK"/>
+                            <constraint firstItem="0oO-3H-x4V" firstAttribute="top" secondItem="15W-i7-KjE" secondAttribute="bottom" constant="18" id="9sh-wv-GXy"/>
+                            <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="Exf-su-6L2" secondAttribute="bottom" constant="5" id="Asa-ss-CZI"/>
+                            <constraint firstItem="1z4-ER-S3u" firstAttribute="centerY" secondItem="wHY-FE-vck" secondAttribute="centerY" id="DKQ-aN-nQH"/>
+                            <constraint firstItem="1Z8-g8-JU6" firstAttribute="top" secondItem="DxK-0i-zde" secondAttribute="top" id="EVX-7l-PMq"/>
+                            <constraint firstItem="1Z8-g8-JU6" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leading" id="Ea2-XA-pnZ"/>
+                            <constraint firstItem="1z4-ER-S3u" firstAttribute="bottom" secondItem="EqD-cY-c8B" secondAttribute="bottom" id="Gk2-fE-s6y"/>
+                            <constraint firstItem="Cr9-9U-kEk" firstAttribute="top" secondItem="0oO-3H-x4V" secondAttribute="bottom" constant="27" id="IPZ-uo-YgY"/>
+                            <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="EqD-cY-c8B" secondAttribute="bottom" constant="19" id="It0-zK-tck">
+                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
                             </constraint>
-                            <constraint firstItem="EqD-cY-c8B" firstAttribute="top" secondItem="1z4-ER-S3u" secondAttribute="top" id="HmN-4W-bqG"/>
-                            <constraint firstItem="wHY-FE-vck" firstAttribute="centerY" secondItem="1z4-ER-S3u" secondAttribute="centerY" constant="-5" id="HmV-Fj-2BP">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstItem="7wo-ek-Gc9" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="7" id="I0C-fi-v0Z"/>
-                            <constraint firstItem="7wo-ek-Gc9" firstAttribute="centerY" secondItem="Exf-su-6L2" secondAttribute="centerY" id="Jv7-He-3s4"/>
-                            <constraint firstItem="dXv-IQ-FMf" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="-5" id="KAa-cb-qHT"/>
-                            <constraint firstItem="1Z8-g8-JU6" firstAttribute="top" secondItem="DxK-0i-zde" secondAttribute="top" id="MHe-47-NLQ"/>
-                            <constraint firstItem="0oO-3H-x4V" firstAttribute="leading" secondItem="ixf-nN-TeG" secondAttribute="leading" id="MHk-dv-2Mn"/>
-                            <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="EqD-cY-c8B" secondAttribute="bottom" constant="10" id="NUc-tI-Z5g"/>
+                            <constraint firstItem="7wo-ek-Gc9" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="7" id="Jfr-US-YZO"/>
+                            <constraint firstItem="7wo-ek-Gc9" firstAttribute="trailing" secondItem="EqD-cY-c8B" secondAttribute="trailing" id="KMx-s4-IQZ"/>
+                            <constraint firstItem="nSd-J8-fhz" firstAttribute="trailing" secondItem="4iF-u3-cax" secondAttribute="trailing" id="Ke3-To-lWR"/>
+                            <constraint firstItem="dXv-IQ-FMf" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="397" id="Ob8-Nb-eTP"/>
                             <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="wHY-FE-vck" secondAttribute="bottom" constant="8" symbolic="YES" id="Oua-rr-ddf">
                                 <variation key="heightClass=regular-widthClass=compact" constant="45"/>
                             </constraint>
-                            <constraint firstItem="ixf-nN-TeG" firstAttribute="trailing" secondItem="0oO-3H-x4V" secondAttribute="trailing" id="T38-Q6-SOo"/>
-                            <constraint firstItem="4iF-u3-cax" firstAttribute="leading" secondItem="15W-i7-KjE" secondAttribute="leading" id="TXT-Yh-dYQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Exf-su-6L2" secondAttribute="trailing" constant="1" id="VuR-TB-405"/>
-                            <constraint firstItem="4iF-u3-cax" firstAttribute="leading" secondItem="dXv-IQ-FMf" secondAttribute="leading" id="Xsl-f3-44w"/>
-                            <constraint firstItem="JYp-bJ-4fW" firstAttribute="centerY" secondItem="0oO-3H-x4V" secondAttribute="centerY" id="Y9r-zE-gop"/>
-                            <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="4iF-u3-cax" secondAttribute="top" id="YbF-lT-Qen"/>
-                            <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="4iF-u3-cax" secondAttribute="bottom" id="Zig-Se-w7G"/>
-                            <constraint firstItem="EqD-cY-c8B" firstAttribute="top" secondItem="dXv-IQ-FMf" secondAttribute="bottom" constant="5" id="Zka-bw-MoV"/>
-                            <constraint firstItem="EqD-cY-c8B" firstAttribute="bottom" secondItem="1z4-ER-S3u" secondAttribute="bottom" id="aWI-Y4-VzI"/>
-                            <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="7wo-ek-Gc9" secondAttribute="bottom" constant="10" id="aX0-Jf-dMM"/>
-                            <constraint firstItem="1Z8-g8-JU6" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leading" id="cJD-zC-NIR"/>
-                            <constraint firstItem="15W-i7-KjE" firstAttribute="trailing" secondItem="0oO-3H-x4V" secondAttribute="trailing" id="cmd-Ct-K79"/>
+                            <constraint firstItem="0oO-3H-x4V" firstAttribute="centerY" secondItem="JYp-bJ-4fW" secondAttribute="centerY" id="PEl-Nv-xwn"/>
+                            <constraint firstItem="1Z8-g8-JU6" firstAttribute="bottom" secondItem="Caz-jf-EX1" secondAttribute="top" id="Rq4-lY-nHb"/>
+                            <constraint firstItem="nSd-J8-fhz" firstAttribute="top" secondItem="15W-i7-KjE" secondAttribute="top" id="SWT-j0-PVM"/>
+                            <constraint firstItem="wHY-FE-vck" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" id="Ug1-iH-MGB"/>
+                            <constraint firstItem="dXv-IQ-FMf" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="-5" id="VzO-Sa-nmv"/>
+                            <constraint firstItem="7wo-ek-Gc9" firstAttribute="centerY" secondItem="dXv-IQ-FMf" secondAttribute="centerY" id="WBT-UL-gPf"/>
+                            <constraint firstItem="wHY-FE-vck" firstAttribute="centerX" secondItem="4iF-u3-cax" secondAttribute="centerX" id="XJD-8I-puA"/>
+                            <constraint firstItem="nSd-J8-fhz" firstAttribute="leading" secondItem="15W-i7-KjE" secondAttribute="trailing" constant="38" id="afR-yT-BAN"/>
                             <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="420" id="cy2-K6-GbO"/>
-                            <constraint firstItem="EqD-cY-c8B" firstAttribute="leading" secondItem="7wo-ek-Gc9" secondAttribute="leading" id="eb9-pW-iK5"/>
-                            <constraint firstItem="1Z8-g8-JU6" firstAttribute="bottom" secondItem="Caz-jf-EX1" secondAttribute="top" id="ed0-jn-a8D"/>
-                            <constraint firstItem="JYp-bJ-4fW" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="70" id="fYf-hR-Z6c"/>
+                            <constraint firstItem="15W-i7-KjE" firstAttribute="leading" secondItem="0oO-3H-x4V" secondAttribute="leading" id="dat-7m-EYf"/>
+                            <constraint firstItem="Caz-jf-EX1" firstAttribute="top" secondItem="Cr9-9U-kEk" secondAttribute="bottom" constant="54" id="dvW-P3-7wr"/>
+                            <constraint firstItem="nSd-J8-fhz" firstAttribute="bottom" secondItem="15W-i7-KjE" secondAttribute="bottom" id="f5h-4x-4kA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Exf-su-6L2" secondAttribute="trailing" constant="1" id="fPZ-Et-UH6"/>
+                            <constraint firstItem="nSd-J8-fhz" firstAttribute="width" secondItem="15W-i7-KjE" secondAttribute="width" id="geC-yU-elH"/>
                             <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="463" id="hVE-iY-1EY"/>
-                            <constraint firstItem="15W-i7-KjE" firstAttribute="centerX" secondItem="1Z8-g8-JU6" secondAttribute="centerX" id="hW0-KC-lvv"/>
                             <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="385" id="hlA-25-f0y"/>
-                            <constraint firstItem="Exf-su-6L2" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="-1" id="hpL-WM-7lo"/>
-                            <constraint firstItem="7wo-ek-Gc9" firstAttribute="trailing" secondItem="EqD-cY-c8B" secondAttribute="trailing" id="iVH-Od-JgP"/>
-                            <constraint firstItem="Cr9-9U-kEk" firstAttribute="leading" secondItem="JYp-bJ-4fW" secondAttribute="leading" id="ilp-Dj-21I"/>
+                            <constraint firstItem="0oO-3H-x4V" firstAttribute="trailing" secondItem="ixf-nN-TeG" secondAttribute="trailing" id="i0s-gp-JW3"/>
+                            <constraint firstItem="15W-i7-KjE" firstAttribute="leading" secondItem="4iF-u3-cax" secondAttribute="leading" id="ikI-Td-m6M"/>
+                            <constraint firstItem="JYp-bJ-4fW" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="70" id="j9E-e0-46a"/>
                             <constraint firstItem="dXv-IQ-FMf" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="401" id="kXP-9S-amE"/>
-                            <constraint firstItem="ixf-nN-TeG" firstAttribute="top" secondItem="JYp-bJ-4fW" secondAttribute="bottom" constant="29" id="kaF-ig-6NN"/>
-                            <constraint firstItem="15W-i7-KjE" firstAttribute="trailing" secondItem="4iF-u3-cax" secondAttribute="trailing" id="mYN-DO-0cf"/>
-                            <constraint firstItem="ixf-nN-TeG" firstAttribute="top" secondItem="0oO-3H-x4V" secondAttribute="bottom" constant="18" id="nLY-fB-Yjv"/>
+                            <constraint firstItem="dXv-IQ-FMf" firstAttribute="centerX" secondItem="1Z8-g8-JU6" secondAttribute="centerX" id="lgB-dW-NPW"/>
+                            <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="7wo-ek-Gc9" secondAttribute="bottom" constant="10" id="o88-OV-X7A"/>
+                            <constraint firstItem="EqD-cY-c8B" firstAttribute="leading" secondItem="7wo-ek-Gc9" secondAttribute="leading" id="qRb-uj-Tf9"/>
+                            <constraint firstItem="ixf-nN-TeG" firstAttribute="centerY" secondItem="Cr9-9U-kEk" secondAttribute="centerY" id="qZR-Df-c3n"/>
+                            <constraint firstItem="EqD-cY-c8B" firstAttribute="top" secondItem="dXv-IQ-FMf" secondAttribute="bottom" constant="5" id="rBa-0C-gPn"/>
+                            <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="4iF-u3-cax" secondAttribute="bottom" constant="9" id="rEa-sa-QYI">
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="JYp-bJ-4fW" firstAttribute="trailing" secondItem="Cr9-9U-kEk" secondAttribute="trailing" id="s4C-af-Xuh"/>
                             <constraint firstItem="dXv-IQ-FMf" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="401" id="uDg-6u-yJh"/>
-                            <constraint firstItem="dXv-IQ-FMf" firstAttribute="trailing" secondItem="4iF-u3-cax" secondAttribute="trailing" id="vFJ-d3-f6T"/>
-                            <constraint firstItem="wHY-FE-vck" firstAttribute="centerX" secondItem="4iF-u3-cax" secondAttribute="centerX" id="xSJ-2M-eJ4"/>
-                            <constraint firstItem="Cr9-9U-kEk" firstAttribute="trailing" secondItem="JYp-bJ-4fW" secondAttribute="trailing" id="yLY-5C-3Ka"/>
-                            <constraint firstAttribute="trailing" secondItem="1Z8-g8-JU6" secondAttribute="trailing" id="yi3-p7-DEJ"/>
-                            <constraint firstItem="Caz-jf-EX1" firstAttribute="top" secondItem="ixf-nN-TeG" secondAttribute="bottom" constant="54" id="yrM-NW-fxv"/>
-                            <constraint firstItem="0oO-3H-x4V" firstAttribute="top" secondItem="15W-i7-KjE" secondAttribute="bottom" constant="18" id="zMX-G4-AiA"/>
-                            <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="Exf-su-6L2" secondAttribute="bottom" constant="5" id="zTW-lA-puH"/>
+                            <constraint firstItem="Exf-su-6L2" firstAttribute="centerY" secondItem="7wo-ek-Gc9" secondAttribute="centerY" id="uOb-zw-HVw"/>
+                            <constraint firstItem="nSd-J8-fhz" firstAttribute="trailing" secondItem="0oO-3H-x4V" secondAttribute="trailing" id="ue1-dj-6Va"/>
+                            <constraint firstItem="ixf-nN-TeG" firstAttribute="top" secondItem="0oO-3H-x4V" secondAttribute="bottom" constant="18" id="uwA-dj-RJg"/>
+                            <constraint firstItem="4iF-u3-cax" firstAttribute="trailing" secondItem="dXv-IQ-FMf" secondAttribute="trailing" id="yog-b8-Aq0"/>
+                            <constraint firstItem="Exf-su-6L2" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="-1" id="zcn-uQ-I8T"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -277,59 +326,66 @@
                                 <exclude reference="7wo-ek-Gc9"/>
                                 <exclude reference="EqD-cY-c8B"/>
                                 <exclude reference="1z4-ER-S3u"/>
+                                <exclude reference="nSd-J8-fhz"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5Ve-2D-cvl"/>
-                                <exclude reference="yrM-NW-fxv"/>
-                                <exclude reference="VuR-TB-405"/>
-                                <exclude reference="hpL-WM-7lo"/>
+                                <exclude reference="8Oa-JT-T1w"/>
+                                <exclude reference="EVX-7l-PMq"/>
+                                <exclude reference="Ea2-XA-pnZ"/>
+                                <exclude reference="Rq4-lY-nHb"/>
+                                <exclude reference="Ob8-Nb-eTP"/>
+                                <exclude reference="VzO-Sa-nmv"/>
+                                <exclude reference="kXP-9S-amE"/>
+                                <exclude reference="lgB-dW-NPW"/>
+                                <exclude reference="uDg-6u-yJh"/>
+                                <exclude reference="fPZ-Et-UH6"/>
+                                <exclude reference="uOb-zw-HVw"/>
+                                <exclude reference="zcn-uQ-I8T"/>
+                                <exclude reference="Jfr-US-YZO"/>
+                                <exclude reference="KMx-s4-IQZ"/>
+                                <exclude reference="WBT-UL-gPf"/>
+                                <exclude reference="5kP-VA-GX5"/>
+                                <exclude reference="yog-b8-Aq0"/>
+                                <exclude reference="1J0-hm-azP"/>
                                 <exclude reference="78A-yV-a7r"/>
-                                <exclude reference="7Zb-wI-Ek1"/>
-                                <exclude reference="HmV-Fj-2BP"/>
-                                <exclude reference="YbF-lT-Qen"/>
-                                <exclude reference="aX0-Jf-dMM"/>
+                                <exclude reference="Asa-ss-CZI"/>
+                                <exclude reference="Ug1-iH-MGB"/>
+                                <exclude reference="XJD-8I-puA"/>
                                 <exclude reference="cy2-K6-GbO"/>
                                 <exclude reference="hVE-iY-1EY"/>
                                 <exclude reference="hlA-25-f0y"/>
-                                <exclude reference="xSJ-2M-eJ4"/>
-                                <exclude reference="zTW-lA-puH"/>
-                                <exclude reference="6qZ-Oa-ECR"/>
-                                <exclude reference="MHk-dv-2Mn"/>
-                                <exclude reference="zMX-G4-AiA"/>
-                                <exclude reference="6N6-vx-U6e"/>
-                                <exclude reference="NUc-tI-Z5g"/>
+                                <exclude reference="o88-OV-X7A"/>
+                                <exclude reference="qRb-uj-Tf9"/>
+                                <exclude reference="rBa-0C-gPn"/>
+                                <exclude reference="1ha-Zw-ktv"/>
+                                <exclude reference="It0-zK-tck"/>
                                 <exclude reference="Oua-rr-ddf"/>
-                                <exclude reference="Zig-Se-w7G"/>
-                                <exclude reference="cmd-Ct-K79"/>
-                                <exclude reference="hW0-KC-lvv"/>
-                                <exclude reference="mYN-DO-0cf"/>
-                                <exclude reference="5ma-5W-KaR"/>
-                                <exclude reference="TXT-Yh-dYQ"/>
-                                <exclude reference="Xsl-f3-44w"/>
-                                <exclude reference="7wA-wr-apm"/>
-                                <exclude reference="KAa-cb-qHT"/>
-                                <exclude reference="kXP-9S-amE"/>
-                                <exclude reference="uDg-6u-yJh"/>
-                                <exclude reference="vFJ-d3-f6T"/>
-                                <exclude reference="T38-Q6-SOo"/>
-                                <exclude reference="kaF-ig-6NN"/>
-                                <exclude reference="nLY-fB-Yjv"/>
-                                <exclude reference="MHe-47-NLQ"/>
-                                <exclude reference="cJD-zC-NIR"/>
-                                <exclude reference="ed0-jn-a8D"/>
-                                <exclude reference="yi3-p7-DEJ"/>
-                                <exclude reference="I0C-fi-v0Z"/>
-                                <exclude reference="Jv7-He-3s4"/>
-                                <exclude reference="iVH-Od-JgP"/>
-                                <exclude reference="Fht-fh-Per"/>
-                                <exclude reference="ilp-Dj-21I"/>
-                                <exclude reference="yLY-5C-3Ka"/>
-                                <exclude reference="HmN-4W-bqG"/>
-                                <exclude reference="Zka-bw-MoV"/>
-                                <exclude reference="aWI-Y4-VzI"/>
-                                <exclude reference="eb9-pW-iK5"/>
-                                <exclude reference="Y9r-zE-gop"/>
-                                <exclude reference="fYf-hR-Z6c"/>
+                                <exclude reference="dat-7m-EYf"/>
+                                <exclude reference="ikI-Td-m6M"/>
+                                <exclude reference="rEa-sa-QYI"/>
+                                <exclude reference="Ke3-To-lWR"/>
+                                <exclude reference="SWT-j0-PVM"/>
+                                <exclude reference="afR-yT-BAN"/>
+                                <exclude reference="f5h-4x-4kA"/>
+                                <exclude reference="geC-yU-elH"/>
+                                <exclude reference="ue1-dj-6Va"/>
+                                <exclude reference="3pe-D4-N6l"/>
+                                <exclude reference="83h-UK-Dwk"/>
+                                <exclude reference="DKQ-aN-nQH"/>
+                                <exclude reference="Gk2-fE-s6y"/>
+                                <exclude reference="9sh-wv-GXy"/>
+                                <exclude reference="PEl-Nv-xwn"/>
+                                <exclude reference="i0s-gp-JW3"/>
+                                <exclude reference="0be-Oi-lNh"/>
+                                <exclude reference="9Y0-ve-iIK"/>
+                                <exclude reference="j9E-e0-46a"/>
+                                <exclude reference="s4C-af-Xuh"/>
+                                <exclude reference="5Bg-vc-VAW"/>
+                                <exclude reference="qZR-Df-c3n"/>
+                                <exclude reference="uwA-dj-RJg"/>
+                                <exclude reference="IPZ-uo-YgY"/>
+                                <exclude reference="2CX-ls-AX9"/>
+                                <exclude reference="dvW-P3-7wr"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -347,75 +403,83 @@
                                 <include reference="7wo-ek-Gc9"/>
                                 <include reference="EqD-cY-c8B"/>
                                 <include reference="1z4-ER-S3u"/>
+                                <include reference="nSd-J8-fhz"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5Ve-2D-cvl"/>
-                                <include reference="yrM-NW-fxv"/>
-                                <include reference="VuR-TB-405"/>
-                                <include reference="hpL-WM-7lo"/>
+                                <include reference="8Oa-JT-T1w"/>
+                                <include reference="EVX-7l-PMq"/>
+                                <include reference="Ea2-XA-pnZ"/>
+                                <include reference="Rq4-lY-nHb"/>
+                                <exclude reference="Ob8-Nb-eTP"/>
+                                <include reference="VzO-Sa-nmv"/>
+                                <exclude reference="kXP-9S-amE"/>
+                                <include reference="lgB-dW-NPW"/>
+                                <exclude reference="uDg-6u-yJh"/>
+                                <include reference="fPZ-Et-UH6"/>
+                                <include reference="uOb-zw-HVw"/>
+                                <include reference="zcn-uQ-I8T"/>
+                                <include reference="Jfr-US-YZO"/>
+                                <include reference="KMx-s4-IQZ"/>
+                                <include reference="WBT-UL-gPf"/>
+                                <include reference="5kP-VA-GX5"/>
+                                <include reference="yog-b8-Aq0"/>
+                                <include reference="1J0-hm-azP"/>
                                 <exclude reference="78A-yV-a7r"/>
-                                <include reference="7Zb-wI-Ek1"/>
-                                <include reference="HmV-Fj-2BP"/>
-                                <include reference="YbF-lT-Qen"/>
-                                <include reference="aX0-Jf-dMM"/>
+                                <include reference="Asa-ss-CZI"/>
+                                <include reference="Ug1-iH-MGB"/>
+                                <include reference="XJD-8I-puA"/>
                                 <exclude reference="cy2-K6-GbO"/>
                                 <exclude reference="hVE-iY-1EY"/>
                                 <exclude reference="hlA-25-f0y"/>
-                                <include reference="xSJ-2M-eJ4"/>
-                                <include reference="zTW-lA-puH"/>
-                                <include reference="6qZ-Oa-ECR"/>
-                                <include reference="MHk-dv-2Mn"/>
-                                <include reference="zMX-G4-AiA"/>
-                                <include reference="6N6-vx-U6e"/>
-                                <include reference="NUc-tI-Z5g"/>
+                                <include reference="o88-OV-X7A"/>
+                                <include reference="qRb-uj-Tf9"/>
+                                <include reference="rBa-0C-gPn"/>
+                                <include reference="1ha-Zw-ktv"/>
+                                <include reference="It0-zK-tck"/>
                                 <exclude reference="Oua-rr-ddf"/>
-                                <include reference="Zig-Se-w7G"/>
-                                <include reference="cmd-Ct-K79"/>
-                                <include reference="hW0-KC-lvv"/>
-                                <include reference="mYN-DO-0cf"/>
-                                <include reference="5ma-5W-KaR"/>
-                                <include reference="TXT-Yh-dYQ"/>
-                                <include reference="Xsl-f3-44w"/>
-                                <include reference="7wA-wr-apm"/>
-                                <include reference="KAa-cb-qHT"/>
-                                <exclude reference="kXP-9S-amE"/>
-                                <exclude reference="uDg-6u-yJh"/>
-                                <include reference="vFJ-d3-f6T"/>
-                                <include reference="T38-Q6-SOo"/>
-                                <include reference="kaF-ig-6NN"/>
-                                <include reference="nLY-fB-Yjv"/>
-                                <include reference="MHe-47-NLQ"/>
-                                <include reference="cJD-zC-NIR"/>
-                                <include reference="ed0-jn-a8D"/>
-                                <include reference="yi3-p7-DEJ"/>
-                                <include reference="I0C-fi-v0Z"/>
-                                <include reference="Jv7-He-3s4"/>
-                                <include reference="iVH-Od-JgP"/>
-                                <include reference="Fht-fh-Per"/>
-                                <include reference="ilp-Dj-21I"/>
-                                <include reference="yLY-5C-3Ka"/>
-                                <include reference="HmN-4W-bqG"/>
-                                <include reference="Zka-bw-MoV"/>
-                                <include reference="aWI-Y4-VzI"/>
-                                <include reference="eb9-pW-iK5"/>
-                                <include reference="Y9r-zE-gop"/>
-                                <include reference="fYf-hR-Z6c"/>
+                                <include reference="dat-7m-EYf"/>
+                                <include reference="ikI-Td-m6M"/>
+                                <include reference="rEa-sa-QYI"/>
+                                <include reference="Ke3-To-lWR"/>
+                                <include reference="SWT-j0-PVM"/>
+                                <include reference="afR-yT-BAN"/>
+                                <include reference="f5h-4x-4kA"/>
+                                <include reference="geC-yU-elH"/>
+                                <include reference="ue1-dj-6Va"/>
+                                <include reference="3pe-D4-N6l"/>
+                                <include reference="83h-UK-Dwk"/>
+                                <include reference="DKQ-aN-nQH"/>
+                                <include reference="Gk2-fE-s6y"/>
+                                <include reference="9sh-wv-GXy"/>
+                                <include reference="PEl-Nv-xwn"/>
+                                <include reference="i0s-gp-JW3"/>
+                                <include reference="0be-Oi-lNh"/>
+                                <include reference="9Y0-ve-iIK"/>
+                                <include reference="j9E-e0-46a"/>
+                                <include reference="s4C-af-Xuh"/>
+                                <include reference="5Bg-vc-VAW"/>
+                                <include reference="qZR-Df-c3n"/>
+                                <include reference="uwA-dj-RJg"/>
+                                <include reference="IPZ-uo-YgY"/>
+                                <include reference="2CX-ls-AX9"/>
+                                <exclude reference="dvW-P3-7wr"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="CCa-MO-uoN"/>
                     <connections>
-                        <outlet property="bottomLayout" destination="yrM-NW-fxv" id="qYc-WO-vkT"/>
-                        <outlet property="loginButton" destination="15W-i7-KjE" id="gc4-8m-c1X"/>
+                        <outlet property="bottomLayout" destination="2CX-ls-AX9" id="CHn-8a-LhT"/>
+                        <outlet property="loginButton" destination="nSd-J8-fhz" id="fCo-VX-RGw"/>
                         <outlet property="passwordImage" destination="EqD-cY-c8B" id="oN7-nM-Qjk"/>
                         <outlet property="passwordInputField" destination="wHY-FE-vck" id="7o2-qw-Jsu"/>
                         <outlet property="passwordbackButton" destination="4iF-u3-cax" id="e63-VW-jBp"/>
+                        <outlet property="signupButton" destination="15W-i7-KjE" id="4Hv-9X-7RN"/>
                         <outlet property="usernameImage" destination="7wo-ek-Gc9" id="PWX-76-4Ue"/>
                         <outlet property="usernameInputfield" destination="Exf-su-6L2" id="8Ye-SB-h5o"/>
                         <outlet property="usernamebackButton" destination="dXv-IQ-FMf" id="mIf-qH-ea2"/>
                         <outlet property="viewPasswordButton" destination="1z4-ER-S3u" id="aGq-0t-F5L"/>
                         <outlet property="weChatButton" destination="0oO-3H-x4V" id="071-uN-1Xt"/>
-                        <outlet property="weiboBottomLayout" destination="5Ve-2D-cvl" id="YVx-Pi-4N2"/>
+                        <outlet property="weiboBottomLayout" destination="dvW-P3-7wr" id="OQr-bM-Ozi"/>
                         <outlet property="weiboButton" destination="ixf-nN-TeG" id="hRe-hS-8FQ"/>
                         <segue destination="KXr-JW-D3f" kind="show" identifier="loginToMain" id="L0b-M5-Rwy"/>
                     </connections>
@@ -427,7 +491,7 @@
         <!--选择你的留学目标-->
         <scene sceneID="eiP-WB-vAr">
             <objects>
-                <viewController id="j5D-gi-5LJ" customClass="FirstWizardViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j5D-gi-5LJ" customClass="FirstWizardViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HPc-hn-5XF"/>
                         <viewControllerLayoutGuide type="bottom" id="cSq-2D-t6Q"/>
@@ -461,7 +525,7 @@
                                     <constraint firstAttribute="height" constant="323" id="z1y-Hj-aPJ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="YVP-yx-kmX" customClass="FirstWizardTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="YVP-yx-kmX" customClass="FirstWizardTableViewCell" customModule="自留学" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YVP-yx-kmX" id="2Ld-8i-0sN">
@@ -763,7 +827,7 @@
         <!--Pop Up View Controller-->
         <scene sceneID="k19-g5-ksQ">
             <objects>
-                <viewController id="wMx-3e-hxy" customClass="PopUpViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wMx-3e-hxy" customClass="PopUpViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GrK-E5-rlW"/>
                         <viewControllerLayoutGuide type="bottom" id="3at-Ie-rxu"/>
@@ -861,7 +925,7 @@
         <!--你目前的情况-->
         <scene sceneID="q0P-Lb-IpP">
             <objects>
-                <viewController id="1n5-zC-DXz" customClass="SecondWizardViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1n5-zC-DXz" customClass="SecondWizardViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oyD-d0-wRx"/>
                         <viewControllerLayoutGuide type="bottom" id="y7k-TC-Rmc"/>
@@ -887,7 +951,7 @@
                                     </constraint>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="60" id="YSq-zs-nP5" customClass="CustomTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="60" id="YSq-zs-nP5" customClass="CustomTableViewCell" customModule="自留学" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YSq-zs-nP5" id="x1S-HK-kUt">
@@ -1041,7 +1105,7 @@
         <!--University Name-->
         <scene sceneID="loo-HS-LmB">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="eWo-eG-e60" customClass="SchoolDetailViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="eWo-eG-e60" customClass="SchoolDetailViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QHV-M7-Fb1"/>
                         <viewControllerLayoutGuide type="bottom" id="Maf-lo-J6b"/>
@@ -1279,7 +1343,7 @@
         <!--选择3个目标学校-->
         <scene sceneID="HRS-rX-uxO">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="g75-Yy-Nv2" customClass="ThridWizardViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="g75-Yy-Nv2" customClass="ThridWizardViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mkm-mE-P6h"/>
                         <viewControllerLayoutGuide type="bottom" id="sDg-bH-Dt6"/>
@@ -1310,7 +1374,7 @@
                                     <constraint firstAttribute="height" constant="509" id="wyR-PT-fzU"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="86" id="BFC-eP-Pz6" customClass="ThirdWizardTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="86" id="BFC-eP-Pz6" customClass="ThirdWizardTableViewCell" customModule="自留学" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="600" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BFC-eP-Pz6" id="UGw-ER-1EN">
@@ -1923,7 +1987,7 @@
         <!--Center Tab View Controller-->
         <scene sceneID="OHV-Sj-Ke3">
             <objects>
-                <tabBarController storyboardIdentifier="centerTabView" automaticallyAdjustsScrollViewInsets="NO" id="KXr-JW-D3f" customClass="CenterTabViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="centerTabView" automaticallyAdjustsScrollViewInsets="NO" id="KXr-JW-D3f" customClass="CenterTabViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vpN-RT-lvi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -1945,7 +2009,7 @@
         <!--留学清单-->
         <scene sceneID="wQ0-GG-6W9">
             <objects>
-                <viewController id="nN5-vO-ZQg" customClass="StudyPlanViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nN5-vO-ZQg" customClass="StudyPlanViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VP9-Hu-rZg"/>
                         <viewControllerLayoutGuide type="bottom" id="aae-Mg-8CA"/>
@@ -1959,7 +2023,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newCell" textLabel="q5x-64-Co1" rowHeight="81" style="IBUITableViewCellStyleDefault" id="Xgk-Xv-b4m" customClass="FirstTabTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newCell" textLabel="q5x-64-Co1" rowHeight="81" style="IBUITableViewCellStyleDefault" id="Xgk-Xv-b4m" customClass="FirstTabTableViewCell" customModule="自留学" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xgk-Xv-b4m" id="N9s-MS-PFj">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
@@ -2047,7 +2111,7 @@
         <!--Plan Overview View Controller-->
         <scene sceneID="7Rl-NU-wFS">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="VAD-e2-FYM" customClass="PlanOverviewViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="VAD-e2-FYM" customClass="PlanOverviewViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lb4-L2-BUC"/>
                         <viewControllerLayoutGuide type="bottom" id="dyt-qw-11x"/>
@@ -2150,7 +2214,7 @@
         <!--Fourth Tab Bar View Controller-->
         <scene sceneID="qYN-ac-lSM">
             <objects>
-                <tabBarController storyboardIdentifier="fourthTab" id="tWD-aK-ZnW" customClass="FourthTabBarViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="fourthTab" id="tWD-aK-ZnW" customClass="FourthTabBarViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bnP-Pp-2hq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -2170,7 +2234,7 @@
         <!--Personal Info View Controller-->
         <scene sceneID="d8L-nP-CAz">
             <objects>
-                <viewController storyboardIdentifier="personalInfoTab" id="w2m-ib-l1e" customClass="PersonalInfoViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="personalInfoTab" id="w2m-ib-l1e" customClass="PersonalInfoViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BbC-jk-eSo"/>
                         <viewControllerLayoutGuide type="bottom" id="beq-3j-hJL"/>
@@ -2409,7 +2473,7 @@
         <!--我的课程-->
         <scene sceneID="OEx-5S-7YJ">
             <objects>
-                <viewController id="eDa-Ij-30V" customClass="MyClassViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eDa-Ij-30V" customClass="MyClassViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jEN-Yf-jFN"/>
                         <viewControllerLayoutGuide type="bottom" id="Q6F-Kk-DJr"/>
@@ -2438,7 +2502,7 @@
         <!--School Cost View Controller-->
         <scene sceneID="69p-xQ-hBb">
             <objects>
-                <viewController id="fMn-Oj-1vw" customClass="SchoolCostViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fMn-Oj-1vw" customClass="SchoolCostViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Aby-cN-YUv"/>
                         <viewControllerLayoutGuide type="bottom" id="5Tk-Yj-u0c"/>
@@ -2700,7 +2764,7 @@
         <!--Course View Controller-->
         <scene sceneID="lHp-9O-iDS">
             <objects>
-                <viewController id="fs6-Yf-IZu" customClass="CourseViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fs6-Yf-IZu" customClass="CourseViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y5v-b1-poU"/>
                         <viewControllerLayoutGuide type="bottom" id="G48-HC-0Yz"/>
@@ -2722,7 +2786,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseTableViewCell" rowHeight="220" id="Fge-ji-lia" customClass="CourseTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseTableViewCell" rowHeight="220" id="Fge-ji-lia" customClass="CourseTableViewCell" customModule="自留学" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fge-ji-lia" id="nUa-q6-ebN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="219.5"/>
@@ -3001,7 +3065,7 @@
         <!--Course Detail View Controller-->
         <scene sceneID="fHI-He-XPJ">
             <objects>
-                <viewController id="ySf-sg-pla" customClass="CourseDetailViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ySf-sg-pla" customClass="CourseDetailViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QxT-qB-gDE"/>
                         <viewControllerLayoutGuide type="bottom" id="ZQX-UX-qpc"/>
@@ -3221,7 +3285,7 @@
                                             <constraint firstAttribute="height" constant="179" id="ij1-GH-gLe"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SessionTableViewCell" rowHeight="60" id="HMt-18-3oW" customClass="SessionTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SessionTableViewCell" rowHeight="60" id="HMt-18-3oW" customClass="SessionTableViewCell" customModule="自留学" customModuleProvider="target">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HMt-18-3oW" id="gze-UK-TWg">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -3291,7 +3355,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimilarCourseTableViewCell" rowHeight="94" id="1XE-XZ-GuR" customClass="SimilarCourseTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimilarCourseTableViewCell" rowHeight="94" id="1XE-XZ-GuR" customClass="SimilarCourseTableViewCell" customModule="自留学" customModuleProvider="target">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1XE-XZ-GuR" id="MnB-hd-Uqh">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -4086,7 +4150,7 @@
         <!--Third Tab View Controller-->
         <scene sceneID="LBu-Zn-tpf">
             <objects>
-                <tabBarController storyboardIdentifier="ThirdTab" id="OXW-YU-dtI" customClass="ThirdTabViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ThirdTab" id="OXW-YU-dtI" customClass="ThirdTabViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jLc-Hk-PdI">
@@ -4107,7 +4171,7 @@
         <!--最新动态-->
         <scene sceneID="0UH-uu-wb9">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8dw-FQ-PwK" customClass="NewsUpdateViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8dw-FQ-PwK" customClass="NewsUpdateViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dvl-PW-8wi"/>
                         <viewControllerLayoutGuide type="bottom" id="Cx5-sU-3Uv"/>
@@ -4175,7 +4239,7 @@
         <!--Timeline Detail View Controller-->
         <scene sceneID="EPW-iH-gDE">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cR6-y2-xWg" customClass="TimelineDetailViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cR6-y2-xWg" customClass="TimelineDetailViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7Q-f9-v5c"/>
                         <viewControllerLayoutGuide type="bottom" id="xmf-1S-lEm"/>
@@ -4193,7 +4257,7 @@
         <!--Second Tab View Controller-->
         <scene sceneID="clr-Pp-G9H">
             <objects>
-                <viewController storyboardIdentifier="secondTab" automaticallyAdjustsScrollViewInsets="NO" id="Q2j-Kw-z4X" customClass="SecondTabViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondTab" automaticallyAdjustsScrollViewInsets="NO" id="Q2j-Kw-z4X" customClass="SecondTabViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mWs-7l-JeO"/>
                         <viewControllerLayoutGuide type="bottom" id="sRw-ri-4t6"/>
@@ -4207,7 +4271,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="90" id="DeR-U9-JK0" customClass="ThirdWizardTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="90" id="DeR-U9-JK0" customClass="ThirdWizardTableViewCell" customModule="自留学" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DeR-U9-JK0" id="v2f-L4-qbZ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
@@ -4513,7 +4577,7 @@
         <!--School Application View Controller-->
         <scene sceneID="Vmd-cg-Xql">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="M4n-9W-OvP" customClass="SchoolApplicationViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="M4n-9W-OvP" customClass="SchoolApplicationViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="phM-B5-hke"/>
                         <viewControllerLayoutGuide type="bottom" id="jPB-ZW-c6K"/>
@@ -4843,7 +4907,7 @@
         <!--School Academic View Controller-->
         <scene sceneID="14d-rE-t8z">
             <objects>
-                <viewController id="IZ9-r3-d0e" customClass="SchoolAcademicViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IZ9-r3-d0e" customClass="SchoolAcademicViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qa1-H6-RKF"/>
                         <viewControllerLayoutGuide type="bottom" id="fvH-Sw-uKQ"/>
@@ -5658,7 +5722,7 @@
         <!--找课程-->
         <scene sceneID="83Q-hD-iDu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="761-hq-tSf" customClass="FindClassViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="761-hq-tSf" customClass="FindClassViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HuZ-vg-EA6"/>
                         <viewControllerLayoutGuide type="bottom" id="Cx7-Tz-SYQ"/>
@@ -5750,7 +5814,7 @@
         <!--找服务-->
         <scene sceneID="vTJ-sB-JPE">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FhN-mL-Hit" customClass="FindServiceViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FhN-mL-Hit" customClass="FindServiceViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zet-jl-yPv"/>
                         <viewControllerLayoutGuide type="bottom" id="72E-9A-WOK"/>
@@ -5842,7 +5906,7 @@
         <!--Overview School Tab View Controller-->
         <scene sceneID="FAp-Fm-Ezf">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fHJ-I1-gQI" customClass="OverviewSchoolTabViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fHJ-I1-gQI" customClass="OverviewSchoolTabViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U14-dr-FjH"/>
                         <viewControllerLayoutGuide type="bottom" id="VQv-M0-dnF"/>
@@ -7221,7 +7285,7 @@
         <!--School Ranking View Controller-->
         <scene sceneID="pHC-Dl-rqw">
             <objects>
-                <viewController id="t24-Ch-u93" customClass="SchoolRankingViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t24-Ch-u93" customClass="SchoolRankingViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NC0-Oa-v42"/>
                         <viewControllerLayoutGuide type="bottom" id="ON8-HF-8hj"/>
@@ -7632,7 +7696,7 @@
         <!--费用-->
         <scene sceneID="h8d-dq-r3j">
             <objects>
-                <viewController id="iHy-sc-ZNd" customClass="SchoolCostViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iHy-sc-ZNd" customClass="SchoolCostViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fU6-zC-u6D"/>
                         <viewControllerLayoutGuide type="bottom" id="zeP-U1-lrL"/>
@@ -7895,7 +7959,7 @@
         <!--申请-->
         <scene sceneID="Bp6-oK-TAs">
             <objects>
-                <viewController id="8aW-nC-g9q" customClass="SchoolApplicationViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8aW-nC-g9q" customClass="SchoolApplicationViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XS0-J7-jJ7"/>
                         <viewControllerLayoutGuide type="bottom" id="Z3a-kv-gLD"/>
@@ -8493,7 +8557,7 @@
         <!--学术-->
         <scene sceneID="UD7-fB-JHK">
             <objects>
-                <viewController id="M8E-fL-R6N" customClass="SchoolAcademicViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M8E-fL-R6N" customClass="SchoolAcademicViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AHk-oh-lYf"/>
                         <viewControllerLayoutGuide type="bottom" id="QLH-dB-QCj"/>
@@ -9318,7 +9382,7 @@
         <!--School Sepecific Tab Bar Controller-->
         <scene sceneID="0gF-rG-IWY">
             <objects>
-                <tabBarController id="HpL-2Z-sFO" customClass="SchoolSepecificTabBarController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="HpL-2Z-sFO" customClass="SchoolSepecificTabBarController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="EpV-ej-pEo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -9341,7 +9405,7 @@
         <!--简介-->
         <scene sceneID="uI5-DH-wGy">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="pA7-Uw-h0s" customClass="OverviewSchoolTabViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="pA7-Uw-h0s" customClass="OverviewSchoolTabViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xoY-oG-1lW"/>
                         <viewControllerLayoutGuide type="bottom" id="UbM-Tc-LvV"/>
@@ -10688,7 +10752,7 @@
         <!--排名-->
         <scene sceneID="7bI-nB-IQY">
             <objects>
-                <viewController id="Tha-yf-Su0" customClass="SchoolRankingViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tha-yf-Su0" customClass="SchoolRankingViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kDO-xi-Tfn"/>
                         <viewControllerLayoutGuide type="bottom" id="yvg-31-5tK"/>
@@ -11084,7 +11148,7 @@
         <!--Service Overview View Controller-->
         <scene sceneID="Qcm-D8-QZT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0FC-6W-yal" customClass="ServiceOverviewViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0FC-6W-yal" customClass="ServiceOverviewViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hum-dD-XPy"/>
                         <viewControllerLayoutGuide type="bottom" id="6PO-0O-tad"/>
@@ -11098,7 +11162,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="240" id="pg1-pn-fb7" customClass="ServiceOverviewTableViewCell" customModule="ziliuxue" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="240" id="pg1-pn-fb7" customClass="ServiceOverviewTableViewCell" customModule="自留学" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pg1-pn-fb7" id="u6X-Oh-IRB">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="219.5"/>
@@ -11379,7 +11443,7 @@
         <!--Writer Detail View Controller-->
         <scene sceneID="55n-rh-PlI">
             <objects>
-                <viewController storyboardIdentifier="WriterDetailViewController" hidesBottomBarWhenPushed="YES" id="PUd-7n-wgF" customClass="WriterDetailViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriterDetailViewController" hidesBottomBarWhenPushed="YES" id="PUd-7n-wgF" customClass="WriterDetailViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fkV-Eb-1SB"/>
                         <viewControllerLayoutGuide type="bottom" id="IKT-yC-xXb"/>
@@ -11831,7 +11895,7 @@ school applications for over 3 years.</string>
         <!--Landing Page Detail View Controller-->
         <scene sceneID="MRq-cm-fdt">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gXw-06-iBv" customClass="LandingPageDetailViewController" customModule="ziliuxue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gXw-06-iBv" customClass="LandingPageDetailViewController" customModule="自留学" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g5Q-3T-Kne"/>
                         <viewControllerLayoutGuide type="bottom" id="dFm-mG-WNk"/>
