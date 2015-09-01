@@ -336,35 +336,34 @@ class LeftDrawerTableViewController: UITableViewController {
             let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image7.image = UIImage(named: "logout_")
         case 7:
-            imageView.image = UIImage(named: "logout")
-            let label0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label0.textColor = UIColor.grayColor()
-            
-            
-            let label2 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label2.textColor = UIColor.grayColor()
-            
-            let label3 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label3.textColor = UIColor.grayColor()
-            
-            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label6.textColor = UIColor.grayColor()
-            
-            
-            let label1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label1.textColor = UIColor.grayColor()
+            imageView.image = UIImage(named: "studyPlan")
             
             
             let image1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image1.image = UIImage(named: "mySchool_")
+            let label1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(2222) as! UILabel
+            label1.textColor = UIColor.grayColor()
+            
             let image2 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image2.image = UIImage(named: "findCourse_")
+            let label2 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))!.viewWithTag(2222) as! UILabel
+            label2.textColor = UIColor.grayColor()
+            
             let image3 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image3.image = UIImage(named: "findService_")
+            let label3 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0))!.viewWithTag(2222) as! UILabel
+            label3.textColor = UIColor.grayColor()
+            
             let image6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image6.image = UIImage(named: "personalInfo_")
-            let image0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(1111) as! UIImageView
-            image0.image = UIImage(named: "studyPlan_")
+            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
+            label6.textColor = UIColor.grayColor()
+            
+            
+            let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
+            image7.image = UIImage(named: "logout_")
+            let label7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(2222) as! UILabel
+            label7.textColor = UIColor.grayColor()
         default:
             break
         }
