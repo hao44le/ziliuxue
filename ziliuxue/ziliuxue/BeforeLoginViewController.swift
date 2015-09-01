@@ -70,7 +70,6 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             } else {
                 Tool.showProgressHUD("正在验证")
                 UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-                
                 ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
                 
             }
@@ -82,12 +81,55 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     }
     
     @IBAction func signupClicked(sender: UIButton) {
+        //error checking
+        if usernameInputfield.text == "" {
+            let ac = UIAlertView(title: "请输入邮箱/手机号", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
         
+        if passwordInputField.text == "" {
+            let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+        
+        let input = usernameInputfield.text
+        if isValidEmail(input) || validatePhoneNumber(input){
+            //signup
+            
+            Tool.showProgressHUD("正在注册")
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            ServerMethods.signup("", password: passwordInputField.text!,email:usernameInputfield.text!)
+
+        } else {
+            let ac = UIAlertView(title: "邮箱/手机号输入不合法", message: nil, delegate: nil, cancelButtonTitle: "好的")
+            ac.show()
+            return
+        }
+
     }
     
     
+    func isValidEmail(testStr:String) -> Bool {
+        // println("validate calendar: \(testStr)")
+        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(testStr)
+    }
     
-    
+    func validatePhoneNumber(value: String) -> Bool {
+        
+        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
+        
+        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        
+        var result =  phoneTest.evaluateWithObject(value)
+        
+        return result
+        
+    }
     var firstClick = false
     let kWeiboRedirectURI = "https://api.weibo.com/oauth2/default.html"
     
