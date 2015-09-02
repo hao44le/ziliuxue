@@ -56,24 +56,43 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     @IBAction func loginClicked(sender: UIButton) {
         
-        if !firstClick {
-            self.firstClick = true
+        if !firstClickOnLogin {
+            self.loginActive = true
+            self.signupActive = false
+            self.firstClickOnLogin = true
             self.setAllHiddenView(false)
-            
+            self.loginButton.backgroundColor = UIColor.whiteColor()
+            self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            self.signupButton.backgroundColor = UIColor.lightGrayColor()
+            self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.loginButton.setTitle("确认登陆", forState: UIControlState.Normal)
+            self.signupButton.setTitle("注册", forState: UIControlState.Normal)
         } else {
-            if usernameInputfield.text == "" {
-                let ac = UIAlertView(title: "请输入邮箱", message: nil, delegate: nil, cancelButtonTitle: "好的")
-                ac.show()
-            } else if passwordInputField.text == "" {
-                let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
-                ac.show()
+            if loginActive {
+                if usernameInputfield.text == "" {
+                    let ac = UIAlertView(title: "请输入邮箱", message: nil, delegate: nil, cancelButtonTitle: "好的")
+                    ac.show()
+                } else if passwordInputField.text == "" {
+                    let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
+                    ac.show()
+                } else {
+                    Tool.showProgressHUD("正在验证")
+                    UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+                    ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
+                }
             } else {
-                Tool.showProgressHUD("正在验证")
-                UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-                ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
-                
+                self.loginActive = true
+                self.signupActive = false
+                self.loginButton.backgroundColor = UIColor.whiteColor()
+                self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+                self.signupButton.backgroundColor = UIColor.lightGrayColor()
+                self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                self.loginButton.setTitle("确认登陆", forState: UIControlState.Normal)
+                self.signupButton.setTitle("注册", forState: UIControlState.Normal)
+                self.setAllHiddenView(false)
             }
-
+            
+            
         }
         
         
@@ -81,33 +100,64 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     }
     
     @IBAction func signupClicked(sender: UIButton) {
-        //error checking
-        if usernameInputfield.text == "" {
-            let ac = UIAlertView(title: "请输入邮箱/手机号", message: nil, delegate: nil, cancelButtonTitle: "好的")
-            ac.show()
-            return
-        }
-        
-        if passwordInputField.text == "" {
-            let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
-            ac.show()
-            return
-        }
-        
-        let input = usernameInputfield.text
-        if isValidEmail(input) || validatePhoneNumber(input){
-            //signup
+        if !firstClickOnSignup {
+            self.signupActive = true
+            self.loginActive = false
+            self.firstClickOnSignup = true
+            self.setAllHiddenView(false)
             
-            Tool.showProgressHUD("正在注册")
-            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-            ServerMethods.signup("", password: passwordInputField.text!,email:usernameInputfield.text!)
-
+            self.loginButton.backgroundColor = UIColor.lightGrayColor()
+            self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.signupButton.backgroundColor = UIColor.whiteColor()
+            self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            
+            self.signupButton.setTitle("确认注册", forState: UIControlState.Normal)
+            self.loginButton.setTitle("登陆", forState: UIControlState.Normal)
+            
         } else {
-            let ac = UIAlertView(title: "邮箱/手机号输入不合法", message: nil, delegate: nil, cancelButtonTitle: "好的")
-            ac.show()
-            return
-        }
+            if signupActive {
+                //error checking
+                if usernameInputfield.text == "" {
+                    let ac = UIAlertView(title: "请输入邮箱/手机号", message: nil, delegate: nil, cancelButtonTitle: "好的")
+                    ac.show()
+                    return
+                }
+                
+                if passwordInputField.text == "" {
+                    let ac = UIAlertView(title: "请输入密码", message: nil, delegate: nil, cancelButtonTitle: "好的")
+                    ac.show()
+                    return
+                }
+                
+                let input = usernameInputfield.text
+                if isValidEmail(input) || validatePhoneNumber(input){
+                    //signup
+                    
+                    Tool.showProgressHUD("正在注册")
+                    UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+                    ServerMethods.signup("", password: passwordInputField.text!,email:usernameInputfield.text!)
+                    
+                } else {
+                    let ac = UIAlertView(title: "邮箱/手机号输入不合法", message: nil, delegate: nil, cancelButtonTitle: "好的")
+                    ac.show()
+                    return
+                }
 
+            } else {
+                self.signupActive = true
+                self.loginActive = false
+                self.loginButton.backgroundColor = UIColor.lightGrayColor()
+                self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                self.signupButton.backgroundColor = UIColor.whiteColor()
+                self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+                
+                self.signupButton.setTitle("确认注册", forState: UIControlState.Normal)
+                self.loginButton.setTitle("登陆", forState: UIControlState.Normal)
+                self.setAllHiddenView(false)
+            }
+            
+        }
+        
     }
     
     
@@ -130,7 +180,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         return result
         
     }
-    var firstClick = false
+    var firstClickOnLogin = false
+    var firstClickOnSignup = false
+    var loginActive = false
+    var signupActive = false
     let kWeiboRedirectURI = "https://api.weibo.com/oauth2/default.html"
     
     override func updateViewConstraints() {
@@ -146,6 +199,8 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "weChat_login_Successed", name: "weChat_login_Successed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginSuccessed", name: "loginSuccessed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginFailed", name: "loginFailed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupSuccessed", name: "signupSuccessed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "signupFailed", name: "signupFailed", object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -173,6 +228,22 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         ac.show()
     }
 
+    func signupSuccessed(){
+        NSUserDefaults.standardUserDefaults().setObject("ziliuxue", forKey: "loginWay")
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        NSUserDefaults.standardUserDefaults().setObject(usernameInputfield.text, forKey: "nickName")
+        ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
+        LocalStore.setLogined()
+        //self.activityIndicator.stopAnimating()
+        Tool.dismissHUD()
+        self.performSegueWithIdentifier("signupToMain", sender: self)
+    }
+    func signupFailed(){
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        let ac = UIAlertView(title: "注册失败，请再试一次", message: nil, delegate: nil, cancelButtonTitle: "好的")
+        ac.show()
+        Tool.dismissHUD()
+    }
     
     
     func setupView(){
