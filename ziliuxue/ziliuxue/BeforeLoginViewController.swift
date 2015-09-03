@@ -42,12 +42,20 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
 
     @IBAction func weChatButtonClicked(sender: UIButton) {
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        Tool.showProgressHUD("正在验证")
         
-        let req = SendAuthReq()
-        req.scope = "snsapi_userinfo"
-        req.state = "123"
-        WXApi.sendReq(req)
+        if WXApi.isWXAppInstalled() {
+            Tool.showProgressHUD("正在验证")
+            
+            let req = SendAuthReq()
+            req.scope = "snsapi_userinfo"
+            req.state = "123"
+            WXApi.sendReq(req)
+        } else {
+            Tool.showErrorHUD("没有安装微信")
+            
+        }
+        
+        
     }
     
     @IBAction func viewPasswordButtonClicked(sender: UIButton) {
