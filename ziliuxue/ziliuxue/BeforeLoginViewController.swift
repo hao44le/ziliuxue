@@ -10,15 +10,15 @@ import UIKit
 
 class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDelegate {
 
-    @IBOutlet weak var weiboBottomLayout: NSLayoutConstraint!
-    @IBOutlet weak var bottomLayout: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstriant: NSLayoutConstraint!
+    @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var userView: UIView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
-    @IBOutlet weak var passwordbackButton: UIButton!
+    @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var passwordInputField: UITextField!
 
-    @IBOutlet weak var usernamebackButton: UIButton!
     @IBOutlet weak var usernameInputfield: UITextField!
     
     @IBOutlet weak var usernameImage: UIImageView!
@@ -69,10 +69,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             self.signupActive = false
             self.firstClickOnLogin = true
             self.setAllHiddenView(false)
-            self.loginButton.backgroundColor = UIColor.whiteColor()
-            self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-            self.signupButton.backgroundColor = UIColor.lightGrayColor()
-            self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.signupButton.backgroundColor = UIColor.whiteColor()
+            self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            self.loginButton.backgroundColor = UIColor.lightGrayColor()
+            self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             self.loginButton.setTitle("确认登陆", forState: UIControlState.Normal)
             self.signupButton.setTitle("注册", forState: UIControlState.Normal)
         } else {
@@ -91,10 +91,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             } else {
                 self.loginActive = true
                 self.signupActive = false
-                self.loginButton.backgroundColor = UIColor.whiteColor()
-                self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-                self.signupButton.backgroundColor = UIColor.lightGrayColor()
-                self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                self.signupButton.backgroundColor = UIColor.whiteColor()
+                self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+                self.loginButton.backgroundColor = UIColor.lightGrayColor()
+                self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 self.loginButton.setTitle("确认登陆", forState: UIControlState.Normal)
                 self.signupButton.setTitle("注册", forState: UIControlState.Normal)
                 self.setAllHiddenView(false)
@@ -114,10 +114,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             self.firstClickOnSignup = true
             self.setAllHiddenView(false)
             
-            self.loginButton.backgroundColor = UIColor.lightGrayColor()
-            self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            self.signupButton.backgroundColor = UIColor.whiteColor()
-            self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            self.signupButton.backgroundColor = UIColor.lightGrayColor()
+            self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.loginButton.backgroundColor = UIColor.whiteColor()
+            self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
             
             self.signupButton.setTitle("确认注册", forState: UIControlState.Normal)
             self.loginButton.setTitle("登陆", forState: UIControlState.Normal)
@@ -154,10 +154,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             } else {
                 self.signupActive = true
                 self.loginActive = false
-                self.loginButton.backgroundColor = UIColor.lightGrayColor()
-                self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-                self.signupButton.backgroundColor = UIColor.whiteColor()
-                self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+                self.signupButton.backgroundColor = UIColor.lightGrayColor()
+                self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                self.loginButton.backgroundColor = UIColor.whiteColor()
+                self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
                 
                 self.signupButton.setTitle("确认注册", forState: UIControlState.Normal)
                 self.loginButton.setTitle("登陆", forState: UIControlState.Normal)
@@ -196,8 +196,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        //self.bottomLayout.constant = 40
-        //self.weiboBottomLayout.constant = 50
+        if DeviceType.IS_IPHONE_4_OR_LESS {
+            self.imageViewConstraint.constant = 20
+            self.bottomConstriant.constant = 50
+        }
     }
     
     override func viewDidLoad() {
@@ -259,12 +261,21 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         self.passwordInputField.delegate = self
         
         self.passwordInputField.hidden = true
-        self.passwordbackButton.hidden = true
-        self.usernamebackButton.hidden = true
         self.usernameImage.hidden = true
         self.usernameInputfield.hidden = true
         self.passwordImage.hidden = true
         self.viewPasswordButton.hidden = true
+        self.userView.hidden = true
+        self.passwordView.hidden = true
+       
+        let str = NSAttributedString(string: "请输入手机号或邮箱", attributes: [NSForegroundColorAttributeName:UIColor(white: 1, alpha: 0.7)])
+        self.usernameInputfield.attributedPlaceholder = str
+        
+        
+        let string = NSAttributedString(string: "请输入密码", attributes: [NSForegroundColorAttributeName:UIColor(white: 1, alpha: 0.7)])
+        self.passwordInputField.attributedPlaceholder = string
+        
+        
         /*
         weiboButton.layer.cornerRadius = 25
         weiboButton.layer.borderWidth = 0.5
@@ -306,26 +317,26 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     }
     
     func setAllHiddenView(option:Bool){
-        self.passwordInputField.alpha = 0
-        self.usernameInputfield.alpha = 0
         
         
-        
+        //self.passwordInputField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
+        //self.usernameInputfield.backgroundColor = UIColor(white: 1, alpha: 0.2)
+        self.userView.hidden = option
+        self.passwordView.hidden = option
         self.passwordInputField.hidden = option
-        self.passwordbackButton.hidden = option
-        self.usernamebackButton.hidden = option
         self.usernameImage.hidden = option
         self.usernameInputfield.hidden = option
         self.passwordImage.hidden = option
         self.viewPasswordButton.hidden = option
         
+        /*
         let anim = POPSpringAnimation()
         anim.property = (POPAnimatableProperty.propertyWithName(kPOPViewAlpha)) as! POPAnimatableProperty
         anim.toValue = 1
         anim.name = "alpha"
         self.passwordInputField.pop_addAnimation(anim, forKey: "alpha")
         self.usernameInputfield.pop_addAnimation(anim, forKey: "alpha")
-        
+        */
         self.usernameInputfield.becomeFirstResponder()
         
     }
