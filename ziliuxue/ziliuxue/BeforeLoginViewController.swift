@@ -10,6 +10,9 @@ import UIKit
 
 class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDelegate {
 
+    @IBOutlet weak var loginHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var wechatHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var weiboHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstriant: NSLayoutConstraint!
     @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var userView: UIView!
@@ -170,22 +173,18 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     
     func isValidEmail(testStr:String) -> Bool {
-        // println("validate calendar: \(testStr)")
-        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+
         
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(testStr)
+        let emailRegex = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$"
+        let emailPre = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPre.evaluateWithObject(testStr)
     }
     
     func validatePhoneNumber(value: String) -> Bool {
         
-        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
-        
-        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        
-        var result =  phoneTest.evaluateWithObject(value)
-        
-        return result
+        let phoneRegex = "^(0?1[0-9]\\d{9})$|^((0(10|2[1-3]|[3-9]\\d{2}))-?[1-9]\\d{6,7})$"
+        let phonePre = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phonePre.evaluateWithObject(value)
         
     }
     var firstClickOnLogin = false
@@ -193,17 +192,23 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     var loginActive = false
     var signupActive = false
     let kWeiboRedirectURI = "https://api.weibo.com/oauth2/default.html"
+    var viewChaned = false
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
         if DeviceType.IS_IPHONE_4_OR_LESS {
             self.imageViewConstraint.constant = 20
             self.bottomConstriant.constant = 50
+        } else if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
+            self.weiboHeightConstraint.constant = 45
+            self.wechatHeightConstraint.constant = 45
+            self.loginHeightConstraint.constant = 45
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         setupView()
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "weChat_login_Successed", name: "weChat_login_Successed", object: nil)
@@ -242,12 +247,64 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         NSUserDefaults.standardUserDefaults().setObject("ziliuxue", forKey: "loginWay")
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
         NSUserDefaults.standardUserDefaults().setObject(usernameInputfield.text, forKey: "nickName")
-        ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
+        
         LocalStore.setLogined()
-        //self.activityIndicator.stopAnimating()
         Tool.dismissHUD()
-        self.performSegueWithIdentifier("signupToMain", sender: self)
+        showPopUpWindow()
+        
     }
+    
+    
+    func showPopUpWindow(){
+        
+        let imageView = UIImageView(image: UIImage(named: "pop_up_window"))
+        imageView.frame = CGRectMake((ScreenSize.SCREEN_WIDTH - 249)/2, 0, 249, 184)
+        
+        
+        let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        button.frame = CGRectMake((ScreenSize.SCREEN_WIDTH - 249)/2, (ScreenSize.SCREEN_HEIGHT - 300), 249, 184)
+        button.backgroundColor = UIColor.clearColor()
+        button.userInteractionEnabled = true
+        button.addTarget(self, action: "pop_up_window_touched", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
+        self.view.addSubview(imageView)
+        self.view.addSubview(button)
+        
+        
+        
+        
+        let bgTollbar = UIToolbar(frame: self.view.frame)
+        bgTollbar.barStyle = UIBarStyle.Black
+        self.view.insertSubview(bgTollbar, belowSubview: imageView)
+        
+        
+        let anim = POPSpringAnimation()
+        
+        anim.springBounciness = 17
+        
+        anim.property = (POPAnimatableProperty.propertyWithName(kPOPLayerPositionY)) as! POPAnimatableProperty
+        anim.toValue = (ScreenSize.SCREEN_HEIGHT - 300)
+        anim.name = "y-postion"
+        imageView.pop_addAnimation(anim, forKey: "y-postion")
+        
+        // Delay 3 seconds
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+            if self.viewChaned == false {
+                self.performSegueWithIdentifier("loginToMain", sender: self)
+                
+            }
+            
+        }
+        
+        
+    }
+    
+    func pop_up_window_touched(){
+        self.viewChaned = true
+        self.performSegueWithIdentifier("loginToMain", sender: self)
+    }
+    
     func signupFailed(){
         UIApplication.sharedApplication().endIgnoringInteractionEvents()
         let ac = UIAlertView(title: "注册失败，请再试一次", message: nil, delegate: nil, cancelButtonTitle: "好的")
@@ -267,7 +324,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         self.viewPasswordButton.hidden = true
         self.userView.hidden = true
         self.passwordView.hidden = true
-       
+        
         let str = NSAttributedString(string: "请输入手机号或邮箱", attributes: [NSForegroundColorAttributeName:UIColor(white: 1, alpha: 0.7)])
         self.usernameInputfield.attributedPlaceholder = str
         
@@ -276,42 +333,19 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         self.passwordInputField.attributedPlaceholder = string
         
         
-        /*
-        weiboButton.layer.cornerRadius = 25
-        weiboButton.layer.borderWidth = 0.5
-        weiboButton.layer.borderColor = UIColor.lightGrayColor().CGColor
         
-        weChatButton.layer.cornerRadius = 25
-        weChatButton.layer.borderWidth = 0.5
-        weChatButton.layer.borderColor = UIColor.whiteColor().CGColor
+        self.usernameInputfield.layer.borderWidth = 2
+        self.usernameInputfield.layer.borderColor = UIColor.whiteColor().CGColor
+        self.passwordInputField.layer.borderWidth = 2
+        self.passwordInputField.layer.borderColor = UIColor.whiteColor().CGColor
         
-        passwordInputField.layer.cornerRadius = 20
-        passwordInputField.layer.borderWidth = 0.5
-        passwordInputField.layer.borderColor = UIColor.whiteColor().CGColor
-        
-        passwordbackButton.layer.cornerRadius = 25
-        passwordbackButton.layer.borderWidth = 0.5
-        passwordbackButton.layer.borderColor = UIColor.whiteColor().CGColor
-        
-        
-        usernameInputfield.layer.cornerRadius = 20
-        usernameInputfield.layer.borderWidth = 0.5
-        usernameInputfield.layer.borderColor = UIColor.whiteColor().CGColor
-        
-        usernamebackButton.layer.cornerRadius = 25
-        usernamebackButton.layer.borderWidth = 0.5
-        usernamebackButton.layer.borderColor = UIColor.whiteColor().CGColor
-        
-        loginButton.layer.cornerRadius = 23
-        loginButton.layer.borderWidth = 0.5
-        loginButton.layer.borderColor = UIColor.whiteColor().CGColor
-        */
     }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == self.usernameInputfield {
-            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 105
+            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 100
         } else {
-            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 60
+            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 55
         }
 
     }
@@ -319,8 +353,6 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     func setAllHiddenView(option:Bool){
         
         
-        //self.passwordInputField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.2)
-        //self.usernameInputfield.backgroundColor = UIColor(white: 1, alpha: 0.2)
         self.userView.hidden = option
         self.passwordView.hidden = option
         self.passwordInputField.hidden = option
@@ -329,14 +361,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         self.passwordImage.hidden = option
         self.viewPasswordButton.hidden = option
         
-        /*
-        let anim = POPSpringAnimation()
-        anim.property = (POPAnimatableProperty.propertyWithName(kPOPViewAlpha)) as! POPAnimatableProperty
-        anim.toValue = 1
-        anim.name = "alpha"
-        self.passwordInputField.pop_addAnimation(anim, forKey: "alpha")
-        self.usernameInputfield.pop_addAnimation(anim, forKey: "alpha")
-        */
+        
         self.usernameInputfield.becomeFirstResponder()
         
     }

@@ -582,7 +582,7 @@ struct ServerMethods {
         //let imageData = UIImageJPEGRepresentation(newImage, 1.0)
         //let string = imageData.base64EncodedDataWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength) as! String
         let avatar = UIImagePNGRepresentation(newImage).base64EncodedStringWithOptions(nil)
-        println(avatar)
+        //println(avatar)
         
         
         

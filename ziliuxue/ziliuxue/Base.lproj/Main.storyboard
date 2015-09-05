@@ -301,7 +301,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="16"/>
                             </constraint>
                             <constraint firstItem="1Z8-g8-JU6" firstAttribute="top" secondItem="DxK-0i-zde" secondAttribute="top" id="XjC-EQ-8uK"/>
-                            <constraint firstItem="0oO-3H-x4V" firstAttribute="trailing" secondItem="nSd-J8-fhz" secondAttribute="trailing" id="Yrr-5H-VoF"/>
+                            <constraint firstItem="0oO-3H-x4V" firstAttribute="trailing" secondItem="nSd-J8-fhz" secondAttribute="trailing" id="Yrr-5H-VoF">
+                                <variation key="heightClass=regular-widthClass=compact" constant="2"/>
+                            </constraint>
                             <constraint firstItem="0oO-3H-x4V" firstAttribute="top" secondItem="15W-i7-KjE" secondAttribute="bottom" constant="13" id="b10-mC-Iha">
                                 <variation key="heightClass=regular-widthClass=compact" constant="16"/>
                             </constraint>
@@ -317,7 +319,9 @@
                             <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="463" id="hVE-iY-1EY"/>
                             <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="beX-7p-26H" secondAttribute="bottom" constant="385" id="hlA-25-f0y"/>
                             <constraint firstItem="nSd-J8-fhz" firstAttribute="baseline" secondItem="15W-i7-KjE" secondAttribute="firstBaseline" id="jSl-iq-CX7"/>
-                            <constraint firstItem="0oO-3H-x4V" firstAttribute="leading" secondItem="ixf-nN-TeG" secondAttribute="leading" id="jtl-Jz-W7h"/>
+                            <constraint firstItem="0oO-3H-x4V" firstAttribute="leading" secondItem="ixf-nN-TeG" secondAttribute="leading" id="jtl-Jz-W7h">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="AnM-kc-zbd" firstAttribute="trailing" secondItem="Exf-su-6L2" secondAttribute="trailing" id="lCS-oQ-zh0"/>
                             <constraint firstItem="15W-i7-KjE" firstAttribute="top" secondItem="wHY-FE-vck" secondAttribute="bottom" constant="7" id="ml3-8Y-X7j">
                                 <variation key="heightClass=regular-widthClass=compact" constant="6"/>
@@ -330,7 +334,9 @@
                             <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="Exf-su-6L2" secondAttribute="bottom" constant="3" id="sxC-O5-iGI">
                                 <variation key="heightClass=regular-widthClass=compact" constant="6"/>
                             </constraint>
-                            <constraint firstItem="0oO-3H-x4V" firstAttribute="leading" secondItem="15W-i7-KjE" secondAttribute="leading" id="t4d-Co-sD9"/>
+                            <constraint firstItem="0oO-3H-x4V" firstAttribute="leading" secondItem="15W-i7-KjE" secondAttribute="leading" id="t4d-Co-sD9">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
+                            </constraint>
                             <constraint firstItem="AnM-kc-zbd" firstAttribute="leading" secondItem="Exf-su-6L2" secondAttribute="leading" id="tLa-4k-4Ux"/>
                             <constraint firstItem="Exf-su-6L2" firstAttribute="leading" secondItem="DxK-0i-zde" secondAttribute="leadingMargin" constant="6" id="uGg-Re-Glu"/>
                             <constraint firstItem="wHY-FE-vck" firstAttribute="top" secondItem="7wo-ek-Gc9" secondAttribute="bottom" constant="15" id="w4m-rJ-66K">
@@ -487,6 +493,7 @@
                         <outlet property="bottomConstriant" destination="Eaf-TA-6KN" id="Xkf-2F-7GF"/>
                         <outlet property="imageViewConstraint" destination="639-JB-KHn" id="0La-13-xHK"/>
                         <outlet property="loginButton" destination="15W-i7-KjE" id="ltp-2S-h63"/>
+                        <outlet property="loginHeightConstraint" destination="Xwn-T3-Yo6" id="5tO-4Y-zsC"/>
                         <outlet property="passwordImage" destination="EqD-cY-c8B" id="oN7-nM-Qjk"/>
                         <outlet property="passwordInputField" destination="wHY-FE-vck" id="7o2-qw-Jsu"/>
                         <outlet property="passwordView" destination="Dyd-GQ-lXV" id="F3g-Pe-fVI"/>
@@ -496,7 +503,9 @@
                         <outlet property="usernameInputfield" destination="Exf-su-6L2" id="8Ye-SB-h5o"/>
                         <outlet property="viewPasswordButton" destination="1z4-ER-S3u" id="aGq-0t-F5L"/>
                         <outlet property="weChatButton" destination="0oO-3H-x4V" id="071-uN-1Xt"/>
+                        <outlet property="wechatHeightConstraint" destination="ccl-jF-S8L" id="CVx-5d-11F"/>
                         <outlet property="weiboButton" destination="ixf-nN-TeG" id="hRe-hS-8FQ"/>
+                        <outlet property="weiboHeightConstraint" destination="nUO-fl-36K" id="d0S-Yo-Gh9"/>
                         <segue destination="KXr-JW-D3f" kind="show" identifier="loginToMain" id="L0b-M5-Rwy"/>
                     </connections>
                 </viewController>

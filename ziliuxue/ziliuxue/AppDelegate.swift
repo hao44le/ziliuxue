@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
             tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
         }
         
-        println("tokenString: \(tokenString)")
+        //println("tokenString: \(tokenString)")
         
     }
     
