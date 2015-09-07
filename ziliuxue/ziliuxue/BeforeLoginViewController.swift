@@ -10,10 +10,14 @@ import UIKit
 
 class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDelegate {
 
+    @IBOutlet weak var equalConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var wechatHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var weiboHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstriant: NSLayoutConstraint!
+    
+    @IBOutlet weak var bottomLabelConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var loginButton: UIButton!
@@ -72,12 +76,14 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             self.signupActive = false
             self.firstClickOnLogin = true
             self.setAllHiddenView(false)
-            self.signupButton.backgroundColor = UIColor.whiteColor()
-            self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-            self.loginButton.backgroundColor = UIColor.lightGrayColor()
-            self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.updateViewConstraints()
+            self.loginButton.backgroundColor = UIColor.whiteColor()
+            self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            self.signupButton.backgroundColor = UIColor.lightGrayColor()
+            self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             self.loginButton.setTitle("确认登陆", forState: UIControlState.Normal)
             self.signupButton.setTitle("注册", forState: UIControlState.Normal)
+            
         } else {
             if loginActive {
                 if usernameInputfield.text == "" {
@@ -94,10 +100,11 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             } else {
                 self.loginActive = true
                 self.signupActive = false
-                self.signupButton.backgroundColor = UIColor.whiteColor()
-                self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-                self.loginButton.backgroundColor = UIColor.lightGrayColor()
-                self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                self.updateViewConstraints()
+                self.loginButton.backgroundColor = UIColor.whiteColor()
+                self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+                self.signupButton.backgroundColor = UIColor.lightGrayColor()
+                self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 self.loginButton.setTitle("确认登陆", forState: UIControlState.Normal)
                 self.signupButton.setTitle("注册", forState: UIControlState.Normal)
                 self.setAllHiddenView(false)
@@ -117,11 +124,13 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             self.firstClickOnSignup = true
             self.setAllHiddenView(false)
             
-            self.signupButton.backgroundColor = UIColor.lightGrayColor()
-            self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            self.loginButton.backgroundColor = UIColor.whiteColor()
-            self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-            
+            self.updateViewConstraints()
+            self.loginButton.backgroundColor = UIColor.lightGrayColor()
+            self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.signupButton.backgroundColor = UIColor.whiteColor()
+            self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            self.viewPasswordButton.setImage(UIImage(named: "forget_pw"), forState: UIControlState.Normal)
+            self.viewPasswordButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
             self.signupButton.setTitle("确认注册", forState: UIControlState.Normal)
             self.loginButton.setTitle("登陆", forState: UIControlState.Normal)
             
@@ -157,11 +166,11 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             } else {
                 self.signupActive = true
                 self.loginActive = false
-                self.signupButton.backgroundColor = UIColor.lightGrayColor()
-                self.signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-                self.loginButton.backgroundColor = UIColor.whiteColor()
-                self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-                
+                self.loginButton.backgroundColor = UIColor.lightGrayColor()
+                self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                self.signupButton.backgroundColor = UIColor.whiteColor()
+                self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+                self.updateViewConstraints()
                 self.signupButton.setTitle("确认注册", forState: UIControlState.Normal)
                 self.loginButton.setTitle("登陆", forState: UIControlState.Normal)
                 self.setAllHiddenView(false)
@@ -199,11 +208,39 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         if DeviceType.IS_IPHONE_4_OR_LESS {
             self.imageViewConstraint.constant = 20
             self.bottomConstriant.constant = 50
+            self.bottomLabelConstraint.constant = 50
         } else if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
             self.weiboHeightConstraint.constant = 45
             self.wechatHeightConstraint.constant = 45
             self.loginHeightConstraint.constant = 45
         }
+        
+        if firstClickOnLogin {
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                self.equalConstraint.constant = -100
+            })
+            
+        }
+        
+        if firstClickOnSignup {
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                self.equalConstraint.constant = 100
+            })
+            
+        }
+        
+        if loginActive {
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                self.equalConstraint.constant = -100
+            })
+        }
+        
+        if signupActive {
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                self.equalConstraint.constant = 100
+            })
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -332,12 +369,25 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         let string = NSAttributedString(string: "请输入密码", attributes: [NSForegroundColorAttributeName:UIColor(white: 1, alpha: 0.7)])
         self.passwordInputField.attributedPlaceholder = string
         
-        
+        if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
+            self.signupButton.layer.cornerRadius = 24
+            self.loginButton.layer.cornerRadius = 24
+        } else {
+            self.signupButton.layer.cornerRadius = 21
+            self.loginButton.layer.cornerRadius = 21
+        }
+       
         
         self.usernameInputfield.layer.borderWidth = 2
         self.usernameInputfield.layer.borderColor = UIColor.whiteColor().CGColor
         self.passwordInputField.layer.borderWidth = 2
         self.passwordInputField.layer.borderColor = UIColor.whiteColor().CGColor
+        self.usernameInputfield.layer.cornerRadius = 20
+        self.passwordInputField.layer.cornerRadius = 20
+        self.userView.layer.cornerRadius = 20
+        self.passwordView.layer.cornerRadius = 20
+
+        
         
     }
     
