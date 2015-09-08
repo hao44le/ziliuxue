@@ -10,6 +10,8 @@ import UIKit
 
 class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UITextFieldDelegate {
 
+    @IBOutlet weak var viewPasswordWidth: NSLayoutConstraint!
+    @IBOutlet weak var viewPasswordHeight: NSLayoutConstraint!
     @IBOutlet weak var equalConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var wechatHeightConstraint: NSLayoutConstraint!
@@ -66,7 +68,12 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     }
     
     @IBAction func viewPasswordButtonClicked(sender: UIButton) {
-        self.passwordInputField.secureTextEntry = !self.passwordInputField.secureTextEntry
+        if sender.tag == 0 {
+            Tool.showSuccessHUD("用户忘记了密码，UI还需要设计")
+        } else {
+            self.passwordInputField.secureTextEntry = !self.passwordInputField.secureTextEntry
+        }
+        
     }
     
     @IBAction func loginClicked(sender: UIButton) {
@@ -77,6 +84,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             self.firstClickOnLogin = true
             self.setAllHiddenView(false)
             self.updateViewConstraints()
+            self.viewPasswordButton.setImage(UIImage(named: "forget_pw"), forState: UIControlState.Normal)
+            self.viewPasswordButton.tag = 0
+            self.viewPasswordButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+
             self.loginButton.backgroundColor = UIColor.whiteColor()
             self.loginButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
             self.signupButton.backgroundColor = UIColor.lightGrayColor()
@@ -98,6 +109,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
                     ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
                 }
             } else {
+                self.viewPasswordButton.setImage(UIImage(named: "forget_pw"), forState: UIControlState.Normal)
+                self.viewPasswordButton.tag = 0
+                self.viewPasswordButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+
                 self.loginActive = true
                 self.signupActive = false
                 self.updateViewConstraints()
@@ -123,14 +138,15 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             self.loginActive = false
             self.firstClickOnSignup = true
             self.setAllHiddenView(false)
-            
+            self.viewPasswordButton.setImage(UIImage(named: "show_password"), forState: UIControlState.Normal)
+            self.viewPasswordButton.tag = 1
+            self.viewPasswordButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
             self.updateViewConstraints()
             self.loginButton.backgroundColor = UIColor.lightGrayColor()
             self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             self.signupButton.backgroundColor = UIColor.whiteColor()
             self.signupButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
-            self.viewPasswordButton.setImage(UIImage(named: "forget_pw"), forState: UIControlState.Normal)
-            self.viewPasswordButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
+            
             self.signupButton.setTitle("确认注册", forState: UIControlState.Normal)
             self.loginButton.setTitle("登陆", forState: UIControlState.Normal)
             
@@ -164,6 +180,9 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
                 }
 
             } else {
+                self.viewPasswordButton.setImage(UIImage(named: "show_password"), forState: UIControlState.Normal)
+                self.viewPasswordButton.tag = 1
+                self.viewPasswordButton.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
                 self.signupActive = true
                 self.loginActive = false
                 self.loginButton.backgroundColor = UIColor.lightGrayColor()
@@ -219,6 +238,8 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             UIView.animateWithDuration(1, animations: { () -> Void in
                 self.equalConstraint.constant = -100
             })
+            self.viewPasswordHeight.constant = 15
+            self.viewPasswordWidth.constant = 20
             
         }
         
@@ -226,6 +247,8 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             UIView.animateWithDuration(1, animations: { () -> Void in
                 self.equalConstraint.constant = 100
             })
+            self.viewPasswordHeight.constant = 10
+            self.viewPasswordWidth.constant = 17
             
         }
         
@@ -233,12 +256,16 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             UIView.animateWithDuration(1, animations: { () -> Void in
                 self.equalConstraint.constant = -100
             })
+            self.viewPasswordHeight.constant = 15
+            self.viewPasswordWidth.constant = 20
         }
         
         if signupActive {
             UIView.animateWithDuration(1, animations: { () -> Void in
                 self.equalConstraint.constant = 100
             })
+            self.viewPasswordHeight.constant = 10
+            self.viewPasswordWidth.constant = 17
         }
         
     }
@@ -293,6 +320,8 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     
     func showPopUpWindow(){
+        self.usernameInputfield.resignFirstResponder()
+        self.passwordInputField.resignFirstResponder()
         
         let imageView = UIImageView(image: UIImage(named: "pop_up_window"))
         imageView.frame = CGRectMake((ScreenSize.SCREEN_WIDTH - 249)/2, 0, 249, 184)
