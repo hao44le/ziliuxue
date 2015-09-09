@@ -224,14 +224,19 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
+        self.equalConstraint.constant = 0
         if DeviceType.IS_IPHONE_4_OR_LESS {
-            self.imageViewConstraint.constant = 20
+            self.imageViewConstraint.constant = 10
             self.bottomConstriant.constant = 50
             self.bottomLabelConstraint.constant = 50
         } else if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
             self.weiboHeightConstraint.constant = 45
             self.wechatHeightConstraint.constant = 45
             self.loginHeightConstraint.constant = 45
+            self.bottomConstriant.constant = 120
+            self.bottomLabelConstraint.constant = 120
+        } else if DeviceType.IS_IPHONE_5 {
+            self.imageViewConstraint.constant = 60
         }
         
         if firstClickOnLogin {
