@@ -8,11 +8,14 @@
 
 import UIKit
 
-class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
+class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPieChartDataSource,XYPieChartDelegate{
 
     
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
+    
+    @IBOutlet weak var pieView: XYPieChart!
+    
     
     @IBOutlet weak var acceptance_rate: UILabel!
     
@@ -50,6 +53,10 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     var imageArray = ["classroom","classroom2","universityBack"]
     var collegeName = "Pricenton University"
     
+    var pieChartColor = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
+    var slices = [11,8,6,6,6]
+    var text = ["经济学","政治学","生物","心理学","公共政策"]
+    
     var college: College? {
         didSet{
             firstImageOfSwipeView.image = UIImage(named: college!.name + " photo1")
@@ -86,7 +93,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     @IBAction func applicationMoreButtonPressed(sender: UIButton) {
         //let selectedIndex = self.tabBarController?.selectedIndex
         //self.tabBarController?.selectedIndex = selectedIndex! + 2
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "申请", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
         self.performSegueWithIdentifier("toApplication", sender: self)
     }
     
@@ -104,6 +111,8 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         self.performSegueWithIdentifier("toCost", sender: self)
     }
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,6 +124,16 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     }
     
     func setUpView(){
+        
+        let shareButton = UIButton(frame: CGRectMake(0, 0, 44, 44))
+        shareButton.backgroundColor = UIColor.clearColor()
+        shareButton.setImage(UIImage(named: "share_button_normal"), forState: UIControlState.Normal)
+        shareButton.setImage(UIImage(named: "share_button_highlighted"), forState: UIControlState.Highlighted)
+        //shareButton.addTarget(self, action: Selector(""), forControlEvents: UIControlEvents.TouchUpInside)
+        let shareItem = UIBarButtonItem(customView: shareButton)
+        self.navigationItem.rightBarButtonItem = shareItem
+ 
+        
         //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
         self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
         
@@ -124,6 +143,18 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         self.logoImageView.layer.borderWidth = 2
         //cell.universityName.sizeToFit()
         self.logoImageView.clipsToBounds = true
+        
+        self.pieView.dataSource = self
+        self.pieView.delegate = self
+        self.pieView.startPieAngle = CGFloat(M_PI_2)
+        self.pieView.animationSpeed = 1.5
+        self.pieView.showLabel = true
+        self.pieView.labelColor = UIColor.whiteColor()
+        self.pieView.labelFont = UIFont.systemFontOfSize(10)
+        self.pieView.labelRadius = 40
+        self.pieView.pieRadius = 60
+        self.pieView.showPercentage = false
+        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 50)
 
 
     }
@@ -135,6 +166,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         //self.navigationController?.setToolbarHidden(true, animated: false)
         self.navigationController?.navigationBar.topItem?.title = self.collegeName
         //println(college!.name + college!.logo)
+        self.pieView.reloadData()
         
     }
     override func didReceiveMemoryWarning() {
@@ -200,6 +232,19 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         self.pageControl.currentPage = swipeView.currentPage
     }
 
+    // MARK: PieChart DataSource
+    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
+        return UInt(self.slices.count)
+    }
+    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
+        return self.pieChartColor[Int(index)]
+    }
+    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
+        return CGFloat(self.slices[Int(index)])
+    }
+    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
+        return self.text[Int(index)]
+    }
 
     
     // MARK: - Navigation
