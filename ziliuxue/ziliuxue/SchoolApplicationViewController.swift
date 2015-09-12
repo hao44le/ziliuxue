@@ -20,9 +20,14 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         self.tabBarController?.selectedIndex = selectedIndex! + 1
     }
     
+    
+    
+    @IBOutlet weak var backgroundScrollView: UIScrollView!
+    
     @IBOutlet weak var applicationMethodTableView: UITableView!
+    
+    @IBOutlet weak var applicationRequirementTableView: UITableView!
     @IBOutlet weak var applicationStatisticsTableView: UITableView!
-    @IBOutlet weak var applicationReuirementTableView: UITableView!
     
     let methodHeader = ["正常录取-RD","提前录取-ED","提前行动-EA","申请费用","申请方式","申请押金","联系方式"]
     let methodLeftForRD = ["申请截止日期","提前申请截止日期","放榜日期","接受录取通知书最晚日期","是否接收非秋季学期学生"]
@@ -187,7 +192,9 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer!.enabled = false
         
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "申请"
+        
+        //self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 3964)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -202,7 +209,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if tableView == applicationMethodTableView {
             return self.methodHeader.count
-        } else if tableView == applicationReuirementTableView {
+        } else if tableView == applicationRequirementTableView {
             return self.requirementHeader.count
         } else {
             return self.statisticsHeader.count
@@ -228,7 +235,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
             default:
                 return 0
             }
-        } else if tableView == applicationReuirementTableView {
+        } else if tableView == applicationRequirementTableView {
             switch section {
             case 0:
                 return self.requirementLeftForAR.count
@@ -256,6 +263,14 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sepecificApplicationCell", forIndexPath: indexPath) as! UITableViewCell
+        if(indexPath.row % 2 == 0){
+            cell.contentView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            cell.textLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            cell.detailTextLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+        }
+        
+        
+        
         if tableView == applicationMethodTableView {
             switch indexPath.section {
             case 0:
@@ -282,7 +297,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
             default:
                 break
             }
-        } else if tableView == applicationReuirementTableView {
+        } else if tableView == applicationRequirementTableView {
             switch indexPath.section {
             case 0:
                 cell.textLabel!.text = self.requirementLeftForAR[indexPath.row]
@@ -318,15 +333,17 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         //cell.detailTextLabel?.layer.shadowOffset = CGSizeMake(1, -1)
         //cell.layer.shouldRasterize = true
         if cell.detailTextLabel?.text == "Yes" {
-            cell.detailTextLabel!.text = ""
-            let imageView = UIImageView(image: UIImage(named: "yes"))
-            cell.accessoryView = imageView
+            cell.detailTextLabel!.text = "是"
+            cell.detailTextLabel!.textColor = UIColor.greenColor()
+            //let imageView = UIImageView(image: UIImage(named: "yes"))
+            //cell.accessoryView = imageView
             //cell.imageView?.image = UIImage(named: "yes")
         } else if cell.detailTextLabel?.text == "No" {
             
-            cell.detailTextLabel!.text = ""
-            let imageView = UIImageView(image: UIImage(named: "no"))
-            cell.accessoryView = imageView
+            cell.detailTextLabel!.text = "否"
+            cell.detailTextLabel!.textColor = UIColor.redColor()
+//            let imageView = UIImageView(image: UIImage(named: "no"))
+//            cell.accessoryView = imageView
         }
         return cell
     }
@@ -336,7 +353,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         
         if tableView == applicationMethodTableView {
             return self.methodHeader[section]
-        } else if tableView == applicationReuirementTableView {
+        } else if tableView == applicationRequirementTableView {
             return self.requirementHeader[section]
         } else {
             return self.statisticsHeader[section]
@@ -344,22 +361,32 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRectMake(0, 0, 20, 20))
+        let headerView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 60))
+        let label = UILabel(frame: CGRectMake(0, 0, 60, 60))
         label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(15)
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints()
+        headerView.addSubview(label)
         //label.text = "1"
         
         if tableView == applicationMethodTableView {
             label.text =  self.methodHeader[section]
-        } else if tableView == applicationReuirementTableView {
+        } else if tableView == applicationRequirementTableView {
             label.text = self.requirementHeader[section]
         } else {
             label.text = self.statisticsHeader[section]
         }
         return label
         
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 55
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 45
     }
     /*
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
