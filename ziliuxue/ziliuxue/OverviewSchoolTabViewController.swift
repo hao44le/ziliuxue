@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITableViewDelegate,UITableViewDataSource {
+class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
 
     
     
@@ -120,9 +120,6 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         
         swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
-        self.applicationDescriptionLabel.text = applicationInfoFirstCell
-        self.costFirstDescription.text = costFirstCell
-        self.costSecondDescription.text = costSecondCell
         //self.setUpView()
         //self.universityDescription.hidden = true
         // Do any additional setup after loading the view.
@@ -248,55 +245,6 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,UITa
         self.pageControl.currentPage = swipeView.currentPage
     }
 
-    // MARK: UITableView
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == basicInfoTableView{
-            return basicInfoLeft.count
-        } else if tableView == applicationInfoTableView{
-            return applicationInfoLeft.count
-        } else if tableView == academicInfoTableView {
-            return academicInfoLeft.count
-        } else if tableView == costInfoTableView{
-            return costInfoLeft.count
-        }
-        return 1
-    }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        if tableView == basicInfoTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel!.text = basicInfoLeft[indexPath.row]
-            cell.detailTextLabel!.text = basicInfoRight[indexPath.row]
-            return cell
-        } else if tableView == applicationInfoTableView{
-                let cell = tableView.dequeueReusableCellWithIdentifier("applicationInfoCell", forIndexPath: indexPath) as! UITableViewCell
-                cell.textLabel!.text = applicationInfoLeft[indexPath.row]
-                cell.detailTextLabel!.text = applicationInfoRight[indexPath.row]
-                return cell
-            
-        } else if tableView == academicInfoTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("academicInfoCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel!.text = academicInfoLeft[indexPath.row]
-            cell.detailTextLabel!.text = academicInfoRight[indexPath.row]
-            
-            
-            return cell
-        } else if tableView == costInfoTableView {
-            let cell = tableView.dequeueReusableCellWithIdentifier("costInfoCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel!.text = costInfoLeft[indexPath.row]
-            cell.detailTextLabel!.text = costInfoRight[indexPath.row]
-            return cell
-        }
-        
-        
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        return cell
-        
-    }
 
     
     // MARK: - Navigation
