@@ -51,26 +51,33 @@
 // IQKeyboardManager
 #define COCOAPODS_POD_AVAILABLE_IQKeyboardManager
 #define COCOAPODS_VERSION_MAJOR_IQKeyboardManager 3
-#define COCOAPODS_VERSION_MINOR_IQKeyboardManager 2
-#define COCOAPODS_VERSION_PATCH_IQKeyboardManager 4
+#define COCOAPODS_VERSION_MINOR_IQKeyboardManager 3
+#define COCOAPODS_VERSION_PATCH_IQKeyboardManager 1
 
 // MJExtension
 #define COCOAPODS_POD_AVAILABLE_MJExtension
 #define COCOAPODS_VERSION_MAJOR_MJExtension 2
 #define COCOAPODS_VERSION_MINOR_MJExtension 5
-#define COCOAPODS_VERSION_PATCH_MJExtension 8
+#define COCOAPODS_VERSION_PATCH_MJExtension 10
+
+// RegexKitLite
+#define COCOAPODS_POD_AVAILABLE_RegexKitLite
+#define COCOAPODS_VERSION_MAJOR_RegexKitLite 4
+#define COCOAPODS_VERSION_MINOR_RegexKitLite 0
+#define COCOAPODS_VERSION_PATCH_RegexKitLite 0
 
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
-#define COCOAPODS_VERSION_MAJOR_SDWebImage 3
-#define COCOAPODS_VERSION_MINOR_SDWebImage 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage 3
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 3.7.0.39.
 
-// SDWebImage/Core
-#define COCOAPODS_POD_AVAILABLE_SDWebImage_Core
-#define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
-#define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 3
+// WebP
+#define COCOAPODS_POD_AVAILABLE_WebP
+#define COCOAPODS_VERSION_MAJOR_WebP 2
+#define COCOAPODS_VERSION_MINOR_WebP 0
+#define COCOAPODS_VERSION_PATCH_WebP 0
 
 // WeiboSDK
 #define COCOAPODS_POD_AVAILABLE_WeiboSDK
