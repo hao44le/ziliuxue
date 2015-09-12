@@ -1,1 +1,1 @@
-../../../SDWebImage/SDWebImage.framework/Versions/A/Headers/SDImageCache.h
+../../../SDWebImage/SDWebImage/SDImageCache.h

@@ -1,1 +1,1 @@
-../../../SDWebImage/SDWebImage.framework/Versions/A/Headers/SDWebImageDownloader.h
+../../../SDWebImage/SDWebImage/SDWebImageDownloader.h
