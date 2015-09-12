@@ -12,6 +12,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
 
     
     
+    @IBOutlet weak var backgroundScrollView: UIScrollView!
     
     @IBOutlet weak var acceptance_rate: UILabel!
     
@@ -29,14 +30,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
-    
-    @IBOutlet weak var basicInfoTableView: UITableView!
-    
-    @IBOutlet weak var applicationInfoTableView: UITableView!
-    
-    @IBOutlet weak var academicInfoTableView: UITableView!
-    
-    @IBOutlet weak var costInfoTableView: UITableView!
+
     
     var basicInfoLeft = ["学校类型","成立时间","宗教联系","学期","地理","2013年捐款"]
     var basicInfoRight = ["私立，男女同校","1746","无","学期","郊区","＄18,786,132,000"]
@@ -109,68 +103,29 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "费用", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.performSegueWithIdentifier("toCost", sender: self)
     }
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
-        //self.setUpView()
+        self.setUpView()
         //self.universityDescription.hidden = true
         // Do any additional setup after loading the view.
     }
     
     func setUpView(){
         //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
+        self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
+        
         self.logoImageView.image = UIImage(named: college!.name + " logo")
         self.logoImageView.layer.cornerRadius = 54
         self.logoImageView.layer.borderColor = UIColor.whiteColor().CGColor
         self.logoImageView.layer.borderWidth = 2
         //cell.universityName.sizeToFit()
         self.logoImageView.clipsToBounds = true
-        self.universityName.text = self.collegeName
-        self.tuitionLabel.text = self.collegeOverview!.tuition_and_fees
-        //self.numberOfStudent.text = self.collegeOverview!.
-        self.applicationDeadline.text = self.collegeOverview!.application_deadline
-        self.acceptance_rate.text = self.collegeOverview!.acceptance_rate
-        self.basicInfoRight[0] = self.collegeOverview!.school_type
-        self.basicInfoRight[1] = self.collegeOverview!.year_founded
-        self.basicInfoRight[2] = self.collegeOverview!.religious_affiliation
-        self.basicInfoRight[3] = self.collegeOverview!.academic_calendar
-        self.basicInfoRight[4] = self.collegeOverview!.setting
-        self.basicInfoRight[5] = self.collegeOverview!.endowment
-        
-        self.applicationInfoRight[0] = self.collegeOverview!.selectivity
-        self.applicationInfoRight[1] = self.collegeOverview!.acceptance_rate
-        self.applicationInfoRight[2] = self.collegeOverview!.application_deadline
-        self.applicationInfoRight[3] = self.collegeOverview!.SAT_ACT_scores_must_be_received_by
-        
-        self.academicInfoRight[1] = self.collegeOverview!.student_faculty_ration
-        self.academicInfoRight[2] = self.collegeOverview!.four_year_graduation_rate
-        
-        var counter = 4
-        self.collegeOverview?.five_most_popular_majors.enumerateKeysAndObjectsUsingBlock({ (key:AnyObject!, value:AnyObject!, bool:UnsafeMutablePointer<ObjCBool>) -> Void in
-            //println(key)
-            self.academicInfoLeft[counter] = key as! String
-            self.academicInfoRight[counter] = value as! String
-            counter++
-        })
-        
-        
-        self.costInfoRight[0] = self.collegeFinancial!.tuition_and_fees
-        self.costInfoRight[1] = self.collegeFinancial!.room_and_board
-        self.costInfoRight[2] = self.collegeFinancial!.estimated_cost_of_books_and_supplies
-        self.costInfoRight[3] = self.collegeFinancial!.estimated_personal_expenses
-        self.costInfoRight[4] = self.collegeFinancial!.average_need_based_scholarship
-        self.costInfoRight[5] = self.collegeFinancial!.students_who_received_need_based_scholarship
-        
-        
-        
+
+
     }
 
     override func viewDidAppear(animated: Bool) {
