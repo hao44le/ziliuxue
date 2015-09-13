@@ -194,7 +194,6 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         
         self.navigationItem.title = "申请"
         
-        //self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 3964)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
