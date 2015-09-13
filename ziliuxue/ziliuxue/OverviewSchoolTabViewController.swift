@@ -86,7 +86,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
     @IBAction func rankingMoreButtonPressed(sender: UIButton) {
         //let selectedIndex = self.tabBarController?.selectedIndex
         //self.tabBarController?.selectedIndex = selectedIndex! + 1
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "排名", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+
         self.performSegueWithIdentifier("toRanking", sender: self)
     }
     
@@ -135,6 +135,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
  
         
         //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
+        
         self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
         
         self.logoImageView.image = UIImage(named: college!.name + " logo")

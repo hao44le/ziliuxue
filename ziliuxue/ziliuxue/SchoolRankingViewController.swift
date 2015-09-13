@@ -57,8 +57,9 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer!.enabled = false
-        self.nationalUniversityLabel.text = collegeRanking?.rankings.objectForKey("National Universities") as? String
+  
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "排名"
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +76,12 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sepecifcRankingCell", forIndexPath: indexPath) as! UITableViewCell
+        if(indexPath.row % 2 == 0){
+            cell.contentView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            cell.textLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            cell.detailTextLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+        }
+
         cell.textLabel!.text = rankingLeft[indexPath.row]
         cell.detailTextLabel!.text = rankingRight[indexPath.row]
         /*
@@ -85,6 +92,26 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
         }*/
         return cell
     }
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 55
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 60))
+        let label = UILabel(frame: CGRectMake(0, 0, 60, 60))
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(15)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints()
+        headerView.addSubview(label)
+        label.text = "排名：#1"
+
+        return label
+        
+    }
+
     /*
     // MARK: - Navigation
 
