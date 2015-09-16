@@ -209,7 +209,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         
             }
             
-            var row = indexPath.row
+            let row = indexPath.row
             switch indexPath.section{
             case 1:
                 cell?.itemLabel.text = self.detailDataDic!.samples[row]["area"] as? String

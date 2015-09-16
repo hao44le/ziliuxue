@@ -364,10 +364,10 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
         mapView.setRegion(coordinateRegion, animated: true)
     }
     func mapView(mapView: MKMapView,
-        viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
+        viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
             if annotation.isKindOfClass(CourseAnnotation.classForCoder())
             {
-                var identifier = "annotation"
+                let identifier = "annotation"
                 var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
                 
                 if annotationView == nil{

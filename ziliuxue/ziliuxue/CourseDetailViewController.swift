@@ -163,11 +163,11 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         }
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation.isKindOfClass(CourseAnnotation.classForCoder())
         {
-            var identifier = "annotation"
+            let identifier = "annotation"
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
             
             if annotationView == nil{
