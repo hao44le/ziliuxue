@@ -249,7 +249,7 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == self.universityArray.count {
-            let cell = tableView.dequeueReusableCellWithIdentifier("LoadingCell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("LoadingCell", forIndexPath: indexPath) 
             let activityIndicator = cell.contentView.viewWithTag(100) as! UIActivityIndicatorView
             activityIndicator.startAnimating()
             return cell
@@ -478,12 +478,12 @@ class ThridWizardViewController: UIViewController,UITableViewDelegate,UITableVie
             self.localFilteredUniversityArray = self.universityArray
         } else {
             //Local search
-            let searchPredicate = NSPredicate(format: "SELF.name CONTAINS[c] %@", searchController.searchBar.text)
+            let searchPredicate = NSPredicate(format: "SELF.name CONTAINS[c] %@", searchController.searchBar.text!)
             let array = (universityArray as NSArray).filteredArrayUsingPredicate(searchPredicate)
             self.localFilteredUniversityArray = array as! [College]
             
             //sever search
-            getSearchResultsFromServer(searchController.searchBar.text)
+            getSearchResultsFromServer(searchController.searchBar.text!)
         }
         
         

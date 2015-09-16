@@ -166,7 +166,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
                 }
                 
                 let input = usernameInputfield.text
-                if isValidEmail(input) || validatePhoneNumber(input){
+                if isValidEmail(input!) || validatePhoneNumber(input!){
                     //signup
                     
                     Tool.showProgressHUD("正在注册")
@@ -332,7 +332,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         imageView.frame = CGRectMake((ScreenSize.SCREEN_WIDTH - 249)/2, 0, 249, 184)
         
         
-        let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let button = UIButton(type: UIButtonType.System)
         button.frame = CGRectMake((ScreenSize.SCREEN_WIDTH - 249)/2, (ScreenSize.SCREEN_HEIGHT - 300), 249, 184)
         button.backgroundColor = UIColor.clearColor()
         button.userInteractionEnabled = true

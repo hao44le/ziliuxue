@@ -116,9 +116,9 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
 
-        var coursePicImage = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 233))
-        var urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[index]) as! String) as String
-        var picURL = NSURL(string: urlString)
+        let coursePicImage = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 233))
+        let urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[index]) as! String) as String
+        let picURL = NSURL(string: urlString)
         
         coursePicImage.sd_setImageWithURL(picURL, placeholderImage: nil)
         //coursePicImage.image = UIImage(named: "Massachusetts Institute of Technology photo1")
@@ -136,34 +136,34 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
     func setUpSessionMapView()
     {
         
-        var session = self.sessions[0] as! NSDictionary
+        let session = self.sessions[0] as! NSDictionary
         
-        var classes = session.objectForKey("classes") as! NSArray
-        var latitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("latitude") as! NSString
-        var longitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("longitude") as! NSString
+        let classes = session.objectForKey("classes") as! NSArray
+        let latitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("latitude") as! NSString
+        let longitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("longitude") as! NSString
         
-        var region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue), MKCoordinateSpanMake(0.001, 0.01))
+        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue), MKCoordinateSpanMake(0.001, 0.01))
         self.sessionMapView.setRegion(region, animated: true)
     }
     
     func addAnnotation()
     {
-        var session = self.sessions[0] as! NSDictionary
+        let session = self.sessions[0] as! NSDictionary
         
-        var classes = session.objectForKey("classes") as! NSArray
+        let classes = session.objectForKey("classes") as! NSArray
         
         for i in 0..<classes.count{
-            var geo_location = classes[i].objectForKey("geo_location") as! NSDictionary
+            let geo_location = classes[i].objectForKey("geo_location") as! NSDictionary
             
-            var location = CLLocationCoordinate2DMake((geo_location.objectForKey("latitude") as! NSString).doubleValue, (geo_location.objectForKey("longitude") as! NSString).doubleValue)
-            var annotation = CourseAnnotation(coordinate: location, title: session.objectForKey("title") as! String, subtitle: "点击查看详情", image:UIImage(named: self.pinImage[i])!)
+            let location = CLLocationCoordinate2DMake((geo_location.objectForKey("latitude") as! NSString).doubleValue, (geo_location.objectForKey("longitude") as! NSString).doubleValue)
+            let annotation = CourseAnnotation(coordinate: location, title: session.objectForKey("title") as! String, subtitle: "点击查看详情", image:UIImage(named: self.pinImage[i])!)
             
             self.sessionMapView.addAnnotation(annotation)
             
         }
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
         
         if annotation.isKindOfClass(CourseAnnotation.classForCoder())
         {
@@ -172,14 +172,14 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
             
             if annotationView == nil{
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView.canShowCallout=true;
-                annotationView.calloutOffset=CGPointMake(0, 0);
-                annotationView.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "coursePin"))
+                annotationView!.canShowCallout=true;
+                annotationView!.calloutOffset=CGPointMake(0, 0);
+                annotationView!.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "coursePin"))
                 
             }
             
-            annotationView.annotation = annotation
-            annotationView.image = (annotation as! CourseAnnotation).image
+            annotationView!.annotation = annotation
+            annotationView!.image = (annotation as! CourseAnnotation).image
             
             return annotationView
         }
@@ -200,9 +200,9 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
             
             if self.sessions != []
             {
-                var session = self.sessions[0] as! NSDictionary
+                let session = self.sessions[0] as! NSDictionary
                 
-                var classes = session.objectForKey("classes") as! NSArray
+                let classes = session.objectForKey("classes") as! NSArray
                 return classes.count
             }
             else
@@ -229,11 +229,11 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         
         if tableView == self.sessionTableView{
             let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-            var session = self.sessions[self.selectedSession] as! NSDictionary
+            let session = self.sessions[self.selectedSession] as! NSDictionary
             
-            var classes = session.objectForKey("classes") as! NSArray
+            let classes = session.objectForKey("classes") as! NSArray
   
-            var singleClass = classes[indexPath.row] as! NSDictionary
+            let singleClass = classes[indexPath.row] as! NSDictionary
             var classDetail = (singleClass.objectForKey("start_date") as! NSString).substringToIndex(10) + "-"
             classDetail += (singleClass.objectForKey("end_date") as! NSString).substringToIndex(10)
             classDetail += "  "
@@ -253,10 +253,10 @@ class CourseDetailViewController: UIViewController,UITableViewDataSource,UITable
         } else if tableView == self.similarTableView{
             let cell = tableView.dequeueReusableCellWithIdentifier("SimilarCourseTableViewCell", forIndexPath: indexPath) as! SimilarCourseTableViewCell
             
-            var row = indexPath.row
+            let row = indexPath.row
             cell.courseName.text = self.similarCourses[row]["name"] as? String
             cell.courseDetail.text = self.similarCourses[row]["summary"] as? String
-            var price = "￥" + String(self.similarCourses[row]["price"] as! Int)
+            let price = "￥" + String(self.similarCourses[row]["price"] as! Int)
             cell.price.text = price
             var teacherImage = [UIImage(named: "teacher1")!,UIImage(named: "teacher2")!]
             cell.avatarImageView.image = teacherImage[row]

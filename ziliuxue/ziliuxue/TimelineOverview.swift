@@ -102,7 +102,7 @@ public class TimelineOverview: UIView {
     
     @param coder An unarchiver object.
     */
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         TimeOverviewFrames = []
         super.init(coder: aDecoder)
     }
@@ -117,9 +117,9 @@ public class TimelineOverview: UIView {
     public init(bulletType: BulletType, TimeOverviewFrames: [TimeOverviewFrame]){
         self.TimeOverviewFrames = TimeOverviewFrames
         self.bulletType = bulletType
-        super.init(frame: CGRect.zeroRect)
+        super.init(frame: CGRect.zero)
         
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
         
         setupContent()
     }
@@ -134,7 +134,7 @@ public class TimelineOverview: UIView {
         }
         
         let guideView = UIView()
-        guideView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        guideView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(guideView)
         addConstraints([
             NSLayoutConstraint(item: guideView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 10),
@@ -163,7 +163,7 @@ public class TimelineOverview: UIView {
         let extraSpace: CGFloat = 200
         
         let line = UIView()
-        line.setTranslatesAutoresizingMaskIntoConstraints(false)
+        line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = lineColor
         addSubview(line)
         sendSubviewToBack(line)
@@ -201,7 +201,7 @@ public class TimelineOverview: UIView {
         shapeLayer.path = path.CGPath
         
         let v = UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.width))
-        v.setTranslatesAutoresizingMaskIntoConstraints(false)
+        v.translatesAutoresizingMaskIntoConstraints = false
         v.layer.addSublayer(shapeLayer)
         return v
     }
@@ -210,7 +210,7 @@ public class TimelineOverview: UIView {
         let v = UIView()
         self.dataArray.append(v)
         self.numberOfView++
-        v.setTranslatesAutoresizingMaskIntoConstraints(false)
+        v.translatesAutoresizingMaskIntoConstraints = false
         
         
         
@@ -228,7 +228,7 @@ public class TimelineOverview: UIView {
         if let image = element.image{
             
             let backgroundViewForImage = UIView()
-            backgroundViewForImage.setTranslatesAutoresizingMaskIntoConstraints(false)
+            backgroundViewForImage.translatesAutoresizingMaskIntoConstraints = false
             backgroundViewForImage.backgroundColor = UIColor.blackColor()
             backgroundViewForImage.layer.cornerRadius = 10
             v.addSubview(backgroundViewForImage)
@@ -241,7 +241,7 @@ public class TimelineOverview: UIView {
             
             let imageView = UIImageView(image: image)
             imageView.layer.cornerRadius = 10
-            imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
             v.addSubview(imageView)
             imageView.tag = self.numberOfView
@@ -253,8 +253,8 @@ public class TimelineOverview: UIView {
                 ])
             
             //button
-            let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-            button.setTranslatesAutoresizingMaskIntoConstraints(false)
+            let button = UIButton(type: UIButtonType.Custom)
+            button.translatesAutoresizingMaskIntoConstraints = false
             button.backgroundColor = UIColor.clearColor()
             button.tag = imageTag
             
@@ -275,7 +275,7 @@ public class TimelineOverview: UIView {
             
             if element.image == nil {
                 let titleLabel = UILabel()
-                titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                titleLabel.translatesAutoresizingMaskIntoConstraints = false
                 titleLabel.font = UIFont(name: "ArialMT", size: 25)
                 titleLabel.textColor = UIColor.blackColor()
                 titleLabel.text = title
@@ -290,7 +290,7 @@ public class TimelineOverview: UIView {
                     ])
                 
                 let timeLabel = UILabel()
-                timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                timeLabel.translatesAutoresizingMaskIntoConstraints = false
                 timeLabel.font = UIFont(name: "ArialMT", size: 18)
                 timeLabel.textColor = UIColor.lightGrayColor()
                 timeLabel.textAlignment = NSTextAlignment.Right
@@ -317,7 +317,7 @@ public class TimelineOverview: UIView {
             
             //backgroundView
             let backgroundView = UIView()
-            backgroundView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            backgroundView.translatesAutoresizingMaskIntoConstraints = false
             backgroundView.backgroundColor = UIColor.lightGrayColor()
             backgroundView.layer.cornerRadius = 10
             v.addSubview(backgroundView)
@@ -325,7 +325,7 @@ public class TimelineOverview: UIView {
             
             ++counter
             let titleLabel = UILabel()
-            titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.font = UIFont(name: "ArialMT", size: 18)
             titleLabel.textColor = titleLabelColor
             titleLabel.text = section.title
@@ -336,7 +336,7 @@ public class TimelineOverview: UIView {
             
             
             let timeLabel = UILabel()
-            timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            timeLabel.translatesAutoresizingMaskIntoConstraints = false
             timeLabel.font = UIFont(name: "ArialMT", size: 16)
             timeLabel.textColor = detailLabelColor
             timeLabel.text = section.time
@@ -386,7 +386,7 @@ public class TimelineOverview: UIView {
             if section.detail != "" {
                 
                 let detailLabel = UILabel()
-                detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+                detailLabel.translatesAutoresizingMaskIntoConstraints = false
                 detailLabel.font = UIFont(name: "ArialMT", size: 13)
                 detailLabel.text = section.detail
                 detailLabel.textColor = detailLabelColor
@@ -416,8 +416,8 @@ public class TimelineOverview: UIView {
             
             
             //button
-            let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-            button.setTranslatesAutoresizingMaskIntoConstraints(false)
+            let button = UIButton(type: UIButtonType.Custom)
+            button.translatesAutoresizingMaskIntoConstraints = false
             button.backgroundColor = UIColor.clearColor()
             button.tag = imageTag
             button.titleLabel?.text = titleLabel.text
@@ -437,7 +437,7 @@ public class TimelineOverview: UIView {
         //draw the line between the bullets
         
         let line = UIView()
-        line.setTranslatesAutoresizingMaskIntoConstraints(false)
+        line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = lineColor
         v.addSubview(line)
         sendSubviewToBack(line)

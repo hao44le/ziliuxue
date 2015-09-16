@@ -44,7 +44,7 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
             var counter = 0
             collegeAcademic!.five_most_popular_majors.enumerateKeysAndObjectsUsingBlock { (key:AnyObject!, value:AnyObject!, bool:UnsafeMutablePointer<ObjCBool>) -> Void in
                 //self.text[counter] = key as! String
-                self.slices[counter] = dropLast(value as! String).toInt()!
+                self.slices[counter] = Int(String((value as! String).characters.dropLast()))!
                 
                 counter++
             }
@@ -136,7 +136,7 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
         if tableView == facultyTableView {
             cell.textLabel?.text = self.facultyLeft[indexPath.row]
             cell.detailTextLabel?.text = self.facultyRight[indexPath.row]

@@ -54,7 +54,7 @@ class NewsUpdateViewController: UIViewController{
         
         scrollView = UIScrollView(frame: view.bounds)
         
-        scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         //scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         
@@ -98,7 +98,7 @@ class NewsUpdateViewController: UIViewController{
     func timelineOverviewImageTouched(notification:NSNotification){
         let userInfo : NSDictionary = notification.userInfo!
         let selection = userInfo.objectForKey("currentSelection") as! Int
-        println(selection)
+        print(selection)
     }
     
     /*

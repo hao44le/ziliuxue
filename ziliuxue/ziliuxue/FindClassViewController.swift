@@ -119,7 +119,7 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        var courseOverviewVC = segue.destinationViewController as! CourseViewController
+        let courseOverviewVC = segue.destinationViewController as! CourseViewController
         courseOverviewVC.courseName = self.selectedCourseName
         
     }

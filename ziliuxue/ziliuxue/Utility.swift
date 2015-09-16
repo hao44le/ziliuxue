@@ -68,23 +68,24 @@ struct ServerMethods {
         
         if let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as? String {
             manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-            let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
-            let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
-            let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
-            let parameter = NSDictionary(objectsAndKeys: profile,"profile")
-            print(parameter)
+            let target : NSDictionary = ["country":country,"degree":degree,"major":major]
+            let scores : NSDictionary = ["gpa":gpa,"toefl":toefl,"sat":sat]
+            let profile = NSDictionary(objects: [scores,target,my_schools], forKeys: ["scores","target","my_schools"])
+            let parameter = NSDictionary(objects: [profile], forKeys: ["profile"])
+            print(parameter, terminator: "")
+
             
             manager.POST(ServerConstant.user_profile, parameters: parameter
                 , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileSuccessed", object: nil)
-                    print("createUserProfile success\n")
-                    let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-                    print(dic)
+                    print("createUserProfile success\n", terminator: "")
+                    let dic = (try! NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
+                    print(dic, terminator: "")
                     
                 }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName("createUserProfileFailed", object: nil)
-                    print("createUserProfile failure\n")
-                    print(error)
+                    print("createUserProfile failure\n", terminator: "")
+                    print(error, terminator: "")
             }
 
         }
@@ -102,23 +103,23 @@ struct ServerMethods {
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-        let target = NSDictionary(objectsAndKeys: country,"country",degree,"degree",major,"major")
-        let scores = NSDictionary(objectsAndKeys: gpa,"gpa",toefl,"toefl",sat,"sat")
-        let profile = NSDictionary(objectsAndKeys: scores,"scores",target,"target",my_schools,"my_schools")
-        let parameter = NSDictionary(objectsAndKeys: profile,"profile")
-        print(parameter)
+        let target : NSDictionary = ["country":country,"degree":degree,"major":major]
+        let scores : NSDictionary = ["gpa":gpa,"toefl":toefl,"sat":sat]
+        let profile = NSDictionary(objects: [scores,target,my_schools], forKeys: ["scores","target","my_schools"])
+        let parameter = NSDictionary(objects: [profile], forKeys: ["profile"])
+        print(parameter, terminator: "")
         
         manager.PUT(ServerConstant.user_profile, parameters: parameter
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileSuccessed", object: nil)
-                print("updateUserProfile success\n")
-                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
-                print(dic)
+                print("updateUserProfile success\n", terminator: "")
+                let dic = (try! NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
+                print(dic, terminator: "")
                 
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("updateUserProfileFailed", object: nil)
-                print("updateUserProfile failure\n")
-                print(error)
+                print("updateUserProfile failure\n", terminator: "")
+                print(error, terminator: "")
         }
         
     }
@@ -136,17 +137,17 @@ struct ServerMethods {
         manager.GET(ServerConstant.user_profile, parameters: nil
             , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileSuccessed", object: nil)
-                print("getUserProfile success\n")
+                print("getUserProfile success\n", terminator: "")
                 
-                let dic =  NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                let dic =  (try! NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
                 
-                print(dic)
+                print(dic, terminator: "")
                 
                 //print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getUserProfileFailed", object: nil)
-                print("getUserProfile failure\n")
-                print(error)
+                print("getUserProfile failure\n", terminator: "")
+                print(error, terminator: "")
         }
     }
     
@@ -160,13 +161,13 @@ struct ServerMethods {
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(getCorrectBreakPointForCollegeDetail(collegeID), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            print("getCollegeDetail success\n")
+            print("getCollegeDetail success\n", terminator: "")
             if let message = response.objectForKey("message") as? String {
                 //not found
-                print(message)
+                print(message, terminator: "")
             } else {
                 //found result
-                print(response)
+                print(response, terminator: "")
                 
                 
                 
@@ -555,8 +556,8 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getCollegeDetailFailed", object: nil)
-                print("getCollegeDetail failure\n")
-                print(error)
+                print("getCollegeDetail failure\n", terminator: "")
+                print(error, terminator: "")
         }
         
         
@@ -581,25 +582,25 @@ struct ServerMethods {
         */
         //let imageData = UIImageJPEGRepresentation(newImage, 1.0)
         //let string = imageData.base64EncodedDataWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength) as! String
-        let avatar = UIImagePNGRepresentation(newImage).base64EncodedStringWithOptions(nil)
+        let avatar = UIImagePNGRepresentation(newImage)!.base64EncodedStringWithOptions([])
         //println(avatar)
         
         
         
         
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",username,"name",password,"password",email,"email",avatar,"avatar")
-        //print(userInfo)
+        let userInfo = NSDictionary(objects: [ServerConstant.client_id,username,password,email,avatar], forKeys: ["client_id","name","password","email","avatar"])
         
+
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
-            print("signup success\n")
-            print(response)
+            print("signup success\n", terminator: "")
+            print(response, terminator: "")
             
             //print(response)
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("signupFailed", object: nil)
-                print("signup failure\n")
-                print(error)
+                print("signup failure\n", terminator: "")
+                print(error, terminator: "")
         }
         
         
@@ -613,10 +614,10 @@ struct ServerMethods {
         manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
         manager.GET(ServerConstant.get_user, parameters: nil, success: { (operation:AFHTTPRequestOperation!, respose:AnyObject!) -> Void in
-            print("getAllUsers success\n")
-            print(respose)
+            print("getAllUsers success\n", terminator: "")
+            print(respose, terminator: "")
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("getAllUsers failure\n")
+                print("getAllUsers failure\n", terminator: "")
         }
     }
     
@@ -633,15 +634,15 @@ struct ServerMethods {
         image!.drawInRect(CGRectMake(0, 0, size.width, size.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        let avatar = UIImagePNGRepresentation(newImage).base64EncodedStringWithOptions(nil)
+        let avatar = UIImagePNGRepresentation(newImage)!.base64EncodedStringWithOptions([])
         //println(avatar)
-        let userInfo = NSDictionary(objectsAndKeys: avatar,"avatar")
+        let userInfo = NSDictionary(object: avatar,forKey: "avatar")
         manager.PUT(ServerConstant.update_user_avatar, parameters: userInfo, success: { (o:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                println("change user avatar susseed")
-            println(response)
+                print("change user avatar susseed")
+            print(response)
             }) { (o:AFHTTPRequestOperation!, error:NSError!) -> Void in
-            println("change user avatar failed")
-                println(error)
+            print("change user avatar failed")
+                print(error)
         }
     }
     
@@ -663,7 +664,7 @@ struct ServerMethods {
         var result : [College] = []
         manager.GET(getCorrectBreakPoint(from, to: to), parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            print("getCollege success\n")
+            print("getCollege success\n", terminator: "")
             
             for school in response as! NSArray {
                 let id = school.objectForKey("_id") as! String
@@ -742,8 +743,8 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("getCollegeFailed", object: nil)
-                print("getCollege failure\n")
-                print(error)
+                print("getCollege failure\n", terminator: "")
+                print(error, terminator: "")
                 
         }
         
@@ -758,11 +759,11 @@ struct ServerMethods {
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         manager.securityPolicy.validatesDomainName = false
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",refresh_token,"refresh_token")
+        let userInfo = NSDictionary(objects: [ServerConstant.client_id,refresh_token], forKeys: ["client_id","refresh_token"])
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenSuccessed", object: nil)
             
-            print("obtainNewToken success\n")
+            print("obtainNewToken success\n", terminator: "")
             let dic = response as! NSDictionary
             let refresh_token = dic.objectForKey("refresh_token") as! String
             let token = dic.objectForKey("token") as! String
@@ -777,8 +778,8 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("obtainNewTokenFailed", object: nil)
-                print("obtainNewToken failure\n")
-                print(error)
+                print("obtainNewToken failure\n", terminator: "")
+                print(error, terminator: "")
         }
     }
     
@@ -787,17 +788,15 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.securityPolicy.validatesDomainName = false
         
-        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",email,"email",password,"password")
-        
-        
+        let userInfo = NSDictionary(objects: [ServerConstant.client_id,email,password], forKeys: ["client_id","email","password"])        
         
         
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
             NSNotificationCenter.defaultCenter().postNotificationName("loginSuccessed", object: nil)
-            print("login success\n")
+            print("login success\n", terminator: "")
             
-            print(response)
+            print(response, terminator: "")
             let dic = response as! NSDictionary
             let refresh_token = dic.objectForKey("refresh_token") as! String
             let token = dic.objectForKey("token") as! String
@@ -812,8 +811,8 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 NSNotificationCenter.defaultCenter().postNotificationName("loginFailed", object: nil)
-                print("login failure\n")
-                print(error)
+                print("login failure\n", terminator: "")
+                print(error, terminator: "")
         }
         
     }
@@ -835,7 +834,7 @@ struct ServerMethods {
         
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            print("getCourseOverview success\n")
+            print("getCourseOverview success\n", terminator: "")
             
             for course in response as! NSArray {
                 let _id = course.objectForKey("_id") as! String
@@ -873,8 +872,8 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 
-                print("getCourseOverview failure\n")
-                print(error)
+                print("getCourseOverview failure\n", terminator: "")
+                print(error, terminator: "")
         }
     }
     
@@ -894,7 +893,7 @@ struct ServerMethods {
         
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            print("getCourseDetail success\n")
+            print("getCourseDetail success\n", terminator: "")
             
             let resDic = response as! NSDictionary
             
@@ -911,8 +910,8 @@ struct ServerMethods {
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 
-                print("getCourseDetail failure\n")
-                print(error)
+                print("getCourseDetail failure\n", terminator: "")
+                print(error, terminator: "")
         }
     }
     
@@ -933,18 +932,18 @@ struct ServerMethods {
         
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            print("getServiceProvider success\n")
+            print("getServiceProvider success\n", terminator: "")
 
             let resArray = response as! NSArray
             
-            var resultArray = ServiceWriterOverView.objectArrayWithKeyValuesArray(resArray)
+            let resultArray = ServiceWriterOverView.objectArrayWithKeyValuesArray(resArray)
           
             NSNotificationCenter.defaultCenter().postNotificationName("didGetServiceProvider", object: resultArray)
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 
-                print("getServiceProvider failure\n")
-                print(error)
+                print("getServiceProvider failure\n", terminator: "")
+                print(error, terminator: "")
         }
     }
     
@@ -963,18 +962,18 @@ struct ServerMethods {
         
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            print("getWriterDetail success\n")
+            print("getWriterDetail success\n", terminator: "")
             
             let resDic = response as! NSDictionary
             
-            var resultDic = ServiceWriterDetail(keyValues: resDic)
+            let resultDic = ServiceWriterDetail(keyValues: resDic)
         
             NSNotificationCenter.defaultCenter().postNotificationName("didGetWriterDetail", object: resultDic)
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 
-                print("getWriterDetail failure\n")
-                print(error)
+                print("getWriterDetail failure\n", terminator: "")
+                print(error, terminator: "")
         }
     }
 

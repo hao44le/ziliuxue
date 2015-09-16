@@ -74,7 +74,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         self.detailDataDic = notification.object as? ServiceWriterDetail
         Tool.showSuccessHUD("获取成功")
         
-        var avatarURL = NSURL(string: ServerConstant.baseURL + self.detailDataDic!.avatar_url)
+        let avatarURL = NSURL(string: ServerConstant.baseURL + self.detailDataDic!.avatar_url)
         self.avatar.sd_setImageWithURL(avatarURL, placeholderImage: nil)
         
         self.name.text = self.detailDataDic?.name
@@ -101,36 +101,36 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         
         switch section{
         case 0:
-            var commentHeaderView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
+            let commentHeaderView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
             commentHeaderView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
-            var starView = UIImageView(frame: CGRectMake(5, 0, 80, 20))
+            let starView = UIImageView(frame: CGRectMake(5, 0, 80, 20))
             starView.image = UIImage(named: "ratingStar")
             commentHeaderView.addSubview(starView)
             
             return commentHeaderView
         case 1:
-            var sampleView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
+            let sampleView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
             sampleView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
-            var leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
+            let leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
             leftLabel.text = "部分写作样本"
             leftLabel.font = UIFont(name: "Helvetica", size: 13)
             sampleView.addSubview(leftLabel)
             
-            var rightLabel = UILabel(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 60, 0, 60, 20))
+            let rightLabel = UILabel(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 60, 0, 60, 20))
             rightLabel.text = "免费"
             rightLabel.font = UIFont(name: "Helvetica", size: 13)
             sampleView.addSubview(rightLabel)
             
             return sampleView
         case 2:
-            var resumeView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
+            let resumeView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
             resumeView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
-            var leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
+            let leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
             leftLabel.text = "写作服务：个人简历"
             leftLabel.font = UIFont(name: "Helvetica", size: 13)
             resumeView.addSubview(leftLabel)
             
-            var rightLabel = UILabel(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 60, 0, 60, 20))
+            let rightLabel = UILabel(frame: CGRectMake(ScreenSize.SCREEN_WIDTH - 60, 0, 60, 20))
             rightLabel.text = "￥799元"
             rightLabel.font = UIFont(name: "Helvetica", size: 13)
             resumeView.addSubview(rightLabel)
@@ -138,9 +138,9 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
             return resumeView
             
         case 3:
-            var selfIntroView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
+            let selfIntroView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 25))
             selfIntroView.backgroundColor = UIColor(red: 220/255, green: 244/255, blue: 244/255, alpha: 1)
-            var leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
+            let leftLabel = UILabel(frame: CGRectMake(5, 0, 150, 20))
             leftLabel.text = "写作服务：个人声明"
             leftLabel.font = UIFont(name: "Helvetica", size: 13)
             selfIntroView.addSubview(leftLabel)
@@ -180,7 +180,7 @@ class WriterDetailViewController: UIViewController,UITableViewDelegate,UITableVi
         if indexPath.section == 0
         {
             let cellIdentifier = "WriterDetailComments"
-            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
             if (cell == nil) {
                 cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
             }

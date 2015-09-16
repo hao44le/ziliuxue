@@ -75,7 +75,7 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
         return rankingLeft.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("sepecifcRankingCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("sepecifcRankingCell", forIndexPath: indexPath) 
         if(indexPath.row % 2 == 0){
             cell.contentView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
             cell.textLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
@@ -104,7 +104,7 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
         label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(15)
         label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints()
+        label.translatesAutoresizingMaskIntoConstraints = true
         headerView.addSubview(label)
         label.text = "排名：#1"
 

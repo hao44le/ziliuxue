@@ -75,7 +75,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     let regionRadius: CLLocationDistance = 10000
     var geo_location : NSDictionary = ["longitude":"-157.829444","latitude":"21.282778","title":"test"]
     let imageView = UIImageView()
-    let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    let button = UIButton(type: UIButtonType.Custom)
     var readyToPlay = false
     var moviewPlayerOriginFrame : CGRect?
     var tableView : UITableView = UITableView()
@@ -182,7 +182,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
         label.font = UIFont.systemFontOfSize(13)
         self.fourthView.addSubview(label)
         
-        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let button = UIButton(type: UIButtonType.Custom)
         button.frame = CGRectMake((ScreenSize.SCREEN_WIDTH - 100) / 2, 110, 100, 50)
         
         //button.backgroundColor = UIColor.blueColor()
@@ -202,7 +202,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     }
     
     func buttonTouched(){
-        println("更新分数")
+        print("更新分数")
     }
     
     func setUpTableView(whichView:UIView){
@@ -223,7 +223,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let CellIdentifier = "CellIdentifier"
-        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: CellIdentifier)
         }
@@ -303,7 +303,7 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
             setupButton()
             //self.view.bringSubviewToFront(moviePlayer.view)
         } else {
-            debugPrintln("something wrong")
+            debugPrint("something wrong")
             
         }
     }
@@ -363,8 +363,8 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
             regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
-    func mapView(mapView: MKMapView!,
-        viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView,
+        viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
             if annotation.isKindOfClass(CourseAnnotation.classForCoder())
             {
                 var identifier = "annotation"
@@ -372,14 +372,14 @@ class LandingPageDetailViewController: UIViewController,MKMapViewDelegate,UIScro
                 
                 if annotationView == nil{
                     annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                    annotationView.canShowCallout=true;
-                    annotationView.calloutOffset=CGPointMake(0, 0);
-                    annotationView.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "coursePin"))
+                    annotationView!.canShowCallout=true;
+                    annotationView!.calloutOffset=CGPointMake(0, 0);
+                    annotationView!.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "coursePin"))
                     
                 }
                 
-                annotationView.annotation = annotation
-                annotationView.image = (annotation as! CourseAnnotation).image
+                annotationView!.annotation = annotation
+                annotationView!.image = (annotation as! CourseAnnotation).image
                 
                 return annotationView
             }

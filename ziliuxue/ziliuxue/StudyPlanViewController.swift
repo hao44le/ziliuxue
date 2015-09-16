@@ -31,7 +31,7 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.interactivePopGestureRecognizer.enabled = false
+        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
         // Do any additional setup after loading the view.
     }
     
@@ -72,7 +72,7 @@ class StudyPlanViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.logoImageView.image = UIImage(named: self.name[indexPath.row])
         return cell
         */
-        let cell = tableView.dequeueReusableCellWithIdentifier("newCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("newCell", forIndexPath: indexPath) 
         cell.textLabel?.text = name[indexPath.row]
         cell.imageView?.image = UIImage(named: name[indexPath.row])
         return cell

@@ -74,7 +74,7 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
         if self.resultSeachController.active {
             cell.textLabel?.text = self.localFilteredMajorArray[indexPath.row]
             
@@ -99,7 +99,7 @@ class PopUpViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             self.localFilteredMajorArray = self.MajorArray
         } else {
             //Local search
-            let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text)
+            let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
             let array = (MajorArray as NSArray).filteredArrayUsingPredicate(searchPredicate)
             self.localFilteredMajorArray = array as! [String]
             
