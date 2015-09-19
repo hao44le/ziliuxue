@@ -125,7 +125,7 @@ public class TimelineView: UIView {
     
     @param coder An unarchiver object.
     */
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         timeFrames = []
         super.init(coder: aDecoder)
     }
@@ -140,9 +140,9 @@ public class TimelineView: UIView {
     public init(bulletType: BulletType, timeFrames: [TimeFrame]){
         self.timeFrames = timeFrames
         self.bulletType = bulletType
-        super.init(frame: CGRect.zeroRect)
+        super.init(frame: CGRect.zero)
         
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
         
         setupContent()
     }
@@ -155,7 +155,7 @@ public class TimelineView: UIView {
         }
         
         let guideView = UIView()
-        guideView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        guideView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(guideView)
         addConstraints([
             NSLayoutConstraint(item: guideView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 24),
@@ -183,7 +183,7 @@ public class TimelineView: UIView {
         let extraSpace: CGFloat = 200
         
         let line = UIView()
-        line.setTranslatesAutoresizingMaskIntoConstraints(false)
+        line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = lineColor
         addSubview(line)
         sendSubviewToBack(line)
@@ -219,7 +219,7 @@ public class TimelineView: UIView {
         shapeLayer.path = path.CGPath
         
         let v = UIView(frame: CGRect(x: 0, y: 0, width: size.width, height: size.width))
-        v.setTranslatesAutoresizingMaskIntoConstraints(false)
+        v.translatesAutoresizingMaskIntoConstraints = false
         v.layer.addSublayer(shapeLayer)
         return v
     }
@@ -227,7 +227,7 @@ public class TimelineView: UIView {
     private func blockForTimeFrame(element: TimeFrame, imageTag: Int) -> UIView{
         let v = UIView()
         
-        v.setTranslatesAutoresizingMaskIntoConstraints(false)
+        v.translatesAutoresizingMaskIntoConstraints = false
         
         //bullet
         let s = CGSize(width: 14, height: 14)
@@ -245,7 +245,7 @@ public class TimelineView: UIView {
         if let image = element.image{
             
             let backgroundViewForImage = UIView()
-            backgroundViewForImage.setTranslatesAutoresizingMaskIntoConstraints(false)
+            backgroundViewForImage.translatesAutoresizingMaskIntoConstraints = false
             backgroundViewForImage.backgroundColor = UIColor.blackColor()
             backgroundViewForImage.layer.cornerRadius = 10
             v.addSubview(backgroundViewForImage)
@@ -258,7 +258,7 @@ public class TimelineView: UIView {
             
             let imageView = UIImageView(image: image)
             imageView.layer.cornerRadius = 10
-            imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = UIViewContentMode.ScaleAspectFit
             v.addSubview(imageView)
             imageView.tag = imageTag
@@ -277,7 +277,7 @@ public class TimelineView: UIView {
                 //如果detail不存在，就不显示
         if element.detail != "" {
             let titleLabel = UILabel()
-            titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.font = UIFont(name: "ArialMT", size: 18)
             titleLabel.textColor = titleLabelColor
             titleLabel.text = element.title
@@ -291,7 +291,7 @@ public class TimelineView: UIView {
                 ])
             
             let timeLabel = UILabel()
-            timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            timeLabel.translatesAutoresizingMaskIntoConstraints = false
             timeLabel.font = UIFont(name: "ArialMT", size: 16)
             timeLabel.textColor = detailLabelColor
             timeLabel.text = element.time
@@ -307,7 +307,7 @@ public class TimelineView: UIView {
 
             
             let detailLabel = UILabel()
-            detailLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            detailLabel.translatesAutoresizingMaskIntoConstraints = false
             detailLabel.font = UIFont(name: "ArialMT", size: 13)
             detailLabel.text = element.detail
             detailLabel.textColor = detailLabelColor
@@ -323,7 +323,7 @@ public class TimelineView: UIView {
 
         } else {
             let titleLabel = UILabel()
-            titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.font = UIFont(name: "ArialMT", size: 18)
             titleLabel.textColor = titleLabelColor
             titleLabel.text = element.title
@@ -338,7 +338,7 @@ public class TimelineView: UIView {
                 ])
             
             let timeLabel = UILabel()
-            timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            timeLabel.translatesAutoresizingMaskIntoConstraints = false
             timeLabel.font = UIFont(name: "ArialMT", size: 16)
             timeLabel.textColor = detailLabelColor
             timeLabel.text = element.time
@@ -357,7 +357,7 @@ public class TimelineView: UIView {
         
         //draw the line between the bullets
         let line = UIView()
-        line.setTranslatesAutoresizingMaskIntoConstraints(false)
+        line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = lineColor
         v.addSubview(line)
         sendSubviewToBack(line)

@@ -52,7 +52,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     func success(notification:NSNotification){
         let userInfo : NSDictionary = notification.userInfo!
-        print(userInfo.objectForKey("collegeDetail"))
+        print(userInfo.objectForKey("collegeDetail"), terminator: "")
         
         
     }

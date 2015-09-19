@@ -20,7 +20,7 @@ class PlanOverviewViewController: UIViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.topItem?.title = "清单"
-        self.navigationController?.interactivePopGestureRecognizer.enabled = true
+        self.navigationController?.interactivePopGestureRecognizer!.enabled = true
         
         // Do any additional setup after loading the view.
     }
@@ -39,7 +39,7 @@ class PlanOverviewViewController: UIViewController,UITableViewDelegate,UITableVi
         return list.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
         cell.textLabel?.text = list[indexPath.row]
         return cell
     }

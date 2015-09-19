@@ -99,7 +99,7 @@ class PersonalInfoViewController: UIViewController,UITableViewDataSource,UITable
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
         cell.textLabel?.text = self.array[indexPath.row]
         return cell
     }

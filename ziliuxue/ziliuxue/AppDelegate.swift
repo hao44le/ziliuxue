@@ -23,11 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
-        var types: UIUserNotificationType = UIUserNotificationType.Badge |
-            UIUserNotificationType.Alert |
-            UIUserNotificationType.Sound
+        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
         
-        var settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
+        let settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
         
         application.registerUserNotificationSettings( settings )
         application.registerForRemoteNotifications()
@@ -114,15 +112,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        println(error.localizedDescription)
+        print(error.localizedDescription)
     }
     
     
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
         if isFullScreen {
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
+            return UIInterfaceOrientationMask.AllButUpsideDown
         } else {
-            return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+            return UIInterfaceOrientationMask.Portrait
         }
         
     }
@@ -160,9 +158,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
 //        }
 //        return WXApi.handleOpenURL(url, delegate: self)
 //    }
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        println(sourceApplication)
+        print(sourceApplication)
         if sourceApplication == "com.tencent.xin" {
             return WXApi.handleOpenURL(url, delegate: self)
             
@@ -207,8 +205,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
     
     func didReceiveWeiboRequest(request: WBBaseRequest!) {
         
-        println("request============")
-        println(request.userInfo)
+        print("request============")
+        print(request.userInfo)
     }
     
     func didReceiveWeiboResponse(response: WBBaseResponse!) {
@@ -240,24 +238,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
     
     func queryWeiboUserData(userID:NSString,accessToken:NSString){
         
-        var weiboURL = "https://api.weibo.com/2/users/show.json"
+        let weiboURL = "https://api.weibo.com/2/users/show.json"
         let manager = AFHTTPRequestOperationManager()
         manager.securityPolicy.allowInvalidCertificates = true
         
-        var param = ["uid":userID,"access_token":accessToken]
+        let param = ["uid":userID,"access_token":accessToken]
         
         manager.GET(weiboURL, parameters: param, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
-            print("getWeiboUserData success\n")
+            print("getWeiboUserData success\n", terminator: "")
             
-            println(response)
+            print(response)
             
 
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
                 
-                print("getWeiboUserData failure\n")
-                print(error)
+                print("getWeiboUserData failure\n", terminator: "")
+                print(error, terminator: "")
         }
 
         
@@ -277,7 +275,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
             manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                 //print("success")
                 
-                let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                let dic = (try! NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
                 //print(dic)
                 if let token = dic.objectForKey("access_token") as? String {
                     if let openid = dic.objectForKey("openid") as? String {
@@ -292,8 +290,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
                     UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 }
                 }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                    print("failure")
-                    print(error)
+                    print("failure", terminator: "")
+                    print(error, terminator: "")
                     NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Failed", object: nil)
                     UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 }
@@ -310,7 +308,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
         manager.responseSerializer = AFHTTPResponseSerializer()
         manager.GET(user_url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             //print("success")
-            let dic = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+            let dic = (try! NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
             if let openid = dic.objectForKey("openid") as? String{
                 if let nickname = dic.objectForKey("nickname") as? String {
                     if let headimgurl = dic.objectForKey("headimgurl") as? String {
@@ -325,10 +323,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
                         
                         manager.securityPolicy.allowInvalidCertificates = true
                         manager.securityPolicy.validatesDomainName = false
-                        let others = NSDictionary(objectsAndKeys: city,"city",country,"country",language,"language",province,"province",sex,"sex",unionid,"unionid",privilege,"privilege")
-                        let userInfo = NSDictionary(objectsAndKeys: ServerConstant.client_id,"client_id",openid,"open_id",nickname,"nickname",headimgurl,"img_url",others,"others")
+                        let others : NSDictionary = ["city":city,"country":country,"language":language,"province":province,"sex":sex,"unionid":unionid,"privilege":privilege]
+                        let userInfo : NSDictionary = ["client_id":ServerConstant.client_id,"open_id":openid,"nickname":nickname,"img_url":headimgurl,"others":others]
                         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                                let server_callback = NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments, error: nil) as! NSDictionary
+                                let server_callback = (try! NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
                                 let token = server_callback.objectForKey("token") as! String
                                 let refresh_token = server_callback.objectForKey("refresh_token") as! String
                                 NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
@@ -339,7 +337,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
                                 NSUserDefaults.standardUserDefaults().setObject(headimgurl, forKey: "weChat_userImageUrl")
                                 NSUserDefaults.standardUserDefaults().setObject(nickname, forKey: "weChat_userNickname")
                             }, failure: { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                                print(error)
+                                print(error, terminator: "")
                                 NSNotificationCenter.defaultCenter().postNotificationName("weChat_login_Failed", object: nil)
                                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                         })
@@ -348,8 +346,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
             }
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
-                print("failure")
-                print(error)
+                print("failure", terminator: "")
+                print(error, terminator: "")
         }
     }
 

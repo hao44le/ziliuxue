@@ -101,7 +101,7 @@ class LeftDrawerTableViewController: UITableViewController {
         
         let cellIdentifier:String = "reuseIdentifier"
         
-        var cell = self.tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell?
+        var cell = self.tableView.dequeueReusableCellWithIdentifier(cellIdentifier) 
         var imageView:UIImageView = UIImageView()
         
         // Configure the cell...

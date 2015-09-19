@@ -47,7 +47,7 @@ class SchoolCostViewController: UIViewController,UITableViewDataSource {
         return left.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
         cell.textLabel?.text = left[indexPath.row]
         cell.detailTextLabel?.text = right[indexPath.row]
         return cell

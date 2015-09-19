@@ -82,7 +82,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,UIGestureRecogni
 
     @IBAction func weiboClicked(sender: UIButton) {
         
-        var request = WBAuthorizeRequest.request() as! WBAuthorizeRequest
+        let request = WBAuthorizeRequest.request() as! WBAuthorizeRequest
         request.redirectURI = kWeiboRedirectURI
         request.scope = "all"
         request.userInfo = ["SSO_From":"LoginController"]

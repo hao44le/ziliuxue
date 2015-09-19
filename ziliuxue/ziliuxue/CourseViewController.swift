@@ -42,11 +42,11 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CourseTableViewCell", forIndexPath: indexPath) as! CourseTableViewCell
         
-        var courseOverView = self.courseOverViewList[indexPath.row] as CourseOverView
+        let courseOverView = self.courseOverViewList[indexPath.row] as CourseOverView
         
         cell.teacherImage.sd_setImageWithURL(NSURL(string: courseOverView.teacherPicURL), placeholderImage: nil)
         
-        println(courseOverView.teacherPicURL)
+        print(courseOverView.teacherPicURL)
         cell.courseImage.sd_setImageWithURL(NSURL(string: courseOverView.coursePicURL), placeholderImage: nil)
         
         cell.coursePrice.text = "￥" + String(courseOverView.price)
@@ -91,10 +91,10 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        var courseDetailVC = segue.destinationViewController as! CourseDetailViewController
+        let courseDetailVC = segue.destinationViewController as! CourseDetailViewController
         courseDetailVC.hidesBottomBarWhenPushed = true
         
-        var courseOverView = self.courseOverViewList[self.selectedIndex]
+        let courseOverView = self.courseOverViewList[self.selectedIndex]
         courseDetailVC.courseID = courseOverView._id
         courseDetailVC.overview = courseOverView.overview
         courseDetailVC.metadata = courseOverView.metadata

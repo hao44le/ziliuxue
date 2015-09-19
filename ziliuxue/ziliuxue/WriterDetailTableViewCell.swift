@@ -19,7 +19,7 @@ class WriterDetailTableViewCell: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        var backgroundView = UIView(frame: CGRectMake(0, 0, 70, 40))
+        let backgroundView = UIView(frame: CGRectMake(0, 0, 70, 40))
         backgroundView.backgroundColor = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
         self.addSubview(backgroundView)
         
@@ -40,7 +40,7 @@ class WriterDetailTableViewCell: UITableViewCell {
     
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

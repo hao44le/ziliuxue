@@ -23,7 +23,7 @@ class TimelineDetailViewController: UIViewController{
         
         scrollView = UIScrollView(frame: view.bounds)
         
-        scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(scrollView)
         

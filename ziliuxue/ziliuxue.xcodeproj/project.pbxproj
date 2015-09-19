@@ -353,6 +353,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7B3A33AF1BACF10600B29ABE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7B3A33B01BACF10C00B29ABE /* Biz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Biz;
+			sourceTree = "<group>";
+		};
+		7B3A33B11BACF11100B29ABE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0359D1B671FBB00CB704C /* ServiceOverviewViewController.swift */,
+				C05CA2B61B5F21DF00F0529E /* FindServiceViewController.swift */,
+				C0AB2E461B5E846C0010E42E /* FourthTabBarViewController.swift */,
+				7BC21F941B717FE6000D6583 /* WriterDetailViewController.swift */,
+				7B3A33B21BACF12900B29ABE /* View */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		7B3A33B21BACF12900B29ABE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BC21F961B776A19000D6583 /* WriterDetailTableViewCell.swift */,
+				C0C0359F1B67200B00CB704C /* ServiceOverviewTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		7B6B259B1BA3AD5200174198 /* Biz */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,12 +613,9 @@
 		C031F1781B4A0EFE008D96D7 /* FindService */ = {
 			isa = PBXGroup;
 			children = (
-				C0C0359F1B67200B00CB704C /* ServiceOverviewTableViewCell.swift */,
-				C0C0359D1B671FBB00CB704C /* ServiceOverviewViewController.swift */,
-				C05CA2B61B5F21DF00F0529E /* FindServiceViewController.swift */,
-				C0AB2E461B5E846C0010E42E /* FourthTabBarViewController.swift */,
-				7BC21F941B717FE6000D6583 /* WriterDetailViewController.swift */,
-				7BC21F961B776A19000D6583 /* WriterDetailTableViewCell.swift */,
+				7B3A33B11BACF11100B29ABE /* UI */,
+				7B3A33B01BACF10C00B29ABE /* Biz */,
+				7B3A33AF1BACF10600B29ABE /* Model */,
 			);
 			name = FindService;
 			sourceTree = "<group>";
@@ -842,8 +874,9 @@
 		C0C8F8F21B2ED89E00D698FC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = ziliuxue;
 				TargetAttributes = {
 					C0C8F8F91B2ED89E00D698FC = {
@@ -1066,6 +1099,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1144,6 +1178,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ziliuxue/WeChatSDK_1.5",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "geleichen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "自留学";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = ziliuxue/Header.h;
@@ -1166,6 +1201,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ziliuxue/WeChatSDK_1.5",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "geleichen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "自留学";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = ziliuxue/Header.h;
