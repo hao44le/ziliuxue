@@ -2929,6 +2929,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classroom" translatesAutoresizingMaskIntoConstraints="NO" id="V1e-L7-KdP">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <animations/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
+                                                    </variation>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB4-49-bgv">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -2998,7 +3001,8 @@
                                                             <exclude reference="Dky-2c-7wL"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="168" width="320" height="52"/>
                                                         <mask key="subviews">
                                                             <include reference="PBC-ah-zhw"/>
                                                             <include reference="xWf-hn-F06"/>
@@ -3026,7 +3030,8 @@
                                                             <exclude reference="pO7-HU-xte"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="268" y="139" width="52" height="52"/>
                                                         <mask key="constraints">
                                                             <include reference="Odu-2d-LIG"/>
                                                             <include reference="pO7-HU-xte"/>
@@ -11383,7 +11388,7 @@
                         <viewControllerLayoutGuide type="bottom" id="IKT-yC-xXb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NP7-ia-Jjz">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="1285"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfS-wN-Wx0">
@@ -11406,10 +11411,10 @@
                                 <exclude reference="ZfS-wN-Wx0"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7ic-2W-AHQ"/>
                                 <exclude reference="Ac6-mj-eOG"/>
                                 <exclude reference="jOF-Q9-Lhs"/>
                                 <exclude reference="pFs-qs-Grz"/>
-                                <exclude reference="7ic-2W-AHQ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -11417,10 +11422,10 @@
                                 <include reference="ZfS-wN-Wx0"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7ic-2W-AHQ"/>
                                 <include reference="Ac6-mj-eOG"/>
                                 <include reference="jOF-Q9-Lhs"/>
                                 <include reference="pFs-qs-Grz"/>
-                                <include reference="7ic-2W-AHQ"/>
                             </mask>
                         </variation>
                     </view>
