@@ -38,7 +38,7 @@ class CenterTabViewController: UITabBarController {
             if !LocalStore.isLogined(){
                 self.performSegueWithIdentifier("toLogin", sender: self)
             } else {
-                self.performSegueWithIdentifier("toWizard", sender: self)
+                //self.performSegueWithIdentifier("toWizard", sender: self)
             }
         }
         if LocalStore.isIntroVisited() {

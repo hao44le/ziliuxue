@@ -18,7 +18,6 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     @IBOutlet weak var weiboHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstriant: NSLayoutConstraint!
     
-    @IBOutlet weak var bottomLabelConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var userView: UIView!
@@ -228,19 +227,14 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         if DeviceType.IS_IPHONE_4_OR_LESS {
             self.imageViewConstraint.constant = 10
             self.bottomConstriant.constant = 50
-            self.bottomLabelConstraint.constant = 50
         } else if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
-            self.weiboHeightConstraint.constant = 45
-            self.wechatHeightConstraint.constant = 45
-            self.loginHeightConstraint.constant = 45
             self.bottomConstriant.constant = 120
-            self.bottomLabelConstraint.constant = 120
         } else if DeviceType.IS_IPHONE_5 {
             self.imageViewConstraint.constant = 60
         }
         
         if firstClickOnLogin {
-            UIView.animateWithDuration(1, animations: { () -> Void in
+            UIView.animateWithDuration(3, animations: { () -> Void in
                 self.equalConstraint.constant = -100
             })
             self.viewPasswordHeight.constant = 15
@@ -249,7 +243,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         }
         
         if firstClickOnSignup {
-            UIView.animateWithDuration(1, animations: { () -> Void in
+            UIView.animateWithDuration(3, animations: { () -> Void in
                 self.equalConstraint.constant = 100
             })
             self.viewPasswordHeight.constant = 10
@@ -258,7 +252,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         }
         
         if loginActive {
-            UIView.animateWithDuration(1, animations: { () -> Void in
+            UIView.animateWithDuration(3, animations: { () -> Void in
                 self.equalConstraint.constant = -100
             })
             self.viewPasswordHeight.constant = 15
@@ -266,7 +260,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         }
         
         if signupActive {
-            UIView.animateWithDuration(1, animations: { () -> Void in
+            UIView.animateWithDuration(3, animations: { () -> Void in
                 self.equalConstraint.constant = 100
             })
             self.viewPasswordHeight.constant = 10
@@ -404,22 +398,33 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         self.passwordInputField.attributedPlaceholder = string
         
         if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
-            self.signupButton.layer.cornerRadius = 24
-            self.loginButton.layer.cornerRadius = 24
+            self.signupButton.layer.cornerRadius = 23
+            self.loginButton.layer.cornerRadius = 23
         } else {
             self.signupButton.layer.cornerRadius = 21
             self.loginButton.layer.cornerRadius = 21
         }
        
+        self.signupButton.layer.shadowColor = UIColor.blackColor().CGColor
+        self.signupButton.layer.shadowOffset = CGSizeMake(0, 1)
+        self.signupButton.layer.shadowOpacity = 0.15
+        self.signupButton.layer.masksToBounds = false
+        
+        
+        self.loginButton.layer.shadowColor = UIColor.blackColor().CGColor
+        self.loginButton.layer.shadowOffset = CGSizeMake(0, 1)
+        self.loginButton.layer.shadowOpacity = 0.15
+        self.loginButton.layer.masksToBounds = false
+        
         
         self.usernameInputfield.layer.borderWidth = 2
         self.usernameInputfield.layer.borderColor = UIColor.whiteColor().CGColor
         self.passwordInputField.layer.borderWidth = 2
         self.passwordInputField.layer.borderColor = UIColor.whiteColor().CGColor
-        self.usernameInputfield.layer.cornerRadius = 20
-        self.passwordInputField.layer.cornerRadius = 20
-        self.userView.layer.cornerRadius = 20
-        self.passwordView.layer.cornerRadius = 20
+        self.usernameInputfield.layer.cornerRadius = 23
+        self.passwordInputField.layer.cornerRadius = 23
+        self.userView.layer.cornerRadius = 23
+        self.passwordView.layer.cornerRadius = 23
 
         
         
