@@ -36,6 +36,8 @@
 #import "MJExtension.h"
 #import <pop/POP.h>
 
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
 
 
 #endif /* Header_h */
