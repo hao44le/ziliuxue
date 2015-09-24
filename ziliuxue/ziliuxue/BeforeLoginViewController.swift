@@ -228,9 +228,12 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
             self.imageViewConstraint.constant = 10
             self.bottomConstriant.constant = 50
         } else if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
-            self.bottomConstriant.constant = 120
+            self.bottomConstriant.constant = 90
         } else if DeviceType.IS_IPHONE_5 {
-            self.imageViewConstraint.constant = 60
+            
+            self.imageViewConstraint.constant = 30
+            self.bottomConstriant.constant = 70
+            
         }
         
         if firstClickOnLogin {
@@ -271,7 +274,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         setupView()
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "weChat_login_Successed", name: "weChat_login_Successed", object: nil)
@@ -421,10 +424,10 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         self.usernameInputfield.layer.borderColor = UIColor.whiteColor().CGColor
         self.passwordInputField.layer.borderWidth = 2
         self.passwordInputField.layer.borderColor = UIColor.whiteColor().CGColor
-        self.usernameInputfield.layer.cornerRadius = 23
-        self.passwordInputField.layer.cornerRadius = 23
-        self.userView.layer.cornerRadius = 23
-        self.passwordView.layer.cornerRadius = 23
+        self.usernameInputfield.layer.cornerRadius = 21
+        self.passwordInputField.layer.cornerRadius = 21
+        self.userView.layer.cornerRadius = 21
+        self.passwordView.layer.cornerRadius = 21
 
         
         
