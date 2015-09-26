@@ -237,37 +237,42 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         }
         
         if firstClickOnLogin {
-            UIView.animateWithDuration(3, animations: { () -> Void in
-                self.equalConstraint.constant = -100
+            self.equalConstraint.constant = -100
+            UIView.animateWithDuration(0.75, animations: { () -> Void in
+                self.view.layoutIfNeeded()
             })
-            self.viewPasswordHeight.constant = 15
-            self.viewPasswordWidth.constant = 20
+        
+            self.viewPasswordHeight.constant = 10.5
+            self.viewPasswordWidth.constant = 15
             
         }
         
         if firstClickOnSignup {
-            UIView.animateWithDuration(3, animations: { () -> Void in
-                self.equalConstraint.constant = 100
+            self.equalConstraint.constant = 100
+            UIView.animateWithDuration(0.75, animations: { () -> Void in
+                self.view.layoutIfNeeded()
             })
-            self.viewPasswordHeight.constant = 10
-            self.viewPasswordWidth.constant = 17
+            self.viewPasswordHeight.constant = 11
+            self.viewPasswordWidth.constant = 20
             
         }
         
         if loginActive {
-            UIView.animateWithDuration(3, animations: { () -> Void in
-                self.equalConstraint.constant = -100
+            self.equalConstraint.constant = -100
+            UIView.animateWithDuration(0.75, animations: { () -> Void in
+                self.view.layoutIfNeeded()
             })
-            self.viewPasswordHeight.constant = 15
-            self.viewPasswordWidth.constant = 20
+            self.viewPasswordHeight.constant = 10.5
+            self.viewPasswordWidth.constant = 15
         }
         
         if signupActive {
-            UIView.animateWithDuration(3, animations: { () -> Void in
-                self.equalConstraint.constant = 100
+            self.equalConstraint.constant = 100
+            UIView.animateWithDuration(0.75, animations: { () -> Void in
+                self.view.layoutIfNeeded()
             })
-            self.viewPasswordHeight.constant = 10
-            self.viewPasswordWidth.constant = 17
+            self.viewPasswordHeight.constant = 11
+            self.viewPasswordWidth.constant = 20
         }
         
     }
@@ -435,7 +440,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if textField == self.usernameInputfield {
-            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 100
+            IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 110
         } else {
             IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 55
         }
@@ -443,7 +448,6 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     }
     
     func setAllHiddenView(option:Bool){
-        
         
         self.userView.hidden = option
         self.passwordView.hidden = option
