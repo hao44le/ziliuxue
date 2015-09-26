@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CocoaLumberjack
 class Utils: NSObject {
     static let mainColor = UIColor(red: 0/255, green: 135/255, blue: 218/255, alpha: 1)
     static let tabbarColor = UIColor(white: 1, alpha: 0.8)
@@ -1007,6 +1007,29 @@ struct DeviceType
     static let IS_IPHONE_6          = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
     static let IS_IPHONE_6P         = UIDevice.currentDevice().userInterfaceIdiom == .Phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
     static let IS_IPAD              = UIDevice.currentDevice().userInterfaceIdiom == .Pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
+    
+}
+
+struct Logging {
+    static func logToFile(){
+        let logFileManager = CompressingLogFileManager()
+        
+        let fileLogger = DDFileLogger(logFileManager: logFileManager)
+        fileLogger.maximumFileSize = 1023*1
+        fileLogger.rollingFrequency = 60*1
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 4
+        DDLog.addLogger(DDASLLogger.sharedInstance())
+        DDLog.addLogger(DDTTYLogger.sharedInstance())
+        DDLog.addLogger(fileLogger)
+        var i = 0
+        while i != 100 {
+             DDLogError("test");
+            i++
+            }
+        
+        
+        
+    }
     
 }
 

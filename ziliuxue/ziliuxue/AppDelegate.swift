@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
         //ServerMethods.getUserProfile()
         //ServerMethods.getCollege("1", to: "10")
         //ServerMethods.getCourseOverview("TOEFL")
-                
+        //Logging.logToFile()
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
         
