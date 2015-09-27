@@ -12,6 +12,22 @@ extension String {
     var floatValue: Float {
         return (self as NSString).floatValue
     }
+        
+    var lastPathComponent: String {
+            
+        get {
+            return (self as NSString).lastPathComponent
+        }
+        
+    }
+    
+    var stringByDeletingPathExtension: String {
+        
+        get {
+            
+            return (self as NSString).stringByDeletingPathExtension
+        }
+    }
 }
 
 
