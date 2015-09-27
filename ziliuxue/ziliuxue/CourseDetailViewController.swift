@@ -10,273 +10,63 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CourseDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,UIScrollViewDelegate,SwipeViewDelegate, SwipeViewDataSource {
-
-    let kCoursePicScrollViewTag = 2006
-    
-    @IBOutlet var backgroundScrollView: UIScrollView!
-    
-    @IBOutlet var coursePicSwipeView: SwipeView!
-    
-    @IBOutlet var pageControl: UIPageControl!
-    
-    @IBOutlet var teacherPic: UIImageView!
-    
-    @IBOutlet var courseName: UILabel!
-    
-    @IBOutlet var coursePrice: UILabel!
-    
-    @IBOutlet var favNum: UILabel!
-    
-    @IBOutlet var ratingBar: RatingBar!
-    
-    @IBOutlet var favButton: UIButton!
-    
-    @IBOutlet var teacherName: UILabel!
-    
-    @IBOutlet var courseSubTitle: UILabel!
-    
-    @IBOutlet var teacherIntro: UILabel!
-    
-    @IBOutlet var bookMarkButton: UIButton!
-    
-    @IBOutlet var sessionName: UILabel!
-    
-    @IBOutlet var sessionTableView: UITableView!
-    
-    @IBOutlet var sessionMapView: MKMapView!
-    
-    @IBOutlet var similarTableView: UITableView!
+class CourseDetailViewController: UIViewController{
     
     
-    var courseID : String!
-    var courseDetail : CourseDetail!
-    var metadata : NSDictionary!
-    var overview : NSDictionary!
+    @IBOutlet weak var backScrollView: UIScrollView!
     
-
-    var sessions : NSArray = []
-    var selectedSession = 0
-    var similarCourses: NSArray = []
-    var pinImage = ["pinA","pinB","pinC"]
+    var courseInfoView:ZLXCourseInfoView!
+    var courseFilterView:ZLXCourseFilterView!
+    var relatedCourseView:ZLXFixedRowWithSubtitleButtonView!
+    var evaluationAndCommentView:ZLXTwoSegmentView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didGetCourseDetail:"), name: "didGetCourseDetail", object: nil)
+        self.backScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1150)
+        self.setupShareButton()
+        self.backScrollView.backgroundColor = UIColorFromHexRGB(0xf0f4f7)
+        self.courseInfoView = ZLXCourseInfoView(frame: CGRectMake(5, 69, ScreenSize.SCREEN_WIDTH - 10, 160), dataModel: nil)
+        self.backScrollView.addSubview(self.courseInfoView)
         
-        ServerMethods.getCourseDetail(self.courseID)
+        self.courseFilterView = ZLXCourseFilterView(frame: CGRectMake(5, CGRectGetMaxY(self.courseInfoView.frame) + 5, ScreenSize.SCREEN_WIDTH - 10, 300), array: [["excel"],["excel"],["excel"],["excel"],["excel"],["excel"]])
+       
+        self.backScrollView.addSubview(self.courseFilterView)
         
-        self.favNum.text = " ❤️" + String(self.metadata.objectForKey("favs") as! NSInteger)
-        self.teacherName.text = self.overview.objectForKey("teacher")?.objectForKey("name") as! String!
-        self.courseSubTitle.text = self.overview.objectForKey("subtitle") as? String
-        self.teacherIntro.text = self.overview.objectForKey("introduction") as? String
-        self.coursePrice.text = " ￥" + String(self.metadata.objectForKey("price") as! NSInteger)
-        var teacherURL = NSURL(string: ServerConstant.baseURL + ((self.overview["teacher"] as! NSDictionary)["avatar"] as! String))
-        //self.teacherPic.sd_setImageWithURL(teacherURL, placeholderImage: nil)
-     
-    
+        self.relatedCourseView = ZLXFixedRowWithSubtitleButtonView(frame: CGRectMake(5, CGRectGetMaxY(self.courseFilterView.frame) + 5, ScreenSize.SCREEN_WIDTH - 10, 186), array: ["课程一","课程二","课程三"])
+        self.relatedCourseView.title.text = "相关课程"
+        self.backScrollView.addSubview(self.relatedCourseView)
+  
+        self.evaluationAndCommentView = ZLXTwoSegmentView(frame: CGRectMake(5, CGRectGetMaxY(self.relatedCourseView.frame) + 5 , ScreenSize.SCREEN_WIDTH - 10, 300))
+        self.evaluationAndCommentView.title.text = "综合评价"
+        self.backScrollView.addSubview(self.evaluationAndCommentView)
+        
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupShareButton(){
+        let shareButton = UIButton(frame: CGRectMake(0, 0, 44, 44))
+        shareButton.backgroundColor = UIColor.clearColor()
+        shareButton.setImage(UIImage(named: "share_button_normal"), forState: UIControlState.Normal)
+        shareButton.setImage(UIImage(named: "share_button_highlighted"), forState: UIControlState.Highlighted)
+        //shareButton.addTarget(self, action: Selector(""), forControlEvents: UIControlEvents.TouchUpInside)
+        let shareItem = UIBarButtonItem(customView: shareButton)
+        self.navigationItem.rightBarButtonItem = shareItem
     }
     
     override func viewWillDisappear(animated: Bool) {
         Tool.dismissHUD()
     }
     
-    func didGetCourseDetail(notification:NSNotification)
-    {
-        self.courseDetail = notification.object as! CourseDetail
-        Tool.showSuccessHUD("获取成功")
-        
-        self.courseName.text = self.courseDetail.name
-        
-        self.sessions = self.courseDetail.sessions
-        
-        self.sessionName.text = self.sessions[0]["title"] as! String + "--课程信息"
-        
-        self.similarCourses = self.courseDetail.similars
-     
-        self.sessionTableView.reloadData()
-        self.similarTableView.reloadData()
-        
-        self.setUpSessionMapView()
-        self.addAnnotation()
-        
-    }
-    
-    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
-        return 3
-    }
-    
-    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-
-        let coursePicImage = UIImageView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 233))
-        let urlString = ServerConstant.baseURL + (((self.overview["photos"] as! NSArray)[index]) as! String) as String
-        let picURL = NSURL(string: urlString)
-        
-        coursePicImage.sd_setImageWithURL(picURL, placeholderImage: nil)
-        //coursePicImage.image = UIImage(named: "Massachusetts Institute of Technology photo1")
-        return coursePicImage
-        
-    }
-
-    func swipeViewDidScroll(swipeView: SwipeView!) {
-        
-        self.pageControl.currentPage = swipeView.currentPage
-    }
-    
 
     
-    func setUpSessionMapView()
-    {
-        
-        let session = self.sessions[0] as! NSDictionary
-        
-        let classes = session.objectForKey("classes") as! NSArray
-        let latitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("latitude") as! NSString
-        let longitude = (classes[1].objectForKey("geo_location") as! NSDictionary).objectForKey("longitude") as! NSString
-        
-        let region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue), MKCoordinateSpanMake(0.001, 0.01))
-        self.sessionMapView.setRegion(region, animated: true)
-    }
-    
-    func addAnnotation()
-    {
-        let session = self.sessions[0] as! NSDictionary
-        
-        let classes = session.objectForKey("classes") as! NSArray
-        
-        for i in 0..<classes.count{
-            let geo_location = classes[i].objectForKey("geo_location") as! NSDictionary
-            
-            let location = CLLocationCoordinate2DMake((geo_location.objectForKey("latitude") as! NSString).doubleValue, (geo_location.objectForKey("longitude") as! NSString).doubleValue)
-            let annotation = CourseAnnotation(coordinate: location, title: session.objectForKey("title") as! String, subtitle: "点击查看详情", image:UIImage(named: self.pinImage[i])!)
-            
-            self.sessionMapView.addAnnotation(annotation)
-            
-        }
-    }
-    
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if annotation.isKindOfClass(CourseAnnotation.classForCoder())
-        {
-            let identifier = "annotation"
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-            
-            if annotationView == nil{
-                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView!.canShowCallout=true;
-                annotationView!.calloutOffset=CGPointMake(0, 0);
-                annotationView!.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "coursePin"))
-                
-            }
-            
-            annotationView!.annotation = annotation
-            annotationView!.image = (annotation as! CourseAnnotation).image
-            
-            return annotationView
-        }
-        else{
-            return nil
-        }
-    }
 
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        if tableView == self.sessionTableView{
-            
-            if self.sessions != []
-            {
-                let session = self.sessions[0] as! NSDictionary
-                
-                let classes = session.objectForKey("classes") as! NSArray
-                return classes.count
-            }
-            else
-            {
-                return 0
-            }
-            
-            
-            
-        } else if tableView == self.similarTableView{
-       
-            return self.similarCourses.count
-            
-        }else
-        {
-            return 0
-        }
-        
-        
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
-        if tableView == self.sessionTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-            let session = self.sessions[self.selectedSession] as! NSDictionary
-            
-            let classes = session.objectForKey("classes") as! NSArray
-  
-            let singleClass = classes[indexPath.row] as! NSDictionary
-            var classDetail = (singleClass.objectForKey("start_date") as! NSString).substringToIndex(10) + "-"
-            classDetail += (singleClass.objectForKey("end_date") as! NSString).substringToIndex(10)
-            classDetail += "  "
-            classDetail += singleClass.objectForKey("day_of_week") as! String
-            classDetail += "  "
-            classDetail += singleClass.objectForKey("class_starts_at") as! String
-            classDetail += "-"
-            classDetail += singleClass.objectForKey("class_ends_at") as! String
-            classDetail += "  地点："
-            var locationIndex = ["A","B","C"]
-            classDetail += locationIndex[indexPath.row] as String
-                
-            cell.sessionDetail.text = classDetail
-        
-            
-            return cell
-        } else if tableView == self.similarTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("SimilarCourseTableViewCell", forIndexPath: indexPath) as! SimilarCourseTableViewCell
-            
-            let row = indexPath.row
-            cell.courseName.text = self.similarCourses[row]["name"] as? String
-            cell.courseDetail.text = self.similarCourses[row]["summary"] as? String
-            let price = "￥" + String(self.similarCourses[row]["price"] as! Int)
-            cell.price.text = price
-            var teacherImage = [UIImage(named: "teacher1")!,UIImage(named: "teacher2")!]
-            cell.avatarImageView.image = teacherImage[row]
-
-            return cell
-            
-        }else{
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier("SessionTableViewCell", forIndexPath: indexPath) as! SessionTableViewCell
-    
-            return cell
-        }
-        
-        
-        
-    }
-    
-    
-
-    
 
 
     /*

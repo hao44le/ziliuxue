@@ -814,7 +814,7 @@ struct ServerMethods {
     static func getCourseOverview(courseName:String!)
     {
         
-        Tool.showProgressHUD("正在获取课程")
+        //Tool.showProgressHUD("正在获取课程")
         
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
@@ -874,7 +874,7 @@ struct ServerMethods {
     
     static func getCourseDetail(courseID:String!)
     {
-        Tool.showProgressHUD("正在获取课程详情")
+        //Tool.showProgressHUD("正在获取课程详情")
         
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
@@ -883,7 +883,7 @@ struct ServerMethods {
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
     
         var url = ServerConstant.get_course_detail
-        url += courseID
+        //url += courseID
         
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
@@ -913,7 +913,7 @@ struct ServerMethods {
     
     static func getServiceProviders(categoryName:String!)
     {
-        Tool.showProgressHUD("正在获取写手信息")
+        //Tool.showProgressHUD("正在获取写手信息")
         
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()
@@ -943,7 +943,7 @@ struct ServerMethods {
     
     static func getWriterDetail(id:String!)
     {
-        Tool.showProgressHUD("正在获取写手详细信息")
+        //Tool.showProgressHUD("正在获取写手详细信息")
         
         let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
         let manager = AFHTTPRequestOperationManager()

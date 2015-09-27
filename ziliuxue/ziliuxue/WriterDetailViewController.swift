@@ -44,19 +44,19 @@ class WriterDetailViewController: UIViewController{
         self.teacherInfoView = ZLXTeacherInfoView(frame: CGRectMake(5, 69, ScreenSize.SCREEN_WIDTH - 10, 280), dataModel: nil)
         self.backScrollView.addSubview(self.teacherInfoView)
         
-        self.excellentField = ZLXTitleAndTagsView(frame: CGRectMake(5, CGRectGetMaxY(self.teacherInfoView.frame), ScreenSize.SCREEN_WIDTH - 10, 150), array: [["excel","简历"],["excel","个人陈述"],["excel","推荐信"]])
+        self.excellentField = ZLXTitleAndTagsView(frame: CGRectMake(5, CGRectGetMaxY(self.teacherInfoView.frame) + 5, ScreenSize.SCREEN_WIDTH - 10, 150), array: [["excel","简历"],["excel","个人陈述"],["excel","推荐信"]])
         self.excellentField.title.text = "擅长领域"
         self.backScrollView.addSubview(self.excellentField)
         
-        self.probationView = ZLXFixedRowsWithTitleView(frame: CGRectMake(5, CGRectGetMaxY(self.excellentField.frame) , ScreenSize.SCREEN_WIDTH - 10, 190), array: ["个人简历-Cleiden University","申请信-Monster University","推荐信-Hogwarts University"])
+        self.probationView = ZLXFixedRowsWithTitleView(frame: CGRectMake(5, CGRectGetMaxY(self.excellentField.frame) + 5, ScreenSize.SCREEN_WIDTH - 10, 190), array: ["个人简历-Cleiden University","申请信-Monster University","推荐信-Hogwarts University"])
         self.probationView.title.text = "作品试读"
         self.backScrollView.addSubview(self.probationView)
         
-        self.similarWriter = ZLXTitleAndTagsView(frame: CGRectMake(5, CGRectGetMaxY(self.probationView.frame) , ScreenSize.SCREEN_WIDTH - 10, 150), array: [["writer","小汪"],["writer","小猫"],["writer","小蜥蜴"],["writer","小老虎"]])
+        self.similarWriter = ZLXTitleAndTagsView(frame: CGRectMake(5, CGRectGetMaxY(self.probationView.frame) + 5 , ScreenSize.SCREEN_WIDTH - 10, 150), array: [["writer","小汪"],["writer","小猫"],["writer","小蜥蜴"],["writer","小老虎"]])
         self.similarWriter.title.text = "相似写手"
         self.backScrollView.addSubview(self.similarWriter)
         
-        self.evaluationAndCommentView = ZLXTwoSegmentView(frame: CGRectMake(5, CGRectGetMaxY(self.similarWriter.frame) , ScreenSize.SCREEN_WIDTH - 10, 300))
+        self.evaluationAndCommentView = ZLXTwoSegmentView(frame: CGRectMake(5, CGRectGetMaxY(self.similarWriter.frame) + 5 , ScreenSize.SCREEN_WIDTH - 10, 300))
         self.evaluationAndCommentView.title.text = "综合评价"
         self.backScrollView.addSubview(self.evaluationAndCommentView)
         

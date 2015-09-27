@@ -20,6 +20,12 @@
 		7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D507F1B520A2D00B7AA2E /* Tool.swift */; };
 		7B9D50851B520B0400B7AA2E /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */; };
 		7B9D50861B520B0400B7AA2E /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D50841B520B0400B7AA2E /* ProgressHUD.m */; };
+		7BAD07331BB6C5DA0088D774 /* ZLXCourseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD07321BB6C5DA0088D774 /* ZLXCourseInfoView.swift */; settings = {ASSET_TAGS = (); }; };
+		7BAD07351BB6C7B40088D774 /* ZLXCourseDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD07341BB6C7B40088D774 /* ZLXCourseDetailItem.swift */; settings = {ASSET_TAGS = (); }; };
+		7BAD073C1BB6CC760088D774 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAD07391BB6CC760088D774 /* ico_make.png */; settings = {ASSET_TAGS = (); }; };
+		7BAD073D1BB6CC760088D774 /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD073B1BB6CC760088D774 /* JSDropDownMenu.m */; settings = {ASSET_TAGS = (); }; };
+		7BAD073F1BB6CCA70088D774 /* ZLXCourseFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD073E1BB6CCA70088D774 /* ZLXCourseFilterView.swift */; settings = {ASSET_TAGS = (); }; };
+		7BAD07411BB6E3840088D774 /* ZLXFixedRowWithSubtitleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD07401BB6E3840088D774 /* ZLXFixedRowWithSubtitleButtonView.swift */; settings = {ASSET_TAGS = (); }; };
 		7BC21F951B717FE6000D6583 /* WriterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC21F941B717FE6000D6583 /* WriterDetailViewController.swift */; };
 		7BC21F971B776A19000D6583 /* WriterDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC21F961B776A19000D6583 /* WriterDetailTableViewCell.swift */; };
 		7BC2AF351B59F9C800E5CC32 /* CourseOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF341B59F9C800E5CC32 /* CourseOverView.swift */; };
@@ -148,6 +154,13 @@
 		7B9D50821B520B0400B7AA2E /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		7B9D50831B520B0400B7AA2E /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		7B9D50841B520B0400B7AA2E /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		7BAD07321BB6C5DA0088D774 /* ZLXCourseInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLXCourseInfoView.swift; sourceTree = "<group>"; };
+		7BAD07341BB6C7B40088D774 /* ZLXCourseDetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLXCourseDetailItem.swift; sourceTree = "<group>"; };
+		7BAD07391BB6CC760088D774 /* ico_make.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_make.png; sourceTree = "<group>"; };
+		7BAD073A1BB6CC760088D774 /* JSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropDownMenu.h; sourceTree = "<group>"; };
+		7BAD073B1BB6CC760088D774 /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
+		7BAD073E1BB6CCA70088D774 /* ZLXCourseFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLXCourseFilterView.swift; sourceTree = "<group>"; };
+		7BAD07401BB6E3840088D774 /* ZLXFixedRowWithSubtitleButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLXFixedRowWithSubtitleButtonView.swift; sourceTree = "<group>"; };
 		7BC21F941B717FE6000D6583 /* WriterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriterDetailViewController.swift; sourceTree = "<group>"; };
 		7BC21F961B776A19000D6583 /* WriterDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriterDetailTableViewCell.swift; sourceTree = "<group>"; };
 		7BC2AF341B59F9C800E5CC32 /* CourseOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseOverView.swift; sourceTree = "<group>"; };
@@ -437,6 +450,59 @@
 			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
+		7BAD072E1BB6C21E0088D774 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C0A5B63C1B4A2E9C0089B84E /* ThirdTabViewController.swift */,
+				C0A5B64E1B4B5C020089B84E /* FindClassViewController.swift */,
+				C0A5B6501B4B5C1E0089B84E /* MyClassViewController.swift */,
+				C0A5B6521B4B64470089B84E /* CourseViewController.swift */,
+				7B322B111B56A1E800F7ED11 /* CourseDetailViewController.swift */,
+				7BAD072F1BB6C2240088D774 /* View */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		7BAD072F1BB6C2240088D774 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C0EB7FE11B54C47200DF88CB /* FindClassCollectionViewCell.swift */,
+				C0A5B6541B4B64980089B84E /* CourseTableViewCell.swift */,
+				7BC2AF3E1B5E920500E5CC32 /* CourseAnnotation.swift */,
+				7BC2AF3C1B5B075D00E5CC32 /* SessionTableViewCell.swift */,
+				7BC2AF3A1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift */,
+				7BAD07321BB6C5DA0088D774 /* ZLXCourseInfoView.swift */,
+				7BAD073E1BB6CCA70088D774 /* ZLXCourseFilterView.swift */,
+				7BAD07401BB6E3840088D774 /* ZLXFixedRowWithSubtitleButtonView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7BAD07301BB6C22D0088D774 /* Biz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Biz;
+			sourceTree = "<group>";
+		};
+		7BAD07311BB6C2340088D774 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BAD07341BB6C7B40088D774 /* ZLXCourseDetailItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7BAD07381BB6CC670088D774 /* JSDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7BAD07391BB6CC760088D774 /* ico_make.png */,
+				7BAD073A1BB6CC760088D774 /* JSDropDownMenu.h */,
+				7BAD073B1BB6CC760088D774 /* JSDropDownMenu.m */,
+			);
+			name = JSDropDownMenu;
+			sourceTree = "<group>";
+		};
 		7BC2AF331B59F99700E5CC32 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,16 +690,9 @@
 		C031F1771B4A0EF9008D96D7 /* FindClass */ = {
 			isa = PBXGroup;
 			children = (
-				C0EB7FE11B54C47200DF88CB /* FindClassCollectionViewCell.swift */,
-				C0A5B63C1B4A2E9C0089B84E /* ThirdTabViewController.swift */,
-				C0A5B64E1B4B5C020089B84E /* FindClassViewController.swift */,
-				C0A5B6501B4B5C1E0089B84E /* MyClassViewController.swift */,
-				C0A5B6521B4B64470089B84E /* CourseViewController.swift */,
-				C0A5B6541B4B64980089B84E /* CourseTableViewCell.swift */,
-				7B322B111B56A1E800F7ED11 /* CourseDetailViewController.swift */,
-				7BC2AF3E1B5E920500E5CC32 /* CourseAnnotation.swift */,
-				7BC2AF3C1B5B075D00E5CC32 /* SessionTableViewCell.swift */,
-				7BC2AF3A1B5AA28500E5CC32 /* SimilarCourseTableViewCell.swift */,
+				7BAD07311BB6C2340088D774 /* Model */,
+				7BAD07301BB6C22D0088D774 /* Biz */,
+				7BAD072E1BB6C21E0088D774 /* UI */,
 			);
 			name = FindClass;
 			sourceTree = "<group>";
@@ -849,6 +908,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7BAD07381BB6CC670088D774 /* JSDropDownMenu */,
 				C0666F251BA4F7860087DBF8 /* MJExtension */,
 				7BC2AF401B5F06D900E5CC32 /* RatingBar */,
 				C03F5B801B59512E00532AC8 /* MJCollectionViewCell */,
@@ -947,6 +1007,7 @@
 				C036D00A1B5F6229009252FE /* University of Chicago.plist in Resources */,
 				C0AFE7421B5E260800AAD027 /* College.plist in Resources */,
 				C036D0051B5F6229009252FE /* Duke University.plist in Resources */,
+				7BAD073C1BB6CC760088D774 /* ico_make.png in Resources */,
 				C008A9421B4FDBC00014554F /* read_me.txt in Resources */,
 				C036D0081B5F6229009252FE /* Princeton University.plist in Resources */,
 				C036D0031B5F6229009252FE /* California Institute of Technology.plist in Resources */,
@@ -1038,6 +1099,7 @@
 				C0666F1E1BA4F7810087DBF8 /* MJPropertyKey.m in Sources */,
 				7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */,
 				C07B39111B480A6A00C1267A /* UIViewController+MMDrawerController.m in Sources */,
+				7BAD073F1BB6CCA70088D774 /* ZLXCourseFilterView.swift in Sources */,
 				7BC2AF3F1B5E920500E5CC32 /* CourseAnnotation.swift in Sources */,
 				C0C035A01B67200B00CB704C /* ServiceOverviewTableViewCell.swift in Sources */,
 				C0EB7FE21B54C47200DF88CB /* FindClassCollectionViewCell.swift in Sources */,
@@ -1055,9 +1117,11 @@
 				7BD16B481BAD54450004941C /* ZLXTeacherInfoItem.swift in Sources */,
 				7B9D50861B520B0400B7AA2E /* ProgressHUD.m in Sources */,
 				C072C5441B369C680055BAFE /* SignUpViewController.swift in Sources */,
+				7BAD07351BB6C7B40088D774 /* ZLXCourseDetailItem.swift in Sources */,
 				C0C0359E1B671FBB00CB704C /* ServiceOverviewViewController.swift in Sources */,
 				C0F6F3F01B8A49EC007E28EA /* TimelineDetailViewController.swift in Sources */,
 				C0A5B6531B4B64470089B84E /* CourseViewController.swift in Sources */,
+				7BAD07331BB6C5DA0088D774 /* ZLXCourseInfoView.swift in Sources */,
 				C0D8CFEE1B5D3CE100B73CB5 /* Extension.swift in Sources */,
 				7BEEE5D61B7F867100028E5C /* ServiceWriterDetail.swift in Sources */,
 				C0EB7FE41B5543E900DF88CB /* College.swift in Sources */,
@@ -1068,6 +1132,7 @@
 				C07B390F1B480A6A00C1267A /* MMDrawerController.m in Sources */,
 				C063F56B1B520A9400B5053B /* BeforeLoginViewController.swift in Sources */,
 				C0666F1D1BA4F7810087DBF8 /* MJProperty.m in Sources */,
+				7BAD073D1BB6CC760088D774 /* JSDropDownMenu.m in Sources */,
 				7BD16B511BAD8CAE0004941C /* ZLXTwoSegmentView.swift in Sources */,
 				C026A7421B3907D800E24908 /* SecondWizardViewController.swift in Sources */,
 				C030F0C91B415F5F00DDDFDD /* CCMPopupTransitioning.m in Sources */,
@@ -1084,6 +1149,7 @@
 				C03F5B7F1B59512A00532AC8 /* MJCollectionViewCell.m in Sources */,
 				C0F5C0E31B3F93C500A2FA14 /* SchoolDetailViewController.swift in Sources */,
 				C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */,
+				7BAD07411BB6E3840088D774 /* ZLXFixedRowWithSubtitleButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

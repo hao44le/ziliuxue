@@ -94,10 +94,8 @@ class CourseViewController: UIViewController,UITableViewDelegate,UITableViewData
         let courseDetailVC = segue.destinationViewController as! CourseDetailViewController
         courseDetailVC.hidesBottomBarWhenPushed = true
         
-        let courseOverView = self.courseOverViewList[self.selectedIndex]
-        courseDetailVC.courseID = courseOverView._id
-        courseDetailVC.overview = courseOverView.overview
-        courseDetailVC.metadata = courseOverView.metadata
+        //let courseOverView = self.courseOverViewList[self.selectedIndex]
+      
         
     }
 

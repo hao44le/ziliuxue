@@ -34,6 +34,7 @@
 
 #import "MJCollectionViewCell.h"
 #import "MJExtension.h"
+#import "JSDropDownMenu.h"
 #import <pop/POP.h>
 
 #import <CocoaLumberjack/CocoaLumberjack.h>

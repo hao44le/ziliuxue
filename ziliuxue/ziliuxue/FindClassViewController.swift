@@ -69,7 +69,13 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         
         self.selectedCourseName = self.name[indexPath.row] as String
         
-        self.performSegueWithIdentifier("toCourse", sender: self)
+        
+        let courseDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CourseDetailViewController") as! CourseDetailViewController
+        courseDetailVC.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(courseDetailVC, animated: true)
+        
+   
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -119,8 +125,8 @@ class FindClassViewController: UIViewController,UICollectionViewDelegate,UIColle
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let courseOverviewVC = segue.destinationViewController as! CourseViewController
-        courseOverviewVC.courseName = self.selectedCourseName
+//        let courseOverviewVC = segue.destinationViewController as! CourseViewController
+//        courseOverviewVC.courseName = self.selectedCourseName
         
     }
 
