@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CocoaLumberjack
+//import CocoaLumberjack
 class Utils: NSObject {
     static let mainColor = UIColor(red: 0/255, green: 135/255, blue: 218/255, alpha: 1)
     static let tabbarColor = UIColor(white: 1, alpha: 0.8)
@@ -1009,7 +1009,7 @@ struct DeviceType
     static let IS_IPAD              = UIDevice.currentDevice().userInterfaceIdiom == .Pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
     
 }
-
+/*
 struct Logging {
     static func logToFile(){
         let logFileManager = CompressingLogFileManager()
@@ -1030,8 +1030,9 @@ struct Logging {
         
         
     }
-    
-}
+   */ 
+//}
+
 
 
 

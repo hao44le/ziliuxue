@@ -37,8 +37,8 @@
 #import "JSDropDownMenu.h"
 #import <pop/POP.h>
 
-#import <CocoaLumberjack/CocoaLumberjack.h>
-#import "CompressingLogFileManager.h"
+//#import <CocoaLumberjack/CocoaLumberjack.h>
+//#import "CompressingLogFileManager.h"
 
 
 #endif /* Header_h */
