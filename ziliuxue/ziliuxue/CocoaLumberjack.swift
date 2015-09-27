@@ -14,7 +14,6 @@
 //   prior written permission of Deusty, LLC.
 
 import Foundation
-import CocoaLumberjack
 
 extension DDLogFlag {
     public static func fromLogLevel(logLevel: DDLogLevel) -> DDLogFlag {
@@ -87,6 +86,6 @@ public func DDLogError(@autoclosure(escaping) logText: () -> String, level: DDLo
 /// Analogous to the C preprocessor macro `THIS_FILE`.
 public func CurrentFileName(fileName: StaticString = __FILE__) -> String {
     // Using string interpolation to prevent integer overflow warning when using StaticString.stringValue
-  
-    return "\(fileName)".lastPathComponent.stringByDeletingPathExtension
+    // This double-casting to NSString is necessary as changes to how Swift handles NSPathUtilities requres the string to be an NSString
+    return (("\(fileName)" as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
 }

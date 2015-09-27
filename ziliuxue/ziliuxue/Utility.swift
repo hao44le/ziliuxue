@@ -1009,7 +1009,7 @@ struct DeviceType
     static let IS_IPAD              = UIDevice.currentDevice().userInterfaceIdiom == .Pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
     
 }
-/*
+
 struct Logging {
     static func logToFile(){
         let logFileManager = CompressingLogFileManager()
@@ -1030,8 +1030,8 @@ struct Logging {
         
         
     }
-   */ 
-//}
+
+}
 
 
 
