@@ -67,7 +67,7 @@ struct ServerMethods {
             let profile = NSDictionary(objects: [scores,target,my_schools], forKeys: ["scores","target","my_schools"])
             let parameter = NSDictionary(objects: [profile], forKeys: ["profile"])
             print(parameter, terminator: "")
-
+            
             
             manager.POST(ServerConstant.user_profile, parameters: parameter
                 , success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
@@ -81,7 +81,7 @@ struct ServerMethods {
                     print("createUserProfile failure\n", terminator: "")
                     print(error, terminator: "")
             }
-
+            
         }
         
         
@@ -584,7 +584,7 @@ struct ServerMethods {
         
         let userInfo = NSDictionary(objects: [ServerConstant.client_id,username,password,email,avatar], forKeys: ["client_id","name","password","email","avatar"])
         
-
+        
         manager.POST(ServerConstant.signup, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName("signupSuccessed", object: nil)
             print("signup success\n", terminator: "")
@@ -632,10 +632,10 @@ struct ServerMethods {
         //println(avatar)
         let userInfo = NSDictionary(object: avatar,forKey: "avatar")
         manager.PUT(ServerConstant.update_user_avatar, parameters: userInfo, success: { (o:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
-                print("change user avatar susseed")
+            print("change user avatar susseed")
             print(response)
             }) { (o:AFHTTPRequestOperation!, error:NSError!) -> Void in
-            print("change user avatar failed")
+                print("change user avatar failed")
                 print(error)
         }
     }
@@ -694,42 +694,42 @@ struct ServerMethods {
             
             
             
-            /* 
+            /*
             //下载20个college的图片
             let documentDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
             var final : NSMutableDictionary = NSMutableDictionary()
             for school in result {
-                
-                let logoPath = documentDir.stringByAppendingPathComponent(school.name + " logo.jpg")
-                if let image_url = NSURL(string: ServerConstant.baseURL + school.logo) {
-                    if let image_data = NSData(contentsOfURL:image_url) {
-                        if let image = UIImage(data: image_data) {
-                            UIImageJPEGRepresentation(image, 100).writeToFile(logoPath, atomically: true)
-                        }
-
-                    }
-                    
-                    
-                }
-               
-                
-                var counter = 1
-                    for photo in school.photos {
-                        if let photo_url = NSURL(string: ServerConstant.baseURL + photo) {
-                            if let photo_data = NSData(contentsOfURL: photo_url) {
-                                if let photo_itself = UIImage(data: photo_data) {
-                                    let photo_path = documentDir.stringByAppendingPathComponent(school.name + " photo.jpg" + counter.description)
-                                    counter++
-                                    UIImageJPEGRepresentation(photo_itself, 100).writeToFile(photo_path, atomically: true)
-                                }
-                            }
-                            
-
-                        }
-                }
+            
+            let logoPath = documentDir.stringByAppendingPathComponent(school.name + " logo.jpg")
+            if let image_url = NSURL(string: ServerConstant.baseURL + school.logo) {
+            if let image_data = NSData(contentsOfURL:image_url) {
+            if let image = UIImage(data: image_data) {
+            UIImageJPEGRepresentation(image, 100).writeToFile(logoPath, atomically: true)
+            }
+            
+            }
+            
+            
+            }
+            
+            
+            var counter = 1
+            for photo in school.photos {
+            if let photo_url = NSURL(string: ServerConstant.baseURL + photo) {
+            if let photo_data = NSData(contentsOfURL: photo_url) {
+            if let photo_itself = UIImage(data: photo_data) {
+            let photo_path = documentDir.stringByAppendingPathComponent(school.name + " photo.jpg" + counter.description)
+            counter++
+            UIImageJPEGRepresentation(photo_itself, 100).writeToFile(photo_path, atomically: true)
+            }
+            }
+            
+            
+            }
+            }
             }
             */
-
+            
             
             NSNotificationCenter.defaultCenter().postNotificationName("getCollegeSuccessed", object: result)
             
@@ -782,7 +782,7 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.securityPolicy.validatesDomainName = false
         
-        let userInfo = NSDictionary(objects: [ServerConstant.client_id,email,password], forKeys: ["client_id","email","password"])        
+        let userInfo = NSDictionary(objects: [ServerConstant.client_id,email,password], forKeys: ["client_id","email","password"])
         
         
         manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
@@ -881,7 +881,7 @@ struct ServerMethods {
         manager.securityPolicy.allowInvalidCertificates = true
         manager.securityPolicy.validatesDomainName = false
         manager.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
-    
+        
         var url = ServerConstant.get_course_detail
         //url += courseID
         
@@ -927,11 +927,11 @@ struct ServerMethods {
         manager.GET(url, parameters: nil, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
             
             print("getServiceProvider success\n", terminator: "")
-
+            
             let resArray = response as! NSArray
             
             let resultArray = ServiceWriterOverView.objectArrayWithKeyValuesArray(resArray)
-          
+            
             NSNotificationCenter.defaultCenter().postNotificationName("didGetServiceProvider", object: resultArray)
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
@@ -961,7 +961,7 @@ struct ServerMethods {
             let resDic = response as! NSDictionary
             
             let resultDic = ServiceWriterDetail(keyValues: resDic)
-        
+            
             NSNotificationCenter.defaultCenter().postNotificationName("didGetWriterDetail", object: resultDic)
             
             }) { (operation:AFHTTPRequestOperation!, error:NSError!) -> Void in
@@ -970,7 +970,7 @@ struct ServerMethods {
                 print(error, terminator: "")
         }
     }
-
+    
     
     
 }
@@ -1011,11 +1011,8 @@ struct DeviceType
 }
 
 class LocalFileManager : NSObject {
-    static var isDeleting : Bool = false
-    static var isUploading : Bool = false
     static func deleteFileAtPath(path:String){
-        if !isDeleting {
-            isDeleting = true
+        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
             do {
                 if NSFileManager.defaultManager().fileExistsAtPath(path){
                     try NSFileManager.defaultManager().removeItemAtPath(path)
@@ -1024,32 +1021,27 @@ class LocalFileManager : NSObject {
             } catch {
                 
             }
-            isDeleting = false
-        } else {
-            print("other instance is working on deleting. This is locked.")
+            
         }
         
     }
     static func uploadFileAtPath(path:String){
-        if !isUploading {
-            isUploading = true
-            /*
-            let file = PFFile(name: "2.gz", contentsAtPath: path)
-            file.saveInBackground()
-            let object = PFObject(className: "Gelei")
-            object["file"] = file
-            object.saveInBackgroundWithBlock { (succed:Bool, error:NSError?) -> Void in
-                if succed {
-                    //print(succed)
-                    LocalFileManager.deleteFileAtPath(path)
-                } else {
-                    //print(succed)
-                }
-            }
-            */
-            isUploading = false
-        } else {
-            print("other instance is working on uploading. This is locked.")
+        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+//            let file = PFFile(name: "2.gz", contentsAtPath: path)
+//            file.saveInBackground()
+//            let object = PFObject(className: "Gelei")
+//            object["file"] = file
+//            object.saveInBackgroundWithBlock { (succed:Bool, error:NSError?) -> Void in
+//                if succed {
+//                    //print(succed)
+//                    LocalFileManager.deleteFileAtPath(path)
+//                } else {
+//                    //print(succed)
+//                }
+//            }
+//            
+            
+            
         }
     }
 }
@@ -1061,7 +1053,7 @@ class Logging :NSObject{
         let logFileManager = CompressingLogFileManager()
         let fileLogger = DDFileLogger(logFileManager: logFileManager)
         fileLogger!.maximumFileSize = 1024*1024*3  // 3 MB
-        fileLogger!.rollingFrequency = 1 // 10 minutes
+        fileLogger!.rollingFrequency = 60*10 // 10 minutes
         fileLogger!.logFileManager.maximumNumberOfLogFiles = 100
         fileLogger!.logFormatter = LogFormatter()
         NSUserDefaults.standardUserDefaults().setObject(fileLogger!.logFileManager.logsDirectory(), forKey: "logDirectory")

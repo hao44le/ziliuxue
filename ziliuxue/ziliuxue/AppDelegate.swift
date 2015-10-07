@@ -61,9 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
         //ServerMethods.getUserProfile()
         //ServerMethods.getCollege("1", to: "10")
         //ServerMethods.getCourseOverview("TOEFL")
+        
         Logging.setUpLogger()
         NSTimer.scheduledTimerWithTimeInterval(60*10, target: Logging(), selector: "uploadRemaninggzFile", userInfo: nil, repeats: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "compressionDidSucceed:", name: "compressionDidSucceed", object: nil)
+        
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
         
