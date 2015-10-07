@@ -41,6 +41,7 @@
 		7BD16B511BAD8CAE0004941C /* ZLXTwoSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD16B501BAD8CAE0004941C /* ZLXTwoSegmentView.swift */; settings = {ASSET_TAGS = (); }; };
 		7BEEE5D41B7F447800028E5C /* ServiceWriterOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEEE5D31B7F447800028E5C /* ServiceWriterOverView.swift */; };
 		7BEEE5D61B7F867100028E5C /* ServiceWriterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEEE5D51B7F867100028E5C /* ServiceWriterDetail.swift */; };
+		C00377461BC4B8BA00BF8A72 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00377451BC4B8BA00BF8A72 /* LogFormatter.swift */; settings = {ASSET_TAGS = (); }; };
 		C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A93D1B4FDBC00014554F /* libWeChatSDK.a */; };
 		C008A9421B4FDBC00014554F /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C008A93E1B4FDBC00014554F /* read_me.txt */; };
 		C008A9441B4FDBD80014554F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A9431B4FDBD80014554F /* SystemConfiguration.framework */; };
@@ -187,6 +188,7 @@
 		7BD16B501BAD8CAE0004941C /* ZLXTwoSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLXTwoSegmentView.swift; sourceTree = "<group>"; };
 		7BEEE5D31B7F447800028E5C /* ServiceWriterOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceWriterOverView.swift; sourceTree = "<group>"; };
 		7BEEE5D51B7F867100028E5C /* ServiceWriterDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceWriterDetail.swift; sourceTree = "<group>"; };
+		C00377451BC4B8BA00BF8A72 /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
 		C008A93D1B4FDBC00014554F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C008A93E1B4FDBC00014554F /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		C008A93F1B4FDBC00014554F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				7BD16B4A1BAD5EFA0004941C /* CommonUtility.swift */,
+				C00377451BC4B8BA00BF8A72 /* LogFormatter.swift */,
 				C039BEAC1B3A7E1C00C8D5CE /* Utility.swift */,
 				7B9D507F1B520A2D00B7AA2E /* Tool.swift */,
 				C0D8CFED1B5D3CE100B73CB5 /* Extension.swift */,
@@ -874,6 +877,35 @@
 			path = XYPieChart;
 			sourceTree = "<group>";
 		};
+		C0C8EA981BB78E0100F4CDFB /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				C0E4BF9C1BB78C1D00403E70 /* CLI */,
+				C0E4BF9D1BB78C1D00403E70 /* CocoaLumberjack.h */,
+				C0E4BF9E1BB78C1D00403E70 /* CocoaLumberjack.swift */,
+				C0E4BF9F1BB78C1D00403E70 /* DDAbstractDatabaseLogger.h */,
+				C0E4BFA01BB78C1D00403E70 /* DDAbstractDatabaseLogger.m */,
+				C0E4BFA11BB78C1D00403E70 /* DDASLLogCapture.h */,
+				C0E4BFBC1BB78CEF00403E70 /* CompressingLogFileManager.h */,
+				C0E4BFBD1BB78CEF00403E70 /* CompressingLogFileManager.m */,
+				C0E4BFA21BB78C1D00403E70 /* DDASLLogCapture.m */,
+				C0E4BFA31BB78C1D00403E70 /* DDASLLogger.h */,
+				C0E4BFA41BB78C1D00403E70 /* DDASLLogger.m */,
+				C0E4BFA51BB78C1D00403E70 /* DDAssertMacros.h */,
+				C0E4BFA61BB78C1D00403E70 /* DDFileLogger.h */,
+				C0E4BFA71BB78C1D00403E70 /* DDFileLogger.m */,
+				C0E4BFA81BB78C1D00403E70 /* DDLegacyMacros.h */,
+				C0E4BFA91BB78C1D00403E70 /* DDLog.h */,
+				C0E4BFAA1BB78C1D00403E70 /* DDLog.m */,
+				C0E4BFAB1BB78C1D00403E70 /* DDLog+LOGV.h */,
+				C0E4BFAC1BB78C1D00403E70 /* DDLogMacros.h */,
+				C0E4BFAD1BB78C1D00403E70 /* DDTTYLogger.h */,
+				C0E4BFAE1BB78C1D00403E70 /* DDTTYLogger.m */,
+				C0E4BFAF1BB78C1D00403E70 /* Extensions */,
+			);
+			name = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
 		C0C8F8F11B2ED89E00D698FC = {
 			isa = PBXGroup;
 			children = (
@@ -940,28 +972,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				C0E4BF9C1BB78C1D00403E70 /* CLI */,
-				C0E4BF9D1BB78C1D00403E70 /* CocoaLumberjack.h */,
-				C0E4BF9E1BB78C1D00403E70 /* CocoaLumberjack.swift */,
-				C0E4BF9F1BB78C1D00403E70 /* DDAbstractDatabaseLogger.h */,
-				C0E4BFA01BB78C1D00403E70 /* DDAbstractDatabaseLogger.m */,
-				C0E4BFA11BB78C1D00403E70 /* DDASLLogCapture.h */,
-				C0E4BFBC1BB78CEF00403E70 /* CompressingLogFileManager.h */,
-				C0E4BFBD1BB78CEF00403E70 /* CompressingLogFileManager.m */,
-				C0E4BFA21BB78C1D00403E70 /* DDASLLogCapture.m */,
-				C0E4BFA31BB78C1D00403E70 /* DDASLLogger.h */,
-				C0E4BFA41BB78C1D00403E70 /* DDASLLogger.m */,
-				C0E4BFA51BB78C1D00403E70 /* DDAssertMacros.h */,
-				C0E4BFA61BB78C1D00403E70 /* DDFileLogger.h */,
-				C0E4BFA71BB78C1D00403E70 /* DDFileLogger.m */,
-				C0E4BFA81BB78C1D00403E70 /* DDLegacyMacros.h */,
-				C0E4BFA91BB78C1D00403E70 /* DDLog.h */,
-				C0E4BFAA1BB78C1D00403E70 /* DDLog.m */,
-				C0E4BFAB1BB78C1D00403E70 /* DDLog+LOGV.h */,
-				C0E4BFAC1BB78C1D00403E70 /* DDLogMacros.h */,
-				C0E4BFAD1BB78C1D00403E70 /* DDTTYLogger.h */,
-				C0E4BFAE1BB78C1D00403E70 /* DDTTYLogger.m */,
-				C0E4BFAF1BB78C1D00403E70 /* Extensions */,
+				C0C8EA981BB78E0100F4CDFB /* CocoaLumberjack */,
 				7BAD07381BB6CC670088D774 /* JSDropDownMenu */,
 				C0666F251BA4F7860087DBF8 /* MJExtension */,
 				7BC2AF401B5F06D900E5CC32 /* RatingBar */,
@@ -1170,6 +1181,7 @@
 				C0666F1A1BA4F7810087DBF8 /* MJDictionaryCache.m in Sources */,
 				C07B5FC01B7F380400327894 /* TimelineDetailView.swift in Sources */,
 				C0C8F9021B2ED89E00D698FC /* LoginViewController.swift in Sources */,
+				C00377461BC4B8BA00BF8A72 /* LogFormatter.swift in Sources */,
 				C0666F1B1BA4F7810087DBF8 /* MJExtensionConst.m in Sources */,
 				C0A5B64F1B4B5C020089B84E /* FindClassViewController.swift in Sources */,
 				C0A5B6551B4B64980089B84E /* CourseTableViewCell.swift in Sources */,

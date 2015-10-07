@@ -61,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
         //ServerMethods.getUserProfile()
         //ServerMethods.getCollege("1", to: "10")
         //ServerMethods.getCourseOverview("TOEFL")
-        Logging.logToFile()
+        Logging.setUpLogger()
+        NSTimer.scheduledTimerWithTimeInterval(60*10, target: Logging(), selector: "uploadRemaninggzFile", userInfo: nil, repeats: true)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "compressionDidSucceed:", name: "compressionDidSucceed", object: nil)
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
         
@@ -97,7 +99,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
     func willExitFullScreen(){
         isFullScreen = false
     }
-    
+    func compressionDidSucceed(noti:NSNotification){
+        //print("compressionDidSucceed Method")
+        
+        let userInfo : NSDictionary = noti.userInfo!
+        let path = userInfo.objectForKey("filePath") as! String
+        //let name = userInfo.objectForKey("fileName") as! String
+        //print("path:\(path)")
+        //print("name:\(name)")
+        LocalFileManager.uploadFileAtPath(path)
+        
+    }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
@@ -350,7 +362,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
                 print(error, terminator: "")
         }
     }
-
     
    }
 

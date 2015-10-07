@@ -1010,29 +1010,112 @@ struct DeviceType
     
 }
 
-struct Logging {
-    static func logToFile(){
-        let logFileManager = CompressingLogFileManager()
+class LocalFileManager : NSObject {
+    static var isDeleting : Bool = false
+    static var isUploading : Bool = false
+    static func deleteFileAtPath(path:String){
+        if !isDeleting {
+            isDeleting = true
+            do {
+                if NSFileManager.defaultManager().fileExistsAtPath(path){
+                    try NSFileManager.defaultManager().removeItemAtPath(path)
+                }
+                
+            } catch {
+                
+            }
+            isDeleting = false
+        } else {
+            print("other instance is working on deleting. This is locked.")
+        }
         
+    }
+    static func uploadFileAtPath(path:String){
+        if !isUploading {
+            isUploading = true
+            /*
+            let file = PFFile(name: "2.gz", contentsAtPath: path)
+            file.saveInBackground()
+            let object = PFObject(className: "Gelei")
+            object["file"] = file
+            object.saveInBackgroundWithBlock { (succed:Bool, error:NSError?) -> Void in
+                if succed {
+                    //print(succed)
+                    LocalFileManager.deleteFileAtPath(path)
+                } else {
+                    //print(succed)
+                }
+            }
+            */
+            isUploading = false
+        } else {
+            print("other instance is working on uploading. This is locked.")
+        }
+    }
+}
+class Logging :NSObject{
+    
+    // MARK : Setup logger
+    static func setUpLogger(){
+        
+        let logFileManager = CompressingLogFileManager()
         let fileLogger = DDFileLogger(logFileManager: logFileManager)
-        fileLogger.maximumFileSize = 1023*1
-        fileLogger.rollingFrequency = 60*1
-        fileLogger.logFileManager.maximumNumberOfLogFiles = 4
+        fileLogger!.maximumFileSize = 1024*1024*3  // 3 MB
+        fileLogger!.rollingFrequency = 1 // 10 minutes
+        fileLogger!.logFileManager.maximumNumberOfLogFiles = 100
+        fileLogger!.logFormatter = LogFormatter()
+        NSUserDefaults.standardUserDefaults().setObject(fileLogger!.logFileManager.logsDirectory(), forKey: "logDirectory")
         DDLog.addLogger(DDASLLogger.sharedInstance())
         DDLog.addLogger(DDTTYLogger.sharedInstance())
         DDLog.addLogger(fileLogger)
-        var i = 0
-        while i != 100 {
-             DDLogError("test");
-            i++
-            }
-        
         
         
     }
-
+    func uploadRemaninggzFile(){
+        let string = checkLocalgzFile()
+        if string.count == 0 {
+            print("logDirectory doesn't exist")
+        } else {
+            self.upLoadAndDeleteLocalgzFile(string)
+        }
+        
+        
+    }
+    
+    // MARK : Return local gz File directory. If gz file doesn't exist, return an empty array
+    private func checkLocalgzFile()->[String]{
+        let fileManager = NSFileManager.defaultManager()
+        let logsPath = NSUserDefaults.standardUserDefaults().objectForKey("logDirectory") as! String
+        do {
+            let docsArray = try fileManager.contentsOfDirectoryAtPath(logsPath)
+            //print(docsArray)
+            let gzFileExtension = ".gz"
+            let gzArray = docsArray.filter({(item: String) -> Bool in
+                let stringMatch = item.lowercaseString.rangeOfString(gzFileExtension.lowercaseString)
+                return stringMatch != nil ? true : false
+            })
+            //print(gzArray)
+            return gzArray
+            
+        } catch {
+            print("logDirectory doesn't exist")
+        }
+        return []
+    }
+    
+    // MARK : Upload gz file. If succeed call LocalFileManager to delete the file, else do nothing.
+    private func upLoadAndDeleteLocalgzFile(gzArray:[String]){
+        let logsPath = NSUserDefaults.standardUserDefaults().objectForKey("logDirectory") as! String
+        for gzfileName in gzArray {
+            let filePath = "\(logsPath)/\(gzfileName)"
+            LocalFileManager.uploadFileAtPath(filePath)
+        }
+    }
+    
+    
+    
+    
 }
-
 
 
 

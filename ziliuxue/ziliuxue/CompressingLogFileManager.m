@@ -155,7 +155,7 @@
 
 - (void)didRollAndArchiveLogFile:(NSString *)logFilePath
 {
-    NSLogVerbose(@"CompressingLogFileManager: didRollAndArchiveLogFile: %@", [logFilePath lastPathComponent]);
+    //NSLogVerbose(@"CompressingLogFileManager: didRollAndArchiveLogFile: %@", [logFilePath lastPathComponent]);
     
     // If all other log files have been compressed,
     // then we can get started right away.
