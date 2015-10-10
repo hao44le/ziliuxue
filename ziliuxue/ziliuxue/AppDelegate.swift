@@ -295,7 +295,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
                     if let openid = dic.objectForKey("openid") as? String {
                         NSUserDefaults.standardUserDefaults().setObject(token, forKey: "weChat_token")
                         if let refresh_token = dic.objectForKey("refresh_token") as? String {
-                            NSUserDefaults.standardUserDefaults().setObject("", forKey: "weChat_refresh_token")
+                            NSUserDefaults.standardUserDefaults().setObject(refresh_token, forKey: "weChat_refresh_token")
                         }
                         self.getUserInfo(token, openid: openid)
                     }

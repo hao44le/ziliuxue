@@ -19,7 +19,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         let path = NSBundle.mainBundle().pathForResource("College", ofType: "plist")
         
         
-        let fileManager = NSFileManager.defaultManager()
+        
         let data : NSArray = NSArray(contentsOfFile: path!)!
         for school in data {
             let id = school.objectForKey("_id") as! String

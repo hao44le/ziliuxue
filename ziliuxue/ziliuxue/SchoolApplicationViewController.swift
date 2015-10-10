@@ -10,16 +10,7 @@ import UIKit
 
 class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
-    @IBAction func swipeRight(sender: AnyObject) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! - 1
-    }
-    
-    @IBAction func swipeLeft(sender: AnyObject) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 1
-    }
-    
+
     
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -190,18 +181,8 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
         
-        self.navigationItem.title = "申请"
-        
-    }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        //print("1")
-        //self.hidesBottomBarWhenPushed = true
-        //println(self.navigationController?.toolbar)
-        //self.navigationController?.toolbarHidden = true
-        //self.navigationController?.setToolbarHidden(true, animated: animated)
+        self.navigationItem.title = "申请信息"
         
     }
 
@@ -379,6 +360,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         return label
         
     }
+    
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 55

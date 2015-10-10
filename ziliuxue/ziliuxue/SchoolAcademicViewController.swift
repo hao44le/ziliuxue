@@ -9,12 +9,7 @@
 import UIKit
 
 class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,XYPieChartDataSource,XYPieChartDelegate {
-
-    @IBOutlet weak var academicTableView: UITableView!
-    @IBOutlet weak var facultyTableView: UITableView!
-    
-    @IBOutlet weak var graducationTableView: UITableView!
-    @IBOutlet weak var pieView: XYPieChart!
+    let header = ["教师/教室","课程体系","毕业/保有率"]
     let facultyLeft = ["师生比","教师总数","少数派","国际学生","全职博士以上教师","研究生上课占比"]
     var facultyRight = ["","","","","",""]
     
@@ -28,16 +23,7 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
     var pieChartColor = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
     var slices = [11,8,6,6,6]
     var text = ["经济学","政治学","生物","心理学","公共政策"]
-    
-    @IBAction func swipeRight(sender: AnyObject) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! - 1
-    }
-    
-    @IBAction func swipeLeft(sender: AnyObject) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 1
-    }
+
     
     var collegeAcademic : CollegeAcademic?{
         didSet{
@@ -79,23 +65,24 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.pieView.reloadData()
+        
+        //self.pieView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
+        self.navigationItem.title = "学术信息"
         
-        self.pieView.dataSource = self
-        self.pieView.delegate = self
-        self.pieView.startPieAngle = CGFloat(M_PI_2)
-        self.pieView.animationSpeed = 1.5
-        self.pieView.showLabel = true
-        self.pieView.labelColor = UIColor.whiteColor()
-        self.pieView.labelFont = UIFont.systemFontOfSize(15)
-        self.pieView.labelRadius = 100
-        self.pieView.showPercentage = false
-        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 150)
-        // Do any additional setup after loading the view.
+//        self.pieView.dataSource = self
+//        self.pieView.delegate = self
+//        self.pieView.startPieAngle = CGFloat(M_PI_2)
+//        self.pieView.animationSpeed = 1.5
+//        self.pieView.showLabel = true
+//        self.pieView.labelColor = UIColor.whiteColor()
+//        self.pieView.labelFont = UIFont.systemFontOfSize(15)
+//        self.pieView.labelRadius = 100
+//        self.pieView.showPercentage = false
+//        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 150)
+//        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,15 +106,15 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
 
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == facultyTableView {
+        if section == 0 {
             return self.facultyLeft.count
             
 
-        } else if tableView == academicTableView {
+        } else if section == 1 {
             return self.academicLeft.count
         } else {
             return self.graduationLeft.count
@@ -136,11 +123,16 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
-        if tableView == facultyTableView {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        if(indexPath.row % 2 == 0){
+            cell.contentView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            cell.textLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            cell.detailTextLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+        }
+        if indexPath.section == 0 {
             cell.textLabel?.text = self.facultyLeft[indexPath.row]
             cell.detailTextLabel?.text = self.facultyRight[indexPath.row]
-        } else if tableView == academicTableView {
+        } else if indexPath.section == 1 {
             cell.textLabel?.text = self.academicLeft[indexPath.row]
             cell.detailTextLabel?.text = self.academicRight[indexPath.row]
         } else {
@@ -152,6 +144,30 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
         return cell
         
     }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRectMake(0, 0, ScreenSize.SCREEN_WIDTH, 60))
+        let label = UILabel(frame: CGRectMake(0, 0, 60, 60))
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(15)
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = true
+        headerView.addSubview(label)
+        //label.text = "1"
+        
+        label.text = header[section]
+        return label
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 55
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 45
+    }
+
 
     /*
     // MARK: - Navigation

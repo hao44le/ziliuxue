@@ -84,30 +84,18 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
 
         
     @IBAction func rankingMoreButtonPressed(sender: UIButton) {
-        //let selectedIndex = self.tabBarController?.selectedIndex
-        //self.tabBarController?.selectedIndex = selectedIndex! + 1
-
         self.performSegueWithIdentifier("toRanking", sender: self)
     }
     
     @IBAction func applicationMoreButtonPressed(sender: UIButton) {
-        //let selectedIndex = self.tabBarController?.selectedIndex
-        //self.tabBarController?.selectedIndex = selectedIndex! + 2
-        
         self.performSegueWithIdentifier("toApplication", sender: self)
     }
     
     @IBAction func academicMoreButtonPressed(sender: UIButton) {
-        //let selectedIndex = self.tabBarController?.selectedIndex
-        //self.tabBarController?.selectedIndex = selectedIndex! + 3
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学术", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.performSegueWithIdentifier("toAcamidec", sender: self)
     }
     
     @IBAction func costMoreButtonPressed(sender: UIButton) {
-        //let selectedIndex = self.tabBarController?.selectedIndex
-        //self.tabBarController?.selectedIndex = selectedIndex! + 4
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "费用", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.performSegueWithIdentifier("toCost", sender: self)
     }
 
@@ -115,12 +103,11 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "大学", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
         self.setUpView()
-        //self.universityDescription.hidden = true
-        // Do any additional setup after loading the view.
+        
     }
     
     func setUpView(){

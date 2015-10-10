@@ -45,21 +45,12 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
     
     
     
-    @IBAction func swipeRight(sender: AnyObject) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! - 1
-    }
- 
-    @IBAction func swipeLeft(sender: AnyObject) {
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 1
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer!.enabled = false
   
         // Do any additional setup after loading the view.
-        self.navigationItem.title = "排名"
+        self.navigationItem.title = "排名信息"
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,16 +75,12 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
 
         cell.textLabel!.text = rankingLeft[indexPath.row]
         cell.detailTextLabel!.text = rankingRight[indexPath.row]
-        /*
-        if DeviceType.IS_IPHONE_6{
-            cell.firstLabelWidth.constant = 187
-        } else if DeviceType.IS_IPHONE_6P{
-            cell.firstLabelWidth.constant = 205
-        }*/
         return cell
     }
     
-    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 45
+    }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 55
     }
@@ -106,7 +93,7 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = true
         headerView.addSubview(label)
-        label.text = "排名：#1"
+        label.text = "综合排名：#1"
 
         return label
         
