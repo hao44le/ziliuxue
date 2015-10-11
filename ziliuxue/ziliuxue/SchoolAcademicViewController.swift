@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,XYPieChartDataSource,XYPieChartDelegate {
+class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     let header = ["教师/教室","课程体系","毕业/保有率"]
     let facultyLeft = ["师生比","教师总数","少数派","国际学生","全职博士以上教师","研究生上课占比"]
     var facultyRight = ["","","","","",""]
@@ -90,19 +90,19 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: PieChart DataSource
-    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
-        return UInt(self.slices.count)
-    }
-    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
-        return self.pieChartColor[Int(index)]
-    }
-    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
-        return CGFloat(self.slices[Int(index)])
-    }
-    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
-        return self.text[Int(index)]
-    }
+//    // MARK: PieChart DataSource
+//    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
+//        return UInt(self.slices.count)
+//    }
+//    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
+//        return self.pieChartColor[Int(index)]
+//    }
+//    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
+//        return CGFloat(self.slices[Int(index)])
+//    }
+//    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
+//        return self.text[Int(index)]
+//    }
 
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

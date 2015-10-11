@@ -225,7 +225,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         super.updateViewConstraints()
         self.equalConstraint.constant = 0
         if DeviceType.IS_IPHONE_4_OR_LESS {
-            self.imageViewConstraint.constant = 10
+            self.imageViewConstraint.constant = 1000
             self.bottomConstriant.constant = 50
         } else if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P {
             self.bottomConstriant.constant = 90

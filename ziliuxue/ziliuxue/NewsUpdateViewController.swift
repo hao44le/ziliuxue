@@ -14,7 +14,7 @@ class NewsUpdateViewController: UIViewController{
         let selectedIndex = self.tabBarController?.selectedIndex
         self.tabBarController?.selectedIndex = selectedIndex! - 1
     }
-    @IBOutlet weak var pieView: XYPieChart!
+    //@IBOutlet weak var pieView: XYPieChart!
     /*
     var pieChartValue = [CGFloat(1),CGFloat(3)]
     var pieChartColor = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
@@ -47,7 +47,7 @@ class NewsUpdateViewController: UIViewController{
         */
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineOverviewButtonTouched:", name: "timelineOverviewButtonTouched", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineOverviewImageTouched:", name: "timelineOverviewImageTouched", object: nil)
-        self.pieView.hidden = true
+        //self.pieView.hidden = true
         
         
         // Do any additional setup after loading the view.

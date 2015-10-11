@@ -8,10 +8,9 @@
 
 import UIKit
 
-class FirstTabTableViewCell: UITableViewCell,XYPieChartDataSource{
+class FirstTabTableViewCell: UITableViewCell{
 
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var pieView: XYPieChart!
     @IBOutlet weak var detailTextView: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     
@@ -40,20 +39,20 @@ class FirstTabTableViewCell: UITableViewCell,XYPieChartDataSource{
         // Configure the view for the selected state
     }
     
-    // MARK: PieChart DataSource
-    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
-        return UInt(self.slice!.count)
-    }
-    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
-        return self.pieChartColor[Int(index)]
-    }
-    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
-        return CGFloat(self.slice![Int(index)])
-    }
-    
-    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
-        return ""
-    }
-
+//    // MARK: PieChart DataSource
+//    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
+//        return UInt(self.slice!.count)
+//    }
+//    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
+//        return self.pieChartColor[Int(index)]
+//    }
+//    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
+//        return CGFloat(self.slice![Int(index)])
+//    }
+//    
+//    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
+//        return ""
+//    }
+//
 
 }

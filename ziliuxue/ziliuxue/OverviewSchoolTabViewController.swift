@@ -8,13 +8,13 @@
 
 import UIKit
 
-class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPieChartDataSource,XYPieChartDelegate{
+class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
 
     
+    @IBOutlet weak var labelConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     
-    @IBOutlet weak var pieView: XYPieChart!
     
     
     @IBOutlet weak var acceptance_rate: UILabel!
@@ -53,9 +53,9 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
     var imageArray = ["classroom","classroom2","universityBack"]
     var collegeName = "Pricenton University"
     
-    var pieChartColor = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
-    var slices = [11,8,6,6,6]
-    var text = ["经济学","政治学","生物","心理学","公共政策"]
+//    var pieChartColor = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
+//    var slices = [11,8,6,6,6]
+//    var text = ["经济学","政治学","生物","心理学","公共政策"]
     
     var college: College? {
         didSet{
@@ -99,7 +99,14 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
         self.performSegueWithIdentifier("toCost", sender: self)
     }
 
-
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+//        if DeviceType.IS_IPHONE_6 {
+//            self.labelConstraint.constant = 23
+//        } else if DeviceType.IS_IPHONE_6P {
+//            self.labelConstraint.constant = 35
+//        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +114,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
         swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
         self.setUpView()
+        
         
     }
     
@@ -132,18 +140,18 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
         //cell.universityName.sizeToFit()
         self.logoImageView.clipsToBounds = true
         
-        self.pieView.dataSource = self
-        self.pieView.delegate = self
-        self.pieView.startPieAngle = CGFloat(M_PI_2)
-        self.pieView.animationSpeed = 1.5
-        self.pieView.showLabel = true
-        self.pieView.labelColor = UIColor.whiteColor()
-        self.pieView.labelFont = UIFont.systemFontOfSize(10)
-        self.pieView.labelRadius = 40
-        self.pieView.pieRadius = 60
-        self.pieView.showPercentage = false
-        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 50)
-
+//        self.pieView.dataSource = self
+//        self.pieView.delegate = self
+//        self.pieView.startPieAngle = CGFloat(M_PI_2)
+//        self.pieView.animationSpeed = 1.5
+//        self.pieView.showLabel = true
+//        self.pieView.labelColor = UIColor.whiteColor()
+//        self.pieView.labelFont = UIFont.systemFontOfSize(10)
+//        self.pieView.labelRadius = 40
+//        self.pieView.pieRadius = 60
+//        self.pieView.showPercentage = false
+//        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 50)
+//
 
     }
 
@@ -154,7 +162,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
         //self.navigationController?.setToolbarHidden(true, animated: false)
         self.navigationController?.navigationBar.topItem?.title = self.collegeName
         //println(college!.name + college!.logo)
-        self.pieView.reloadData()
+        //self.pieView.reloadData()
         
     }
     override func didReceiveMemoryWarning() {
@@ -220,20 +228,20 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource,XYPi
         self.pageControl.currentPage = swipeView.currentPage
     }
 
-    // MARK: PieChart DataSource
-    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
-        return UInt(self.slices.count)
-    }
-    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
-        return self.pieChartColor[Int(index)]
-    }
-    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
-        return CGFloat(self.slices[Int(index)])
-    }
-    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
-        return self.text[Int(index)]
-    }
-
+//    // MARK: PieChart DataSource
+//    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
+//        return UInt(self.slices.count)
+//    }
+//    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
+//        return self.pieChartColor[Int(index)]
+//    }
+//    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
+//        return CGFloat(self.slices[Int(index)])
+//    }
+//    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
+//        return self.text[Int(index)]
+//    }
+//
     
     // MARK: - Navigation
 

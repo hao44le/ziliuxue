@@ -14,7 +14,6 @@
 #import "CCMPopupSegue.h"
 #import "CCMBorderView.h"
 #import "CCMPopupTransitioning.h"
-#import "XYPieChart.h"
 
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
