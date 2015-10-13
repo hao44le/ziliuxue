@@ -41,11 +41,11 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     @IBOutlet weak var weiboButton: UIButton!
     
     @IBAction func weiboButtonClicked(sender: UIButton) {
-        let request = WBAuthorizeRequest.request() as! WBAuthorizeRequest
-        request.redirectURI = kWeiboRedirectURI
-        request.scope = "all"
-        request.userInfo = ["SSO_From":"LoginController"]
-        WeiboSDK.sendRequest(request)
+//        let request = WBAuthorizeRequest.request() as! WBAuthorizeRequest
+//        request.redirectURI = kWeiboRedirectURI
+//        request.scope = "all"
+//        request.userInfo = ["SSO_From":"LoginController"]
+//        WeiboSDK.sendRequest(request)
     }
 
     @IBAction func weChatButtonClicked(sender: UIButton) {

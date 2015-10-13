@@ -13,8 +13,8 @@ import MediaPlayer
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
+//,WeiboSDKDelegate
     var window: UIWindow?
     var drawerController:MMDrawerController!
     var isFullScreen = false
@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
         IQKeyboardManager.sharedManager().keyboardAppearance = UIKeyboardAppearance.Dark
         
         //weibo初始化
-        WeiboSDK.enableDebugMode(true)
-        WeiboSDK.registerApp(kWeiboAppKey)
+//        WeiboSDK.enableDebugMode(true)
+//        WeiboSDK.registerApp(kWeiboAppKey)
         
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
@@ -180,7 +180,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
             
         }else if sourceApplication == "com.sina.weibo"{
             
-            return WeiboSDK.handleOpenURL(url, delegate: self)
+            //return WeiboSDK.handleOpenURL(url, delegate: self)
         }else {
             var navi:UINavigationController?
             var vc:UIViewController?
@@ -217,38 +217,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate,WeiboSDKDele
     }
     
     
-    func didReceiveWeiboRequest(request: WBBaseRequest!) {
-        
-        print("request============")
-        print(request.userInfo)
-    }
-    
-    func didReceiveWeiboResponse(response: WBBaseResponse!) {
-        
-        if response.isKindOfClass(WBAuthorizeResponse){
-
-            if response.statusCode.rawValue == 0{
-                Tool.showSuccessHUD("授权成功")
-                self.queryWeiboUserData((response as! WBAuthorizeResponse).userID, accessToken: (response as! WBAuthorizeResponse).accessToken)
-            }else{
-                Tool.showErrorHUD("授权失败")
-            }
-   
-//            println("response============userID")
-//            println((response as! WBAuthorizeResponse).userID)
-//            println("response============accessToken")
-//            println((response as! WBAuthorizeResponse).accessToken)
-//            println("response============userInfo")
-//            println(response.userInfo)
+//    func didReceiveWeiboRequest(request: WBBaseRequest!) {
+//        
+//        print("request============")
+//        print(request.userInfo)
+//    }
+//    
+//    func didReceiveWeiboResponse(response: WBBaseResponse!) {
+//        
+//        if response.isKindOfClass(WBAuthorizeResponse){
 //
-//            println(response.requestUserInfo)
-        }else if response.isKindOfClass(WBSendMessageToWeiboResponse){
-            
-        }else if response.isKindOfClass(WBPaymentResponse){
-            
-        }
-
-    }
+//            if response.statusCode.rawValue == 0{
+//                Tool.showSuccessHUD("授权成功")
+//                self.queryWeiboUserData((response as! WBAuthorizeResponse).userID, accessToken: (response as! WBAuthorizeResponse).accessToken)
+//            }else{
+//                Tool.showErrorHUD("授权失败")
+//            }
+//   
+////            println("response============userID")
+////            println((response as! WBAuthorizeResponse).userID)
+////            println("response============accessToken")
+////            println((response as! WBAuthorizeResponse).accessToken)
+////            println("response============userInfo")
+////            println(response.userInfo)
+////
+////            println(response.requestUserInfo)
+//        }else if response.isKindOfClass(WBSendMessageToWeiboResponse){
+//            
+//        }else if response.isKindOfClass(WBPaymentResponse){
+//            
+//        }
+//
+//    }
     
     func queryWeiboUserData(userID:NSString,accessToken:NSString){
         

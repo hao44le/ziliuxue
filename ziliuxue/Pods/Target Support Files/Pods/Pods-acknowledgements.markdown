@@ -62,10 +62,6 @@ Alibaba-INC copyright
 Alibaba-INC copyright
 
 
-## WeiboSDK
-
-
-
 ## pop
 
 BSD License

@@ -22,8 +22,8 @@
 
 #import "WXApi.h"
 #import "WXApiObject.h"
-#import "WeiboSDK.h"
-#import "WeiboUser.h"
+//#import "WeiboSDK.h"
+//#import "WeiboUser.h"
 
 
 #import "IQKeyboardManager.h"
