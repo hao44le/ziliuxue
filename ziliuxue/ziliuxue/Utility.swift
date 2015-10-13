@@ -1011,38 +1011,53 @@ struct DeviceType
 }
 
 class LocalFileManager : NSObject {
-    static func deleteFileAtPath(path:String){
-        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+    private static func deleteFileAtPath(file:DDLogFileInfo){
+        if file.status == "uploaded" {
+            //delete
             do {
-                if NSFileManager.defaultManager().fileExistsAtPath(path){
-                    try NSFileManager.defaultManager().removeItemAtPath(path)
+                if NSFileManager.defaultManager().fileExistsAtPath(file.filePath){
+                    try NSFileManager.defaultManager().removeItemAtPath(file.filePath)
                 }
                 
             } catch {
                 
             }
             
+            
+        } else {
+            print("file is not uploaded!")
         }
+        
         
     }
     static func uploadFileAtPath(path:String){
-        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
-//            let file = PFFile(name: "2.gz", contentsAtPath: path)
-//            file.saveInBackground()
-//            let object = PFObject(className: "Gelei")
-//            object["file"] = file
-//            object.saveInBackgroundWithBlock { (succed:Bool, error:NSError?) -> Void in
-//                if succed {
-//                    //print(succed)
-//                    LocalFileManager.deleteFileAtPath(path)
-//                } else {
-//                    //print(succed)
-//                }
-//            }
-//            
+        
+        let file = DDLogFileInfo(filePath: path)
+        if (file.status == nil)||(file.status == "upload failed") {
+            file.status = "uploading"
             
+            //upload file
+            
+            //            let file = PFFile(name: "2.gz", contentsAtPath: path)
+            //            file.saveInBackground()
+            //            let object = PFObject(className: "Gelei")
+            //            object["file"] = file
+            //            object.saveInBackgroundWithBlock { (succed:Bool, error:NSError?) -> Void in
+            //                if succed {
+            //                    //print(succed)
+            //                     file.status = "uploaded"
+            //                    LocalFileManager.deleteFileAtPath(file)
+            //                } else {
+            //                    //print(succed)
+            //                     file.status = "upload failed"
+            //                }
+            //            }
+            //
             
         }
+        
+        
+        
     }
 }
 class Logging :NSObject{

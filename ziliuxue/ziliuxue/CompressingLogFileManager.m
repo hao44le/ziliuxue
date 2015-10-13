@@ -117,7 +117,10 @@
 - (void)compressionDidSucceed:(DDLogFileInfo *)logFile
 {
     NSLogVerbose(@"CompressingLogFileManager: compressionDidSucceed: %@", logFile.fileName);
-    
+    NSDictionary* userInfo = @{@"filePath": logFile.filePath,@"fileName": logFile.fileName};
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"compressionDidSucceed"
+     object:nil userInfo:userInfo];
     self.isCompressing = NO;
     
     [self compressNextLogFile];

@@ -66,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         NSTimer.scheduledTimerWithTimeInterval(60*10, target: Logging(), selector: "uploadRemaninggzFile", userInfo: nil, repeats: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "compressionDidSucceed:", name: "compressionDidSucceed", object: nil)
         
+        
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
         
@@ -106,9 +107,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         let userInfo : NSDictionary = noti.userInfo!
         let path = userInfo.objectForKey("filePath") as! String
-        //let name = userInfo.objectForKey("fileName") as! String
-        //print("path:\(path)")
-        //print("name:\(name)")
         LocalFileManager.uploadFileAtPath(path)
         
     }

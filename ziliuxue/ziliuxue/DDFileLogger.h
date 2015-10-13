@@ -327,7 +327,7 @@ extern unsigned long long const kDDDefaultLogFilesDiskQuota;
 
 @property (strong, nonatomic, readonly) NSString *filePath;
 @property (strong, nonatomic, readonly) NSString *fileName;
-
+@property (strong, nonatomic, readwrite) NSString *status;
 @property (strong, nonatomic, readonly) NSDictionary *fileAttributes;
 
 @property (strong, nonatomic, readonly) NSDate *creationDate;

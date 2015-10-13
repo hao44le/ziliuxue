@@ -11,7 +11,6 @@ import UIKit
 class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
 
     
-    @IBOutlet weak var labelConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     
