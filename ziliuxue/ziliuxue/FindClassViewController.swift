@@ -18,10 +18,27 @@ class FindClassViewController: UIViewController,UITableViewDataSource,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setupLeftMenuButton()
         // Do any additional setup after loading the view.
     }
 
+    func setupLeftMenuButton()
+    {
+        let image = UIImage(named: "left button")
+        let leftDrawerButton = UIButton(frame: CGRectMake(0, 0, 25, 25))
+        leftDrawerButton.setBackgroundImage(image, forState: UIControlState.Normal)
+        
+        leftDrawerButton.addTarget(self, action: Selector("leftDrawerButtonPress:"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let leftButton:UIBarButtonItem = UIBarButtonItem(customView: leftDrawerButton)
+        
+        self.navigationItem.setLeftBarButtonItem(leftButton, animated: true)
+    }
+    
+    func leftDrawerButtonPress(sender:AnyObject)
+    {
+        self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

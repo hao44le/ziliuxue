@@ -94,7 +94,7 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdWizardTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SchoolOverviewTableCell
         cell.universityName.text = self.universityArray[indexPath.row].name
         cell.logo.image = UIImage(named: self.universityArray[indexPath.row].logo)
         cell.logo.layer.cornerRadius = 23
