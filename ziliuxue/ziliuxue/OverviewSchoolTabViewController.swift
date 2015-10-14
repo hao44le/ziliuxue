@@ -14,6 +14,13 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     
+    @IBOutlet weak var applicationButton: UIButton!
+    
+    @IBOutlet weak var rankingButton: UIButton!
+    
+    @IBOutlet weak var academicButton: UIButton!
+    
+    @IBOutlet weak var costButton: UIButton!
     
     
     @IBOutlet weak var acceptance_rate: UILabel!
@@ -110,8 +117,6 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "大学", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        swipeView.autoscroll = 0
-        swipeView.pagingEnabled = true
         self.setUpView()
         
         
@@ -119,6 +124,8 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     
     func setUpView(){
         
+        swipeView.autoscroll = 0
+        swipeView.pagingEnabled = true
         let shareButton = UIButton(frame: CGRectMake(0, 0, 44, 44))
         shareButton.backgroundColor = UIColor.clearColor()
         shareButton.setImage(UIImage(named: "share_button_normal"), forState: UIControlState.Normal)
@@ -130,7 +137,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         
         //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
         
-        self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
+        //self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
         
         self.logoImageView.image = UIImage(named: college!.name + " logo")
         self.logoImageView.layer.cornerRadius = 54
@@ -138,6 +145,17 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         self.logoImageView.layer.borderWidth = 2
         //cell.universityName.sizeToFit()
         self.logoImageView.clipsToBounds = true
+        
+        
+        self.costButton.layer.cornerRadius = 10
+        self.costButton.clipsToBounds = true
+        self.applicationButton.layer.cornerRadius = 10
+        self.applicationButton.clipsToBounds = true
+        self.academicButton.layer.cornerRadius = 10
+        self.academicButton.clipsToBounds = true
+        self.rankingButton.layer.cornerRadius = 10
+        self.rankingButton.clipsToBounds = true
+        
         
 //        self.pieView.dataSource = self
 //        self.pieView.delegate = self
@@ -168,15 +186,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
-        //self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
-    }
-   
-    @IBAction func swipeLeft(sender: UISwipeGestureRecognizer) {
-       
-        let selectedIndex = self.tabBarController?.selectedIndex
-        self.tabBarController?.selectedIndex = selectedIndex! + 1
-    }
+
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.interactivePopGestureRecognizer!.enabled = true
@@ -191,6 +201,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         
         let created = UIView(frame: swipeView.bounds)
         let imageView = UIImageView(frame: created.bounds)
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
         if (college != nil) {
             if let image = UIImage(named: college!.name + "photo\(index)") {
                 imageView.image = image
