@@ -21,6 +21,30 @@ class FindClassViewController: UIViewController,UITableViewDataSource,UITableVie
         self.setupLeftMenuButton()
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        if !LocalStore.isIntroVisited(){
+            if !LocalStore.isLogined(){
+                self.performSegueWithIdentifier("toLogin", sender: self)
+            } else {
+                //self.performSegueWithIdentifier("toWizard", sender: self)
+            }
+        }
+        if LocalStore.isIntroVisited() {
+            if !LocalStore.isLogined() {
+                self.performSegueWithIdentifier("toLogin", sender: self)
+            }
+        }
+        
+        
+        
+        
+        //self.performSegueWithIdentifier("toWizard", sender: self)
+        
+    }
+
 
     func setupLeftMenuButton()
     {

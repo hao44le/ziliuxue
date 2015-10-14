@@ -252,6 +252,11 @@ class LeftDrawerTableViewController: UITableViewController {
             let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
             label6.textColor = UIColor.grayColor()
             
+            let image0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(1111) as! UIImageView
+            image0.image = UIImage(named: "findCollege")
+            let label0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(2222) as! UILabel
+            label0.textColor = Utils.mainColor
+
             
             let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image7.image = UIImage(named: "logout_")
