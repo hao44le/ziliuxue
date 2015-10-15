@@ -8,17 +8,23 @@
 
 import UIKit
 
-class CourseFilterViewController: UIViewController,JSDropDownMenuDataSource,JSDropDownMenuDelegate,UITableViewDelegate,UITableViewDataSource {
+class SchoolFilterViewController: UIViewController,JSDropDownMenuDataSource,JSDropDownMenuDelegate,UITableViewDelegate,UITableViewDataSource {
 
     var menu:JSDropDownMenu!
     
     @IBOutlet var tableView: UITableView!
     
-    var location = ["地点","北京","上海","南京","杭州"]
-    var time = ["时间","上午","下午","晚上"]
-    var price = ["价格","<1000","1000-2000","2000-3000",">3000"]
-    var peopleNum = ["人数","<10","10-50","50-100",">100"]
-    var teacher = ["老师","石扬","王伟","李轶鹏","陈格雷","赵靓","王烁"]
+    let location = ["地点","北京","上海","南京","杭州"]
+    let time = ["时间","上午","下午","晚上"]
+    let price = ["价格","<1000","1000-2000","2000-3000",">3000"]
+    let peopleNum = ["人数","<10","10-50","50-100",">100"]
+    let teacher = ["老师","石扬","王伟","李轶鹏","陈格雷","赵靓","王烁"]
+    
+    
+    let category = ["专业排名","综合排名"]
+    let introArray = ["US NEWS最新专业排名","US NEWS 最好大学排名"]
+    let picPrefix = "courses_step1_"
+
     
     var locationIndex = 0
     var timeIndex = 0
@@ -150,19 +156,21 @@ class CourseFilterViewController: UIViewController,JSDropDownMenuDataSource,JSDr
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.category.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CourseFilterTableViewCell") as! CourseFilterTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("findClassCell") as! FindClassTableViewCell
         
+        cell.categoryNameLabel.text = self.category[indexPath.row]
+        cell.categoryNameLabel.shadowColor = UIColorFromHexRGB(0x000000)
+        cell.backgroundImage.image = UIImage(named: self.picPrefix + self.category[indexPath.row])
+        cell.introLabel.text = self.introArray[indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        let courseDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CourseDetailViewController") as! CourseDetailViewController
-        courseDetailVC.title = "课程详情"
-        self.navigationController?.pushViewController(courseDetailVC, animated: true)
+        self.performSegueWithIdentifier("toSchoolList", sender: self)
     }
 
     /*

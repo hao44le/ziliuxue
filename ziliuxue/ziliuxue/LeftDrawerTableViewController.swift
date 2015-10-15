@@ -117,7 +117,7 @@ class LeftDrawerTableViewController: UITableViewController {
         switch row
         {
         case 0:
-            cell!.textLabel?.text = "            找学校"
+            cell!.textLabel?.text = "            看排名"
             imageView =  UIImageView(image: UIImage(named: "findCollege_"))
             
         case 1:
@@ -275,7 +275,7 @@ class LeftDrawerTableViewController: UITableViewController {
         var vc:UIViewController?
         switch row {
         case 0:
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindClassViewController
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindSchoolViewController
         case 1:
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("secondTab") as! SecondTabViewController
         case 6:
@@ -283,7 +283,7 @@ class LeftDrawerTableViewController: UITableViewController {
             
         case 7:
             LocalStore.setLogout()
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindClassViewController
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindSchoolViewController
         default:
             break
         }

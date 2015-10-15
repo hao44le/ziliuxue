@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         let kMaximumLeftDrawerWidth:CGFloat = 260.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
         
-        let centerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindClassViewController
+        let centerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindSchoolViewController
         
         
         let navigationController = UINavigationController(rootViewController: centerViewController)

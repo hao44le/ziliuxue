@@ -8,7 +8,43 @@
 
 import UIKit
 
-
+class Utils: NSObject {
+    static let mainColor = UIColor(red: 0/255, green: 135/255, blue: 218/255, alpha: 1)
+    static let tabbarColor = UIColor(white: 1, alpha: 0.8)
+}
+struct LocalStore {
+    
+    private static let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    static func setIntroAsVisited() {
+        userDefaults.setObject(true, forKey: "introKey")
+    }
+    
+    static func isIntroVisited() -> Bool {
+        return userDefaults.boolForKey("introKey")
+    }
+    
+    static func isLogined()->Bool{
+        return userDefaults.boolForKey("loginKey")
+    }
+    
+    static func setLogined(){
+        userDefaults.setObject(true, forKey: "loginKey")
+    }
+    
+    static func setLogout(){
+        userDefaults.setObject("", forKey: "token")
+        userDefaults.setObject("", forKey: "refresh_token")
+        userDefaults.setObject(nil, forKey: "weChat_userImageUrl")
+        userDefaults.setObject(nil, forKey: "weChat_userNickname")
+        userDefaults.setObject(nil, forKey: "weChat_token")
+        userDefaults.setObject(nil, forKey: "nickName")
+        userDefaults.setObject(false, forKey: "loginKey")
+        userDefaults.setObject(nil, forKey: "loginWay")
+    }
+    
+    
+}
 
 //Device Info
 struct ScreenSize

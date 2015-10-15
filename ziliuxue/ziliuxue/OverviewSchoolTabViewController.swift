@@ -123,7 +123,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     }
     
     func setUpView(){
-        
+        self.navigationItem.title = self.collegeName
         swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
         let shareButton = UIButton(frame: CGRectMake(0, 0, 44, 44))
@@ -140,7 +140,7 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         //self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
         
         self.logoImageView.image = UIImage(named: college!.name + " logo")
-        self.logoImageView.layer.cornerRadius = 54
+        self.logoImageView.layer.cornerRadius = 50
         self.logoImageView.layer.borderColor = UIColor.whiteColor().CGColor
         self.logoImageView.layer.borderWidth = 2
         //cell.universityName.sizeToFit()
@@ -172,16 +172,6 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
 
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        //self.hidesBottomBarWhenPushed = true
-        //self.tabBarController?.tabBar.hidden = true
-        //self.navigationController?.setToolbarHidden(true, animated: false)
-        self.navigationController?.navigationBar.topItem?.title = self.collegeName
-        //println(college!.name + college!.logo)
-        //self.pieView.reloadData()
-        
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

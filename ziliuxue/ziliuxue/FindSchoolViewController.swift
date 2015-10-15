@@ -8,16 +8,18 @@
 
 import UIKit
 
-class FindClassViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class FindSchoolViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     
     @IBOutlet var tableView: UITableView!
     
-    var category = ["SAT","GRE","TOEFL","IELTS","GMAT"]
-    var picPrefix = "courses_step1_"
+    let category = ["本科","研究生","文理学院"]
+    let introArray = ["University本科教育","University研究生教育","专注于本科教育，小而美的Liberal Arts College"]
+    let picPrefix = "courses_step1_"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "看排名"
         self.setupLeftMenuButton()
         // Do any additional setup after loading the view.
     }
@@ -82,13 +84,13 @@ class FindClassViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.categoryNameLabel.text = self.category[indexPath.row]
         cell.categoryNameLabel.shadowColor = UIColorFromHexRGB(0x000000)
         cell.backgroundImage.image = UIImage(named: self.picPrefix + self.category[indexPath.row])
-        cell.introLabel.text = "美国研究生入学考试资格考试"
+        cell.introLabel.text = self.introArray[indexPath.row]
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         
-        let courseFilterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CourseFilterViewController") as! CourseFilterViewController
+        let courseFilterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SchoolFilterViewController") as! SchoolFilterViewController
         courseFilterVC.title = self.category[indexPath.row]
         self.navigationController?.pushViewController(courseFilterVC, animated: true)
     }
