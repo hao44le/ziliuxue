@@ -42,13 +42,24 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVE-jt-93m">
+                    <rect key="frame" x="33" y="32" width="80" height="80"/>
+                    <animations/>
+                    <connections>
+                        <action selector="imageButtonTouched:" destination="-1" eventType="touchUpInside" id="rKu-AD-nDi"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.89605034719999999" green="0.89605034719999999" blue="0.89605034719999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="top" secondItem="Ocf-Eo-sqj" secondAttribute="top" constant="32" id="2wl-dJ-UUW"/>
+                <constraint firstItem="EVE-jt-93m" firstAttribute="bottom" secondItem="k7N-Lp-sny" secondAttribute="bottom" id="7MQ-5o-IRL"/>
+                <constraint firstItem="8jy-AB-2Oa" firstAttribute="leading" secondItem="EVE-jt-93m" secondAttribute="trailing" constant="8" symbolic="YES" id="JyF-DJ-Ic7"/>
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="leading" secondItem="Ocf-Eo-sqj" secondAttribute="leading" constant="33" id="M5k-KN-sqv"/>
                 <constraint firstItem="8jy-AB-2Oa" firstAttribute="leading" secondItem="k7N-Lp-sny" secondAttribute="trailing" constant="8" symbolic="YES" id="OpU-dF-IFZ"/>
+                <constraint firstItem="EVE-jt-93m" firstAttribute="top" secondItem="k7N-Lp-sny" secondAttribute="top" id="XwR-1J-bzH"/>
+                <constraint firstItem="EVE-jt-93m" firstAttribute="leading" secondItem="k7N-Lp-sny" secondAttribute="leading" id="dYb-q8-q7a"/>
                 <constraint firstAttribute="bottom" secondItem="8jy-AB-2Oa" secondAttribute="bottom" constant="32" id="gQV-rx-40t"/>
                 <constraint firstItem="8jy-AB-2Oa" firstAttribute="top" secondItem="Ocf-Eo-sqj" secondAttribute="top" constant="32" id="nYY-CV-UoR"/>
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="centerY" secondItem="Ocf-Eo-sqj" secondAttribute="centerY" id="qSa-f3-2pI"/>

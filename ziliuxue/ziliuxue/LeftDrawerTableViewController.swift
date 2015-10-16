@@ -8,16 +8,111 @@
 
 import UIKit
 
-class LeftDrawerTableViewController: UITableViewController {
+class LeftDrawerTableViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var userImage: UIImageView!
     
     @IBOutlet weak var userName: UILabel!
     @IBOutlet var headView: UIView!
     
+    var weChatImageLink : String?
+    
+    @IBAction func imageButtonTouched(sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "更新头像", message: nil, preferredStyle: .ActionSheet)
+        
+        
+        let goAction = UIAlertAction(title: "相册", style: .Default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
+                
+                let picker = UIImagePickerController()
+                picker.delegate = self
+                picker.allowsEditing = true
+                picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                self.presentViewController(picker, animated: true, completion: nil)
+                
+            } else {
+                Tool.showErrorHUD("无法打开相册")
+//                let delay = 2.0 * Double(NSEC_PER_SEC)
+//                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//                dispatch_after(time, dispatch_get_main_queue(), {
+//                    alert.dismissAlertView()
+//                })
+                
+            }
+            
+        }
+        
+        alertController.addAction(goAction)
+        
+        let OKAction = UIAlertAction(title: "相机", style: .Default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(
+                UIImagePickerControllerSourceType.Camera) {
+                    
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType =
+                        UIImagePickerControllerSourceType.Camera
+                    imagePicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+                    //imagePicker.mediaTypes = [kUTTypeImage as NSString]
+                    imagePicker.allowsEditing = true
+                    
+                    self.presentViewController(imagePicker, animated: true,
+                        completion: nil)
+            } else {
+                Tool.showErrorHUD("无法打开相机")
+//                let alert = AMSmoothAlertView(dropAlertWithTitle: "Sorry!", andText: "Can not open camera", andCancelButton: false, forAlertType: AlertType.Failure)
+//                alert.show()
+//                let delay = 2.0 * Double(NSEC_PER_SEC)
+//                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//                dispatch_after(time, dispatch_get_main_queue(), {
+//                    alert.dismissAlertView()
+//                })
+            }
+            
+        }
+        alertController.addAction(OKAction)
+        
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .Cancel) { (action) in
+            
+            
+        }
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+        
+        alertController.view.tintColor = UIColor.blackColor()
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        print("1")
+        self.userImage.image = UIImage(named: "findCollege")
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        print("2")
+//        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            
+//            self.userImage.contentMode = .ScaleAspectFit
+//            if (self.weChatImageLink != nil) {
+//                SDImageCache.sharedImageCache().removeImageForKey(weChatImageLink, fromDisk: true)
+//                
+//            }
+//           
+//        }
+         self.userImage.image = UIImage(named: "findCollege_")
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "postweChatInfo:", name: "postweChatInfo", object: nil)
+        
         self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
         self.userImage.clipsToBounds = true
         self.userImage.layer.borderWidth = 3
@@ -44,6 +139,8 @@ class LeftDrawerTableViewController: UITableViewController {
         
         self.tableView.tableHeaderView = headView
     }
+    
+    
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -76,6 +173,7 @@ class LeftDrawerTableViewController: UITableViewController {
         let nickname = userInfo.objectForKey("nickname") as! String
         let imgUrl = userInfo.objectForKey("imgURL") as! String
         userName.text = nickname
+        self.weChatImageLink = imgUrl
         userImage.sd_setImageWithURL(NSURL(string: imgUrl), placeholderImage: UIImage(named: "defaultImage"))
     }
     override func didReceiveMemoryWarning() {
