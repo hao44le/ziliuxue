@@ -15,7 +15,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet weak var userName: UILabel!
     @IBOutlet var headView: UIView!
     
-    var weChatImageLink : String?
+    
     
     @IBAction func imageButtonTouched(sender: UIButton) {
         
@@ -33,11 +33,11 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
                 
             } else {
                 Tool.showErrorHUD("无法打开相册")
-//                let delay = 2.0 * Double(NSEC_PER_SEC)
-//                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-//                dispatch_after(time, dispatch_get_main_queue(), {
-//                    alert.dismissAlertView()
-//                })
+                //                let delay = 2.0 * Double(NSEC_PER_SEC)
+                //                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                //                dispatch_after(time, dispatch_get_main_queue(), {
+                //                    alert.dismissAlertView()
+                //                })
                 
             }
             
@@ -61,13 +61,13 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
                         completion: nil)
             } else {
                 Tool.showErrorHUD("无法打开相机")
-//                let alert = AMSmoothAlertView(dropAlertWithTitle: "Sorry!", andText: "Can not open camera", andCancelButton: false, forAlertType: AlertType.Failure)
-//                alert.show()
-//                let delay = 2.0 * Double(NSEC_PER_SEC)
-//                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-//                dispatch_after(time, dispatch_get_main_queue(), {
-//                    alert.dismissAlertView()
-//                })
+                //                let alert = AMSmoothAlertView(dropAlertWithTitle: "Sorry!", andText: "Can not open camera", andCancelButton: false, forAlertType: AlertType.Failure)
+                //                alert.show()
+                //                let delay = 2.0 * Double(NSEC_PER_SEC)
+                //                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                //                dispatch_after(time, dispatch_get_main_queue(), {
+                //                    alert.dismissAlertView()
+                //                })
             }
             
         }
@@ -86,24 +86,15 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         
         alertController.view.tintColor = UIColor.blackColor()
     }
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        print("1")
-        self.userImage.image = UIImage(named: "findCollege")
-        picker.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print("2")
-//        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            
-//            self.userImage.contentMode = .ScaleAspectFit
-//            if (self.weChatImageLink != nil) {
-//                SDImageCache.sharedImageCache().removeImageForKey(weChatImageLink, fromDisk: true)
-//                
-//            }
-//           
-//        }
-         self.userImage.image = UIImage(named: "findCollege_")
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "selectImageForUserAvatar")
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            self.userImage.contentMode = .ScaleAspectFit
+            self.userImage.image = pickedImage
+            
+        }
+        
         
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -133,7 +124,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
@@ -141,23 +132,29 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
     }
     
     
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         if let loginWay = NSUserDefaults.standardUserDefaults().objectForKey("loginWay") as? String {
             if loginWay == "weChat" {
-                if let imgURL = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userImageUrl") as? String {
-                    userImage.sd_setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "defaultImage"))
-                }
-                
                 if let nickname = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userNickname") as? String {
                     userName.text = nickname
                 }
+                
+                if !NSUserDefaults.standardUserDefaults().boolForKey("selectImageForUserAvatar") {
+                    if let imgURL = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userImageUrl") as? String {
+                        userImage.sd_setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "defaultImage"))
+                    }
+                }
+                
             } else if loginWay == "ziliuxue" {
                 if let nickName = NSUserDefaults.standardUserDefaults().objectForKey("nickName") as? String {
                     userName.text = nickName
-                    userImage.image = UIImage(named: "defaultImage")
+                    if !NSUserDefaults.standardUserDefaults().boolForKey("selectImageForUserAvatar") {
+                        userImage.image = UIImage(named: "defaultImage")
+                    }
+                    
                 }
             }
         }
@@ -165,41 +162,43 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         
         
         
-       
-       
+        
+        
+        
+        
     }
     func postweChatInfo(notification:NSNotification){
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "selectImageForUserAvatar")
         let userInfo : NSDictionary = notification.userInfo!
         let nickname = userInfo.objectForKey("nickname") as! String
         let imgUrl = userInfo.objectForKey("imgURL") as! String
         userName.text = nickname
-        self.weChatImageLink = imgUrl
         userImage.sd_setImageWithURL(NSURL(string: imgUrl), placeholderImage: UIImage(named: "defaultImage"))
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         tableView.separatorColor = UIColor.clearColor()
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 8
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier:String = "reuseIdentifier"
         
-        var cell = self.tableView.dequeueReusableCellWithIdentifier(cellIdentifier) 
+        var cell = self.tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         var imageView:UIImageView = UIImageView()
         
         // Configure the cell...
@@ -208,7 +207,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
         }
- 
+        
         let row = indexPath.row
         
         
@@ -248,7 +247,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         //cell?.imageView?.frame = CGRectMake(0, 0, 20, 20)
         return cell!
     }
-
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if DeviceType.IS_IPHONE_5 {
             return 53
@@ -263,7 +262,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         }
     }
     
-
+    
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
@@ -354,13 +353,13 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
             image0.image = UIImage(named: "findCollege")
             let label0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(2222) as! UILabel
             label0.textColor = Utils.mainColor
-
+            
             
             let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image7.image = UIImage(named: "logout_")
             let label7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(2222) as! UILabel
             label7.textColor = UIColor.grayColor()
-              default:
+        default:
             break
         }
         return indexPath
