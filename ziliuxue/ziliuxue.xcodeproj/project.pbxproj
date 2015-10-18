@@ -87,6 +87,8 @@
 		C07B39111B480A6A00C1267A /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07B390D1B480A6A00C1267A /* UIViewController+MMDrawerController.m */; };
 		C07B39171B480ABE00C1267A /* LeftDrawerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C07B39141B480ABE00C1267A /* LeftDrawerTableViewController.xib */; };
 		C08905031B4D0541002CC00C /* CollegeInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08905021B4D0541002CC00C /* CollegeInfoTableViewCell.swift */; };
+		C08B95DD1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08B95DA1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C08B95DE1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C08B95DC1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 		C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */; };
 		C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */; };
 		C0A7DB7F1BCF46FC0058C20F /* SchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A7DB7E1BCF46FC0058C20F /* SchoolListViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -233,6 +235,10 @@
 		C07B390D1B480A6A00C1267A /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		C07B39141B480ABE00C1267A /* LeftDrawerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftDrawerTableViewController.xib; sourceTree = "<group>"; };
 		C08905021B4D0541002CC00C /* CollegeInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollegeInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C08B95D91BD3E40E00BDB55A /* MCCardPickerCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCCardPickerCollectionViewController.h; sourceTree = "<group>"; };
+		C08B95DA1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCardPickerCollectionViewController.m; sourceTree = "<group>"; };
+		C08B95DB1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCCardPickerCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		C08B95DC1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCardPickerCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
 		C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C0A7DB7E1BCF46FC0058C20F /* SchoolListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolListViewController.swift; sourceTree = "<group>"; };
@@ -662,6 +668,17 @@
 			name = LeftDrawer;
 			sourceTree = "<group>";
 		};
+		C08B95DF1BD3E41200BDB55A /* MCCardPicker */ = {
+			isa = PBXGroup;
+			children = (
+				C08B95D91BD3E40E00BDB55A /* MCCardPickerCollectionViewController.h */,
+				C08B95DA1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m */,
+				C08B95DB1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.h */,
+				C08B95DC1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m */,
+			);
+			name = MCCardPicker;
+			sourceTree = "<group>";
+		};
 		C0A5B64D1B4A62B90089B84E /* PersonalInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +782,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C08B95DF1BD3E41200BDB55A /* MCCardPicker */,
 				C0C8EA981BB78E0100F4CDFB /* CocoaLumberjack */,
 				7BAD07381BB6CC670088D774 /* JSDropDownMenu */,
 				C0666F251BA4F7860087DBF8 /* MJExtension */,
@@ -952,6 +970,7 @@
 				7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */,
 				C0C3B7AC1B4CDAC0006800DD /* SchoolRankingViewController.swift in Sources */,
 				C039717B1BCD7C480011A5C0 /* CourseFilterTableViewCell.swift in Sources */,
+				C08B95DE1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m in Sources */,
 				C0666F1C1BA4F7810087DBF8 /* MJFoundation.m in Sources */,
 				C0E4BFB31BB78C1D00403E70 /* DDASLLogCapture.m in Sources */,
 				C039BEAD1B3A7E1C00C8D5CE /* Network.swift in Sources */,
@@ -994,6 +1013,7 @@
 				C0C3B7AE1B4CDB11006800DD /* SchoolApplicationViewController.swift in Sources */,
 				C0E4BFB11BB78C1D00403E70 /* CocoaLumberjack.swift in Sources */,
 				C0666F231BA4F7810087DBF8 /* NSObject+MJProperty.m in Sources */,
+				C08B95DD1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m in Sources */,
 				C03971631BCD7BEF0011A5C0 /* ZLXCourseDetailItem.swift in Sources */,
 				C0666F211BA4F7810087DBF8 /* NSObject+MJCoding.m in Sources */,
 				C03971801BCD7C480011A5C0 /* ZLXCourseInfoView.swift in Sources */,
