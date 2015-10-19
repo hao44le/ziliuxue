@@ -20,6 +20,8 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     
     @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var loginBackground: UIImageView!
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
@@ -48,7 +50,8 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
 //        WeiboSDK.sendRequest(request)
     }
 
-    @IBAction func weChatButtonClicked(sender: UIButton) {
+    @IBAction func weChatButtonClicked() {
+        
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         if WXApi.isWXAppInstalled() {
@@ -280,6 +283,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         setupView()
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "weChat_login_Successed", name: "weChat_login_Successed", object: nil)
@@ -387,6 +391,26 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     
     func setupView(){
+//        let button = UIButton(frame: CGRectMake((ScreenSize.SCREEN_WIDTH - 400)/2 , (ScreenSize.SCREEN_HEIGHT - 100), 332, 50))
+//        button.setImage(UIImage(named: "weixin_button"), forState: UIControlState.Normal)
+//        button.addTarget(self, action: "weChatButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
+//        self.loginBackground.addSubview(button)
+        userView.hidden = true
+        loginButton.hidden = true
+        signupButton.hidden = true
+        
+        passwordView.hidden = true
+        passwordInputField.hidden = true
+        
+        usernameInputfield.hidden = true
+        
+        usernameImage.hidden = true
+        passwordImage.hidden = true
+        viewPasswordButton.hidden = true
+        weiboButton.hidden = true
+//        weChatButton.hidden = true
+        
+        
         self.usernameInputfield.delegate = self
         self.passwordInputField.delegate = self
         

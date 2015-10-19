@@ -38,6 +38,9 @@
 
 #import "CocoaLumberjack.h"
 #import "CompressingLogFileManager.h"
+
+
 #import "MCCardPickerCollectionViewController.h"
+#import "MCSampleCardCollectionViewCell.h"
 
 #endif /* Header_h */

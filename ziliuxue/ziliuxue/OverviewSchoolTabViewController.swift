@@ -123,6 +123,10 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
     }
     
     func setUpView(){
+        
+        
+        
+        
         self.navigationItem.title = self.collegeName
         swipeView.autoscroll = 0
         swipeView.pagingEnabled = true
@@ -146,13 +150,23 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         //cell.universityName.sizeToFit()
         self.logoImageView.clipsToBounds = true
         
-        
+        self.costButton.layer.borderColor = Utils.mainColor.CGColor
+        self.costButton.layer.borderWidth = 1
         self.costButton.layer.cornerRadius = 10
         self.costButton.clipsToBounds = true
+        
+        self.applicationButton.layer.borderColor = Utils.mainColor.CGColor
+        self.applicationButton.layer.borderWidth = 1
         self.applicationButton.layer.cornerRadius = 10
         self.applicationButton.clipsToBounds = true
+        
+        self.academicButton.layer.borderColor = Utils.mainColor.CGColor
+        self.academicButton.layer.borderWidth = 1
         self.academicButton.layer.cornerRadius = 10
         self.academicButton.clipsToBounds = true
+        
+        self.rankingButton.layer.borderColor = Utils.mainColor.CGColor
+        self.rankingButton.layer.borderWidth = 1
         self.rankingButton.layer.cornerRadius = 10
         self.rankingButton.clipsToBounds = true
         

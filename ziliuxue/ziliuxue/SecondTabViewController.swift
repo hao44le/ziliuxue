@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class SecondTabViewController: UIViewController,MCCardPickerCollectionViewControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate{
 
     var universityArray : [College] = []
     var collegeDetail : CollegeDetail?
     var selectedUniversity : College?
-    
+    let kCellIdentifier = "MCSampleCell"
     override func viewDidLoad() {
         super.viewDidLoad()
         let path = NSBundle.mainBundle().pathForResource("College", ofType: "plist")
@@ -47,7 +47,14 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "add")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学校", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
+        
+        let cardViewController = MCCardPickerCollectionViewController()
+        cardViewController.delegate = self
+        cardViewController.collectionView.registerClass(MCSampleCardCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: kCellIdentifier)
 
+        cardViewController.presentInViewController(self)
+        
+        
         self.setupLeftMenuButton()
     }
     func success(notification:NSNotification){
@@ -56,10 +63,34 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         
     }
-    @IBAction func swipeRight(sender: UISwipeGestureRecognizer) {
-        
-        self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
     }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell: MCSampleCardCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! MCSampleCardCollectionViewCell
+        cell.cardRadius = 4.0
+        cell.label.text = "User"
+        return cell
+    }
+    func cardPickerCollectionViewController(cardPickerCollectionViewController: MCCardPickerCollectionViewController!, preparePresentingView presentingView: UIView!, fromSelectedCell cell: UICollectionViewCell!) {
+        let scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
+        scrollView.delegate = cardPickerCollectionViewController
+        let button: UIButton = UIButton(type:UIButtonType.Custom)
+        button.frame = CGRectMake(20, 900, CGRectGetWidth(self.view.frame) - 40, 30)
+        button.setTitle("Choose Me :)", forState: UIControlState.Normal)
+        scrollView.addSubview(button)
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(button.frame) + 100)
+        presentingView.addSubview(scrollView)
+        let blurImage: UIImage = (cell as! MCSampleCardCollectionViewCell).blurImage
+        presentingView.layer.contents = blurImage.CGImage
+
+    }
+    
+    
     
 
     
@@ -88,35 +119,6 @@ class SecondTabViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
     
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.universityArray.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SchoolOverviewTableCell
-        cell.universityName.text = self.universityArray[indexPath.row].name
-        cell.logo.image = UIImage(named: self.universityArray[indexPath.row].logo)
-        cell.logo.layer.cornerRadius = 23
-        //cell.universityName.sizeToFit()
-        cell.logo.clipsToBounds = true
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.selectedUniversity = self.universityArray[indexPath.row]
-        Tool.showProgressHUD("正在加载")
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-            let path = NSBundle.mainBundle().pathForResource(self.selectedUniversity?.name, ofType: "plist")
-            let data : NSDictionary = NSDictionary(contentsOfFile: path!)!
-            self.collegeDetail = Tool.parseJsonAndReturnCollegeDetail(data)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                Tool.dismissHUD()
-                self.performSegueWithIdentifier("toUniversity", sender: self)
-            })
-        })
-    }
     
 
     
