@@ -37,7 +37,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     var methodRightForApplicationFee = ["","","","","",""]
     
     
-    let methodLeftForApplicationWay = ["申请网址","是否接受通用申请Common Application"]
+    let methodLeftForApplicationWay = ["申请网址","是否接受通用申请"]
     var methodRightForApplicationWay = ["",""]
     
     let methodLeftForDeposit = ["学费押金","学费押金是否退还","宿舍押金","宿舍押金是否退还"]
@@ -47,7 +47,7 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     var methodRightForContactInformation = ["","",""]
     
     let requirementHeader = ["招生办要求","被考虑的学术因素","被考虑的非学术因素"]
-    let requirementLeftForAR = ["招生面试","校园参观","校园之外面试","校园开放日政策","是否使用SAT/ACT作为入学标准","要求的标准化考试","带写作的ACT考试","SAT/ACT最晚必须收到日期","SAT科目考试成绩最晚必须收到日期"]
+    let requirementLeftForAR = ["招生面试","校园参观","校园之外面试","校园开放日政策","是否使用SAT/ACT作为入学标准","要求的标准化考试","带写作的ACT考试","SAT/ACT最晚必须收到日期","SAT2最晚必须收到日期"]
     var requirementRightForAR = ["","","","","","","","",""]
     
     
@@ -245,12 +245,13 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         let cell = tableView.dequeueReusableCellWithIdentifier("sepecificApplicationCell", forIndexPath: indexPath)
         
         
-        let textLabel = UILabel(frame: CGRectMake(15, 13, cell.frame.width / 2 + 50, 22))
-        let detailTextLabel = UILabel(frame: CGRectMake(cell.frame.width - 70, 13, 60, 19.5))
+        let textLabel = UILabel(frame: CGRectMake(15, 13, cell.frame.width - 15, 22))
+        let detailTextLabel = UILabel(frame: CGRectMake(cell.frame.width - 120, 0, 120, 40))
+        detailTextLabel.textAlignment = NSTextAlignment.Center
         textLabel.numberOfLines = 2
         detailTextLabel.numberOfLines = 0
         
-        textLabel.minimumScaleFactor = 0.7
+        textLabel.autoresizesSubviews = true
         
         textLabel.font = UIFont.systemFontOfSize(14)
         detailTextLabel.font = UIFont.systemFontOfSize(14)
@@ -328,14 +329,14 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         if detailTextLabel.text == "Yes" {
             detailTextLabel.removeFromSuperview()
             let imageView = UIImageView(image: UIImage(named: "yes"))
-            imageView.frame = CGRectMake(cell.frame.width - 50, cell.frame.height / 2 - 10, 25, 25)
+            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 10, 25, 25)
             cell.addSubview(imageView)
             //cell.imageView?.image = UIImage(named: "yes")
         } else if detailTextLabel.text == "No" {
             
             detailTextLabel.removeFromSuperview()
             let imageView = UIImageView(image: UIImage(named: "no"))
-            imageView.frame = CGRectMake(cell.frame.width - 50, cell.frame.height / 2 - 10, 25, 25)
+            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 10, 25, 25)
             cell.addSubview(imageView)
         }
         
