@@ -14,8 +14,10 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     var collegeDetail : CollegeDetail?
     var selectedUniversity : College?
     let kCellIdentifier = "MCSampleCell"
+    let cardViewController = MCCardPickerCollectionViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.hidden = true
         let path = NSBundle.mainBundle().pathForResource("College", ofType: "plist")
         
         
@@ -48,7 +50,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "学校", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         
-        let cardViewController = MCCardPickerCollectionViewController()
+        
         cardViewController.delegate = self
         cardViewController.collectionView.registerClass(MCSampleCardCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: kCellIdentifier)
 
@@ -85,7 +87,8 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         scrollView.addSubview(button)
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(button.frame) + 100)
         presentingView.addSubview(scrollView)
-        let blurImage: UIImage = (cell as! MCSampleCardCollectionViewCell).blurImage
+        let viewCell = (cell as! MCSampleCardCollectionViewCell)
+        let blurImage: UIImage = viewCell.blurImage
         presentingView.layer.contents = blurImage.CGImage
 
     }
@@ -109,9 +112,10 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         
         leftDrawerButton.addTarget(self, action: Selector("leftDrawerButtonPress:"), forControlEvents: UIControlEvents.TouchUpInside)
         
-        let leftButton:UIBarButtonItem = UIBarButtonItem(customView: leftDrawerButton)
+//        let leftButton:UIBarButtonItem = UIBarButtonItem(customView: leftDrawerButton)
         
-        self.navigationItem.setLeftBarButtonItem(leftButton, animated: true)
+//        self.navigationItem.setLeftBarButtonItem(leftButton, animated: true)
+        //self.cardViewController.dismissButton = leftDrawerButton
     }
     
     func leftDrawerButtonPress(sender:AnyObject)

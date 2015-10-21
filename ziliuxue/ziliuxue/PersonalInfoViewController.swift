@@ -15,6 +15,7 @@ class PersonalInfoViewController: UIViewController,UITableViewDataSource,UITable
     @IBOutlet weak var topImage: UIImageView!
     
     let array = ["你的个人信息","你的账号信息和密码","你的考试信息"]
+    let imageArray = ["个人资料","账号密码","考试信息"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topImage.layer.cornerRadius = 40
@@ -99,8 +100,9 @@ class PersonalInfoViewController: UIViewController,UITableViewDataSource,UITable
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
-        cell.textLabel?.text = self.array[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)  as! PersonalInfoTableViewCell
+        cell.label.text = self.array[indexPath.row]
+        cell.iconImage.image = UIImage(named: imageArray[indexPath.row])
         return cell
     }
 

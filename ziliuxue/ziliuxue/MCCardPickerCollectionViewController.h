@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MCCardPickerCollectionViewFlowLayout.h"
+#import "UIViewController+MMDrawerController.h"
 
 @protocol MCCardPickerCollectionViewControllerDelegate;
 

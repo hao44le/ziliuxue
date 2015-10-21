@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "compressionDidSucceed:", name: "compressionDidSucceed", object: nil)
         
         
-        let kMaximumLeftDrawerWidth:CGFloat = 260.0
+        let kMaximumLeftDrawerWidth:CGFloat = 200.0
         let leftSideDrawerViewController:LeftDrawerTableViewController = LeftDrawerTableViewController(nibName: "LeftDrawerTableViewController", bundle: nil)
         
         let centerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindSchoolViewController

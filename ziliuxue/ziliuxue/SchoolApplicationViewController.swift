@@ -242,11 +242,23 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("sepecificApplicationCell", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCellWithIdentifier("sepecificApplicationCell", forIndexPath: indexPath)
+        
+        
+        let textLabel = UILabel(frame: CGRectMake(15, 13, cell.frame.width / 2 + 50, 22))
+        let detailTextLabel = UILabel(frame: CGRectMake(cell.frame.width - 70, 13, 60, 19.5))
+        textLabel.numberOfLines = 2
+        detailTextLabel.numberOfLines = 0
+        
+        textLabel.minimumScaleFactor = 0.7
+        
+        textLabel.font = UIFont.systemFontOfSize(14)
+        detailTextLabel.font = UIFont.systemFontOfSize(14)
+        
         if(indexPath.row % 2 == 0){
             cell.contentView.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
-            cell.textLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
-            cell.detailTextLabel?.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            textLabel.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+            detailTextLabel.backgroundColor = UIColor(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
         }
         
         
@@ -254,40 +266,40 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         if tableView == applicationMethodTableView {
             switch indexPath.section {
             case 0:
-                cell.textLabel!.text = self.methodLeftForRD[indexPath.row]
-                cell.detailTextLabel!.text = self.methodRightForRD[indexPath.row]
+                textLabel.text = self.methodLeftForRD[indexPath.row]
+                detailTextLabel.text = self.methodRightForRD[indexPath.row]
             case 1:
-                cell.textLabel!.text = self.methodLeftForED[indexPath.row]
-                cell.detailTextLabel!.text = self.methodRightForED[indexPath.row]
+                textLabel.text = self.methodLeftForED[indexPath.row]
+                detailTextLabel.text = self.methodRightForED[indexPath.row]
             case 2:
-                cell.textLabel!.text = self.methodLeftForEA[indexPath.row]
-                cell.detailTextLabel!.text = self.methodRightForEA[indexPath.row]
+                textLabel.text = self.methodLeftForEA[indexPath.row]
+                detailTextLabel.text = self.methodRightForEA[indexPath.row]
             case 3:
-                cell.textLabel!.text = self.methodLeftForApplicationFee[indexPath.row]
-                cell.detailTextLabel!.text = self.methodRightForApplicationFee[indexPath.row]
+                textLabel.text = self.methodLeftForApplicationFee[indexPath.row]
+                detailTextLabel.text = self.methodRightForApplicationFee[indexPath.row]
             case 4:
-                cell.textLabel!.text = self.methodLeftForApplicationWay[indexPath.row]
-                cell.detailTextLabel!.text = self.methodRightForApplicationWay[indexPath.row]
+                textLabel.text = self.methodLeftForApplicationWay[indexPath.row]
+                detailTextLabel.text = self.methodRightForApplicationWay[indexPath.row]
             case 5:
-                cell.textLabel!.text = self.methodLeftForDeposit[indexPath.row]
-                cell.detailTextLabel!.text = self.methodRightForDeposit[indexPath.row]
+                textLabel.text = self.methodLeftForDeposit[indexPath.row]
+                detailTextLabel.text = self.methodRightForDeposit[indexPath.row]
             case 6:
-                cell.textLabel!.text = self.methodLeftForContactInformation[indexPath.row]
-                cell.detailTextLabel!.text = self.methodRightForContactInformation[indexPath.row]
+                textLabel.text = self.methodLeftForContactInformation[indexPath.row]
+                detailTextLabel.text = self.methodRightForContactInformation[indexPath.row]
             default:
                 break
             }
         } else if tableView == applicationRequirementTableView {
             switch indexPath.section {
             case 0:
-                cell.textLabel!.text = self.requirementLeftForAR[indexPath.row]
-                cell.detailTextLabel!.text = self.requirementRightForAR[indexPath.row]
+                textLabel.text = self.requirementLeftForAR[indexPath.row]
+                detailTextLabel.text = self.requirementRightForAR[indexPath.row]
             case 1:
-                cell.textLabel!.text = self.requirementLeftForAFC[indexPath.row]
-                cell.detailTextLabel!.text = self.requirementRightForAFC[indexPath.row]
+                textLabel.text = self.requirementLeftForAFC[indexPath.row]
+                detailTextLabel.text = self.requirementRightForAFC[indexPath.row]
             case 2:
-                cell.textLabel!.text = self.requirementLeftForNFC[indexPath.row]
-                cell.detailTextLabel!.text = self.requirementRightForNFC[indexPath.row]
+                textLabel.text = self.requirementLeftForNFC[indexPath.row]
+                detailTextLabel.text = self.requirementRightForNFC[indexPath.row]
             default:
                 break
             }
@@ -295,36 +307,40 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         } else {
             switch indexPath.section {
             case 0:
-                cell.textLabel!.text = self.statisticsLeftForSelectivity[indexPath.row]
-                cell.detailTextLabel!.text = self.statisticsRightForSelectivity[indexPath.row]
+                textLabel.text = self.statisticsLeftForSelectivity[indexPath.row]
+                detailTextLabel.text = self.statisticsRightForSelectivity[indexPath.row]
             case 1:
-                cell.textLabel!.text = self.statisticsLeftForACE[indexPath.row]
-                cell.detailTextLabel!.text = self.statisticsRightForACE[indexPath.row]
+                textLabel.text = self.statisticsLeftForACE[indexPath.row]
+                detailTextLabel.text = self.statisticsRightForACE[indexPath.row]
             case 2:
-                cell.textLabel!.text = self.statisticsLeftForWL[indexPath.row]
-                cell.detailTextLabel!.text = self.statisticsRightForWL[indexPath.row]
+                textLabel.text = self.statisticsLeftForWL[indexPath.row]
+                detailTextLabel.text = self.statisticsRightForWL[indexPath.row]
             default:
                 break
             }
             
         }
-        
+        cell.addSubview(textLabel)
+        cell.addSubview(detailTextLabel)
         //cell.detailTextLabel?.layer.shadowColor = UIColor.grayColor().CGColor
         //cell.detailTextLabel?.layer.shadowOffset = CGSizeMake(1, -1)
         //cell.layer.shouldRasterize = true
-        if cell.detailTextLabel?.text == "Yes" {
-            cell.detailTextLabel!.text = "是"
-            cell.detailTextLabel!.textColor = UIColor.greenColor()
-            //let imageView = UIImageView(image: UIImage(named: "yes"))
-            //cell.accessoryView = imageView
+        if detailTextLabel.text == "Yes" {
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "yes"))
+            imageView.frame = CGRectMake(cell.frame.width - 50, cell.frame.height / 2 - 10, 25, 25)
+            cell.addSubview(imageView)
             //cell.imageView?.image = UIImage(named: "yes")
-        } else if cell.detailTextLabel?.text == "No" {
+        } else if detailTextLabel.text == "No" {
             
-            cell.detailTextLabel!.text = "否"
-            cell.detailTextLabel!.textColor = UIColor.redColor()
-//            let imageView = UIImageView(image: UIImage(named: "no"))
-//            cell.accessoryView = imageView
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "no"))
+            imageView.frame = CGRectMake(cell.frame.width - 50, cell.frame.height / 2 - 10, 25, 25)
+            cell.addSubview(imageView)
         }
+        
+        
+        
         return cell
     }
 

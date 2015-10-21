@@ -47,7 +47,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 	[self.view addSubview:self.headerView];
 
 	UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, CGRectGetWidth(self.view.frame), 25)];
-	titleLabel.text = @"Pick One!";
+	titleLabel.text = @"我的学校";
 	titleLabel.textAlignment = NSTextAlignmentCenter;
 	titleLabel.textColor = [UIColor whiteColor];
 	[self.headerView addSubview:titleLabel];
@@ -65,19 +65,25 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 	self.presentingView.alpha = 0;
 	[self.view addSubview:self.presentingView];
 
-	self.dismissButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	self.dismissButton.frame = CGRectMake(10, 30, 60, 30);
-	[self.dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
-	[self.dismissButton setTitle:@"X" forState:UIControlStateNormal];
-	[self.dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	self.dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.dismissButton.frame = CGRectMake(10, 30, 25, 25);
+	[self.dismissButton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+    [self.dismissButton setImage:[UIImage imageNamed:@"left button"] forState:UIControlStateNormal];
+    
 	[self.view addSubview:self.dismissButton];
 
+
+    
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(hanldePan:)];
 	pan.delegate = self;
 	[self.collectionView addGestureRecognizer:pan];
 }
 
 #pragma mark - Actions
+- (void)leftDrawerButtonPress:(id)sender
+{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 
 - (void)dismiss:(id)sender
 {
@@ -123,17 +129,19 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 			CGPoint point = [gesture translationInView:self.view];
 			if (direction == UIPanGestureRecognizerDirectionDown) {
 				if (point.y<0) {
+                    
 					[self restoreLayout:NO];
 				}
 				else {
-					CGFloat alpha = 1 - fabs(point.y/kPanTriggerFadeOutDistance);
-					self.headerView.alpha = alpha;
-					self.dismissButton.alpha = alpha;
-					self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:alpha];
-
-					CGRect frame = self.collectionView.frame;
-					frame.origin.y = self.collectionViewFrame.origin.y + MAX(point.y, 0);
-					self.collectionView.frame = frame;
+//                    NSLog(@"%.2f",point.y);
+//					CGFloat alpha = 1 - fabs(point.y/kPanTriggerFadeOutDistance);
+//					self.headerView.alpha = alpha;
+//					self.dismissButton.alpha = alpha;
+//					self.view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:alpha];
+//
+//					CGRect frame = self.collectionView.frame;
+//					frame.origin.y = self.collectionViewFrame.origin.y + MAX(point.y, 0);
+//					self.collectionView.frame = frame;
 				}
 			}
 			else if (direction == UIPanGestureRecognizerDirectionUp) {
@@ -205,6 +213,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 
 - (void)fadeOut
 {
+    //printf("fadeout");
 	[UIView transitionWithView:self.view duration:0.25 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		self.collectionView.frame = CGRectOffset(self.collectionView.frame, 0, CGRectGetHeight(self.view.frame));
 		self.headerView.alpha = 0;
@@ -256,12 +265,19 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 - (void)dismissButtonSwitchToCloseCell:(BOOL)isToCell
 {
 	if (isToCell) {
-		[self.dismissButton removeTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
+        //printf("isToCell");
+		[self.dismissButton removeTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+        [self.dismissButton setImage:NULL forState:UIControlStateNormal];
+        [self.dismissButton setTitle:@"X" forState:UIControlStateNormal];
+        
 		[self.dismissButton addTarget:self action:@selector(closeCell:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	else {
+        //printf("not isToCell");
 		[self.dismissButton removeTarget:self action:@selector(closeCell:) forControlEvents:UIControlEventTouchUpInside];
-		[self.dismissButton addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
+        [self.dismissButton setImage:[UIImage imageNamed:@"left button"] forState:UIControlStateNormal];
+        
+		[self.dismissButton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
 	}
 }
 
