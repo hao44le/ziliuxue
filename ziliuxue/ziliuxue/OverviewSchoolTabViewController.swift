@@ -265,19 +265,22 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         // Pass the selected object to the new view controller.
         switch segue.identifier! {
             case "toRanking":
-                let vc = segue.destinationViewController as! SchoolRankingViewController
-                vc.collegeRanking = collegeDetail!.collegeRanking
+//                let vc = segue.destinationViewController as! SchoolRankingViewController
+//                vc.collegeRanking = collegeDetail!.collegeRanking
+            break
             case "toApplication":
-                let vc = segue.destinationViewController as! SchoolApplicationViewController
-                vc.collegeApplication = collegeDetail!.collegeApplying
-            
+//                let vc = segue.destinationViewController as! SchoolApplicationViewController
+//                vc.collegeApplication = collegeDetail!.collegeApplying
+            break
             
             case "toAcamidec":
-                let vc = segue.destinationViewController as! SchoolAcademicViewController
-                vc.collegeAcademic = collegeDetail!.collegeAcademic
+//                let vc = segue.destinationViewController as! SchoolAcademicViewController
+//                vc.collegeAcademic = collegeDetail!.collegeAcademic
+            break
             case "toCost":
-                let vc = segue.destinationViewController as! SchoolCostViewController
-                vc.collegeCost = collegeDetail!.collegeFinancial
+//                let vc = segue.destinationViewController as! SchoolCostViewController
+//                vc.collegeCost = collegeDetail!.collegeFinancial
+            break
         default:
             break
         }

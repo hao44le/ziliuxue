@@ -18,6 +18,8 @@
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
 #import "MMDrawerController+Subclass.h"
+#import "SKSTableView.h"
+#import "WYPopoverController.h"
 
 
 #import "WXApi.h"
