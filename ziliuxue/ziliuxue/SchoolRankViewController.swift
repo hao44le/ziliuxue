@@ -66,7 +66,7 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         }else{
         
         let filterVC = SchoolRankFilterViewController()
-        filterVC.preferredContentSize = CGSizeMake(300, 280)
+        filterVC.preferredContentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT - 64)
         filterVC.title = "排名类型"
         filterVC.delegate = self
         filterVC.navigationItem.setLeftBarButtonItem(UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("dismissFilterView")), animated: true)
