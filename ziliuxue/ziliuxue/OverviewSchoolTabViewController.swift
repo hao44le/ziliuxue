@@ -143,12 +143,12 @@ class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
         
         //self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
         
-        self.logoImageView.image = UIImage(named: college!.name + " logo")
-        self.logoImageView.layer.cornerRadius = 50
-        self.logoImageView.layer.borderColor = UIColor.whiteColor().CGColor
-        self.logoImageView.layer.borderWidth = 2
-        //cell.universityName.sizeToFit()
-        self.logoImageView.clipsToBounds = true
+//        self.logoImageView.image = UIImage(named: college!.name + " logo")
+//        self.logoImageView.layer.cornerRadius = 50
+//        self.logoImageView.layer.borderColor = UIColor.whiteColor().CGColor
+//        self.logoImageView.layer.borderWidth = 2
+//        //cell.universityName.sizeToFit()
+//        self.logoImageView.clipsToBounds = true
         
         self.costButton.layer.borderColor = Utils.mainColor.CGColor
         self.costButton.layer.borderWidth = 1

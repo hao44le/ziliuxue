@@ -372,7 +372,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         var vc:UIViewController?
         switch row {
         case 0:
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindSchoolViewController
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SchoolRankViewController") as! SchoolRankViewController
         case 1:
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("secondTab") as! SecondTabViewController
         case 6:
@@ -380,7 +380,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
             
         case 7:
             LocalStore.setLogout()
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ThirdTab") as! FindSchoolViewController
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SchoolRankViewController") as! SchoolRankViewController
         default:
             break
         }
