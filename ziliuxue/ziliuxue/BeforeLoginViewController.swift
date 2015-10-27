@@ -284,7 +284,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         super.viewDidLoad()
         
         
-        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
+        //self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         setupView()
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "weChat_login_Successed", name: "weChat_login_Successed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginSuccessed", name: "loginSuccessed", object: nil)
@@ -488,7 +488,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController!.interactivePopGestureRecognizer!.delegate = self
+        //self.navigationController!.interactivePopGestureRecognizer!.delegate = self
         self.navigationController?.navigationBar.hidden = true
     }
 
