@@ -69,9 +69,18 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
         
         //self.pieView.reloadData()
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        if source == "mySchool"{
+            return true
+        }
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "学术信息"
+        
         if source == "mySchool" {
             let dismissButton = UIButton(type:UIButtonType.Custom)
             dismissButton.frame = CGRectMake(10, 30, 25, 25)
@@ -79,6 +88,12 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
             dismissButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
             dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
             scrollView.addSubview(dismissButton)
+            let titleLabel = UILabel(frame: CGRectMake(15, 30, self.view.frame.width - 30, 25))
+            titleLabel.text = "学术信息"
+            titleLabel.textAlignment = NSTextAlignment.Center
+            scrollView.addSubview(titleLabel)
+
+            
             
         }
 //        self.pieView.dataSource = self

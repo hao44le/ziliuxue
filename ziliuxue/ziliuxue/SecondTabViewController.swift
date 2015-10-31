@@ -71,6 +71,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     let application_info_board_fourth_left = "是否退还申请费用"
     
     
+    
     let ranking_info_board_first_left = "高中生平均GPA"
     let ranking_info_board_second_left = "平均新生保持率"
     let ranking_info_board_third_left = "<20学生的课"
@@ -79,6 +80,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     let academic_info_board_first_left = "课程大小"
     let academic_info_board_second_left = "师生比例"
     let academic_info_board_third_left = "4年毕业比率"
+    let academic_info_board_fourth_left = "五大热门专业"
     
     let cost_info_board_first_left = "平均奖学金发放"
     let cost_info_board_second_left = "一学年费用"
@@ -157,6 +159,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         let scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
         scrollView.delegate = cardPickerCollectionViewController
         
+       
         
         let width = self.view.frame.width
         
@@ -220,28 +223,28 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         oneYearTuitionTopLabel.text = oneYearTuitionTop
         oneYearTuitionTopLabel.textAlignment = NSTextAlignment.Center
         oneYearTuitionTopLabel.textColor = UIColor.blackColor()
-        oneYearTuitionTopLabel.font = UIFont.systemFontOfSize(16)
+        oneYearTuitionTopLabel.font = UIFont.systemFontOfSize(15)
         oneYearTuitionTopLabel.numberOfLines = 0
         
         let numberOfStudentTopLabel = UILabel(frame: CGRectMake(19+12+fiveLabelDistanceUnit,365,fiveLabelDistanceUnit,31))
         numberOfStudentTopLabel.text = numberOfStudentTop
         numberOfStudentTopLabel.textAlignment = NSTextAlignment.Center
         numberOfStudentTopLabel.textColor = UIColor.blackColor()
-        numberOfStudentTopLabel.font = UIFont.systemFontOfSize(16)
+        numberOfStudentTopLabel.font = UIFont.systemFontOfSize(15)
         numberOfStudentTopLabel.numberOfLines = 0
         
         let overallRankingTopLabel = UILabel(frame: CGRectMake(19+12+7+fiveLabelDistanceUnit*2,365,fiveLabelDistanceUnit,31))
         overallRankingTopLabel.text = overallRankingTop
         overallRankingTopLabel.textAlignment = NSTextAlignment.Center
         overallRankingTopLabel.textColor = UIColor.blackColor()
-        overallRankingTopLabel.font = UIFont.systemFontOfSize(16)
+        overallRankingTopLabel.font = UIFont.systemFontOfSize(15)
         overallRankingTopLabel.numberOfLines = 0
         
         let applicationDeadlineTopLabel = UILabel(frame: CGRectMake(19+12+7+11+fiveLabelDistanceUnit*3,365,fiveLabelDistanceUnit,31))
         applicationDeadlineTopLabel.text = applicationDeadlineTop
         applicationDeadlineTopLabel.textAlignment = NSTextAlignment.Center
         applicationDeadlineTopLabel.textColor = UIColor.blackColor()
-        applicationDeadlineTopLabel.font = UIFont.systemFontOfSize(16)
+        applicationDeadlineTopLabel.font = UIFont.systemFontOfSize(15)
         applicationDeadlineTopLabel.numberOfLines = 0
         applicationDeadlineTopLabel.minimumScaleFactor = 0.75
         
@@ -250,7 +253,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         acceptenceRateLabel.text = acceptenceRate
         acceptenceRateLabel.textAlignment = NSTextAlignment.Center
         acceptenceRateLabel.textColor = UIColor.blackColor()
-        acceptenceRateLabel.font = UIFont.systemFontOfSize(16)
+        acceptenceRateLabel.font = UIFont.systemFontOfSize(15)
         acceptenceRateLabel.numberOfLines = 0
         
         let oneYearTuitionBottomLabel = UILabel(frame: CGRectMake(19,406,fiveLabelDistanceUnit,13))
@@ -292,7 +295,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         let applicationInfo_board_ImageView = UIImageView(frame: CGRectMake(8,436.5,width - 16,184))
         applicationInfo_board_ImageView.image = UIImage(named: "info_board_without_info_visualization")
         
-        let applicationInfo_board_label = UILabel(frame: CGRectMake(width/2 - 34,446,68,21))
+        let applicationInfo_board_label = UILabel(frame: CGRectMake(width/2 - 34,442,68,21))
         applicationInfo_board_label.text = "申请信息"
         applicationInfo_board_label.textAlignment = NSTextAlignment.Center
         applicationInfo_board_label.textColor = UIColor.blackColor()
@@ -376,7 +379,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         let ranking_info_board_ImageView = UIImageView(frame: CGRectMake(8,630,width - 16,194))
         ranking_info_board_ImageView.image = UIImage(named: "info_board_without_info_visualization")
         
-        let ranking_info_board_label = UILabel(frame: CGRectMake(width/2 - 34,637.5,68,21))
+        let ranking_info_board_label = UILabel(frame: CGRectMake(width/2 - 34,635.5,68,21))
         ranking_info_board_label.text = "排名信息"
         ranking_info_board_label.textAlignment = NSTextAlignment.Center
         ranking_info_board_label.textColor = UIColor.blackColor()
@@ -457,7 +460,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         let academic_info_board_ImageView = UIImageView(frame: CGRectMake(8,831.5,width - 16,305))
         academic_info_board_ImageView.image = UIImage(named: "info_board_with_info_visualization")
         
-        let academic_info_board_label = UILabel(frame: CGRectMake(width/2 - 34,824+20,68,21))
+        let academic_info_board_label = UILabel(frame: CGRectMake(width/2 - 34,820+20,68,21))
         academic_info_board_label.text = "学术信息"
         academic_info_board_label.textAlignment = NSTextAlignment.Center
         academic_info_board_label.textColor = UIColor.blackColor()
@@ -471,36 +474,42 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         academic_info_board_first_left_label.font = UIFont.systemFontOfSize(11.5)
         academic_info_board_first_left_label.numberOfLines = 0
         
-        let academic_info_board_second_left_label = UILabel(frame: CGRectMake(47,824+21+14,109,21))
+        let academic_info_board_second_left_label = UILabel(frame: CGRectMake(47,874+21+14,109,21))
         academic_info_board_second_left_label.text = academic_info_board_second_left
         academic_info_board_second_left_label.textAlignment = NSTextAlignment.Left
         academic_info_board_second_left_label.textColor = UIColor.blackColor()
         academic_info_board_second_left_label.font = UIFont.systemFontOfSize(11.5)
         academic_info_board_second_left_label.numberOfLines = 0
         
-        let academic_info_board_third_left_label = UILabel(frame: CGRectMake(47,824+21*2+28,109,21))
+        let academic_info_board_third_left_label = UILabel(frame: CGRectMake(47,874+21*2+28,109,21))
         academic_info_board_third_left_label.text = academic_info_board_third_left
         academic_info_board_third_left_label.textAlignment = NSTextAlignment.Left
         academic_info_board_third_left_label.textColor = UIColor.blackColor()
         academic_info_board_third_left_label.font = UIFont.systemFontOfSize(11.5)
         academic_info_board_third_left_label.numberOfLines = 0
         
+        let academic_info_board_fourth_left_label = UILabel(frame: CGRectMake(47,874+21*3+42,109,21))
+        academic_info_board_fourth_left_label.text = academic_info_board_fourth_left
+        academic_info_board_fourth_left_label.textAlignment = NSTextAlignment.Left
+        academic_info_board_fourth_left_label.textColor = UIColor.blackColor()
+        academic_info_board_fourth_left_label.font = UIFont.systemFontOfSize(11.5)
+        academic_info_board_fourth_left_label.numberOfLines = 0
         
-        let academic_info_board_first_right_label = UILabel(frame: CGRectMake(width - 8 - 106,824,109,21))
+        let academic_info_board_first_right_label = UILabel(frame: CGRectMake(width - 8 - 106,874,109,21))
         academic_info_board_first_right_label.text = academic_info_board_first_right
         academic_info_board_first_right_label.textAlignment = NSTextAlignment.Left
         academic_info_board_first_right_label.textColor = UIColor.blackColor()
         academic_info_board_first_right_label.font = UIFont.systemFontOfSize(11.5)
         academic_info_board_first_right_label.numberOfLines = 0
         
-        let academic_info_board_second_right_label = UILabel(frame: CGRectMake(width - 8 - 106,824+21+14,109,21))
+        let academic_info_board_second_right_label = UILabel(frame: CGRectMake(width - 8 - 106,874+21+14,109,21))
         academic_info_board_second_right_label.text = academic_info_board_second_right
         academic_info_board_second_right_label.textAlignment = NSTextAlignment.Left
         academic_info_board_second_right_label.textColor = UIColor.blackColor()
         academic_info_board_second_right_label.font = UIFont.systemFontOfSize(11.5)
         academic_info_board_second_right_label.numberOfLines = 0
         
-        let academic_info_board_third_right_label = UILabel(frame: CGRectMake(width - 8 - 106,824+21*2+28,109,21))
+        let academic_info_board_third_right_label = UILabel(frame: CGRectMake(width - 8 - 106,874+21*2+28,109,21))
         academic_info_board_third_right_label.text = academic_info_board_third_right
         academic_info_board_third_right_label.textAlignment = NSTextAlignment.Left
         academic_info_board_third_right_label.textColor = UIColor.blackColor()
@@ -509,7 +518,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         
         
         let academicMoreButton = UIButton(type: UIButtonType.Custom)
-        academicMoreButton.frame = CGRectMake(width/2 - 99/2,950,99,21)
+        academicMoreButton.frame = CGRectMake(width/2 - 99/2,1110.5,99,21)
         academicMoreButton.tag = 2
         academicMoreButton.setTitle("更多", forState: UIControlState.Normal)
         academicMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
@@ -522,8 +531,75 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         academicMoreButton.addTarget(self, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
         
         
+        let cost_info_board_ImageView = UIImageView(frame: CGRectMake(8,1136+13,width - 16,205))
+        cost_info_board_ImageView.image = UIImage(named: "info_board_without_info_visualization")
+        
+        let cost_info_board_label = UILabel(frame: CGRectMake(width/2 - 85/2,1136+17,85,22))
+        cost_info_board_label.text = "花费及赞助"
+        cost_info_board_label.textAlignment = NSTextAlignment.Center
+        cost_info_board_label.textColor = UIColor.blackColor()
+        cost_info_board_label.font = UIFont.systemFontOfSize(12.5)
+        cost_info_board_label.numberOfLines = 1
+        
+        let cost_info_board_first_left_label = UILabel(frame: CGRectMake(47,1174+14,109,21))
+        cost_info_board_first_left_label.text = cost_info_board_first_left
+        cost_info_board_first_left_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_first_left_label.textColor = UIColor.blackColor()
+        cost_info_board_first_left_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_first_left_label.numberOfLines = 0
+        
+        let cost_info_board_second_left_label = UILabel(frame: CGRectMake(47,1174+21+14*2,109,21))
+        cost_info_board_second_left_label.text = cost_info_board_second_left
+        cost_info_board_second_left_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_second_left_label.textColor = UIColor.blackColor()
+        cost_info_board_second_left_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_second_left_label.numberOfLines = 0
+        
+        let cost_info_board_third_left_label = UILabel(frame: CGRectMake(47,1174+21*2+14*3,109,21))
+        cost_info_board_third_left_label.text = cost_info_board_third_left
+        cost_info_board_third_left_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_third_left_label.textColor = UIColor.blackColor()
+        cost_info_board_third_left_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_third_left_label.numberOfLines = 0
+        
+        let cost_info_board_fourth_left_label = UILabel(frame: CGRectMake(47,1174+21*3+14*4 ,109,21))
+        cost_info_board_fourth_left_label.text = cost_info_board_fourth_left
+        cost_info_board_fourth_left_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_fourth_left_label.textColor = UIColor.blackColor()
+        cost_info_board_fourth_left_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_fourth_left_label.numberOfLines = 0
+        
+        let cost_info_board_first_right_label = UILabel(frame: CGRectMake(width - 8 - 106,1174+14,109,21))
+        cost_info_board_first_right_label.text = cost_info_board_first_right
+        cost_info_board_first_right_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_first_right_label.textColor = UIColor.blackColor()
+        cost_info_board_first_right_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_first_right_label.numberOfLines = 0
+        
+        let cost_info_board_second_right_label = UILabel(frame: CGRectMake(width - 8 - 106,1174+21+14*2,109,21))
+        cost_info_board_second_right_label.text = cost_info_board_second_right
+        cost_info_board_second_right_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_second_right_label.textColor = UIColor.blackColor()
+        cost_info_board_second_right_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_second_right_label.numberOfLines = 0
+        
+        let cost_info_board_third_right_label = UILabel(frame: CGRectMake(width - 8 - 106,1174+21*2+14*3,109,21))
+        cost_info_board_third_right_label.text = cost_info_board_third_right
+        cost_info_board_third_right_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_third_right_label.textColor = UIColor.blackColor()
+        cost_info_board_third_right_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_third_right_label.numberOfLines = 0
+        
+        let cost_info_board_fourth_right_label = UILabel(frame: CGRectMake(width - 8 - 106,1174+21*3+14*4,109,21))
+        cost_info_board_fourth_right_label.text = cost_info_board_fourth_right
+        cost_info_board_fourth_right_label.textAlignment = NSTextAlignment.Left
+        cost_info_board_fourth_right_label.textColor = UIColor.blackColor()
+        cost_info_board_fourth_right_label.font = UIFont.systemFontOfSize(11.5)
+        cost_info_board_fourth_right_label.numberOfLines = 0
+
+        
         let costMoreButton = UIButton(type: UIButtonType.Custom)
-        costMoreButton.frame = CGRectMake(width/2 - 99/2,300,99,21)
+        costMoreButton.frame = CGRectMake(width/2 - 99/2,1293+21+13,99,21)
         costMoreButton.tag = 3
         costMoreButton.setTitle("更多", forState: UIControlState.Normal)
         costMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
@@ -537,14 +613,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(academicMoreButton.frame) + 400)
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(cost_info_board_ImageView.frame) + 10)
        
         scrollView.addSubview(backgroundImageView)
         scrollView.addSubview(avatarImageView)
@@ -597,11 +666,23 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         scrollView.addSubview(academic_info_board_first_left_label)
         scrollView.addSubview(academic_info_board_second_left_label)
         scrollView.addSubview(academic_info_board_third_left_label)
+        scrollView.addSubview(academic_info_board_fourth_left_label)
         scrollView.addSubview(academic_info_board_first_right_label)
         scrollView.addSubview(academic_info_board_second_right_label)
         scrollView.addSubview(academic_info_board_third_right_label)
         scrollView.addSubview(academicMoreButton)
         
+        
+        scrollView.addSubview(cost_info_board_ImageView)
+        scrollView.addSubview(cost_info_board_label)
+        scrollView.addSubview(cost_info_board_first_left_label)
+        scrollView.addSubview(cost_info_board_second_left_label)
+        scrollView.addSubview(cost_info_board_third_left_label)
+        scrollView.addSubview(cost_info_board_fourth_left_label)
+        scrollView.addSubview(cost_info_board_first_right_label)
+        scrollView.addSubview(cost_info_board_second_right_label)
+        scrollView.addSubview(cost_info_board_third_right_label)
+        scrollView.addSubview(cost_info_board_fourth_right_label)
         scrollView.addSubview(costMoreButton)
         
         
@@ -650,6 +731,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     }
     
     
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -677,7 +759,9 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     }
     
     
-    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     // MARK: - Navigation
     
@@ -700,7 +784,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
             let vc = segue.destinationViewController as! SchoolCostViewController
             vc.collegeCost = self.collegeDetail!.collegeFinancial
             vc.source = "mySchool"
-        } else if segue.identifier == "toAcamidec" {
+        } else if segue.identifier == "toAcademic" {
             let vc = segue.destinationViewController as! SchoolAcademicViewController
             vc.collegeAcademic = self.collegeDetail!.collegeAcademic
             vc.source = "mySchool"

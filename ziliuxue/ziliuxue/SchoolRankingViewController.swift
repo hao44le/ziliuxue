@@ -58,7 +58,11 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
             dismissButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
             dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
             scrollView.addSubview(dismissButton)
-
+            
+            let titleLabel = UILabel(frame: CGRectMake(15, 30, self.view.frame.width - 30, 25))
+            titleLabel.text = "排名信息"
+            titleLabel.textAlignment = NSTextAlignment.Center
+            scrollView.addSubview(titleLabel)
         }
         // Do any additional setup after loading the view.
         self.navigationItem.title = "排名信息"
@@ -72,7 +76,12 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func prefersStatusBarHidden() -> Bool {
+        if source == "mySchool"{
+            return true
+        }
+        return false
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

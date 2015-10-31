@@ -70,6 +70,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 	[self.dismissButton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     [self.dismissButton setImage:[UIImage imageNamed:@"left button"] forState:UIControlStateNormal];
     
+    
 	[self.view addSubview:self.dismissButton];
 
 
@@ -77,6 +78,10 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(hanldePan:)];
 	pan.delegate = self;
 	[self.collectionView addGestureRecognizer:pan];
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.presentingView addGestureRecognizer:swipe];
 }
 
 #pragma mark - Actions
@@ -99,6 +104,12 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 {
 	[self restoreCellLayout:self.selectedCell isAnimated:YES];
 	[self dismissButtonSwitchToCloseCell:NO];
+}
+
+- (void)handleSwipe:(UIPanGestureRecognizer *)gesture
+{
+    [self restoreCellLayout:self.selectedCell isAnimated:YES];
+    [self dismissButtonSwitchToCloseCell:NO];
 }
 
 - (void)hanldePan:(UIPanGestureRecognizer *)gesture
@@ -277,6 +288,10 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 		[self.dismissButton removeTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
         [self.dismissButton setImage:NULL forState:UIControlStateNormal];
         [self.dismissButton setTitle:@"X" forState:UIControlStateNormal];
+        self.dismissButton.layer.shadowColor = [UIColor grayColor].CGColor;
+        self.dismissButton.layer.shadowOffset = CGSizeMake(0, 2.0);
+        self.dismissButton.layer.shadowOpacity = 1.0;
+        self.dismissButton.layer.shadowRadius = 0.0;
         
 		[self.dismissButton addTarget:self action:@selector(closeCell:) forControlEvents:UIControlEventTouchUpInside];
 	}
@@ -284,6 +299,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
         //printf("not isToCell");
 		[self.dismissButton removeTarget:self action:@selector(closeCell:) forControlEvents:UIControlEventTouchUpInside];
         [self.dismissButton setImage:[UIImage imageNamed:@"left button"] forState:UIControlStateNormal];
+        self.dismissButton.layer.shadowOpacity = 0.0;
         
 		[self.dismissButton addTarget:self action:@selector(leftDrawerButtonPress:) forControlEvents:UIControlEventTouchUpInside];
 	}

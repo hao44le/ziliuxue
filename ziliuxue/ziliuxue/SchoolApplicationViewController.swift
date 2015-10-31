@@ -189,6 +189,11 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
             dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
             backgroundScrollView.addSubview(dismissButton)
             
+            let titleLabel = UILabel(frame: CGRectMake(15, 30, self.view.frame.width - 30, 25))
+            titleLabel.text = "申请信息"
+            titleLabel.textAlignment = NSTextAlignment.Center
+            backgroundScrollView.addSubview(titleLabel)
+            
         }
 
         self.navigationItem.title = "申请信息"
@@ -197,6 +202,13 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     func back(){
         
         self.navigationController!.popViewControllerAnimated(true)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        if source == "mySchool"{
+            return true
+        }
+        return false
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if tableView == applicationMethodTableView {

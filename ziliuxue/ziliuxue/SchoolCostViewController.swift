@@ -39,6 +39,13 @@ class SchoolCostViewController: UIViewController,UITableViewDataSource {
             dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
             self.view.addSubview(dismissButton)
             
+            
+            let titleLabel = UILabel(frame: CGRectMake(15, 30, self.view.frame.width - 30, 25))
+            titleLabel.text = "花费及赞助"
+            titleLabel.textAlignment = NSTextAlignment.Center
+            self.view.addSubview(titleLabel)
+
+            
         }
         self.navigationItem.title = "花费及赞助"
         // Do any additional setup after loading the view.
@@ -46,6 +53,13 @@ class SchoolCostViewController: UIViewController,UITableViewDataSource {
     func back(){
         
         self.navigationController!.popViewControllerAnimated(true)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        if source == "mySchool"{
+            return true
+        }
+        return false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
