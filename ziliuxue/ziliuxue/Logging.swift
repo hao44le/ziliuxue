@@ -101,7 +101,7 @@ class Logging :NSObject{
     func uploadRemaninggzFile(){
         let string = checkLocalgzFile()
         if string.count == 0 {
-            print("logDirectory doesn't exist")
+            print("no gz file")
         } else {
             self.upLoadAndDeleteLocalgzFile(string)
         }

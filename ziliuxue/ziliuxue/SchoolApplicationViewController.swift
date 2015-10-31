@@ -11,7 +11,7 @@ import UIKit
 class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
 
-    
+    var source = ""
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     
@@ -181,11 +181,23 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if source == "mySchool" {
+            let dismissButton = UIButton(type:UIButtonType.Custom)
+            dismissButton.frame = CGRectMake(10, 30, 25, 25)
+            
+            dismissButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+            dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
+            backgroundScrollView.addSubview(dismissButton)
+            
+        }
+
         self.navigationItem.title = "申请信息"
         
     }
-
+    func back(){
+        
+        self.navigationController!.popViewControllerAnimated(true)
+    }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if tableView == applicationMethodTableView {
             return self.methodHeader.count

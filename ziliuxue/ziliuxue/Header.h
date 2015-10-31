@@ -42,7 +42,6 @@
 #import "CompressingLogFileManager.h"
 
 
-#import "MCCardPickerCollectionViewController.h"
-#import "MCSampleCardCollectionViewCell.h"
+#import "MCCardPickerCollectionViewController.h" 
 
 #endif /* Header_h */

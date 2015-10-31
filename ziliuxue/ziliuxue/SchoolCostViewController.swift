@@ -16,7 +16,7 @@ class SchoolCostViewController: UIViewController,UITableViewDataSource {
     var rightForSpeding : [String] = ["","","",""]
     var rightForScholarship : [String] = ["",""]
     
-    
+    var source = ""
     
     var collegeCost : CollegeFinancial? {
         didSet{
@@ -31,10 +31,22 @@ class SchoolCostViewController: UIViewController,UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if source == "mySchool" {
+            let dismissButton = UIButton(type:UIButtonType.Custom)
+            dismissButton.frame = CGRectMake(10, 30, 25, 25)
+            
+            dismissButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+            dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
+            self.view.addSubview(dismissButton)
+            
+        }
         self.navigationItem.title = "花费及赞助"
         // Do any additional setup after loading the view.
     }
-
+    func back(){
+        
+        self.navigationController!.popViewControllerAnimated(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

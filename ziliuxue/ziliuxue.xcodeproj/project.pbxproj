@@ -91,7 +91,14 @@
 		C08B95DE1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C08B95DC1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m */; };
 		C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */; };
 		C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */; };
+		C0AE73941BE2EE6F007843EE /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AE73931BE2EE6F007843EE /* BalloonMarker.swift */; };
+		C0AE739B1BE2EE77007843EE /* ChartsTV in Resources */ = {isa = PBXBuildFile; fileRef = C0AE73981BE2EE77007843EE /* ChartsTV */; };
+		C0AE739C1BE2EE77007843EE /* Classes in Resources */ = {isa = PBXBuildFile; fileRef = C0AE73991BE2EE77007843EE /* Classes */; };
+		C0AE739D1BE2EE77007843EE /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = C0AE739A1BE2EE77007843EE /* Supporting Files */; };
+		C0AE73A61BE2EF06007843EE /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0AE73A11BE2EE78007843EE /* Charts.framework */; };
+		C0AE73A71BE2EF06007843EE /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0AE73A11BE2EE78007843EE /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C0AFE7421B5E260800AAD027 /* College.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0AFE7411B5E260800AAD027 /* College.plist */; };
+		C0B7AEC21BE14AFB00ADCCE8 /* SchoolCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B7AEC01BE14AFB00ADCCE8 /* SchoolCardCollectionViewCell.swift */; };
 		C0C3B7A71B4CB79F006800DD /* OverviewSchoolTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C3B7A61B4CB79F006800DD /* OverviewSchoolTabViewController.swift */; };
 		C0C3B7AC1B4CDAC0006800DD /* SchoolRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C3B7AB1B4CDAC0006800DD /* SchoolRankingViewController.swift */; };
 		C0C3B7AE1B4CDB11006800DD /* SchoolApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C3B7AD1B4CDB11006800DD /* SchoolApplicationViewController.swift */; };
@@ -114,12 +121,48 @@
 		C0E4BFBE1BB78CEF00403E70 /* CompressingLogFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E4BFBD1BB78CEF00403E70 /* CompressingLogFileManager.m */; };
 		C0E8F3541B4F72A800EAEE95 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E8F3531B4F72A700EAEE95 /* CoreLocation.framework */; };
 		C0EB7FE41B5543E900DF88CB /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB7FE31B5543E900DF88CB /* College.swift */; };
-		C0F0F93F1BD4761A00241456 /* MCSampleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F0F93E1BD4761A00241456 /* MCSampleCardCollectionViewCell.m */; };
-		C0F0F9421BD477A400241456 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F0F9411BD477A400241456 /* UIImage+ImageEffects.m */; };
 		C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F5C0E51B3FC59300A2FA14 /* SwipeView.m */; };
 		C0F7A67A1B58B23A0022F716 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F7A6791B58B23A0022F716 /* ImageIO.framework */; };
 		C0FA95351BD71FAA00CDD425 /* PersonalInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA95341BD71FAA00CDD425 /* PersonalInfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0AE73A01BE2EE78007843EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0AE73951BE2EE77007843EE /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
+		C0AE73A21BE2EE78007843EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0AE73951BE2EE77007843EE /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = ChartsTV;
+		};
+		C0AE73A81BE2EF06007843EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0AE73951BE2EE77007843EE /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C0AE73AA1BE2EF06007843EE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C0AE73A71BE2EF06007843EE /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00167EB716BD028099626F64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -248,7 +291,13 @@
 		C08B95DC1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCardPickerCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
 		C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
+		C0AE73931BE2EE6F007843EE /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		C0AE73951BE2EE77007843EE /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Charts.xcodeproj; sourceTree = "<group>"; };
+		C0AE73981BE2EE77007843EE /* ChartsTV */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ChartsTV; sourceTree = "<group>"; };
+		C0AE73991BE2EE77007843EE /* Classes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Classes; sourceTree = "<group>"; };
+		C0AE739A1BE2EE77007843EE /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
 		C0AFE7411B5E260800AAD027 /* College.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = College.plist; sourceTree = "<group>"; };
+		C0B7AEC01BE14AFB00ADCCE8 /* SchoolCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0C3B7A61B4CB79F006800DD /* OverviewSchoolTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewSchoolTabViewController.swift; sourceTree = "<group>"; };
 		C0C3B7AB1B4CDAC0006800DD /* SchoolRankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolRankingViewController.swift; sourceTree = "<group>"; };
 		C0C3B7AD1B4CDB11006800DD /* SchoolApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolApplicationViewController.swift; sourceTree = "<group>"; };
@@ -287,10 +336,6 @@
 		C0E4BFBD1BB78CEF00403E70 /* CompressingLogFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompressingLogFileManager.m; sourceTree = "<group>"; };
 		C0E8F3531B4F72A700EAEE95 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0EB7FE31B5543E900DF88CB /* College.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
-		C0F0F93D1BD4761A00241456 /* MCSampleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSampleCardCollectionViewCell.h; sourceTree = "<group>"; };
-		C0F0F93E1BD4761A00241456 /* MCSampleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSampleCardCollectionViewCell.m; sourceTree = "<group>"; };
-		C0F0F9401BD477A400241456 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		C0F0F9411BD477A400241456 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		C0F5C0E41B3FC59300A2FA14 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		C0F5C0E51B3FC59300A2FA14 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		C0F7A6791B58B23A0022F716 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -307,6 +352,7 @@
 				7B0890C01B88942100EB352B /* Foundation.framework in Frameworks */,
 				7B0890BF1B88941900EB352B /* UIKit.framework in Frameworks */,
 				7B0890BE1B88940E00EB352B /* CoreText.framework in Frameworks */,
+				C0AE73A61BE2EF06007843EE /* Charts.framework in Frameworks */,
 				7B0890BC1B88940600EB352B /* CoreTelephony.framework in Frameworks */,
 				7B0890BA1B8893FE00EB352B /* Security.framework in Frameworks */,
 				C0F7A67A1B58B23A0022F716 /* ImageIO.framework in Frameworks */,
@@ -403,6 +449,7 @@
 			children = (
 				C03971831BCD7CB80011A5C0 /* SchoolOverviewTableCell.swift */,
 				C08905021B4D0541002CC00C /* CollegeInfoTableViewCell.swift */,
+				C0B7AEC01BE14AFB00ADCCE8 /* SchoolCardCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -700,10 +747,6 @@
 		C08B95DF1BD3E41200BDB55A /* MCCardPicker */ = {
 			isa = PBXGroup;
 			children = (
-				C0F0F9401BD477A400241456 /* UIImage+ImageEffects.h */,
-				C0F0F9411BD477A400241456 /* UIImage+ImageEffects.m */,
-				C0F0F93D1BD4761A00241456 /* MCSampleCardCollectionViewCell.h */,
-				C0F0F93E1BD4761A00241456 /* MCSampleCardCollectionViewCell.m */,
 				C08B95D91BD3E40E00BDB55A /* MCCardPickerCollectionViewController.h */,
 				C08B95DA1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m */,
 				C08B95DB1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.h */,
@@ -719,6 +762,27 @@
 				C0FA95341BD71FAA00CDD425 /* PersonalInfoTableViewCell.swift */,
 			);
 			name = PersonalInfo;
+			sourceTree = "<group>";
+		};
+		C0AE73961BE2EE77007843EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0AE73A11BE2EE78007843EE /* Charts.framework */,
+				C0AE73A31BE2EE78007843EE /* ChartsTV.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0AE73A41BE2EE7C007843EE /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				C0AE73951BE2EE77007843EE /* Charts.xcodeproj */,
+				C0AE73981BE2EE77007843EE /* ChartsTV */,
+				C0AE73991BE2EE77007843EE /* Classes */,
+				C0AE739A1BE2EE77007843EE /* Supporting Files */,
+				C0AE73931BE2EE6F007843EE /* BalloonMarker.swift */,
+			);
+			name = Charts;
 			sourceTree = "<group>";
 		};
 		C0C8EA981BB78E0100F4CDFB /* CocoaLumberjack */ = {
@@ -816,6 +880,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C0AE73A41BE2EE7C007843EE /* Charts */,
 				7B53FB3C1BDBD078005314C5 /* WYPopoverController */,
 				7B53FB301BDBBE07005314C5 /* SKSTableView */,
 				C08B95DF1BD3E41200BDB55A /* MCCardPicker */,
@@ -856,10 +921,12 @@
 				C0C8F8F81B2ED89E00D698FC /* Resources */,
 				42A2AB2215F6E487832677C8 /* Copy Pods Resources */,
 				EED4CF4904FEE40DC4EF5720 /* Embed Pods Frameworks */,
+				C0AE73AA1BE2EF06007843EE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C0AE73A91BE2EF06007843EE /* PBXTargetDependency */,
 			);
 			name = ziliuxue;
 			productName = ziliuxue;
@@ -879,7 +946,7 @@
 				TargetAttributes = {
 					C0C8F8F91B2ED89E00D698FC = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 44V7495CD3;
+						DevelopmentTeam = MA3FRWNL5H;
 					};
 				};
 			};
@@ -894,12 +961,35 @@
 			mainGroup = C0C8F8F11B2ED89E00D698FC;
 			productRefGroup = C0C8F8FB1B2ED89E00D698FC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C0AE73961BE2EE77007843EE /* Products */;
+					ProjectRef = C0AE73951BE2EE77007843EE /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C0C8F8F91B2ED89E00D698FC /* ziliuxue */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C0AE73A11BE2EE78007843EE /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = C0AE73A01BE2EE78007843EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C0AE73A31BE2EE78007843EE /* ChartsTV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsTV.framework;
+			remoteRef = C0AE73A21BE2EE78007843EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C0C8F8F81B2ED89E00D698FC /* Resources */ = {
@@ -910,6 +1000,8 @@
 				C0C8F9051B2ED89E00D698FC /* Main.storyboard in Resources */,
 				C036D0071B5F6229009252FE /* Massachusetts Institute of Technology.plist in Resources */,
 				C0C8F90A1B2ED89E00D698FC /* LaunchScreen.xib in Resources */,
+				C0AE739C1BE2EE77007843EE /* Classes in Resources */,
+				C0AE739D1BE2EE77007843EE /* Supporting Files in Resources */,
 				C036D0091B5F6229009252FE /* Stanford University.plist in Resources */,
 				C036D0041B5F6229009252FE /* Columbia University.plist in Resources */,
 				C0E4BFB01BB78C1D00403E70 /* CLI in Resources */,
@@ -924,6 +1016,7 @@
 				7BAD073C1BB6CC760088D774 /* ico_make.png in Resources */,
 				C008A9421B4FDBC00014554F /* read_me.txt in Resources */,
 				C036D0081B5F6229009252FE /* Princeton University.plist in Resources */,
+				C0AE739B1BE2EE77007843EE /* ChartsTV in Resources */,
 				C036D0031B5F6229009252FE /* California Institute of Technology.plist in Resources */,
 				C036D00B1B5F6229009252FE /* Yale University.plist in Resources */,
 			);
@@ -992,6 +1085,8 @@
 				C030F0C61B415F5F00DDDFDD /* CCMCustomAnimation.m in Sources */,
 				C0E4BFB61BB78C1D00403E70 /* DDLog.m in Sources */,
 				C030F0CA1B415F5F00DDDFDD /* FXBlurView.m in Sources */,
+				C0B7AEC21BE14AFB00ADCCE8 /* SchoolCardCollectionViewCell.swift in Sources */,
+				C0AE73941BE2EE6F007843EE /* BalloonMarker.swift in Sources */,
 				C0666F1F1BA4F7810087DBF8 /* MJPropertyType.m in Sources */,
 				C0C3B7B21B4CDB3D006800DD /* SchoolCostViewController.swift in Sources */,
 				7B53FB2D1BDB7923005314C5 /* SchoolRankViewController.swift in Sources */,
@@ -1005,7 +1100,6 @@
 				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,
 				7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */,
 				C0C3B7AC1B4CDAC0006800DD /* SchoolRankingViewController.swift in Sources */,
-				C0F0F9421BD477A400241456 /* UIImage+ImageEffects.m in Sources */,
 				C08B95DE1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m in Sources */,
 				C0666F1C1BA4F7810087DBF8 /* MJFoundation.m in Sources */,
 				C0E4BFB31BB78C1D00403E70 /* DDASLLogCapture.m in Sources */,
@@ -1015,7 +1109,6 @@
 				C030F0AD1B4149A100DDDFDD /* MMPickerView.m in Sources */,
 				C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */,
 				C030F0C51B415F5F00DDDFDD /* CCMBorderView.m in Sources */,
-				C0F0F93F1BD4761A00241456 /* MCSampleCardCollectionViewCell.m in Sources */,
 				C07B39101B480A6A00C1267A /* MMDrawerVisualState.m in Sources */,
 				C0666F1E1BA4F7810087DBF8 /* MJPropertyKey.m in Sources */,
 				7B53FB481BDC4C77005314C5 /* WYStoryboardPopoverSegue.m in Sources */,
@@ -1062,6 +1155,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0AE73A91BE2EF06007843EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = C0AE73A81BE2EF06007843EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C0C8F9031B2ED89E00D698FC /* Main.storyboard */ = {
@@ -1176,6 +1277,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ziliuxue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1199,6 +1301,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ziliuxue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

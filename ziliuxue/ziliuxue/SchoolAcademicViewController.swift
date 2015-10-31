@@ -24,7 +24,8 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
     var slices = [11,8,6,6,6]
     var text = ["经济学","政治学","生物","心理学","公共政策"]
 
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    var source = ""
     var collegeAcademic : CollegeAcademic?{
         didSet{
             var counter = 0
@@ -71,7 +72,15 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "学术信息"
-        
+        if source == "mySchool" {
+            let dismissButton = UIButton(type:UIButtonType.Custom)
+            dismissButton.frame = CGRectMake(10, 30, 25, 25)
+            
+            dismissButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+            dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
+            scrollView.addSubview(dismissButton)
+            
+        }
 //        self.pieView.dataSource = self
 //        self.pieView.delegate = self
 //        self.pieView.startPieAngle = CGFloat(M_PI_2)
@@ -83,6 +92,10 @@ class SchoolAcademicViewController: UIViewController,UITableViewDelegate,UITable
 //        self.pieView.showPercentage = false
 //        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 150)
 //        // Do any additional setup after loading the view.
+    }
+    func back(){
+        
+        self.navigationController!.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {

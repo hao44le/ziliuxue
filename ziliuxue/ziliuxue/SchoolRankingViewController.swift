@@ -12,8 +12,11 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
 
     @IBOutlet weak var nationalUniversityLabel: UILabel!
 
-    var rankingLeft = ["分数","高中平均GPA","平均新生保持率","<20学生的课","<50学生的课","学生老师比例","2013秋季接受率","6年毕业率","毕业率预期","Overperformance/Underperformance","毕业滞留排名","互评得分","教师资源排名","全职教师占比","学生选择排名","SAT/ACT 25% - 75%区间","高中班级的TOP10％的新生","高中班级的TOP25％的新生","财政资源排名","校友捐赠排名","平均校友捐赠比例"]
+    @IBOutlet weak var scrollView: UIScrollView!
+    let rankingLeft = ["分数","高中平均GPA","平均新生保持率","<20学生的课","<50学生的课","学生老师比例","2013秋季接受率","6年毕业率","毕业率预期","Overperformance/Underperformance","毕业滞留排名","互评得分","教师资源排名","全职教师占比","学生选择排名","SAT/ACT 25% - 75%区间","高中班级的TOP10％的新生","高中班级的TOP25％的新生","财政资源排名","校友捐赠排名","平均校友捐赠比例"]
     var rankingRight = ["100","4.9(5)","98%","70.9%","11%","6:1","7.4%","97%","94%","","","","","","","","","","","",""]
+    
+    var source = ""
     
     var collegeRanking : CollegeRanking? {
         didSet {
@@ -48,9 +51,21 @@ class SchoolRankingViewController: UIViewController,UITableViewDelegate,UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        if source == "mySchool" {
+            let dismissButton = UIButton(type:UIButtonType.Custom)
+            dismissButton.frame = CGRectMake(10, 30, 25, 25)
+            
+            dismissButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+            dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
+            scrollView.addSubview(dismissButton)
+
+        }
         // Do any additional setup after loading the view.
         self.navigationItem.title = "排名信息"
+    }
+    func back(){
+        
+        self.navigationController!.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {
