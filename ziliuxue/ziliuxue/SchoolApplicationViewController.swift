@@ -352,15 +352,35 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         //cell.layer.shouldRasterize = true
         if detailTextLabel.text == "Yes" {
             detailTextLabel.removeFromSuperview()
-            let imageView = UIImageView(image: UIImage(named: "yes"))
-            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 10, 25, 25)
+            let imageView = UIImageView(image: UIImage(named: "Yes"))
+            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 25/2, 25, 25)
             cell.addSubview(imageView)
             //cell.imageView?.image = UIImage(named: "yes")
-        } else if detailTextLabel.text == "No" {
+        } else if detailTextLabel.text == "No" || detailTextLabel.text == "N/A"{
             
             detailTextLabel.removeFromSuperview()
-            let imageView = UIImageView(image: UIImage(named: "no"))
-            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 10, 25, 25)
+            let imageView = UIImageView(image: UIImage(named: "No"))
+            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 25/2, 25, 25)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Very important" {
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Very important"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Considered"{
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Considered"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Not Considered" {
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Not Considered"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Important" {
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Important"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
             cell.addSubview(imageView)
         }
         
