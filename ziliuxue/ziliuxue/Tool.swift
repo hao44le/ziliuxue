@@ -12,6 +12,29 @@ import Foundation
 
 class Tool:NSObject
 {
+    
+    class func showIntroView(view:UIView) {
+        if NSUserDefaults.standardUserDefaults().boolForKey("intro_screen_viewed") == false {
+            let page1 = EAIntroPage()
+            page1.bgImage = UIImage(named: "欢迎界面1")
+            
+            let page2 = EAIntroPage()
+            page2.bgImage = UIImage(named: "欢迎界面2")
+            
+            let intro = EAIntroView(frame: view.bounds, andPages: [page1,page2])
+            intro.pageControlY = CGFloat(20)
+            intro.skipButton = nil
+            intro.showInView(view, animateDuration: 0.3)
+            intro.showSkipButtonOnlyOnLastPage = false
+            intro.swipeToExit = true
+            intro.tapToNext = true
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "intro_screen_viewed")
+        }
+        
+        
+    }
+    
     class func dismissHUD()
     {
         ProgressHUD.dismiss()
@@ -32,7 +55,7 @@ class Tool:NSObject
     {
         ProgressHUD.showError(text)
     }
-
+    
     class func parseJsonAndReturnCollegeDetail(response:NSDictionary)->CollegeDetail{
         
         

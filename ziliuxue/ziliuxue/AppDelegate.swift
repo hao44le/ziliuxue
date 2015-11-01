@@ -80,7 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.All
         
         self.window?.rootViewController = self.drawerController
-   
+        
+        Tool.showIntroView(self.drawerController.view)
         
         // Override point for customization after application launch.
         return true

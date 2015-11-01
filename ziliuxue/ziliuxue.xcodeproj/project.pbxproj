@@ -87,6 +87,9 @@
 		C07B39171B480ABE00C1267A /* LeftDrawerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C07B39141B480ABE00C1267A /* LeftDrawerTableViewController.xib */; };
 		C08B95DD1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08B95DA1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m */; };
 		C08B95DE1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C08B95DC1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m */; };
+		C08C26861BE65D9600ACBE7A /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = C08C26821BE65D9600ACBE7A /* EAIntroPage.m */; };
+		C08C26871BE65D9600ACBE7A /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = C08C26841BE65D9600ACBE7A /* EAIntroView.m */; };
+		C08C268D1BE65DDD00ACBE7A /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C08C268C1BE65DDD00ACBE7A /* EARestrictedScrollView.m */; };
 		C0A5B6411B4A5F420089B84E /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */; };
 		C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */; };
 		C0AE73941BE2EE6F007843EE /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AE73931BE2EE6F007843EE /* BalloonMarker.swift */; };
@@ -285,6 +288,12 @@
 		C08B95DA1BD3E40E00BDB55A /* MCCardPickerCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCardPickerCollectionViewController.m; sourceTree = "<group>"; };
 		C08B95DB1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCCardPickerCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		C08B95DC1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCardPickerCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		C08C26811BE65D9600ACBE7A /* EAIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroPage.h; sourceTree = "<group>"; };
+		C08C26821BE65D9600ACBE7A /* EAIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroPage.m; sourceTree = "<group>"; };
+		C08C26831BE65D9600ACBE7A /* EAIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroView.h; sourceTree = "<group>"; };
+		C08C26841BE65D9600ACBE7A /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
+		C08C268B1BE65DDD00ACBE7A /* EARestrictedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EARestrictedScrollView.h; sourceTree = "<group>"; };
+		C08C268C1BE65DDD00ACBE7A /* EARestrictedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EARestrictedScrollView.m; sourceTree = "<group>"; };
 		C0A5B6401B4A5F420089B84E /* SecondTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
 		C0A5B6481B4A62560089B84E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		C0AE73931BE2EE6F007843EE /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -744,6 +753,19 @@
 			name = MCCardPicker;
 			sourceTree = "<group>";
 		};
+		C08C268A1BE65DA400ACBE7A /* EAIntro */ = {
+			isa = PBXGroup;
+			children = (
+				C08C26811BE65D9600ACBE7A /* EAIntroPage.h */,
+				C08C26821BE65D9600ACBE7A /* EAIntroPage.m */,
+				C08C26831BE65D9600ACBE7A /* EAIntroView.h */,
+				C08C26841BE65D9600ACBE7A /* EAIntroView.m */,
+				C08C268B1BE65DDD00ACBE7A /* EARestrictedScrollView.h */,
+				C08C268C1BE65DDD00ACBE7A /* EARestrictedScrollView.m */,
+			);
+			name = EAIntro;
+			sourceTree = "<group>";
+		};
 		C090690B1BE5AED10046DEAF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -882,6 +904,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C08C268A1BE65DA400ACBE7A /* EAIntro */,
 				C0AE73A41BE2EE7C007843EE /* Charts */,
 				7B53FB3C1BDBD078005314C5 /* WYPopoverController */,
 				7B53FB301BDBBE07005314C5 /* SKSTableView */,
@@ -1098,12 +1121,14 @@
 				C0C3B7A71B4CB79F006800DD /* OverviewSchoolTabViewController.swift in Sources */,
 				C030F0C81B415F5F00DDDFDD /* CCMPopupSegue.m in Sources */,
 				C0E4BFB71BB78C1D00403E70 /* DDTTYLogger.m in Sources */,
+				C08C268D1BE65DDD00ACBE7A /* EARestrictedScrollView.m in Sources */,
 				C0E4BFB21BB78C1D00403E70 /* DDAbstractDatabaseLogger.m in Sources */,
 				C0F5C0E61B3FC59300A2FA14 /* SwipeView.m in Sources */,
 				7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */,
 				C0C3B7AC1B4CDAC0006800DD /* SchoolRankingViewController.swift in Sources */,
 				C08B95DE1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m in Sources */,
 				C0666F1C1BA4F7810087DBF8 /* MJFoundation.m in Sources */,
+				C08C26861BE65D9600ACBE7A /* EAIntroPage.m in Sources */,
 				C0E4BFB31BB78C1D00403E70 /* DDASLLogCapture.m in Sources */,
 				C039BEAD1B3A7E1C00C8D5CE /* Network.swift in Sources */,
 				7BD16B4B1BAD5EFA0004941C /* CommonUtility.swift in Sources */,
@@ -1151,6 +1176,7 @@
 				C0666F241BA4F7810087DBF8 /* NSString+MJExtension.m in Sources */,
 				C03F5B7F1B59512A00532AC8 /* MJCollectionViewCell.m in Sources */,
 				C0C8F9001B2ED89E00D698FC /* AppDelegate.swift in Sources */,
+				C08C26871BE65D9600ACBE7A /* EAIntroView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
