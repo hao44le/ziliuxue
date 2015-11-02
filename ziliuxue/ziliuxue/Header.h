@@ -45,4 +45,6 @@
 #import "MCCardPickerCollectionViewController.h"
 #import "MCSampleCardCollectionViewCell.h"
 
+#import "pinyin.h"
+
 #endif /* Header_h */
