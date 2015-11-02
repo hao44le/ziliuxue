@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate,WYPopoverControllerDelegate,SchoolRankFilterViewControllerDelegate{
+class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate{
 
     @IBOutlet var tableView: UITableView!
     
-    var filterPopOverVC:WYPopoverController!
+    var rankFilterView:SchoolRankFilterView!
     
     var chineseName = ["普利斯顿大学","哈佛大学","哥伦比亚大学","怪物大学","普度大学","伊利诺伊大学香槟分校","霍格沃茨大学"]
     var englishName = ["Princeton University","Harvard University","Columbia University","Monster University","Purdue University","University of llinois Urbanna-Champaign","Hogwarts University"]
@@ -31,7 +31,7 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         filterButton.frame = CGRectMake(0, 0, 75, 44)
         filterButton.setTitle("更多排名", forState: UIControlState.Normal)
         filterButton.titleLabel!.textColor = UIColor.whiteColor()
-        filterButton.addTarget(self, action: Selector("filterButtonClicked:"), forControlEvents: UIControlEvents.TouchUpInside)
+        filterButton.addTarget(self, action: Selector("filterButtonClicked"), forControlEvents: UIControlEvents.TouchUpInside)
 
         let filterButtonItem = UIBarButtonItem(customView: filterButton)
         self.navigationItem.rightBarButtonItem = filterButtonItem
@@ -41,6 +41,21 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         super.viewWillAppear(animated)
         
         
+
+//        if !LocalStore.isIntroVisited(){
+//            if !LocalStore.isLogined(){
+//                self.performSegueWithIdentifier("toLogin", sender: self)
+//            } else {
+//                //self.performSegueWithIdentifier("toWizard", sender: self)
+//            }
+//        }
+//        if LocalStore.isIntroVisited() {
+//            if !LocalStore.isLogined() {
+//                self.performSegueWithIdentifier("toLogin", sender: self)
+//            }
+//        }
+
+        //self.performSegueWithIdentifier("toWizard", sender: self)
         
     }
     override func didReceiveMemoryWarning() {
@@ -66,51 +81,24 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         self.mm_drawerController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
     
-    func filterButtonClicked(sender:UIButton){
-        if nil != self.filterPopOverVC{
-            self.filterPopOverVC.presentPopoverFromRect(CGRectMake(ScreenSize.SCREEN_WIDTH - 40, 10, 300, 40), inView: self.view, permittedArrowDirections: WYPopoverArrowDirection.Any, animated: true)
-        }else{
+    func filterButtonClicked(){
         
-        let filterVC = SchoolRankFilterViewController()
-        filterVC.preferredContentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT - 64)
-        filterVC.title = "排名类型"
-        filterVC.delegate = self
-        filterVC.navigationItem.setLeftBarButtonItem(UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("dismissFilterView")), animated: true)
-//        filterVC.navigationItem.setRightBarButtonItem(UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("finishFilterView")), animated: true)
-        filterVC.modalInPopover = false
-        
-        let contentVC = UINavigationController(rootViewController: filterVC)
-        
-        self.filterPopOverVC = WYPopoverController(contentViewController: contentVC)
-        self.filterPopOverVC.delegate = self
-        self.filterPopOverVC.passthroughViews = [sender]
-        self.filterPopOverVC.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10)
-        self.filterPopOverVC.wantsDefaultContentAppearance = false
-        
-        self.filterPopOverVC.presentPopoverFromRect(CGRectMake(ScreenSize.SCREEN_WIDTH - 40, 10, 300, 40), inView: self.view, permittedArrowDirections: WYPopoverArrowDirection.Any, animated: true)
-            
+        if nil == self.rankFilterView{
+            self.rankFilterView = SchoolRankFilterView(frame: CGRectMake(0,64,ScreenSize.SCREEN_WIDTH,ScreenSize.SCREEN_HEIGHT - 64))
         }
+   
+        self.view.addSubview(self.rankFilterView)
+        
         
     }
+
     
     func dismissFilterView(){
         
-        self.filterPopOverVC.dismissPopoverAnimated(true) { () -> Void in
-            self.filterPopOverVC.dismissPopoverAnimated(true)
-        }
         
     }
-    
-//    func finishFilterView(){
-//        
-//        
-//        self.dismissFilterView()
-//    }
-    
-    func didSelectSubViewWithItem() {
-        self.dismissFilterView()
-    }
-    
+
+ 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

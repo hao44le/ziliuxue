@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		47CF44BAB11326517D1316EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB668C83B7354CCF44BD8E39 /* libPods.a */; };
+		7B0883651BE111E800CEB641 /* SchoolRankFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0883641BE111E800CEB641 /* SchoolRankFilterView.swift */; };
+		7B08836A1BE31B5E00CEB641 /* SchoolRankFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0883691BE31B5E00CEB641 /* SchoolRankFilterCell.swift */; };
+		7B08837F1BE363AA00CEB641 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B08837C1BE363AA00CEB641 /* ChineseString.m */; };
+		7B0883801BE363AA00CEB641 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B08837D1BE363AA00CEB641 /* pinyin.c */; };
+		7B0883821BE3642200CEB641 /* StringProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0883811BE3642200CEB641 /* StringProcess.swift */; };
 		7B0890B81B8893E600EB352B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890B71B8893E600EB352B /* QuartzCore.framework */; };
 		7B0890BA1B8893FE00EB352B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890B91B8893FE00EB352B /* Security.framework */; };
 		7B0890BC1B88940600EB352B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0890BB1B88940600EB352B /* CoreTelephony.framework */; };
@@ -21,7 +26,6 @@
 		7B53FB371BDBBE18005314C5 /* SKSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B53FB321BDBBE18005314C5 /* SKSTableView.m */; };
 		7B53FB381BDBBE18005314C5 /* SKSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B53FB341BDBBE18005314C5 /* SKSTableViewCell.m */; };
 		7B53FB391BDBBE18005314C5 /* SKSTableViewCellIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B53FB361BDBBE18005314C5 /* SKSTableViewCellIndicator.m */; };
-		7B53FB3B1BDBBE61005314C5 /* SchoolRankFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B53FB3A1BDBBE61005314C5 /* SchoolRankFilterViewController.swift */; };
 		7B53FB471BDC4C77005314C5 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B53FB441BDC4C77005314C5 /* WYPopoverController.m */; };
 		7B53FB481BDC4C77005314C5 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B53FB461BDC4C77005314C5 /* WYStoryboardPopoverSegue.m */; };
 		7B9D50801B520A2D00B7AA2E /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9D507F1B520A2D00B7AA2E /* Tool.swift */; };
@@ -168,6 +172,13 @@
 /* Begin PBXFileReference section */
 		00167EB716BD028099626F64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1C321C7FDF9F7B164B7EC6EC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7B0883641BE111E800CEB641 /* SchoolRankFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolRankFilterView.swift; sourceTree = "<group>"; };
+		7B0883691BE31B5E00CEB641 /* SchoolRankFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolRankFilterCell.swift; sourceTree = "<group>"; };
+		7B08837B1BE363AA00CEB641 /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		7B08837C1BE363AA00CEB641 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
+		7B08837D1BE363AA00CEB641 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		7B08837E1BE363AA00CEB641 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		7B0883811BE3642200CEB641 /* StringProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringProcess.swift; sourceTree = "<group>"; };
 		7B0890B71B8893E600EB352B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7B0890B91B8893FE00EB352B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7B0890BB1B88940600EB352B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -182,7 +193,6 @@
 		7B53FB341BDBBE18005314C5 /* SKSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSTableViewCell.m; sourceTree = "<group>"; };
 		7B53FB351BDBBE18005314C5 /* SKSTableViewCellIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSTableViewCellIndicator.h; sourceTree = "<group>"; };
 		7B53FB361BDBBE18005314C5 /* SKSTableViewCellIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSTableViewCellIndicator.m; sourceTree = "<group>"; };
-		7B53FB3A1BDBBE61005314C5 /* SchoolRankFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolRankFilterViewController.swift; sourceTree = "<group>"; };
 		7B53FB431BDC4C77005314C5 /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
 		7B53FB441BDC4C77005314C5 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		7B53FB451BDC4C77005314C5 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
@@ -411,6 +421,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7B0883741BE3638500CEB641 /* PinYinSort */ = {
+			isa = PBXGroup;
+			children = (
+				7B08837B1BE363AA00CEB641 /* ChineseString.h */,
+				7B08837C1BE363AA00CEB641 /* ChineseString.m */,
+				7B08837D1BE363AA00CEB641 /* pinyin.c */,
+				7B08837E1BE363AA00CEB641 /* pinyin.h */,
+			);
+			path = PinYinSort;
+			sourceTree = "<group>";
+		};
 		7B53FB301BDBBE07005314C5 /* SKSTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				7BD16B4A1BAD5EFA0004941C /* CommonUtility.swift */,
+				7B0883811BE3642200CEB641 /* StringProcess.swift */,
 				C00377451BC4B8BA00BF8A72 /* Logging.swift */,
 				C039BEAC1B3A7E1C00C8D5CE /* Network.swift */,
 				7B9D507F1B520A2D00B7AA2E /* Tool.swift */,
@@ -660,7 +682,6 @@
 			isa = PBXGroup;
 			children = (
 				7B53FB2C1BDB7923005314C5 /* SchoolRankViewController.swift */,
-				7B53FB3A1BDBBE61005314C5 /* SchoolRankFilterViewController.swift */,
 				C03971821BCD7C4E0011A5C0 /* View */,
 			);
 			name = UI;
@@ -670,6 +691,8 @@
 			isa = PBXGroup;
 			children = (
 				7B53FB2E1BDB7FD9005314C5 /* SchoolRankCell.swift */,
+				7B0883641BE111E800CEB641 /* SchoolRankFilterView.swift */,
+				7B0883691BE31B5E00CEB641 /* SchoolRankFilterCell.swift */,
 				C03971851BCD7D190011A5C0 /* ZLXTwoSegmentView.swift */,
 				C03971761BCD7C480011A5C0 /* SimilarCourseTableViewCell.swift */,
 				C03971771BCD7C480011A5C0 /* ZLXCourseFilterView.swift */,
@@ -904,6 +927,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7B0883741BE3638500CEB641 /* PinYinSort */,
 				C08C268A1BE65DA400ACBE7A /* EAIntro */,
 				C0AE73A41BE2EE7C007843EE /* Charts */,
 				7B53FB3C1BDBD078005314C5 /* WYPopoverController */,
@@ -1110,6 +1134,7 @@
 				C030F0C61B415F5F00DDDFDD /* CCMCustomAnimation.m in Sources */,
 				C0E4BFB61BB78C1D00403E70 /* DDLog.m in Sources */,
 				C030F0CA1B415F5F00DDDFDD /* FXBlurView.m in Sources */,
+				7B0883821BE3642200CEB641 /* StringProcess.swift in Sources */,
 				C0B7AEC21BE14AFB00ADCCE8 /* SchoolCardCollectionViewCell.swift in Sources */,
 				C0AE73941BE2EE6F007843EE /* BalloonMarker.swift in Sources */,
 				C0666F1F1BA4F7810087DBF8 /* MJPropertyType.m in Sources */,
@@ -1127,6 +1152,7 @@
 				7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */,
 				C0C3B7AC1B4CDAC0006800DD /* SchoolRankingViewController.swift in Sources */,
 				C08B95DE1BD3E40E00BDB55A /* MCCardPickerCollectionViewFlowLayout.m in Sources */,
+				7B08836A1BE31B5E00CEB641 /* SchoolRankFilterCell.swift in Sources */,
 				C0666F1C1BA4F7810087DBF8 /* MJFoundation.m in Sources */,
 				C08C26861BE65D9600ACBE7A /* EAIntroPage.m in Sources */,
 				C0E4BFB31BB78C1D00403E70 /* DDASLLogCapture.m in Sources */,
@@ -1153,15 +1179,17 @@
 				C03971611BCD79140011A5C0 /* LeftDrawerTableViewController.swift in Sources */,
 				C0E4BFBE1BB78CEF00403E70 /* CompressingLogFileManager.m in Sources */,
 				C0EB7FE41B5543E900DF88CB /* College.swift in Sources */,
-				7B53FB3B1BDBBE61005314C5 /* SchoolRankFilterViewController.swift in Sources */,
 				C03971811BCD7C480011A5C0 /* ZLXFixedRowWithSubtitleButtonView.swift in Sources */,
 				C0C3B7B01B4CDB28006800DD /* SchoolAcademicViewController.swift in Sources */,
 				7B53FB471BDC4C77005314C5 /* WYPopoverController.m in Sources */,
 				7B53FB371BDBBE18005314C5 /* SKSTableView.m in Sources */,
 				7B53FB381BDBBE18005314C5 /* SKSTableViewCell.m in Sources */,
+				7B0883801BE363AA00CEB641 /* pinyin.c in Sources */,
 				C07B390F1B480A6A00C1267A /* MMDrawerController.m in Sources */,
 				C063F56B1B520A9400B5053B /* BeforeLoginViewController.swift in Sources */,
 				C0666F1D1BA4F7810087DBF8 /* MJProperty.m in Sources */,
+				7B0883651BE111E800CEB641 /* SchoolRankFilterView.swift in Sources */,
+				7B08837F1BE363AA00CEB641 /* ChineseString.m in Sources */,
 				C03971861BCD7D190011A5C0 /* ZLXTwoSegmentView.swift in Sources */,
 				7BAD073D1BB6CC760088D774 /* JSDropDownMenu.m in Sources */,
 				C030F0C91B415F5F00DDDFDD /* CCMPopupTransitioning.m in Sources */,

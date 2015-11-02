@@ -12,7 +12,17 @@ extension String {
     var floatValue: Float {
         return (self as NSString).floatValue
     }
+    
+    subscript(index: Int!) -> Character{
         
+        return self[self.startIndex.advancedBy(index)]
+    }
+
+    // readonly computed property
+    var length: Int {
+        return self.characters.count
+    }
+    
     var lastPathComponent: String {
             
         get {
