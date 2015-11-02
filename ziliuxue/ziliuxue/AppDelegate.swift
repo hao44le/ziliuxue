@@ -171,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
             //return WeiboSDK.handleOpenURL(url, delegate: self)
         }else {
             var navi:UINavigationController?
-            let vc:UIViewController?
+//            let vc:UIViewController?
             if url.scheme == "zlx" {
 //                if url.host == "login" {
 //                    vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("centerTabView") as! CenterTabViewController

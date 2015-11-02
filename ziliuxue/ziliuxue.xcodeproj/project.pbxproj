@@ -35,6 +35,9 @@
 		7BAD073D1BB6CC760088D774 /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD073B1BB6CC760088D774 /* JSDropDownMenu.m */; };
 		7BC2AF451B5F06D900E5CC32 /* RatingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC2AF431B5F06D900E5CC32 /* RatingBar.m */; };
 		7BD16B4B1BAD5EFA0004941C /* CommonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD16B4A1BAD5EFA0004941C /* CommonUtility.swift */; };
+		7BE94CF31BE75DBD00AE2DFD /* FindSchoolServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE94CF21BE75DBD00AE2DFD /* FindSchoolServer.swift */; };
+		7BE94CF61BE75DD900AE2DFD /* SchoolRankListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE94CF51BE75DD900AE2DFD /* SchoolRankListItem.swift */; };
+		7BE94CF81BE7696F00AE2DFD /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE94CF71BE7696F00AE2DFD /* NetWorkManager.swift */; };
 		C00377461BC4B8BA00BF8A72 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00377451BC4B8BA00BF8A72 /* Logging.swift */; };
 		C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A93D1B4FDBC00014554F /* libWeChatSDK.a */; };
 		C008A9421B4FDBC00014554F /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C008A93E1B4FDBC00014554F /* read_me.txt */; };
@@ -207,6 +210,9 @@
 		7BC2AF421B5F06D900E5CC32 /* RatingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingBar.h; sourceTree = "<group>"; };
 		7BC2AF431B5F06D900E5CC32 /* RatingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingBar.m; sourceTree = "<group>"; };
 		7BD16B4A1BAD5EFA0004941C /* CommonUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUtility.swift; sourceTree = "<group>"; };
+		7BE94CF21BE75DBD00AE2DFD /* FindSchoolServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindSchoolServer.swift; sourceTree = "<group>"; };
+		7BE94CF51BE75DD900AE2DFD /* SchoolRankListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolRankListItem.swift; sourceTree = "<group>"; };
+		7BE94CF71BE7696F00AE2DFD /* NetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkManager.swift; sourceTree = "<group>"; };
 		C00377451BC4B8BA00BF8A72 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		C008A93D1B4FDBC00014554F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C008A93E1B4FDBC00014554F /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
@@ -525,6 +531,7 @@
 				C039BEAC1B3A7E1C00C8D5CE /* Network.swift */,
 				7B9D507F1B520A2D00B7AA2E /* Tool.swift */,
 				C0D8CFED1B5D3CE100B73CB5 /* Extension.swift */,
+				7BE94CF71BE7696F00AE2DFD /* NetWorkManager.swift */,
 			);
 			name = CommonUtility;
 			sourceTree = "<group>";
@@ -667,6 +674,7 @@
 		C039716F1BCD7C210011A5C0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				7BE94CF51BE75DD900AE2DFD /* SchoolRankListItem.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -674,6 +682,7 @@
 		C03971701BCD7C290011A5C0 /* Biz */ = {
 			isa = PBXGroup;
 			children = (
+				7BE94CF21BE75DBD00AE2DFD /* FindSchoolServer.swift */,
 			);
 			name = Biz;
 			sourceTree = "<group>";
@@ -1140,6 +1149,7 @@
 				C0666F1F1BA4F7810087DBF8 /* MJPropertyType.m in Sources */,
 				C0C3B7B21B4CDB3D006800DD /* SchoolCostViewController.swift in Sources */,
 				7B53FB2D1BDB7923005314C5 /* SchoolRankViewController.swift in Sources */,
+				7BE94CF81BE7696F00AE2DFD /* NetWorkManager.swift in Sources */,
 				C0E4BFB41BB78C1D00403E70 /* DDASLLogger.m in Sources */,
 				7B53FB2B1BDB78AD005314C5 /* BaseViewController.swift in Sources */,
 				C0666F201BA4F7810087DBF8 /* NSObject+MJClass.m in Sources */,
@@ -1159,6 +1169,7 @@
 				C039BEAD1B3A7E1C00C8D5CE /* Network.swift in Sources */,
 				7BD16B4B1BAD5EFA0004941C /* CommonUtility.swift in Sources */,
 				C030F0C71B415F5F00DDDFDD /* CCMPopupAnimation.m in Sources */,
+				7BE94CF61BE75DD900AE2DFD /* SchoolRankListItem.swift in Sources */,
 				C030F0AD1B4149A100DDDFDD /* MMPickerView.m in Sources */,
 				C0A5B6491B4A62560089B84E /* PersonalInfoViewController.swift in Sources */,
 				C030F0C51B415F5F00DDDFDD /* CCMBorderView.m in Sources */,
@@ -1175,6 +1186,7 @@
 				7B9D50861B520B0400B7AA2E /* ProgressHUD.m in Sources */,
 				C0E4BFB51BB78C1D00403E70 /* DDFileLogger.m in Sources */,
 				7B53FB2F1BDB7FD9005314C5 /* SchoolRankCell.swift in Sources */,
+				7BE94CF31BE75DBD00AE2DFD /* FindSchoolServer.swift in Sources */,
 				C0D8CFEE1B5D3CE100B73CB5 /* Extension.swift in Sources */,
 				C03971611BCD79140011A5C0 /* LeftDrawerTableViewController.swift in Sources */,
 				C0E4BFBE1BB78CEF00403E70 /* CompressingLogFileManager.m in Sources */,

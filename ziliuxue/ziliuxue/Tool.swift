@@ -323,7 +323,7 @@ class Tool:NSObject
         let _selectivity = entering_class_stats.objectForKey("selectivity") as! NSDictionary
         
         let selectivity_selectivity = _selectivity.objectForKey("selectivity") as! String
-        let acceptance_rate_acceptance_rate = _selectivity.objectForKey("acceptance_rate") as! String
+//        let acceptance_rate_acceptance_rate = _selectivity.objectForKey("acceptance_rate") as! String
         let early_decision_acceptance_rate = _selectivity.objectForKey("early_decision_acceptance_rate") as! String
         let early_action_acceptance_rate = _selectivity.objectForKey("early_action_acceptance_rate") as! String
         let acceptance_rate_wo_early_decision = _selectivity.objectForKey("acceptance_rate_wo_early_decision") as! String
@@ -403,8 +403,8 @@ class Tool:NSObject
         //graduation_and_retention
         let graduation_and_retention = academic.objectForKey("graduation_and_retention") as! NSDictionary
         
-        let average_freshman_retention_rate_OfGraduationAndRetention = graduation_and_retention.objectForKey("average_freshman_retention_rate") as! String
-        let six_year_graduation_rate_OfGraduationAndRetention = graduation_and_retention.objectForKey("six_year_graduation_rate") as! String
+//        let average_freshman_retention_rate_OfGraduationAndRetention = graduation_and_retention.objectForKey("average_freshman_retention_rate") as! String
+//        let six_year_graduation_rate_OfGraduationAndRetention = graduation_and_retention.objectForKey("six_year_graduation_rate") as! String
         let bachelors_degrees_awarded = graduation_and_retention.objectForKey("bachelors_degrees_awarded") as! String
         let masters_degrees_awarded_OfGraduationAndRetention = graduation_and_retention.objectForKey("masters_degrees_awarded") as! String
         let doctoral_degrees_research = graduation_and_retention.objectForKey("doctoral_degrees_research") as! String

@@ -10,6 +10,10 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    
+    override func viewWillDisappear(animated: Bool) {
+        Tool.dismissHUD()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +24,8 @@ class BaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*

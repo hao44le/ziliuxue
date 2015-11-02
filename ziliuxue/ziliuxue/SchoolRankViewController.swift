@@ -12,6 +12,8 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
 
     @IBOutlet var tableView: UITableView!
     
+    var server:FindSchoolServer!
+    
     var rankFilterView:SchoolRankFilterView!
     
     var chineseName = ["普利斯顿大学","哈佛大学","哥伦比亚大学","怪物大学","普度大学","伊利诺伊大学香槟分校","霍格沃茨大学"]
@@ -35,6 +37,14 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
 
         let filterButtonItem = UIBarButtonItem(customView: filterButton)
         self.navigationItem.rightBarButtonItem = filterButtonItem
+        
+        
+        self.server = FindSchoolServer.sharedInstance
+        self.server.querySchoolRankList("", pageSize: "", pageNum: "") { (schoolRankListItem) -> Void in
+            //对schoolRankListItem进行操作
+        }
+        
+        
     }
 
     override func viewWillAppear(animated: Bool) {
