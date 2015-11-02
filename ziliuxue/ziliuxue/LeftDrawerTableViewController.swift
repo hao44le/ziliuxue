@@ -112,21 +112,6 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         tableView(self.tableView, willSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
         tableView(self.tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
-        /*
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
-        let imageView = cell!.viewWithTag(1111) as! UIImageView
-        let label = cell!.viewWithTag(2222) as! UILabel
-        label.textColor = Utils.mainColor
-        imageView.image = UIImage(named: "studyPlan")
-        */
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.tableView.tableHeaderView = headView
     }
@@ -220,9 +205,9 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         case 1:
             cell!.textLabel?.text = "            我的学校"
             imageView =  UIImageView(image: UIImage(named: "mySchool_"))
-        case 6:
-            cell!.textLabel?.text = "            个人信息"
-            imageView =  UIImageView(image: UIImage(named: "personalInfo_"))
+//        case 6:
+//            cell!.textLabel?.text = "            个人信息"
+//            imageView =  UIImageView(image: UIImage(named: "personalInfo_"))
             
         case 7:
             cell!.textLabel?.text = "            登出"
@@ -280,10 +265,10 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
             let label1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(2222) as! UILabel
             label1.textColor = UIColor.grayColor()
             
-            let image6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(1111) as! UIImageView
-            image6.image = UIImage(named: "personalInfo_")
-            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label6.textColor = UIColor.grayColor()
+//            let image6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(1111) as! UIImageView
+//            image6.image = UIImage(named: "personalInfo_")
+//            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
+//            label6.textColor = UIColor.grayColor()
             
             
             let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
@@ -298,8 +283,8 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
             label0.textColor = UIColor.grayColor()
             
             
-            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label6.textColor = UIColor.grayColor()
+//            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
+//            label6.textColor = UIColor.grayColor()
             
             
             let label7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(2222) as! UILabel
@@ -308,32 +293,32 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
             let image0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image0.image = UIImage(named: "findCollege_")
             
-            let image6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(1111) as! UIImageView
-            image6.image = UIImage(named: "personalInfo_")
+//            let image6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(1111) as! UIImageView
+//            image6.image = UIImage(named: "personalInfo_")
             
             let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image7.image = UIImage(named: "logout_")
             
-        case 6:
-            imageView.image = UIImage(named: "personalInfo")
-            
-            let label0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label0.textColor = UIColor.grayColor()
-            
-            let label1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label1.textColor = UIColor.grayColor()
-            
-            let label7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label7.textColor = UIColor.grayColor()
-            
-            let image1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(1111) as! UIImageView
-            image1.image = UIImage(named: "mySchool_")
-            
-            let image0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(1111) as! UIImageView
-            image0.image = UIImage(named: "findCollege_")
-            
-            let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
-            image7.image = UIImage(named: "logout_")
+//        case 6:
+//            imageView.image = UIImage(named: "personalInfo")
+//            
+//            let label0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(2222) as! UILabel
+//            label0.textColor = UIColor.grayColor()
+//            
+//            let label1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(2222) as! UILabel
+//            label1.textColor = UIColor.grayColor()
+//            
+//            let label7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(2222) as! UILabel
+//            label7.textColor = UIColor.grayColor()
+//            
+//            let image1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(1111) as! UIImageView
+//            image1.image = UIImage(named: "mySchool_")
+//            
+//            let image0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(1111) as! UIImageView
+//            image0.image = UIImage(named: "findCollege_")
+//            
+//            let image7 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 7, inSection: 0))!.viewWithTag(1111) as! UIImageView
+//            image7.image = UIImage(named: "logout_")
             
         case 7:
             imageView.image = UIImage(named: "studyPlan")
@@ -344,10 +329,10 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
             let label1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.viewWithTag(2222) as! UILabel
             label1.textColor = UIColor.grayColor()
             
-            let image6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(1111) as! UIImageView
-            image6.image = UIImage(named: "personalInfo_")
-            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
-            label6.textColor = UIColor.grayColor()
+//            let image6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(1111) as! UIImageView
+//            image6.image = UIImage(named: "personalInfo_")
+//            let label6 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 6, inSection: 0))!.viewWithTag(2222) as! UILabel
+//            label6.textColor = UIColor.grayColor()
             
             let image0 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.viewWithTag(1111) as! UIImageView
             image0.image = UIImage(named: "findCollege")
@@ -375,8 +360,8 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SchoolRankViewController") as! SchoolRankViewController
         case 1:
             vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("secondTab") as! SecondTabViewController
-        case 6:
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalInfoTab") as! PersonalInfoViewController
+//        case 6:
+//            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("personalInfoTab") as! PersonalInfoViewController
             
         case 7:
             LocalStore.setLogout()

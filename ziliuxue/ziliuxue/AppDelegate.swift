@@ -22,12 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
-        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
-        
-        let settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
-        
-        application.registerUserNotificationSettings( settings )
-        application.registerForRemoteNotifications()
+//        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
+//        
+//        let settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
+//        
+//        application.registerUserNotificationSettings( settings )
+//        application.registerForRemoteNotifications()
         
         
         
@@ -80,7 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.All
         
         self.window?.rootViewController = self.drawerController
-   
+        
+        Tool.showIntroView(self.drawerController.view)
         
         // Override point for customization after application launch.
         return true

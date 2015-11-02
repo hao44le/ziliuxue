@@ -42,8 +42,8 @@
 #import "CompressingLogFileManager.h"
 
 
-#import "MCCardPickerCollectionViewController.h"
-#import "MCSampleCardCollectionViewCell.h"
+#import "MCCardPickerCollectionViewController.h" 
+#import "EAIntroView.h"
 
 #import "pinyin.h"
 

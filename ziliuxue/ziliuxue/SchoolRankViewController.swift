@@ -41,6 +41,7 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         super.viewWillAppear(animated)
         
         
+
 //        if !LocalStore.isIntroVisited(){
 //            if !LocalStore.isLogined(){
 //                self.performSegueWithIdentifier("toLogin", sender: self)

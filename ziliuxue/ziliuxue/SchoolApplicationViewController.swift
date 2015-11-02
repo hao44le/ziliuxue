@@ -11,7 +11,7 @@ import UIKit
 class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
 
-    
+    var source = ""
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     
@@ -181,11 +181,35 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if source == "mySchool" {
+            let dismissButton = UIButton(type:UIButtonType.Custom)
+            dismissButton.frame = CGRectMake(10, 30, 25, 25)
+            
+            dismissButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+            dismissButton.setImage(UIImage(named:"return"), forState: UIControlState.Normal)
+            backgroundScrollView.addSubview(dismissButton)
+            
+            let titleLabel = UILabel(frame: CGRectMake(15, 30, self.view.frame.width - 30, 25))
+            titleLabel.text = "申请信息"
+            titleLabel.textAlignment = NSTextAlignment.Center
+            backgroundScrollView.addSubview(titleLabel)
+            
+        }
+
         self.navigationItem.title = "申请信息"
         
     }
-
+    func back(){
+        
+        self.navigationController!.popViewControllerAnimated(true)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        if source == "mySchool"{
+            return true
+        }
+        return false
+    }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if tableView == applicationMethodTableView {
             return self.methodHeader.count
@@ -328,15 +352,35 @@ class SchoolApplicationViewController: UIViewController,UITableViewDataSource,UI
         //cell.layer.shouldRasterize = true
         if detailTextLabel.text == "Yes" {
             detailTextLabel.removeFromSuperview()
-            let imageView = UIImageView(image: UIImage(named: "yes"))
-            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 10, 25, 25)
+            let imageView = UIImageView(image: UIImage(named: "Yes"))
+            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 25/2, 25, 25)
             cell.addSubview(imageView)
             //cell.imageView?.image = UIImage(named: "yes")
-        } else if detailTextLabel.text == "No" {
+        } else if detailTextLabel.text == "No" || detailTextLabel.text == "N/A"{
             
             detailTextLabel.removeFromSuperview()
-            let imageView = UIImageView(image: UIImage(named: "no"))
-            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 10, 25, 25)
+            let imageView = UIImageView(image: UIImage(named: "No"))
+            imageView.frame = CGRectMake(cell.frame.width - 72, cell.frame.height / 2 - 25/2, 25, 25)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Very important" {
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Very important"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Considered"{
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Considered"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Not Considered" {
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Not Considered"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
+            cell.addSubview(imageView)
+        } else if detailTextLabel.text == "Important" {
+            detailTextLabel.removeFromSuperview()
+            let imageView = UIImageView(image: UIImage(named: "Important"))
+            imageView.frame = CGRectMake(cell.frame.width - 90, cell.frame.height / 2 - 30, 60, 60)
             cell.addSubview(imageView)
         }
         

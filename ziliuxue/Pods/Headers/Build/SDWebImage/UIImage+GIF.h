@@ -1,1 +1,0 @@
-../../../SDWebImage/SDWebImage.framework/Versions/A/Headers/UIImage+GIF.h
