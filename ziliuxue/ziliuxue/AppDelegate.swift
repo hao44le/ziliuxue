@@ -25,8 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]  as! String
         MobClick.setAppVersion(version)
         
-  
-        
+        let cls:AnyObject = NSClassFromString("UMANUtil")!
+        let sel = Selector("openUDIDString")
+        let deviceID = cls.performSelector(sel)
+        print(deviceID)
+ 
 //        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
 //        
 //        let settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
