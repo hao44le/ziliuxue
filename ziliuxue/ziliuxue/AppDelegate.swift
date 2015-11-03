@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        MobClick.startWithAppkey("5638676267e58e3c2a001a34", reportPolicy: BATCH, channelId: "")
+        let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]  as! String
+        MobClick.setAppVersion(version)
+        
+  
         
 //        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
 //        

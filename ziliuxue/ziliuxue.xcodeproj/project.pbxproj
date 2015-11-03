@@ -38,6 +38,8 @@
 		7BE94CF31BE75DBD00AE2DFD /* FindSchoolServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE94CF21BE75DBD00AE2DFD /* FindSchoolServer.swift */; };
 		7BE94CF61BE75DD900AE2DFD /* SchoolRankListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE94CF51BE75DD900AE2DFD /* SchoolRankListItem.swift */; };
 		7BE94CF81BE7696F00AE2DFD /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE94CF71BE7696F00AE2DFD /* NetWorkManager.swift */; };
+		7BE94D041BE89F7900AE2DFD /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE94D011BE89F7900AE2DFD /* libMobClickLibrary.a */; };
+		7BE94D061BE89FB800AE2DFD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE94D051BE89FB800AE2DFD /* libz.tbd */; };
 		C00377461BC4B8BA00BF8A72 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00377451BC4B8BA00BF8A72 /* Logging.swift */; };
 		C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C008A93D1B4FDBC00014554F /* libWeChatSDK.a */; };
 		C008A9421B4FDBC00014554F /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C008A93E1B4FDBC00014554F /* read_me.txt */; };
@@ -213,6 +215,10 @@
 		7BE94CF21BE75DBD00AE2DFD /* FindSchoolServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindSchoolServer.swift; sourceTree = "<group>"; };
 		7BE94CF51BE75DD900AE2DFD /* SchoolRankListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolRankListItem.swift; sourceTree = "<group>"; };
 		7BE94CF71BE7696F00AE2DFD /* NetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkManager.swift; sourceTree = "<group>"; };
+		7BE94D011BE89F7900AE2DFD /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		7BE94D021BE89F7900AE2DFD /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		7BE94D031BE89F7900AE2DFD /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		7BE94D051BE89FB800AE2DFD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C00377451BC4B8BA00BF8A72 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		C008A93D1B4FDBC00014554F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		C008A93E1B4FDBC00014554F /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
@@ -369,6 +375,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BE94D061BE89FB800AE2DFD /* libz.tbd in Frameworks */,
 				7B0890C21B88942B00EB352B /* CoreGraphics.framework in Frameworks */,
 				7B0890C01B88942100EB352B /* Foundation.framework in Frameworks */,
 				7B0890BF1B88941900EB352B /* UIKit.framework in Frameworks */,
@@ -388,6 +395,7 @@
 				C031C22A1B4F726B00277833 /* MapKit.framework in Frameworks */,
 				C008A9411B4FDBC00014554F /* libWeChatSDK.a in Frameworks */,
 				47CF44BAB11326517D1316EB /* libPods.a in Frameworks */,
+				7BE94D041BE89F7900AE2DFD /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +414,7 @@
 		6B06404AC2686512A5297FAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BE94D051BE89FB800AE2DFD /* libz.tbd */,
 				7B0890C11B88942B00EB352B /* CoreGraphics.framework */,
 				7B0890BD1B88940E00EB352B /* CoreText.framework */,
 				7B0890BB1B88940600EB352B /* CoreTelephony.framework */,
@@ -534,6 +543,16 @@
 				7BE94CF71BE7696F00AE2DFD /* NetWorkManager.swift */,
 			);
 			name = CommonUtility;
+			sourceTree = "<group>";
+		};
+		7BE94CFB1BE89F6700AE2DFD /* UMAnalytics_Sdk_3.6.5 */ = {
+			isa = PBXGroup;
+			children = (
+				7BE94D011BE89F7900AE2DFD /* libMobClickLibrary.a */,
+				7BE94D021BE89F7900AE2DFD /* MobClick.h */,
+				7BE94D031BE89F7900AE2DFD /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.6.5;
 			sourceTree = "<group>";
 		};
 		C008A93C1B4FDBC00014554F /* WeChatSDK_1.5 */ = {
@@ -936,6 +955,7 @@
 		C0F5C0E71B3FC59800A2FA14 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7BE94CFB1BE89F6700AE2DFD /* UMAnalytics_Sdk_3.6.5 */,
 				7B0883741BE3638500CEB641 /* PinYinSort */,
 				C08C268A1BE65DA400ACBE7A /* EAIntro */,
 				C0AE73A41BE2EE7C007843EE /* Charts */,
@@ -1351,6 +1371,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ziliuxue/WeChatSDK_1.5",
+					"$(PROJECT_DIR)/ziliuxue/UMAnalytics_Sdk_3.6.5",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "geleichen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "自留学";
@@ -1375,6 +1396,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ziliuxue/WeChatSDK_1.5",
+					"$(PROJECT_DIR)/ziliuxue/UMAnalytics_Sdk_3.6.5",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "geleichen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "自留学";

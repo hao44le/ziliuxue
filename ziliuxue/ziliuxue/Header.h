@@ -22,6 +22,8 @@
 #import "WYPopoverController.h"
 
 
+#import "MobClick.h"
+#import "MobClickSocialAnalytics.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
 //#import "WeiboSDK.h"
