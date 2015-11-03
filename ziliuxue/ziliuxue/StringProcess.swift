@@ -53,5 +53,56 @@ func sortedStringByPinYinFirstChar(stringsToSort:NSArray)->NSArray{
     
 }
 
+func sortedPinYinFirstCharByPinYinFirstChar(stringsToSort:NSArray)->NSArray{
+    let chineseStringsArray = NSMutableArray()
+    
+    for i in 0..<stringsToSort.count{
+        let chineseString = ChineseString()
+        chineseString.originalString = String(stringsToSort.objectAtIndex(i))
+        
+        if nil == chineseString.originalString{
+            chineseString.originalString = ""
+        }
+        
+        if !(chineseString.originalString == "") {
+            let pinYinResult = NSMutableString()
+            for j in 0..<chineseString.originalString.length{
+                
+                let string:NSString = chineseString.originalString
+                
+                let singlePinyinLetter = NSString(format: "%c", pinyinFirstLetter(string.characterAtIndex(j))).uppercaseString
+                pinYinResult.appendString(singlePinyinLetter)
+            }
+            chineseString.pinYin = pinYinResult as String
+        }else{
+            chineseString.pinYin = ""
+        }
+        chineseStringsArray.addObject(chineseString)
+    }
+    
+    //按照拼音首字母对这些Strings进行排序
+    let sortDescriptors = NSArray(array: [NSSortDescriptor(key: "pinYin", ascending: true)])
+    chineseStringsArray.sortUsingDescriptors(sortDescriptors as! [NSSortDescriptor])
+    
+    
+    let resultArray = NSMutableArray()
+    for i in 0..<chineseStringsArray.count{
+        let chineseString = chineseStringsArray[i] as! ChineseString
+        if i >= 1{
+            let lastString = chineseStringsArray[i - 1] as! ChineseString
+            if (lastString.pinYin as NSString).substringToIndex(1) != (chineseString.pinYin  as NSString).substringToIndex(1){
+                resultArray.addObject((chineseString.pinYin as NSString).substringToIndex(1))
+            }
+        }else{
+            resultArray.addObject((chineseString.pinYin as NSString).substringToIndex(1))
+        }
+        
+    }
+    
+    return resultArray
+    
+}
+
+
 
 

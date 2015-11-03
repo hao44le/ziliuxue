@@ -12,7 +12,7 @@ class NetWorkManager: AFHTTPRequestOperationManager {
     
     init(){
         super.init(baseURL: nil)
-        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as! String
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
 
         self.securityPolicy.allowInvalidCertificates = true
         self.securityPolicy.validatesDomainName = false

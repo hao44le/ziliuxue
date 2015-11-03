@@ -54,9 +54,10 @@ class SchoolRankFilterView: UIView,UITableViewDataSource,UITableViewDelegate,UIS
     var postgraduateCell:SchoolRankFilterCellView!
     var tableView:UITableView!
     
-    var tableViewData = ["航空与航空工程专业","生物与农业专业","软件工程","计算机科学与工程","电子电气与通讯工程","经济管理专业","仪器科学工程","刑法专业","抓人专业","考古文学","应用数学专业","艺术专业","人文社科专业","信息科学工程","当科学家专业","滥用毒品和酒精研究生专业","你编不下去了","那我也遍不下去了专业","谁爱编谁来编吧","反正我是不编了专业"]
+    var data = ["航空与航空工程专业","生物与农业专业","软件工程","计算机科学与工程","电子电气与通讯工程","经济管理专业","仪器科学工程","刑法专业","抓人专业","考古文学","应用数学专业","艺术专业","人文社科专业","信息科学工程","当科学家专业","滥用毒品和酒精研究生专业","你编不下去了","那我也遍不下去了专业","谁爱编谁来编吧","反正我是不编了专业"]
     
-    var data = sortedStringByPinYinFirstChar(["航空与航空工程专业","生物与农业专业","软件工程","计算机科学与工程","电子电气与通讯工程","经济管理专业","仪器科学工程","刑法专业","抓人专业","考古文学","应用数学专业","艺术专业","人文社科专业","信息科学工程","当科学家专业","滥用毒品和酒精研究生专业","你编不下去了","那我也遍不下去了专业","谁爱编谁来编吧","反正我是不编了专业"])
+    var tableViewData:NSArray!
+    var indexData:[String]!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,6 +78,10 @@ class SchoolRankFilterView: UIView,UITableViewDataSource,UITableViewDelegate,UIS
         self.addSubview(self.postgraduateCell)
         
         self.postgraduateCell.button?.addTarget(self, action: Selector("postgraduateButtonClicked"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.tableViewData = sortedStringByPinYinFirstChar(self.data)
+        self.indexData = sortedPinYinFirstCharByPinYinFirstChar(self.data) as! [String]
+        
         
         
     }
@@ -134,7 +139,7 @@ class SchoolRankFilterView: UIView,UITableViewDataSource,UITableViewDelegate,UIS
 
         }
         
-        cell?.label?.text = self.data[indexPath.row] as? String
+        cell?.label?.text = self.tableViewData[indexPath.row] as? String
         
         return cell!
     }
@@ -171,12 +176,18 @@ class SchoolRankFilterView: UIView,UITableViewDataSource,UITableViewDelegate,UIS
     
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        return ["A","B","C","D","E","F","G","H","I"]
+        
+        return self.indexData
     }
     
-//    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-//        
-//    }
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        
+        print(title)
+//        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 5, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        
+        return 1
+        
+    }
     
     
     
