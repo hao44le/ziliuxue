@@ -163,6 +163,12 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         
         let width = self.view.frame.width
         
+        
+
+        
+        
+        
+        
         let backgroundImageView = UIImageView(frame: CGRectMake(0, 0, width, 222.5))
         backgroundImageView.image = UIImage(named: backgroundImageName)
         backgroundImageView.contentMode = UIViewContentMode.ScaleToFill
@@ -615,6 +621,8 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(cost_info_board_ImageView.frame) + 10)
        
+        
+        
         scrollView.addSubview(backgroundImageView)
         scrollView.addSubview(avatarImageView)
         scrollView.addSubview(universityChineseNameLabel)
@@ -759,9 +767,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     }
     
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+
     
     // MARK: - Navigation
     

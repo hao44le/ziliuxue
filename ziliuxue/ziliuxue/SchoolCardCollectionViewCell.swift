@@ -45,6 +45,16 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let width = self.frame.width
+        let infoCardImageView = UIImageView(frame: CGRectMake(0, 0, width, self.frame.height))
+        if DeviceType.IS_IPHONE_6 {
+            infoCardImageView.image = UIImage(named: "school basic info card-6")
+        } else if DeviceType.IS_IPHONE_6P {
+            infoCardImageView.image = UIImage(named: "1")
+        } else if DeviceType.IS_IPHONE_5 {
+            infoCardImageView.image = UIImage(named: "school basic info card-5 5s")
+        } else if DeviceType.IS_IPHONE_4_OR_LESS {
+            infoCardImageView.image = UIImage(named: "school basic info card-4 4s")
+        }
         
         let backgroundImageView = UIImageView(frame: CGRectMake(0, 0, width, 222.5))
         backgroundImageView.image = UIImage(named: backgroundImageName)
@@ -172,7 +182,7 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
         
         
         pieChartView.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: ChartEasingOption.EaseOutBack)
-        
+        self.addSubview(infoCardImageView)
         self.addSubview(backgroundImageView)
         self.addSubview(avatarImageView)
         self.addSubview(universityChineseNameLabel)

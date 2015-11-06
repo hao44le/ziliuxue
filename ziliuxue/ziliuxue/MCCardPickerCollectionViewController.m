@@ -367,6 +367,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 {
 	CGRect frame = self.view.bounds;
 	frame.size.width -= self.layout.sectionInset.left + self.layout.sectionInset.right;
+    //printf("%f",frame.size.width);
 	frame.size.height = CGRectGetHeight(self.collectionViewFrame) - self.layout.sectionInset.top;
 	return frame.size;
 }
