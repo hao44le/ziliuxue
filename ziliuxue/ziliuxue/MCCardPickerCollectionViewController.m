@@ -41,7 +41,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 {
 	[super loadView];
 
-	self.view.backgroundColor = [UIColor blackColor];
+	self.view.backgroundColor = [UIColor colorWithRed:1.0f/255.0f green:122.0f/255.0f blue:195.0f/255.0f alpha:1.0f];
 
 	self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, CGRectGetWidth(self.view.frame), 40)];
 	[self.view addSubview:self.headerView];
@@ -72,8 +72,6 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
     
     
 	[self.view addSubview:self.dismissButton];
-
-
     
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(hanldePan:)];
 	pan.delegate = self;
@@ -252,7 +250,8 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 		self.collectionView.frame = [self collectionViewFrame];
 		self.headerView.alpha = 1;
 		self.dismissButton.alpha = 1;
-		self.view.backgroundColor = [UIColor blackColor];
+        self.view.backgroundColor = [UIColor colorWithRed:1.0f/255.0f green:122.0f/255.0f blue:195.0f/255.0f alpha:1.0f];
+
 	} completion:NULL];
 }
 
