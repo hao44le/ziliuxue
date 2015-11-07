@@ -128,7 +128,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         
         cardViewController.delegate = self
         cardViewController.collectionView.registerClass(SchoolCardCollectionViewCell.self, forCellWithReuseIdentifier: kCellIdentifier)
-        cardViewController.collectionView.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
+        cardViewController.collectionView.backgroundColor = UIColor(red: 236/255, green: 235/255, blue: 235/255, alpha: 1)
         
         cardViewController.presentInViewController(self)
         
@@ -151,7 +151,10 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: SchoolCardCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! SchoolCardCollectionViewCell
         cell.layer.cornerRadius = 5
-        cell.layer.masksToBounds = true
+        cell.layer.shadowOffset = CGSizeMake(0, 3)
+        cell.layer.shadowOpacity = 0.4
+        cell.layer.shadowRadius = 3
+        
         return cell
     }
     func cardPickerCollectionViewController(cardPickerCollectionViewController: MCCardPickerCollectionViewController!, preparePresentingView presentingView: UIView!, fromSelectedCell cell: UICollectionViewCell!) {
