@@ -213,7 +213,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 {
 	UIView *parentView = viewController.view;
 	self.view.frame = CGRectOffset(parentView.frame, 0, CGRectGetHeight(parentView.frame));
-	[UIView animateWithDuration:0.55 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		[parentView addSubview:self.view];
 		self.view.frame = parentView.frame;
 	} completion:^(BOOL finished) {
