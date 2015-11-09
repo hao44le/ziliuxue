@@ -151,10 +151,11 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: SchoolCardCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! SchoolCardCollectionViewCell
         cell.layer.cornerRadius = 5
-        cell.layer.shadowOffset = CGSizeMake(0, 3)
-        cell.layer.shadowOpacity = 0.4
-        cell.layer.shadowRadius = 3
         
+
+        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderWidth = 0.1
+        cell.layer.masksToBounds = true
         return cell
     }
     func cardPickerCollectionViewController(cardPickerCollectionViewController: MCCardPickerCollectionViewController!, preparePresentingView presentingView: UIView!, fromSelectedCell cell: UICollectionViewCell!) {
@@ -195,12 +196,15 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         universityEnglishNameLabel.textColor = UIColor.whiteColor()
         universityEnglishNameLabel.font = UIFont.systemFontOfSize(9.5)
         
-        let universityLocationLabel = UILabel(frame: CGRectMake(width / 2 - 30.5,183,61,15))
+        let universityLocationLabel = UILabel(frame: CGRectMake(width / 2 - 30.5,183,61,30))
         universityLocationLabel.text = universityLocation
         universityLocationLabel.textAlignment = NSTextAlignment.Center
         universityLocationLabel.textColor = UIColor.whiteColor()
         universityLocationLabel.font = UIFont.systemFontOfSize(6.0)
-        
+        universityLocationLabel.numberOfLines = 1
+        universityLocationLabel.adjustsFontSizeToFitWidth = true
+        universityLocationLabel.sizeToFit()
+        universityLocationLabel.lineBreakMode = .ByWordWrapping
         
         let universityDescriptionLabel = UILabel(frame: CGRectMake(10,225,width - 20,64))
         universityDescriptionLabel.text = universityDescription

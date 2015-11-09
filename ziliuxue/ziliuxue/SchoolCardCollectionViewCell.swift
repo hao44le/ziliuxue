@@ -92,6 +92,10 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
         universityLocationLabel.textAlignment = NSTextAlignment.Center
         universityLocationLabel.textColor = UIColor.whiteColor()
         universityLocationLabel.font = UIFont(name: "Avenir-Light", size: 12)
+        universityLocationLabel.numberOfLines = 1
+        universityLocationLabel.adjustsFontSizeToFitWidth = true
+        
+        
         
         let universityLocationImageView = UIImageView(frame: CGRectMake(width / 2 - 45,180.5+17.5,10,10))
         universityLocationImageView.image = UIImage(named: "location")
@@ -103,6 +107,7 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
         universityDescriptionLabel.textColor = UIColor.blackColor()
         universityDescriptionLabel.font = UIFont.systemFontOfSize(11)
         universityDescriptionLabel.numberOfLines = 3
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 2
         
@@ -324,7 +329,7 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             faxLabel.numberOfLines = 2
             
             
-            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height ,60,13))
+            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height - 85,60,13))
             similarSchoolLabel.text = "相似学校"
             similarSchoolLabel.textAlignment = NSTextAlignment.Center
             similarSchoolLabel.textColor = UIColor.blackColor()
