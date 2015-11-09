@@ -43,8 +43,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVE-jt-93m">
-                    <rect key="frame" x="10" y="40" width="60" height="60"/>
+                    <rect key="frame" x="10" y="40" width="242" height="60"/>
                     <animations/>
+                    <connections>
+                        <action selector="avatarOrNameClicked:" destination="-1" eventType="touchUpInside" id="wtN-ZA-Xib"/>
+                    </connections>
                 </button>
             </subviews>
             <animations/>
@@ -52,7 +55,7 @@
             <constraints>
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="top" secondItem="Ocf-Eo-sqj" secondAttribute="top" constant="40" id="2wl-dJ-UUW"/>
                 <constraint firstItem="EVE-jt-93m" firstAttribute="bottom" secondItem="k7N-Lp-sny" secondAttribute="bottom" id="7MQ-5o-IRL"/>
-                <constraint firstItem="8jy-AB-2Oa" firstAttribute="leading" secondItem="EVE-jt-93m" secondAttribute="trailing" constant="8" symbolic="YES" id="JyF-DJ-Ic7"/>
+                <constraint firstItem="8jy-AB-2Oa" firstAttribute="leading" secondItem="EVE-jt-93m" secondAttribute="trailing" constant="-174" id="JyF-DJ-Ic7"/>
                 <constraint firstItem="k7N-Lp-sny" firstAttribute="leading" secondItem="Ocf-Eo-sqj" secondAttribute="leading" constant="10" id="M5k-KN-sqv"/>
                 <constraint firstItem="8jy-AB-2Oa" firstAttribute="leading" secondItem="k7N-Lp-sny" secondAttribute="trailing" constant="8" symbolic="YES" id="OpU-dF-IFZ"/>
                 <constraint firstItem="EVE-jt-93m" firstAttribute="top" secondItem="k7N-Lp-sny" secondAttribute="top" id="XwR-1J-bzH"/>

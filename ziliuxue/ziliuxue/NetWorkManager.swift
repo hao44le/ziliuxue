@@ -12,11 +12,17 @@ class NetWorkManager: AFHTTPRequestOperationManager {
     
     init(){
         super.init(baseURL: nil)
-        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
-
+        
         self.securityPolicy.allowInvalidCertificates = true
         self.securityPolicy.validatesDomainName = false
-        self.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        
+        
+        let token =  NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
+
+        if nil != token{
+            self.requestSerializer.setValue(token, forHTTPHeaderField: "x-access-token")
+        }
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

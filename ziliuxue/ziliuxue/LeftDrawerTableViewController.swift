@@ -15,12 +15,71 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet weak var userName: UILabel!
     @IBOutlet var headView: UIView!
     
+    var loginBarrier:LoginBarrier!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "postweChatInfo:", name: "postweChatInfo", object: nil)
+        
+        self.loginBarrier = LoginBarrier()
+        
+        self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
+        self.userImage.clipsToBounds = true
+        self.userImage.layer.borderWidth = 3
+        self.userImage.layer.borderColor = UIColor.whiteColor().CGColor
+        self.tableView.reloadData()
+        tableView(self.tableView, willSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
+        tableView(self.tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        
+        self.tableView.tableHeaderView = headView
+    }
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let loginWay = NSUserDefaults.standardUserDefaults().objectForKey("loginWay") as? String {
+            if loginWay == "weChat" {
+                if let nickname = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userNickname") as? String {
+                    userName.text = nickname
+                }
+                
+                if !NSUserDefaults.standardUserDefaults().boolForKey("selectImageForUserAvatar") {
+                    if let imgURL = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userImageUrl") as? String {
+                        userImage.sd_setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "defaultImage"))
+                    }
+                }
+                
+            } else if loginWay == "ziliuxue" {
+                if let nickName = NSUserDefaults.standardUserDefaults().objectForKey("nickName") as? String {
+                    userName.text = nickName
+                    if !NSUserDefaults.standardUserDefaults().boolForKey("selectImageForUserAvatar") {
+                        userImage.image = UIImage(named: "defaultImage")
+                    }
+                    
+                }
+            }
+        }
+
+    }
+    
+    
+    @IBAction func avatarOrNameClicked(sender: AnyObject) {
+        
+        
+        self.loginBarrier.checkLoginAndDoBlock { () -> Void in
+            
+        }
+        
+    }
     
     
     @IBAction func imageButtonTouched(sender: UIButton) {
         
         let alertController = UIAlertController(title: "更新头像", message: nil, preferredStyle: .ActionSheet)
-        
         
         let goAction = UIAlertAction(title: "相册", style: .Default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
@@ -86,6 +145,8 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         
         alertController.view.tintColor = UIColor.blackColor()
     }
+    
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "selectImageForUserAvatar")
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -99,59 +160,7 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "postweChatInfo:", name: "postweChatInfo", object: nil)
-        
-        self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
-        self.userImage.clipsToBounds = true
-        self.userImage.layer.borderWidth = 3
-        self.userImage.layer.borderColor = UIColor.whiteColor().CGColor
-        self.tableView.reloadData()
-        tableView(self.tableView, willSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
-        self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
-        tableView(self.tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
-        
-        self.tableView.tableHeaderView = headView
-    }
     
-    
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let loginWay = NSUserDefaults.standardUserDefaults().objectForKey("loginWay") as? String {
-            if loginWay == "weChat" {
-                if let nickname = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userNickname") as? String {
-                    userName.text = nickname
-                }
-                
-                if !NSUserDefaults.standardUserDefaults().boolForKey("selectImageForUserAvatar") {
-                    if let imgURL = NSUserDefaults.standardUserDefaults().objectForKey("weChat_userImageUrl") as? String {
-                        userImage.sd_setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "defaultImage"))
-                    }
-                }
-                
-            } else if loginWay == "ziliuxue" {
-                if let nickName = NSUserDefaults.standardUserDefaults().objectForKey("nickName") as? String {
-                    userName.text = nickName
-                    if !NSUserDefaults.standardUserDefaults().boolForKey("selectImageForUserAvatar") {
-                        userImage.image = UIImage(named: "defaultImage")
-                    }
-                    
-                }
-            }
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-    }
     func postweChatInfo(notification:NSNotification){
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "selectImageForUserAvatar")
         let userInfo : NSDictionary = notification.userInfo!
