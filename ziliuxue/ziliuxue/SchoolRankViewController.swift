@@ -15,6 +15,10 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
     var server:FindSchoolServer!
     
     var rankFilterView:SchoolRankFilterView!
+    var rankFilterViewIsShown:Bool = false
+    
+    var filterButton:UIButton!
+    
     
     var chineseName = ["普利斯顿大学","哈佛大学","哥伦比亚大学","怪物大学","普度大学","伊利诺伊大学香槟分校","霍格沃茨大学"]
     var englishName = ["Princeton University","Harvard University","Columbia University","Monster University","Purdue University","University of llinois Urbanna-Champaign","Hogwarts University"]
@@ -29,11 +33,11 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         self.navigationItem.title = "学校综合排名"
         self.setupLeftMenuButton()
 
-        let filterButton = UIButton(type: UIButtonType.Custom)
-        filterButton.frame = CGRectMake(0, 0, 75, 44)
-        filterButton.setTitle("更多排名", forState: UIControlState.Normal)
-        filterButton.titleLabel!.textColor = UIColor.whiteColor()
-        filterButton.addTarget(self, action: Selector("filterButtonClicked"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.filterButton = UIButton(type: UIButtonType.Custom)
+        self.filterButton.frame = CGRectMake(0, 0, 75, 44)
+        self.filterButton.setTitle("更多排名", forState: UIControlState.Normal)
+        self.filterButton.titleLabel!.textColor = UIColor.whiteColor()
+        self.filterButton.addTarget(self, action: Selector("filterButtonClicked"), forControlEvents: UIControlEvents.TouchUpInside)
 
         let filterButtonItem = UIBarButtonItem(customView: filterButton)
         self.navigationItem.rightBarButtonItem = filterButtonItem
@@ -94,21 +98,36 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
     func filterButtonClicked(){
         
         if nil == self.rankFilterView{
-            self.rankFilterView = SchoolRankFilterView(frame: CGRectMake(0,64,ScreenSize.SCREEN_WIDTH,ScreenSize.SCREEN_HEIGHT - 64))
+            self.rankFilterView = SchoolRankFilterView(frame: CGRectMake(0,64 + ScreenSize.SCREEN_HEIGHT,ScreenSize.SCREEN_WIDTH,ScreenSize.SCREEN_HEIGHT - 64))
+            self.view.addSubview(self.rankFilterView)
         }
-   
-        self.view.addSubview(self.rankFilterView)
+        
+        if self.rankFilterViewIsShown{
+            self.filterButton.setTitle("更多排名", forState: UIControlState.Normal)
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.rankFilterView.frame = CGRectOffset(self.rankFilterView.frame, 0, ScreenSize.SCREEN_HEIGHT)
+                
+                }, completion: { (completion:Bool) -> Void in
+                    
+            })
+            self.rankFilterViewIsShown = false
+        }else{
+            self.filterButton.setTitle("取消", forState: UIControlState.Normal)
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.rankFilterView.frame = CGRectOffset(self.rankFilterView.frame, 0, -ScreenSize.SCREEN_HEIGHT)
+                
+                }, completion: { (completion:Bool) -> Void in
+                    
+            })
+            
+            self.rankFilterViewIsShown = true
+        }
+        
         
         
     }
 
-    
-    func dismissFilterView(){
-        
-        
-    }
-
- 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

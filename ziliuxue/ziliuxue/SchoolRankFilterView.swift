@@ -13,17 +13,24 @@ class SchoolRankFilterCellView: UIView {
     var button:UIButton?
     var indicatorImage:UIImageView?
     var lowerLine:UIView?
+    var effectView:UIVisualEffectView?
     
     init(frame: CGRect,buttonTitle:String?,indicatorImageName:String?){
         super.init(frame: frame)
         
         let upperLine = UIView(frame: CGRectMake(0,0,frame.width,1))
-        upperLine.backgroundColor = UIColor.whiteColor()
+        upperLine.backgroundColor = UIColor(white: 0.7, alpha: 1)
         self.addSubview(upperLine)
         
         self.lowerLine = UIView(frame: CGRectMake(0,frame.height - 1,frame.width,1))
-        self.lowerLine!.backgroundColor = UIColor.whiteColor()
+        self.lowerLine!.backgroundColor = UIColor(white: 0.7, alpha: 1)
         self.addSubview(self.lowerLine!)
+        
+//        let blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+//        self.effectView = UIVisualEffectView(effect: blur)
+//        self.effectView!.frame = CGRectMake(0, 1, self.frame.width, self.frame.height - 2)
+//        self.addSubview(self.effectView!)
+        self.backgroundColor = UIColor(white: 0.7, alpha: 0.1)
         
         if (buttonTitle != nil){
             self.button = UIButton(frame: CGRectMake(0, (frame.height - 35)/2, frame.width, 35))
@@ -32,10 +39,11 @@ class SchoolRankFilterCellView: UIView {
             self.button!.titleLabel?.textColor = UIColor.whiteColor()
             self.button!.titleLabel?.font = UIFont.boldSystemFontOfSize(18)
             self.addSubview(self.button!)
+        
         }
         
         if (indicatorImageName != nil){
-            self.indicatorImage = UIImageView(frame: CGRectMake(frame.width - 35, (frame.height - 20)/2, 20, 20))
+            self.indicatorImage = UIImageView(frame: CGRectMake(frame.width - 35, (frame.height - 6)/2, 11, 6))
             self.indicatorImage?.image = UIImage(named: indicatorImageName!)
             self.addSubview(self.indicatorImage!)
         }
@@ -74,7 +82,7 @@ class SchoolRankFilterView: UIView,UITableViewDataSource,UITableViewDelegate,UIS
         self.undergraduateCell = SchoolRankFilterCellView(frame: CGRectMake(0, CGRectGetMaxY(self.collegeCell.frame) + 10, frame.width, 40), buttonTitle: "本科生综合排名", indicatorImageName: nil)
         self.addSubview(self.undergraduateCell)
         
-        self.postgraduateCell = SchoolRankFilterCellView(frame: CGRectMake(0, CGRectGetMaxY(self.undergraduateCell.frame) + 10, frame.width, 40), buttonTitle: "研究生专业排名", indicatorImageName: "expandableImage")
+        self.postgraduateCell = SchoolRankFilterCellView(frame: CGRectMake(0, CGRectGetMaxY(self.undergraduateCell.frame) + 10, frame.width, 40), buttonTitle: "研究生专业排名", indicatorImageName: "filter_gradMajor_arrow")
         self.addSubview(self.postgraduateCell)
         
         self.postgraduateCell.button?.addTarget(self, action: Selector("postgraduateButtonClicked"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -114,10 +122,28 @@ class SchoolRankFilterView: UIView,UITableViewDataSource,UITableViewDelegate,UIS
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
                 self.postgraduateCell.lowerLine?.frame = CGRectOffset(self.postgraduateCell.lowerLine!.frame, 0, self.tableView.frame.height + 10)
+                let effectViewFrame = self.postgraduateCell.frame
+                self.postgraduateCell.frame = CGRectMake(effectViewFrame.origin.x,effectViewFrame.origin.y,effectViewFrame.width,effectViewFrame.height + self.tableView.frame.height + 10)
+                self.postgraduateCell.indicatorImage?.transform = CGAffineTransformMakeScale(1, -1)
                 
-                }) { (completion) -> Void in
+                }) { (completion:Bool) -> Void in
                     self.addSubview(self.tableView)
             }
+        }else{
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                
+                
+                self.tableView.removeFromSuperview()
+                
+                let effectViewFrame = self.postgraduateCell.frame
+                self.postgraduateCell.frame = CGRectMake(effectViewFrame.origin.x,effectViewFrame.origin.y,effectViewFrame.width,effectViewFrame.height - self.tableView.frame.height - 10)
+                self.postgraduateCell.lowerLine?.frame = CGRectOffset(self.postgraduateCell.lowerLine!.frame, 0, -(self.tableView.frame.height + 10))
+                self.postgraduateCell.indicatorImage?.transform = CGAffineTransformMakeScale(1, 1)
+                
+                }, completion: { (completion:Bool) -> Void in
+                    
+            })
         }
 
         

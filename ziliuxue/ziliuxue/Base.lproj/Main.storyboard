@@ -687,10 +687,12 @@
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="1vW-8a-J8a"/>
+                                                        <constraint firstAttribute="width" constant="30" id="1vW-8a-J8a">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="24"/>
+                                                        </constraint>
                                                         <constraint firstAttribute="height" constant="24" id="byO-XA-nYA"/>
                                                     </constraints>
-                                                    <state key="normal" backgroundImage="school_list_more"/>
+                                                    <state key="normal" backgroundImage="收藏星星边框"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="1vW-8a-J8a"/>
@@ -713,7 +715,7 @@
                                                 <constraint firstItem="XPS-2e-QSj" firstAttribute="top" secondItem="tkS-Q4-POh" secondAttribute="top" constant="5" id="H5c-QI-D2E"/>
                                                 <constraint firstItem="y96-Jt-KJP" firstAttribute="top" secondItem="CbQ-6U-Tkq" secondAttribute="top" id="P69-Ny-HHb"/>
                                                 <constraint firstItem="AVm-NZ-uXy" firstAttribute="leading" secondItem="5Wf-Zp-yMc" secondAttribute="trailing" constant="12" id="Pzy-Zz-mLg">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="-6"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                                 </constraint>
                                                 <constraint firstAttribute="trailing" secondItem="y56-JX-aID" secondAttribute="trailing" constant="5" id="TLv-uL-Icv"/>
                                                 <constraint firstItem="XPS-2e-QSj" firstAttribute="leading" secondItem="tkS-Q4-POh" secondAttribute="leading" constant="5" id="Z4G-8S-TXT"/>
@@ -3568,7 +3570,6 @@
         <image name="info_board_with_info_visualization" width="365" height="254"/>
         <image name="info_board_without_info_visualization" width="365" height="169"/>
         <image name="password" width="15" height="17"/>
-        <image name="school_list_more" width="22" height="18"/>
         <image name="school_list_no1" width="34" height="34"/>
         <image name="show_password" width="20" height="11"/>
         <image name="star_filled" width="25" height="25"/>
@@ -3576,6 +3577,7 @@
         <image name="weibo_button" width="332" height="49"/>
         <image name="weixin_button" width="332" height="49"/>
         <image name="zlxlogo" width="94" height="161"/>
+        <image name="收藏星星边框" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MWo-mD-W23"/>
