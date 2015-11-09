@@ -15,15 +15,13 @@ class LeftDrawerTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet weak var userName: UILabel!
     @IBOutlet var headView: UIView!
     
-    var loginBarrier:LoginBarrier!
+    var loginBarrier = LoginBarrier()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "postweChatInfo:", name: "postweChatInfo", object: nil)
-        
-        self.loginBarrier = LoginBarrier()
-        
+  
         self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2
         self.userImage.clipsToBounds = true
         self.userImage.layer.borderWidth = 3

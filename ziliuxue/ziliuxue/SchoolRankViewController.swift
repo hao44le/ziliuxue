@@ -15,9 +15,12 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
     var server:FindSchoolServer!
     
     var rankFilterView:SchoolRankFilterView!
-    var rankFilterViewIsShown:Bool = false
+    var rankFilterViewIsShown = false
     
     var filterButton:UIButton!
+    
+    var mandatoryLoginController = MandatoryLoginController()
+    var loginBarrier = LoginBarrier()
     
     
     var chineseName = ["普利斯顿大学","哈佛大学","哥伦比亚大学","怪物大学","普度大学","伊利诺伊大学香槟分校","霍格沃茨大学"]
@@ -155,10 +158,22 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
     }
 
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let vc = SchoolRankFilterViewController()
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        print(self.mandatoryLoginController.getSchoolDetailSeenTimes())
+        
+        if 3 <= self.mandatoryLoginController.getSchoolDetailSeenTimes(){
+            
+            Tool.showErrorHUD("请登录后查看更多学校")
+            
+        }else{
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("OverviewSchoolTabViewController") as? OverviewSchoolTabViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+            self.mandatoryLoginController.addSchoolDetailSeenTimes()
+        }
+        
+        
+    }
     
 
     /*
