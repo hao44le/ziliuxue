@@ -13,6 +13,7 @@ class SchoolRankCell: UITableViewCell {
     
     @IBOutlet var schoolLogoImage: UIImageView!
     
+    @IBOutlet var schoolRankNumImage: UIImageView!
     
     @IBOutlet var schoolChineseNameLabel: UILabel!
 
@@ -21,6 +22,7 @@ class SchoolRankCell: UITableViewCell {
     @IBOutlet var actionButton: UIButton!
     
     @IBOutlet var rankNumLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,5 +34,28 @@ class SchoolRankCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setCellWithItem(item:SchoolRankListItem){
+        
+        if 0 == item.schoolRankNum.integerValue{
+            
+            self.schoolRankNumImage.image = UIImage(named: "school_list_no1")
+        }else if 1 == item.schoolRankNum.integerValue{
+            self.schoolRankNumImage.image = UIImage(named: "school_list_no2")
+        }else if 2 == item.schoolRankNum.integerValue{
+            self.schoolRankNumImage.image = UIImage(named: "school_list_no3")
+        }else {
+            self.schoolRankNumImage.image = UIImage(named: "school_list_no")
+        }
+        
+        self.schoolChineseNameLabel.text = item.schoolChineseName as String
+        self.schoolEngNameLabel.text = item.schoolEnglishName as String
+        self.rankNumLabel.text = item.schoolRankNum as String
+        
+//        self.schoolLogoImage.sd_setImageWithURL(<#T##url: NSURL!##NSURL!#>, placeholderImage: UIImage(named: "school_list_no"))
+        
+        
+    }
+    
 
 }

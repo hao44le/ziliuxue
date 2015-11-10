@@ -10,8 +10,8 @@ import UIKit
 
 class SchoolRankListItem: NSObject {
     
-    var schoolLogoURL:String!
-    var schoolChineseName:String!
-    var schoolEnglishName:String!
-    var schoolRankNum:String!
+    var schoolLogoURL:NSString!
+    var schoolChineseName:NSString!
+    var schoolEnglishName:NSString!
+    var schoolRankNum:NSString!
 }

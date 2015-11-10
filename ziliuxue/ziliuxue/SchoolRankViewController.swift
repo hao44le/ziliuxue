@@ -136,18 +136,26 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.chineseName.count
+        if tableView == self.tableView{
+            
+            return self.chineseName.count
+        }else{
+            return 0
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        
         let cell:SchoolRankCell? = tableView.dequeueReusableCellWithIdentifier("schoolRankCell") as? SchoolRankCell
 
-        
-        cell?.rankNumLabel.text = String(indexPath.row)
-        cell?.schoolChineseNameLabel.text = self.chineseName[indexPath.row]
-        cell?.schoolEngNameLabel.text = self.englishName[indexPath.row]
-        
+        let item = SchoolRankListItem()
+        item.schoolChineseName = self.chineseName[indexPath.row]
+        item.schoolEnglishName = self.englishName[indexPath.row]
+        item.schoolRankNum = String(indexPath.row)
+    
+        cell?.setCellWithItem(item)
         if tableView == self.tableView{
             
             return cell!
@@ -159,9 +167,7 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print(self.mandatoryLoginController.getSchoolDetailSeenTimes())
-        
+
         if 3 <= self.mandatoryLoginController.getSchoolDetailSeenTimes(){
             
             Tool.showErrorHUD("请登录后查看更多学校")
