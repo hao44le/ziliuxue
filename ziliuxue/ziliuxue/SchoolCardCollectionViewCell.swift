@@ -329,7 +329,7 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             faxLabel.numberOfLines = 2
             
             
-            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height - 85,60,13))
+            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height - 100,60,13))
             similarSchoolLabel.text = "相似学校"
             similarSchoolLabel.textAlignment = NSTextAlignment.Center
             similarSchoolLabel.textColor = UIColor.blackColor()

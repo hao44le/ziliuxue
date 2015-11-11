@@ -73,6 +73,38 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     
     
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! SchoolCardCollectionViewCell
+        self.cardPickerCollectionViewController(self.cardViewController, preparePresentingView: self.cardViewController.presentingView, fromSelectedCell: cell)
+        
+        
+        var topOffSet : CGFloat! = 1
+        if DeviceType.IS_IPHONE_4_OR_LESS {
+            topOffSet = 52.5
+        } else if DeviceType.IS_IPHONE_5 {
+            topOffSet = 52.5
+        } else if DeviceType.IS_IPHONE_6 {
+            topOffSet = 53.6
+        } else if DeviceType.IS_IPHONE_6P {
+            topOffSet = 54.202899
+        }
+        
+        let t = CGAffineTransformMakeTranslation(0.0, topOffSet)
+        let s = CGAffineTransformMakeScale(1.0, 1.0)
+        self.cardViewController.presentingView.transform = CGAffineTransformConcat(t, s)
+        
+        UIView.animateWithDuration(1.5) { () -> Void in
+            cell.alpha = 0
+            self.cardViewController.presentingView.alpha = 1
+            let t = CGAffineTransformMakeTranslation(0.0, 0.0)
+            let s = CGAffineTransformMakeScale(1, 1)
+            self.cardViewController.presentingView.transform = CGAffineTransformConcat(t, s)
+        }
+        
+
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.universityArray.count
     }
@@ -80,8 +112,6 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: SchoolCardCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! SchoolCardCollectionViewCell
         cell.layer.cornerRadius = 5
-        
-        
         cell.layer.borderColor = UIColor.blackColor().CGColor
         cell.layer.borderWidth = 0.1
         cell.layer.masksToBounds = true
@@ -100,11 +130,12 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 1293+21+13 + 21 + 10)
         scrollView.backgroundColor = UIColor.whiteColor()
         scrollView.addSubview(view)
-        
+       
         presentingView.addSubview(scrollView)
         
     }
     
+
     
     func touch(button:UIButton){
         print(button.tag)
