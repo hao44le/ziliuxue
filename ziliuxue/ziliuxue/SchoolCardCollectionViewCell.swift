@@ -329,12 +329,26 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             faxLabel.numberOfLines = 2
             
             
-            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height - 85,60,13))
+            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height - 100 + 10,60,13))
             similarSchoolLabel.text = "相似学校"
             similarSchoolLabel.textAlignment = NSTextAlignment.Center
             similarSchoolLabel.textColor = UIColor.blackColor()
             similarSchoolLabel.font = UIFont.systemFontOfSize(12.5)
             similarSchoolLabel.numberOfLines = 1
+            
+            print(width)
+            
+            let schoolImageView1 = UIImageView(frame: CGRectMake(25,height - 100 + 20 + 13,50,50))
+            schoolImageView1.image = UIImage(named: "Stanford University logo")
+            
+            let schoolImageView2 = UIImageView(frame: CGRectMake(25 + 50 + 28,height - 100 + 20 + 13,50,50))
+            schoolImageView2.image = UIImage(named: "Stanford University logo")
+            
+            let schoolImageView3 = UIImageView(frame: CGRectMake(25 + 50*2 + 28*2 ,height - 100 + 20 + 13,50,50))
+            schoolImageView3.image = UIImage(named: "Stanford University logo")
+            
+            let schoolImageView4 = UIImageView(frame: CGRectMake(25 + 50*3 + 28*3 ,height - 100 + 20 + 13,50,50))
+            schoolImageView4.image = UIImage(named: "Stanford University logo")
             
             
             
@@ -349,6 +363,11 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             self.addSubview(faxImageView)
             self.addSubview(faxLabel)
             self.addSubview(similarSchoolLabel)
+            
+            self.addSubview(schoolImageView1)
+            self.addSubview(schoolImageView2)
+            self.addSubview(schoolImageView3)
+            self.addSubview(schoolImageView4)
             
         } else if DeviceType.IS_IPHONE_6P {
             
@@ -395,12 +414,26 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             faxLabel.numberOfLines = 2
             
             
-            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height ,60,13))
+            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height - 100 + 10,60,13))
             similarSchoolLabel.text = "相似学校"
             similarSchoolLabel.textAlignment = NSTextAlignment.Center
             similarSchoolLabel.textColor = UIColor.blackColor()
             similarSchoolLabel.font = UIFont.systemFontOfSize(12.5)
             similarSchoolLabel.numberOfLines = 1
+            
+            print(width)
+            
+            let schoolImageView1 = UIImageView(frame: CGRectMake(25,height - 100 + 20 + 13,50,50))
+            schoolImageView1.image = UIImage(named: "Stanford University logo")
+            
+            let schoolImageView2 = UIImageView(frame: CGRectMake(25 + 50 + 28,height - 100 + 20 + 13,50,50))
+            schoolImageView2.image = UIImage(named: "Stanford University logo")
+            
+            let schoolImageView3 = UIImageView(frame: CGRectMake(25 + 50*2 + 28*2 ,height - 100 + 20 + 13,50,50))
+            schoolImageView3.image = UIImage(named: "Stanford University logo")
+            
+            let schoolImageView4 = UIImageView(frame: CGRectMake(25 + 50*3 + 28*3 ,height - 100 + 20 + 13,50,50))
+            schoolImageView4.image = UIImage(named: "Stanford University logo")
             
             
             
@@ -415,6 +448,11 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             self.addSubview(faxImageView)
             self.addSubview(faxLabel)
             self.addSubview(similarSchoolLabel)
+            
+            self.addSubview(schoolImageView1)
+            self.addSubview(schoolImageView2)
+            self.addSubview(schoolImageView3)
+            self.addSubview(schoolImageView4)
         }
         
         

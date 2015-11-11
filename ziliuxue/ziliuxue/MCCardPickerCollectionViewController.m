@@ -77,9 +77,12 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 	pan.delegate = self;
 	[self.collectionView addGestureRecognizer:pan];
     
+    
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [swipe setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.presentingView addGestureRecognizer:swipe];
+    
+    
 }
 
 #pragma mark - Actions
@@ -109,6 +112,8 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
     [self restoreCellLayout:self.selectedCell isAnimated:YES];
     [self dismissButtonSwitchToCloseCell:NO];
 }
+
+
 
 - (void)hanldePan:(UIPanGestureRecognizer *)gesture
 {
@@ -162,8 +167,9 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 					[self restoreCellLayout:cell isAnimated:NO];
 				}
 				else {
-                    //printf("1");
+                    
 					CGFloat delta = MIN(1, fabs(point.y/kPanTriggerExpandDistance));
+                    //printf("%f\n",delta);
 					[self expandPresentingViewWithCell:cell andScaleDelta:delta];
 				}
 			}
@@ -268,6 +274,7 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
 
 - (void)expandPresentingViewWithCell:(UICollectionViewCell *)cell andScaleDelta:(CGFloat )delta
 {
+    //printf("%f\n",delta);
     CGFloat scale = 1 + delta * 0.18;
     cell.transform = CGAffineTransformMakeScale(scale,scale);
     cell.alpha = 1 - delta * 2;
@@ -278,6 +285,8 @@ static CGFloat const kPanTriggerExpandDistance = 50.0;
     CGAffineTransform t = CGAffineTransformMakeTranslation(0.0, topOffset - topOffset * delta);
     CGAffineTransform s = CGAffineTransformMakeScale(scale, scale);
     self.presentingView.transform = CGAffineTransformConcat(s, t);
+    //printf("%f\n",topOffset);
+    
 }
 
 - (void)dismissButtonSwitchToCloseCell:(BOOL)isToCell
