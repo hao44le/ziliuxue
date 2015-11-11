@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate{
+class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating{
 
     @IBOutlet var tableView: UITableView!
     
@@ -150,6 +150,8 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         
         let cell:SchoolRankCell? = tableView.dequeueReusableCellWithIdentifier("schoolRankCell") as? SchoolRankCell
 
+      
+        
         let item = SchoolRankListItem()
         item.schoolChineseName = self.chineseName[indexPath.row]
         item.schoolEnglishName = self.englishName[indexPath.row]
@@ -181,6 +183,10 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
         
     }
     
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+    }
 
     /*
     // MARK: - Navigation
