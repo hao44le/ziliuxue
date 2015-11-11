@@ -12,6 +12,11 @@ class SchoolCardView: UIView {
 
     var parentVCThatHandlesButtonTouchEvent : UIViewController!
     
+    var applicationMoreButton:UIButton!
+    var rankingMoreButton:UIButton!
+    var costMoreButton:UIButton!
+    var academicMoreButton:UIButton!
+    
     var backgroundImageName = "University of Chicago photo2"
     var avatarImageName = "University of Chicago logo"
     var universityChineseName = "普林斯顿大学"
@@ -90,19 +95,14 @@ class SchoolCardView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        
-        
+      
         let width = self.frame.width
-        
-        
-        
-        
-        
-        
-        
+  
         let backgroundImageView = UIImageView(frame: CGRectMake(0, 0, width, 222.5))
         backgroundImageView.image = UIImage(named: backgroundImageName)
         backgroundImageView.contentMode = UIViewContentMode.ScaleToFill
@@ -302,18 +302,18 @@ class SchoolCardView: UIView {
         applicationInfo_board_fourth_right_label.numberOfLines = 0
         
         
-        let applicationMoreButton = UIButton(type: UIButtonType.Custom)
-        applicationMoreButton.frame = CGRectMake(width/2 - 99/2,596,99,21)
-        applicationMoreButton.setTitle("更多", forState: UIControlState.Normal)
-        applicationMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
+        self.applicationMoreButton = UIButton(type: UIButtonType.Custom)
+        self.applicationMoreButton.frame = CGRectMake(width/2 - 99/2,596,99,21)
+        self.applicationMoreButton.setTitle("更多", forState: UIControlState.Normal)
+        self.applicationMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
             , forState: UIControlState.Normal)
-        applicationMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        applicationMoreButton.layer.borderColor = Utils.mainColor.CGColor
-        applicationMoreButton.layer.borderWidth = 1
-        applicationMoreButton.layer.cornerRadius = 10
-        applicationMoreButton.clipsToBounds = true
-        applicationMoreButton.tag = 1
-        applicationMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.applicationMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
+        self.applicationMoreButton.layer.borderColor = Utils.mainColor.CGColor
+        self.applicationMoreButton.layer.borderWidth = 1
+        self.applicationMoreButton.layer.cornerRadius = 10
+        self.applicationMoreButton.clipsToBounds = true
+        self.applicationMoreButton.tag = 1
+    
         
         
         
@@ -386,18 +386,18 @@ class SchoolCardView: UIView {
         ranking_info_board_fourth_right_label.numberOfLines = 0
         
         
-        let rankingMoreButton = UIButton(type: UIButtonType.Custom)
-        rankingMoreButton.frame = CGRectMake(width/2 - 99/2,774.5 + 21,99,21)
-        rankingMoreButton.setTitle("更多", forState: UIControlState.Normal)
-        rankingMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
+        self.rankingMoreButton = UIButton(type: UIButtonType.Custom)
+        self.rankingMoreButton.frame = CGRectMake(width/2 - 99/2,774.5 + 21,99,21)
+        self.rankingMoreButton.setTitle("更多", forState: UIControlState.Normal)
+        self.rankingMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
             , forState: UIControlState.Normal)
-        rankingMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        rankingMoreButton.layer.borderColor = Utils.mainColor.CGColor
-        rankingMoreButton.layer.borderWidth = 1
-        rankingMoreButton.layer.cornerRadius = 10
-        rankingMoreButton.clipsToBounds = true
-        rankingMoreButton.tag = 0
-        rankingMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.rankingMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
+        self.rankingMoreButton.layer.borderColor = Utils.mainColor.CGColor
+        self.rankingMoreButton.layer.borderWidth = 1
+        self.rankingMoreButton.layer.cornerRadius = 10
+        self.rankingMoreButton.clipsToBounds = true
+        self.rankingMoreButton.tag = 0
+   
         
         
         let academic_info_board_ImageView = UIImageView(frame: CGRectMake(8,831.5,width - 16,305))
@@ -460,18 +460,17 @@ class SchoolCardView: UIView {
         academic_info_board_third_right_label.numberOfLines = 0
         
         
-        let academicMoreButton = UIButton(type: UIButtonType.Custom)
-        academicMoreButton.frame = CGRectMake(width/2 - 99/2,1110.5,99,21)
+        self.academicMoreButton = UIButton(type: UIButtonType.Custom)
+        self.academicMoreButton.frame = CGRectMake(width/2 - 99/2,1110.5,99,21)
         
-        academicMoreButton.setTitle("更多", forState: UIControlState.Normal)
-        academicMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
+        self.academicMoreButton.setTitle("更多", forState: UIControlState.Normal)
+        self.academicMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
             , forState: UIControlState.Normal)
-        academicMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        academicMoreButton.layer.borderColor = Utils.mainColor.CGColor
-        academicMoreButton.layer.borderWidth = 1
-        academicMoreButton.layer.cornerRadius = 10
-        academicMoreButton.tag = 2
-        academicMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.academicMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
+        self.academicMoreButton.layer.borderColor = Utils.mainColor.CGColor
+        self.academicMoreButton.layer.borderWidth = 1
+        self.academicMoreButton.layer.cornerRadius = 10
+        self.academicMoreButton.tag = 2
         
         
         let cost_info_board_ImageView = UIImageView(frame: CGRectMake(8,1136+13,width - 16,205))
@@ -541,23 +540,18 @@ class SchoolCardView: UIView {
         cost_info_board_fourth_right_label.numberOfLines = 0
         
         
-        let costMoreButton = UIButton(type: UIButtonType.Custom)
-        costMoreButton.frame = CGRectMake(width/2 - 99/2,1293+21+13,99,21)
+        self.costMoreButton = UIButton(type: UIButtonType.Custom)
+        self.costMoreButton.frame = CGRectMake(width/2 - 99/2,1293+21+13,99,21)
         
-        costMoreButton.setTitle("更多", forState: UIControlState.Normal)
-        costMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
+        self.costMoreButton.setTitle("更多", forState: UIControlState.Normal)
+        self.costMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
             , forState: UIControlState.Normal)
-        costMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        costMoreButton.layer.borderColor = Utils.mainColor.CGColor
-        costMoreButton.layer.borderWidth = 1
-        costMoreButton.layer.cornerRadius = 10
-        costMoreButton.clipsToBounds = true
-        costMoreButton.tag = 3
-        costMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        
-        
-     
+        self.costMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
+        self.costMoreButton.layer.borderColor = Utils.mainColor.CGColor
+        self.costMoreButton.layer.borderWidth = 1
+        self.costMoreButton.layer.cornerRadius = 10
+        self.costMoreButton.clipsToBounds = true
+        self.costMoreButton.tag = 3
         
         
         
@@ -593,7 +587,7 @@ class SchoolCardView: UIView {
         self.addSubview(applicationInfo_board_second_right_label)
         self.addSubview(applicationInfo_board_third_right_label)
         self.addSubview(applicationInfo_board_fourth_right_label)
-        self.addSubview(applicationMoreButton)
+        self.addSubview(self.applicationMoreButton)
         
         self.addSubview(ranking_info_board_ImageView)
         self.addSubview(ranking_info_board_label)
@@ -605,7 +599,7 @@ class SchoolCardView: UIView {
         self.addSubview(ranking_info_board_second_right_label)
         self.addSubview(ranking_info_board_third_right_label)
         self.addSubview(ranking_info_board_fourth_right_label)
-        self.addSubview(rankingMoreButton)
+        self.addSubview(self.rankingMoreButton)
         
         self.addSubview(academic_info_board_ImageView)
         self.addSubview(academic_info_board_label)
@@ -616,7 +610,7 @@ class SchoolCardView: UIView {
         self.addSubview(academic_info_board_first_right_label)
         self.addSubview(academic_info_board_second_right_label)
         self.addSubview(academic_info_board_third_right_label)
-        self.addSubview(academicMoreButton)
+        self.addSubview(self.academicMoreButton)
         
         
         self.addSubview(cost_info_board_ImageView)
@@ -629,12 +623,20 @@ class SchoolCardView: UIView {
         self.addSubview(cost_info_board_second_right_label)
         self.addSubview(cost_info_board_third_right_label)
         self.addSubview(cost_info_board_fourth_right_label)
-        self.addSubview(costMoreButton)
+        self.addSubview(self.costMoreButton)
         
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func setUpButtonAction(action:Selector){
+        self.applicationMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+        self.academicMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+        self.rankingMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+        self.costMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: action, forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
 
 }

@@ -15,7 +15,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     var selectedUniversity : College?
     let kCellIdentifier = "MCSampleCell"
     let cardViewController = MCCardPickerCollectionViewController()
-    
+    var cardView:SchoolCardView!
     
     
     
@@ -92,30 +92,34 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         for subView in presentingView.subviews {
             subView.removeFromSuperview()
         }
-        let view = SchoolCardView(frame: self.view.frame)
-        view.parentVCThatHandlesButtonTouchEvent = self
+        self.cardView = SchoolCardView(frame: CGRectMake(0,0,CGRectGetWidth(self.view.frame),1293+21+13 + 21 + 10))
+        self.cardView.parentVCThatHandlesButtonTouchEvent = self
+        self.cardView.setUpButtonAction(Selector("touch:"))
+       
         
         let scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
+   
         scrollView.delegate = cardPickerCollectionViewController
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 1293+21+13 + 21 + 10)
         scrollView.backgroundColor = UIColor.whiteColor()
-        scrollView.addSubview(view)
+        scrollView.addSubview(self.cardView)
         
         presentingView.addSubview(scrollView)
         
     }
+
     
     
     func touch(button:UIButton){
-        print(button.tag)
+        
         self.selectedUniversity = self.universityArray[0]
-        Tool.showProgressHUD("正在加载")
+//        Tool.showProgressHUD("正在加载")
         
         let path = NSBundle.mainBundle().pathForResource(self.selectedUniversity?.name, ofType: "plist")
         let data : NSDictionary = NSDictionary(contentsOfFile: path!)!
         self.collegeDetail = Tool.parseJsonAndReturnCollegeDetail(data)
         
-        Tool.dismissHUD()
+        
         switch button.tag {
         case 0:
             self.performSegueWithIdentifier("toRanking", sender: self)
@@ -123,8 +127,10 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
             self.performSegueWithIdentifier("toApplication", sender: self)
         case 2:
             self.performSegueWithIdentifier("toAcademic", sender: self)
-        default:
+        case 3:
             self.performSegueWithIdentifier("toCost", sender: self)
+        default:
+            break
         }
         
         
