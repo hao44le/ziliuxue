@@ -173,8 +173,8 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
             Tool.showErrorHUD("请登录后查看更多学校")
             
         }else{
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("OverviewSchoolTabViewController") as? OverviewSchoolTabViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
+            let vc = OverviewSchoolTabViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
             self.mandatoryLoginController.addSchoolDetailSeenTimes()
         }
         

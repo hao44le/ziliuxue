@@ -8,283 +8,100 @@
 
 import UIKit
 
-class OverviewSchoolTabViewController: UIViewController,SwipeViewDataSource{
+class OverviewSchoolTabViewController: UIViewController{
 
-    
-    
-    @IBOutlet weak var backgroundScrollView: UIScrollView!
-    
-    @IBOutlet weak var applicationButton: UIButton!
-    
-    @IBOutlet weak var rankingButton: UIButton!
-    
-    @IBOutlet weak var academicButton: UIButton!
-    
-    @IBOutlet weak var costButton: UIButton!
-    
-    
-    @IBOutlet weak var acceptance_rate: UILabel!
-    
-    @IBOutlet weak var applicationDeadline: UILabel!
-    
-    @IBOutlet weak var numberOfStudent: UILabel!
-    
-    @IBOutlet weak var tuitionLabel: UILabel!
-    
-    @IBOutlet weak var costSecondDescription: UILabel!
-    @IBOutlet weak var costFirstDescription: UILabel!
-    @IBOutlet weak var applicationDescriptionLabel: UILabel!
-    @IBOutlet weak var universityDescription: UITextView!
-    @IBOutlet weak var universityName: UILabel!
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var swipeView: SwipeView!
-
-    
-    var basicInfoLeft = ["学校类型","成立时间","宗教联系","学期","地理","2013年捐款"]
-    var basicInfoRight = ["私立，男女同校","1746","无","学期","郊区","＄18,786,132,000"]
-    
-    var applicationInfoFirstCell = "当申请普林斯顿大学，一定要注意申请截止时间1月1日，无论ACT或SAT分数如何，一定要在1月1日前递交申请材料。普林斯顿大学的申请费用为65美元。它是具有选择性的大学，有7.4%的录取率"
-    var applicationInfoLeft = ["选修课","2013秋季接受率","申请截止日期","SAT/ACT日期"]
-    var applicationInfoRight = ["多数选修","7.4%","1月1日","1月1日"]
-    
-    var academicInfoLeft = ["课程大小","师生比例","4年毕业比例","最流行学科","经济","政治学和政府","分子生物","心理学","公共决策分析"]
-    var academicInfoRight = ["多数<20","6:1","88%","","11%","8%","6%","6%","6%"]
-    
-    var costFirstCell = "在普林斯顿大学，全日制本科生58.8%的接受某种形式的基于需要的财政援助，平均需要为基础的教学或补助金是38756美元。"
-    var costSecondCell = "支付大学费用并不一定是困难的或毁灭性的。转至支付大学的知识中心，以获取有关筹集资金，减低成本的建议，或使用美国新闻529 Finder来选择最佳的税务优惠的大学投资账户适合您"
-    var costInfoLeft = ["学费和费用","生活费用","书本和其他用品费用","预估个人花费","平均奖学金发放","学生收到的财政资助比例"]
-    var costInfoRight = ["＄41,820(2014-15)","＄13,620(2014-15)","$1,050","$2,475","$38,756","61%"]
-    
-    var imageArray = ["classroom","classroom2","universityBack"]
-    var collegeName = "Pricenton University"
-    
-//    var pieChartColor = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1),UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1),UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1),UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
-//    var slices = [11,8,6,6,6]
-//    var text = ["经济学","政治学","生物","心理学","公共政策"]
-    
-    var college: College? {
-        didSet{
-            firstImageOfSwipeView.image = UIImage(named: college!.name + " photo1")
-            secondImageOfSwipeView.image = UIImage(named: college!.name + " photo2")
-            thirdImageOfSwipeView.image = UIImage(named: college!.name + " photo3")
-            self.collegeName = self.college!.name
-        }
-    }
-    var collegeDetail : CollegeDetail?{
-        didSet{
-            self.collegeOverview = collegeDetail!.collegeOverview
-            self.collegeFinancial = collegeDetail!.collegeFinancial
-            self.college = collegeDetail!.college
-        }
-    }
-    var collegeOverview : CollegeOverview?
-    //var collegeRanking : CollegeRanking?
-    //var collegeApplying : CollegeApplying?
-    //var collegeAcademic : CollegeAcademic?
-    var collegeFinancial : CollegeFinancial?
-    
-    var firstImageOfSwipeView : UIImageView = UIImageView()
-    var secondImageOfSwipeView : UIImageView = UIImageView()
-    var thirdImageOfSwipeView : UIImageView = UIImageView()
-
-        
-    @IBAction func rankingMoreButtonPressed(sender: UIButton) {
-        self.performSegueWithIdentifier("toRanking", sender: self)
-    }
-    
-    @IBAction func applicationMoreButtonPressed(sender: UIButton) {
-        self.performSegueWithIdentifier("toApplication", sender: self)
-    }
-    
-    @IBAction func academicMoreButtonPressed(sender: UIButton) {
-        self.performSegueWithIdentifier("toAcamidec", sender: self)
-    }
-    
-    @IBAction func costMoreButtonPressed(sender: UIButton) {
-        self.performSegueWithIdentifier("toCost", sender: self)
-    }
-
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-//        if DeviceType.IS_IPHONE_6 {
-//            self.labelConstraint.constant = 23
-//        } else if DeviceType.IS_IPHONE_6P {
-//            self.labelConstraint.constant = 35
-//        }
-    }
+    var universityArray : [College] = []
+    var selectedUniversity : College?
+    var collegeDetail : CollegeDetail?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "大学", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        self.setUpView()
         
-        
-    }
-    
-    func setUpView(){
+        let path = NSBundle.mainBundle().pathForResource("College", ofType: "plist")
         
         
         
+        let data : NSArray = NSArray(contentsOfFile: path!)!
+        for school in data {
+            let id = school.objectForKey("_id") as! String
+            let name = school.objectForKey("name") as! String
+            let general = school.objectForKey("general") as! NSDictionary
+            
+            //ServerMethods.getCollegeDetail(id)
+            let website = general.objectForKey("website") as! String
+            let logo = name + " logo"
+            
+            let address = general.objectForKey("address") as! NSDictionary
+            let photos = [name + " photo1",name + " photo2",name + " photo3"]
+            
+            let city = address.objectForKey("city") as! String
+            let country = address.objectForKey("country") as! String
+            let state = address.objectForKey("state") as! String
+            let zipcode = address.objectForKey("zipcode") as! String
+            
+            let college = College(id: id, name: name, city: city, state: state, country: country, zipcode: zipcode, website: website, logo: logo, photos: photos)
+            universityArray.append(college)
+        }
+
         
-        self.navigationItem.title = self.collegeName
-        swipeView.autoscroll = 0
-        swipeView.pagingEnabled = true
-        let shareButton = UIButton(frame: CGRectMake(0, 0, 44, 44))
-        shareButton.backgroundColor = UIColor.clearColor()
-        shareButton.setImage(UIImage(named: "share_button_normal"), forState: UIControlState.Normal)
-        shareButton.setImage(UIImage(named: "share_button_highlighted"), forState: UIControlState.Highlighted)
-        //shareButton.addTarget(self, action: Selector(""), forControlEvents: UIControlEvents.TouchUpInside)
-        let shareItem = UIBarButtonItem(customView: shareButton)
-        self.navigationItem.rightBarButtonItem = shareItem
- 
+        let schoolview = SchoolCardView(frame: self.view.frame)
+        schoolview.parentVCThatHandlesButtonTouchEvent = self
         
-        //self.logoImageView.sd_setImageWithURL(NSURL(string: ServerConstant.baseURL + college!.logo), placeholderImage: UIImage(named: "defaultImage"), options: SDWebImageOptions.AllowInvalidSSLCertificates)
+        let scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 1293+21+13 + 21 + 10)
+        scrollView.backgroundColor = UIColor.whiteColor()
+        scrollView.addSubview(schoolview)
         
-        //self.backgroundScrollView.contentSize = CGSizeMake(ScreenSize.SCREEN_WIDTH, 1735)
-        
-//        self.logoImageView.image = UIImage(named: college!.name + " logo")
-//        self.logoImageView.layer.cornerRadius = 50
-//        self.logoImageView.layer.borderColor = UIColor.whiteColor().CGColor
-//        self.logoImageView.layer.borderWidth = 2
-//        //cell.universityName.sizeToFit()
-//        self.logoImageView.clipsToBounds = true
-        
-        self.costButton.layer.borderColor = Utils.mainColor.CGColor
-        self.costButton.layer.borderWidth = 1
-        self.costButton.layer.cornerRadius = 10
-        self.costButton.clipsToBounds = true
-        
-        self.applicationButton.layer.borderColor = Utils.mainColor.CGColor
-        self.applicationButton.layer.borderWidth = 1
-        self.applicationButton.layer.cornerRadius = 10
-        self.applicationButton.clipsToBounds = true
-        
-        self.academicButton.layer.borderColor = Utils.mainColor.CGColor
-        self.academicButton.layer.borderWidth = 1
-        self.academicButton.layer.cornerRadius = 10
-        self.academicButton.clipsToBounds = true
-        
-        self.rankingButton.layer.borderColor = Utils.mainColor.CGColor
-        self.rankingButton.layer.borderWidth = 1
-        self.rankingButton.layer.cornerRadius = 10
-        self.rankingButton.clipsToBounds = true
-        
-        
-//        self.pieView.dataSource = self
-//        self.pieView.delegate = self
-//        self.pieView.startPieAngle = CGFloat(M_PI_2)
-//        self.pieView.animationSpeed = 1.5
-//        self.pieView.showLabel = true
-//        self.pieView.labelColor = UIColor.whiteColor()
-//        self.pieView.labelFont = UIFont.systemFontOfSize(10)
-//        self.pieView.labelRadius = 40
-//        self.pieView.pieRadius = 60
-//        self.pieView.showPercentage = false
-//        self.pieView.pieCenter = CGPointMake(ScreenSize.SCREEN_WIDTH / 2, 50)
-//
+        self.view = scrollView
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer!.enabled = true
-        
-    }
     
-     // MARK: SwipeView
-    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
-        return 3
-    }
-    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        
-        let created = UIView(frame: swipeView.bounds)
-        let imageView = UIImageView(frame: created.bounds)
-        imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        if (college != nil) {
-            if let image = UIImage(named: college!.name + "photo\(index)") {
-                imageView.image = image
-            } else {
-                //println(ServerConstant.baseURL + college!.photos[index])
-                switch index {
+    
+    func touch(button:UIButton){
+        self.selectedUniversity = self.universityArray[0]
+        Tool.showProgressHUD("正在加载")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            let path = NSBundle.mainBundle().pathForResource(self.selectedUniversity?.name, ofType: "plist")
+            let data : NSDictionary = NSDictionary(contentsOfFile: path!)!
+            self.collegeDetail = Tool.parseJsonAndReturnCollegeDetail(data)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                Tool.dismissHUD()
+                switch button.tag {
                 case 0:
-                    imageView.image = firstImageOfSwipeView.image
+                    self.performSegueWithIdentifier("toRanking", sender: self)
                 case 1:
-                    imageView.image = secondImageOfSwipeView.image
+                    self.performSegueWithIdentifier("toApplication", sender: self)
                 case 2:
-                    imageView.image = thirdImageOfSwipeView.image
+                    self.performSegueWithIdentifier("toAcademic", sender: self)
+                case 3:
+                    self.performSegueWithIdentifier("toCost", sender: self)
                 default:
                     break
                 }
-             
                 
-                
-            }
-        } else {
-            imageView.image = UIImage(named: imageArray[index])
-        }
+            })
+        })
         
-        created.addSubview(imageView)
-        
-        return created
     }
-    
-    func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
-        return self.swipeView.bounds.size
-    }
-    
-    func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
-        self.pageControl.currentPage = swipeView.currentPage
-    }
-
-//    // MARK: PieChart DataSource
-//    func numberOfSlicesInPieChart(pieChart: XYPieChart!) -> UInt {
-//        return UInt(self.slices.count)
-//    }
-//    func pieChart(pieChart: XYPieChart!, colorForSliceAtIndex index: UInt) -> UIColor! {
-//        return self.pieChartColor[Int(index)]
-//    }
-//    func pieChart(pieChart: XYPieChart!, valueForSliceAtIndex index: UInt) -> CGFloat {
-//        return CGFloat(self.slices[Int(index)])
-//    }
-//    func pieChart(pieChart: XYPieChart!, textForSliceAtIndex index: UInt) -> String! {
-//        return self.text[Int(index)]
-//    }
-//
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        switch segue.identifier! {
-            case "toRanking":
-//                let vc = segue.destinationViewController as! SchoolRankingViewController
-//                vc.collegeRanking = collegeDetail!.collegeRanking
-            break
-            case "toApplication":
-//                let vc = segue.destinationViewController as! SchoolApplicationViewController
-//                vc.collegeApplication = collegeDetail!.collegeApplying
-            break
-            
-            case "toAcamidec":
-//                let vc = segue.destinationViewController as! SchoolAcademicViewController
-//                vc.collegeAcademic = collegeDetail!.collegeAcademic
-            break
-            case "toCost":
-//                let vc = segue.destinationViewController as! SchoolCostViewController
-//                vc.collegeCost = collegeDetail!.collegeFinancial
-            break
-        default:
-            break
+        if segue.identifier == "toRanking" {
+            let vc = segue.destinationViewController as! SchoolRankingViewController
+            vc.collegeRanking = self.collegeDetail!.collegeRanking
+        } else if segue.identifier == "toApplication" {
+            let vc = segue.destinationViewController as! SchoolApplicationViewController
+            vc.collegeApplication = self.collegeDetail!.collegeApplying
+        } else if segue.identifier == "toCost" {
+            let vc = segue.destinationViewController as! SchoolCostViewController
+            vc.collegeCost = self.collegeDetail!.collegeFinancial
+        } else if segue.identifier == "toAcademic" {
+            let vc = segue.destinationViewController as! SchoolAcademicViewController
+            vc.collegeAcademic = self.collegeDetail!.collegeAcademic
         }
     }
+    
+
+
     
 
 }

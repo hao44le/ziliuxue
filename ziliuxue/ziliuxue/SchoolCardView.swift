@@ -389,7 +389,6 @@ class SchoolCardView: UIView {
         let rankingMoreButton = UIButton(type: UIButtonType.Custom)
         rankingMoreButton.frame = CGRectMake(width/2 - 99/2,774.5 + 21,99,21)
         rankingMoreButton.setTitle("更多", forState: UIControlState.Normal)
-        rankingMoreButton.tag = 0
         rankingMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
             , forState: UIControlState.Normal)
         rankingMoreButton.titleLabel?.font = UIFont.systemFontOfSize(15)
@@ -397,6 +396,7 @@ class SchoolCardView: UIView {
         rankingMoreButton.layer.borderWidth = 1
         rankingMoreButton.layer.cornerRadius = 10
         rankingMoreButton.clipsToBounds = true
+        rankingMoreButton.tag = 0
         rankingMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
         
         
@@ -462,7 +462,7 @@ class SchoolCardView: UIView {
         
         let academicMoreButton = UIButton(type: UIButtonType.Custom)
         academicMoreButton.frame = CGRectMake(width/2 - 99/2,1110.5,99,21)
-        academicMoreButton.tag = 2
+        
         academicMoreButton.setTitle("更多", forState: UIControlState.Normal)
         academicMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
             , forState: UIControlState.Normal)
@@ -470,7 +470,7 @@ class SchoolCardView: UIView {
         academicMoreButton.layer.borderColor = Utils.mainColor.CGColor
         academicMoreButton.layer.borderWidth = 1
         academicMoreButton.layer.cornerRadius = 10
-        academicMoreButton.clipsToBounds = true
+        academicMoreButton.tag = 2
         academicMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
         
         
@@ -543,7 +543,7 @@ class SchoolCardView: UIView {
         
         let costMoreButton = UIButton(type: UIButtonType.Custom)
         costMoreButton.frame = CGRectMake(width/2 - 99/2,1293+21+13,99,21)
-        costMoreButton.tag = 3
+        
         costMoreButton.setTitle("更多", forState: UIControlState.Normal)
         costMoreButton.setTitleColor(UIColor(colorLiteralRed: 0, green: 135/255, blue: 218/255, alpha: 0.75)
             , forState: UIControlState.Normal)
@@ -552,6 +552,7 @@ class SchoolCardView: UIView {
         costMoreButton.layer.borderWidth = 1
         costMoreButton.layer.cornerRadius = 10
         costMoreButton.clipsToBounds = true
+        costMoreButton.tag = 3
         costMoreButton.addTarget(parentVCThatHandlesButtonTouchEvent, action: "touch:", forControlEvents: UIControlEvents.TouchUpInside)
         
         

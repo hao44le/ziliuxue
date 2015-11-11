@@ -17,7 +17,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     let cardViewController = MCCardPickerCollectionViewController()
     
     
-        
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +81,7 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
         let cell: SchoolCardCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! SchoolCardCollectionViewCell
         cell.layer.cornerRadius = 5
         
-
+        
         cell.layer.borderColor = UIColor.blackColor().CGColor
         cell.layer.borderWidth = 0.1
         cell.layer.masksToBounds = true
@@ -107,34 +107,33 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     
     
     func touch(button:UIButton){
+        print(button.tag)
         self.selectedUniversity = self.universityArray[0]
         Tool.showProgressHUD("正在加载")
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-            let path = NSBundle.mainBundle().pathForResource(self.selectedUniversity?.name, ofType: "plist")
-            let data : NSDictionary = NSDictionary(contentsOfFile: path!)!
-            self.collegeDetail = Tool.parseJsonAndReturnCollegeDetail(data)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                Tool.dismissHUD()
-                switch button.tag {
-                case 0:
-                    self.performSegueWithIdentifier("toRanking", sender: self)
-                case 1:
-                    self.performSegueWithIdentifier("toApplication", sender: self)
-                case 2:
-                    self.performSegueWithIdentifier("toAcademic", sender: self)
-                case 3:
-                    self.performSegueWithIdentifier("toCost", sender: self)
-                default:
-                    break
-                }
-                
-            })
-        })
+        
+        let path = NSBundle.mainBundle().pathForResource(self.selectedUniversity?.name, ofType: "plist")
+        let data : NSDictionary = NSDictionary(contentsOfFile: path!)!
+        self.collegeDetail = Tool.parseJsonAndReturnCollegeDetail(data)
+        
+        Tool.dismissHUD()
+        switch button.tag {
+        case 0:
+            self.performSegueWithIdentifier("toRanking", sender: self)
+        case 1:
+            self.performSegueWithIdentifier("toApplication", sender: self)
+        case 2:
+            self.performSegueWithIdentifier("toAcademic", sender: self)
+        default:
+            self.performSegueWithIdentifier("toCost", sender: self)
+        }
+        
+        
+        
         
     }
     
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -162,18 +161,14 @@ class SecondTabViewController: UIViewController,MCCardPickerCollectionViewContro
     }
     
     
-
+    
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        if segue.identifier == "toUniversity" {
-            let tab = segue.destinationViewController as! OverviewSchoolTabViewController
-            tab.collegeDetail = self.collegeDetail
-            
-        } else if segue.identifier == "toRanking" {
+        if segue.identifier == "toRanking" {
             let vc = segue.destinationViewController as! SchoolRankingViewController
             vc.collegeRanking = self.collegeDetail!.collegeRanking
             vc.source = "mySchool"
