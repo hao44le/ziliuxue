@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating{
+class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating,WeChatLoginDelegate{
 
     @IBOutlet var tableView: UITableView!
     
@@ -170,9 +170,13 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
+        
+        
         if 3 <= self.mandatoryLoginController.getSchoolDetailSeenTimes(){
             
-            Tool.showErrorHUD("请登录后查看更多学校")
+            let loginView = LoginPopView(frame: CGRectMake(0,64,self.view.frame.width,self.view.frame.height - 64))
+            loginView.delegate = self
+            self.view.addSubview(loginView)
             
         }else{
             let vc = OverviewSchoolTabViewController()
@@ -185,6 +189,14 @@ class SchoolRankViewController: BaseViewController,UITableViewDataSource,UITable
     
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+    }
+    
+    func weChatLoginDidSucceed() {
+        
+    }
+    
+    func weChatLoginDidFail() {
         
     }
 
