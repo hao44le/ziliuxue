@@ -373,7 +373,7 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             
         } else if DeviceType.IS_IPHONE_6P {
             
-            let remainingCellHeight = CGFloat(230)
+            let remainingCellHeight = CGFloat(300)
             let center = CGFloat(9)
             let phoneImageView = UIImageView(frame: CGRectMake(15,height - remainingCellHeight + center,13,13))
             phoneImageView.image = UIImage(named: "电话")
@@ -416,25 +416,26 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
             faxLabel.numberOfLines = 2
             
             
-            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 30,height - 100 + 10,60,13))
+            let similarSchoolLabel = UILabel(frame: CGRectMake(width/2 - 40,height - 200 + 40,80,13))
             similarSchoolLabel.text = "相似学校"
             similarSchoolLabel.textAlignment = NSTextAlignment.Center
             similarSchoolLabel.textColor = UIColor.blackColor()
-            similarSchoolLabel.font = UIFont.systemFontOfSize(12.5)
+            similarSchoolLabel.font = UIFont.systemFontOfSize(17)
             similarSchoolLabel.numberOfLines = 1
             
-            print(width)
             
-            let schoolImageView1 = UIImageView(frame: CGRectMake(25,height - 100 + 20 + 13,50,50))
+            let schoolImageViewLogoWidth = (width - 5*10)/4
+            
+            let schoolImageView1 = UIImageView(frame: CGRectMake(10,height - 130,schoolImageViewLogoWidth,schoolImageViewLogoWidth))
             schoolImageView1.image = UIImage(named: "Stanford University logo")
             
-            let schoolImageView2 = UIImageView(frame: CGRectMake(25 + 50 + 28,height - 100 + 20 + 13,50,50))
+            let schoolImageView2 = UIImageView(frame: CGRectMake(10*2 + schoolImageViewLogoWidth,height - 130,schoolImageViewLogoWidth,schoolImageViewLogoWidth))
             schoolImageView2.image = UIImage(named: "Stanford University logo")
             
-            let schoolImageView3 = UIImageView(frame: CGRectMake(25 + 50*2 + 28*2 ,height - 100 + 20 + 13,50,50))
+            let schoolImageView3 = UIImageView(frame: CGRectMake(10*3 + schoolImageViewLogoWidth*2 ,height - 130,schoolImageViewLogoWidth,schoolImageViewLogoWidth))
             schoolImageView3.image = UIImage(named: "Stanford University logo")
             
-            let schoolImageView4 = UIImageView(frame: CGRectMake(25 + 50*3 + 28*3 ,height - 100 + 20 + 13,50,50))
+            let schoolImageView4 = UIImageView(frame: CGRectMake(10*4 + schoolImageViewLogoWidth*3 ,height - 130,schoolImageViewLogoWidth,schoolImageViewLogoWidth))
             schoolImageView4.image = UIImage(named: "Stanford University logo")
             
             

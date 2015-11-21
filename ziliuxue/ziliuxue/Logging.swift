@@ -3,7 +3,7 @@
 //  ParseStarterProject-Swift
 //
 //  Created by Gelei Chen on 2/10/2015.
-//  Copyright © 2015 Parse. All rights reserved.
+//  Copyright © 2015 Ziliuxue. All rights reserved.
 //
 
 import Foundation
