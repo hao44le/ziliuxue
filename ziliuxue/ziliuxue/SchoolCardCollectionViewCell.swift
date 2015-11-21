@@ -46,12 +46,14 @@ class SchoolCardCollectionViewCell: UICollectionViewCell {
         
         let width = self.frame.width
         let infoCardImageView = UIImageView(frame: CGRectMake(0, 0, width, self.frame.height))
-        if DeviceType.IS_IPHONE_6 || DeviceType.IS_IPHONE_6P{
+        if DeviceType.IS_IPHONE_6 {
             infoCardImageView.image = UIImage(named: "school basic info card-6")
         } else if DeviceType.IS_IPHONE_5 {
             infoCardImageView.image = UIImage(named: "school basic info card-5 5s")
         } else if DeviceType.IS_IPHONE_4_OR_LESS {
             infoCardImageView.image = UIImage(named: "school basic info card-4 4s")
+        } else if DeviceType.IS_IPHONE_6P {
+            infoCardImageView.backgroundColor = UIColor.whiteColor()
         }
         
         let backgroundImageView = UIImageView(frame: CGRectMake(0, 0, width, 230))

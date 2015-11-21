@@ -356,14 +356,14 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
         self.view.insertSubview(bgTollbar, belowSubview: imageView)
         
         
-        let anim = POPSpringAnimation()
-        
-        anim.springBounciness = 17
-        
-        anim.property = (POPAnimatableProperty.propertyWithName(kPOPLayerPositionY)) as! POPAnimatableProperty
-        anim.toValue = (ScreenSize.SCREEN_HEIGHT - 300)
-        anim.name = "y-postion"
-        imageView.pop_addAnimation(anim, forKey: "y-postion")
+//        let anim = POPSpringAnimation()
+//        
+//        anim.springBounciness = 17
+//        
+//        anim.property = (POPAnimatableProperty.propertyWithName(kPOPLayerPositionY)) as! POPAnimatableProperty
+//        anim.toValue = (ScreenSize.SCREEN_HEIGHT - 300)
+//        anim.name = "y-postion"
+//        imageView.pop_addAnimation(anim, forKey: "y-postion")
         
         // Delay 3 seconds
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
