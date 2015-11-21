@@ -1,1 +1,1 @@
-../../../RNCryptor/RNCryptor/RNCryptor.h
+../../../RNCryptor/RNCryptor.h

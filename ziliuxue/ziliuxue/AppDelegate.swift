@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         let sel = Selector("openUDIDString")
         let deviceID = cls.performSelector(sel)
         print(deviceID)
- 
 //        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
 //        
 //        let settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
@@ -334,8 +333,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
                         manager.securityPolicy.allowInvalidCertificates = true
                         manager.securityPolicy.validatesDomainName = false
                         let others : NSDictionary = ["city":city,"country":country,"language":language,"province":province,"sex":sex,"unionid":unionid,"privilege":privilege]
-                        let userInfo : NSDictionary = ["client_id":ServerConstant.client_id,"open_id":openid,"nickname":nickname,"img_url":headimgurl,"others":others]
-                        manager.POST(ServerConstant.obtain_token, parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
+                        let userInfo : NSDictionary = ["open_id":openid,"nickname":nickname,"img_url":headimgurl,"others":others]
+                        manager.POST(ServerConstant.getTokenBreakApiPoint(), parameters: userInfo, success: { (operation:AFHTTPRequestOperation!, response:AnyObject!) -> Void in
                                 let server_callback = (try! NSJSONSerialization.JSONObjectWithData(response as! NSData, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
                                 let token = server_callback.objectForKey("token") as! String
                                 let refresh_token = server_callback.objectForKey("refresh_token") as! String

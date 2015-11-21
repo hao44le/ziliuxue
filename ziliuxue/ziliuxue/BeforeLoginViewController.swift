@@ -108,7 +108,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
                 } else {
                     Tool.showProgressHUD("正在验证")
                     UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-                    ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
+                   // ServerMethods.obtainToken(self.usernameInputfield.text!, password: self.passwordInputField.text!)
                 }
             } else {
                 self.viewPasswordButton.setImage(UIImage(named: "forget_pw"), forState: UIControlState.Normal)
@@ -173,7 +173,7 @@ class BeforeLoginViewController: UIViewController,UIGestureRecognizerDelegate,UI
                     
                     Tool.showProgressHUD("正在注册")
                     UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-                    ServerMethods.signup("", password: passwordInputField.text!,email:usernameInputfield.text!)
+                    //ServerMethods.signup("", password: passwordInputField.text!,email:usernameInputfield.text!)
                     
                 } else {
                     let ac = UIAlertView(title: "邮箱/手机号输入不合法", message: nil, delegate: nil, cancelButtonTitle: "好的")
