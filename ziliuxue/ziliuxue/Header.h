@@ -38,7 +38,6 @@
 #import "MJCollectionViewCell.h"
 #import "MJExtension.h"
 #import "JSDropDownMenu.h"
-#import <pop/POP.h>
 
 #import "CocoaLumberjack.h"
 #import "CompressingLogFileManager.h"
@@ -48,5 +47,6 @@
 #import "EAIntroView.h"
 
 #import "pinyin.h"
+#import "RNCryptor.h"
 
 #endif /* Header_h */

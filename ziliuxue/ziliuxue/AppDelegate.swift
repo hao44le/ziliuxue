@@ -38,7 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         
         
         
-        
+        MySchoolServer.querySchoolRankList { (schoolRankListItem) -> Void in
+            print("1")
+        }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "willEnterFullScreen", name:MPMoviePlayerWillEnterFullscreenNotification , object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "willExitFullScreen", name:MPMoviePlayerWillExitFullscreenNotification, object: nil)
