@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RNCryptor
+
 
 class Decraptor : NSObject {
     static let password = "42s5DE6RP14u8C558AMZZnTeBeN4kZ4O"
